@@ -1,0 +1,6 @@
+{
+  "name": "Soul Viva",
+  "description": "An elegant modular web application for Soul Viva transparent gel soap bars, featuring an experiential product showcase, custom interactive science demonstration, brand heritage story, and a seamless shopping bag mechanism.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
