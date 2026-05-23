@@ -34,7 +34,7 @@ export default function Header({
   };
 
   return (
-    <nav className="fixed top-0 w-full z-40 bg-white/60 dark:bg-black/60 backdrop-blur-xl border-b border-neutral-100 dark:border-neutral-900 transition-all duration-300">
+    <nav className="fixed top-0 w-full z-40 bg-[#F5F2EB]/95 dark:bg-[#F5F2EB]/95 backdrop-blur-xl border-b border-[#E5DEC1]/75 dark:border-[#E5DEC1]/75 transition-all duration-300">
       <div className="relative flex justify-between items-center px-6 md:px-20 h-20 w-full max-w-[1440px] mx-auto">
         
         {/* Left Links - Desktop */}
@@ -43,10 +43,10 @@ export default function Header({
             <button
               key={item.id}
               onClick={() => navigateTo(item.id)}
-              className={`font-sans text-xs tracking-[0.18em] transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-brand-dark hover:border-brand-dark/40 ${
+              className={`font-sans text-xs tracking-[0.18em] transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
                 currentScreen === item.id
-                  ? 'text-brand-dark border-brand-dark font-medium'
-                  : 'text-neutral-500 border-transparent'
+                  ? 'text-black border-black font-semibold'
+                  : 'text-neutral-700 hover:text-black border-transparent'
               }`}
             >
               {item.label}
@@ -58,10 +58,10 @@ export default function Header({
         <div className="flex md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-brand-dark cursor-pointer p-1"
+            className="text-black cursor-pointer p-1"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-black" /> : <Menu className="w-5 h-5 text-black" />}
           </button>
         </div>
 
@@ -69,7 +69,7 @@ export default function Header({
         <div className="md:absolute md:left-1/2 md:-translate-x-1/2 md:transform flex-shrink-0 flex justify-center">
           <button
             onClick={() => navigateTo('home')}
-            className="font-sans text-[21px] tracking-[0.25em] font-light text-brand-dark cursor-pointer select-none pl-[0.25em] hover:opacity-80 transition-opacity"
+            className="font-sans text-[21px] tracking-[0.25em] font-light text-black cursor-pointer select-none pl-[0.25em] hover:opacity-80 transition-opacity"
           >
             SOUL VIVA
           </button>
@@ -79,10 +79,10 @@ export default function Header({
         <div className="flex items-center gap-6 md:flex-1 md:justify-end">
           <button
             onClick={() => navigateTo('inquire')}
-            className={`hidden md:block font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-brand-dark hover:border-brand-dark/40 ${
+            className={`hidden md:block font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
               currentScreen === 'inquire'
-                ? 'text-brand-dark border-brand-dark font-medium'
-                : 'text-neutral-500 border-transparent'
+                ? 'text-black border-black font-semibold'
+                : 'text-neutral-700 hover:text-black border-transparent'
             }`}
           >
             INQUIRE
@@ -92,10 +92,10 @@ export default function Header({
             {/* Search Trigger */}
             <button
               onClick={onOpenSearch}
-              className="text-brand-dark hover:scale-105 transition-transform duration-300 cursor-pointer p-1.5 rounded-full hover:bg-neutral-100/60"
+              className="text-black hover:scale-105 transition-transform duration-300 cursor-pointer p-1.5 rounded-full hover:bg-black/5"
               aria-label="Search"
             >
-              <Search className="w-5 h-5 stroke-[1.5]" />
+              <Search className="w-5 h-5 stroke-[1.8] text-black" />
             </button>
           </div>
         </div>
@@ -103,9 +103,9 @@ export default function Header({
 
       {/* Slide-down Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 right-0 glass shadow-xl border-t border-neutral-100/50 flex flex-col py-6 px-6 z-50 animate-slow-pan">
+        <div className="md:hidden absolute top-20 left-0 right-0 bg-[#F5F2EB]/95 backdrop-blur-xl border-t border-[#E5DEC1]/75 flex flex-col py-6 px-6 z-50 shadow-xl">
           <div className="flex flex-col gap-4">
-            <span className="text-[10px] tracking-widest font-semibold uppercase text-neutral-400 mb-2 border-b pb-1">
+            <span className="text-[10px] tracking-widest font-semibold uppercase text-neutral-500 mb-2 border-b border-black/10 pb-1">
               Sanctuary Menu
             </span>
             {navItems.map((item) => (
@@ -113,7 +113,7 @@ export default function Header({
                 key={item.id}
                 onClick={() => navigateTo(item.id)}
                 className={`flex items-center text-sm tracking-wider uppercase font-medium py-2.5 transition-colors ${
-                  currentScreen === item.id ? 'text-brand-dark' : 'text-neutral-500'
+                  currentScreen === item.id ? 'text-black font-semibold' : 'text-neutral-700 hover:text-black'
                 }`}
               >
                 {item.icon}
@@ -122,8 +122,8 @@ export default function Header({
             ))}
             <button
               onClick={() => navigateTo('inquire')}
-              className={`flex items-center text-sm tracking-wider uppercase font-medium py-2.5 mt-2 border-t border-neutral-100/50 pt-4 cursor-pointer transition-colors ${
-                currentScreen === 'inquire' ? 'text-brand-dark' : 'text-neutral-500 hover:text-brand-dark'
+              className={`flex items-center text-sm tracking-wider uppercase font-medium py-2.5 mt-2 border-t border-black/10 pt-4 cursor-pointer transition-colors ${
+                currentScreen === 'inquire' ? 'text-black font-semibold' : 'text-neutral-700 hover:text-black'
               }`}
             >
               Consult & Inquire

@@ -33,6 +33,7 @@ import OurStorySection from './components/OurStorySection';
 import Carousel from './components/Carousel';
 import InquiryPage from './components/InquiryPage';
 import StorytellerModal from './components/StorytellerModal';
+import CosmeticBox3D from './components/CosmeticBox3D';
 
 export default function App() {
   // Screens state
@@ -162,18 +163,8 @@ export default function App() {
                       </div>
 
                       {/* Right 3D Visual Frame */}
-                      <div className="order-1 md:order-2 relative h-[450px] md:h-[650px] flex items-center justify-center">
-                        <div className="relative w-full h-full max-w-md mx-auto animate-float flex items-center justify-center">
-                          {/* Main 3D model placeholder render provided as hotlink */}
-                          <img
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgLtfqgmWlshLIfTTyZkhoAuDw8CsmWZYPgzsJt4TdSQqcvfnSGQldGjeKvXN5FHKFmges0x3gEl7NL1sWQz2pwUupDs4pPHAgM056N-HyAy6pHoTeJQkHdMI93XfVo9teySungi2v6GcwstJK_NVt1wL3i7LUKi5GEm_5E9T-oOr9iORt6A0uSPLcBmBIYzY3ig4cWqt3T4WajhH9_6zYz_ZEgvMPogd7RHAVusvcINLGRdcSWAyORY24zYQO8LSLCxA04Mc2MCM"
-                            alt="Transparent crystalline bar"
-                            className="w-80 h-80 md:w-full md:h-full object-contain drop-shadow-[0_25px_60px_rgba(56,189,248,0.25)] select-none opacity-90 pointer-events-none rounded-3xl"
-                            style={{ maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' }}
-                          />
-                          {/* Liquid glass light reflections ring shadow */}
-                          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-12 bg-sky-200/25 rounded-full blur-xl pointer-events-none" />
-                        </div>
+                      <div className="order-1 md:order-2 relative h-[450px] md:h-[650px] w-full flex items-center justify-center">
+                        <CosmeticBox3D />
                       </div>
 
                     </div>

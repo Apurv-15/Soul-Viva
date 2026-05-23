@@ -170,11 +170,6 @@ export default function Carousel({ products, onSelectProduct }: CarouselProps) {
                   variants={textVariants}
                   className="space-y-8"
                 >
-                  {/* Category Class Tag */}
-                  <span className="font-sans text-[11px] tracking-[0.3em] font-bold text-amber-800/80 uppercase block">
-                    {getSubclass(currentProduct.id)}
-                  </span>
-                  
                   {/* Soap Name & High Fashion Tagline */}
                   <div className="space-y-3.5">
                     <h3 className="font-sans text-[4.2rem] xl:text-[5.4rem] font-light tracking-tight text-neutral-950 leading-[1.02] -ml-1">
@@ -353,11 +348,6 @@ export default function Carousel({ products, onSelectProduct }: CarouselProps) {
               key={p.id}
               className="p-6 sm:p-8 rounded-3xl bg-white/40 border border-[#EFE8DE] backdrop-blur-xs space-y-6 text-left shadow-[0_10px_30px_rgba(139,115,85,0.03)]"
             >
-              {/* Tag subclass */}
-              <span className="font-sans text-[9px] tracking-[0.25em] font-medium text-neutral-500 uppercase block">
-                {getSubclass(p.id)}
-              </span>
-
               {/* Title & description */}
               <div className="space-y-2">
                 <h3 className="font-sans text-2xl sm:text-3xl font-light tracking-tight text-neutral-950">
