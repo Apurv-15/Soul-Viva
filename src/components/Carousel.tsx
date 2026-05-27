@@ -23,6 +23,19 @@ interface CarouselProps {
 export default function Carousel({ products, onSelectProduct }: CarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const lastScrollTime = useRef(0);
+
+  // Helper to calculate true absolute top of the container relative to the document
+  const getAbsoluteTop = () => {
+    if (!containerRef.current) return 0;
+    let top = 0;
+    let el: HTMLElement | null = containerRef.current;
+    while (el) {
+      top += el.offsetTop;
+      el = el.offsetParent as HTMLElement | null;
+    }
+    return top;
+  };
 
   // Set up window scroll listener to track precise scroll progress
   useEffect(() => {
@@ -59,6 +72,57 @@ export default function Carousel({ products, onSelectProduct }: CarouselProps) {
     };
   }, [products.length]);
 
+  // Handle high-precision step-by-step scroll wheel snapping when carousel is sticky
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!containerRef.current) return;
+      
+      // Only capture wheel snapping when the section occupies the sticky viewport
+      const rect = containerRef.current.getBoundingClientRect();
+      const isSticky = rect.top <= 20 && rect.bottom >= window.innerHeight - 20;
+      
+      if (!isSticky) return;
+
+      // Filter out micro scrolls or kinetic inertias below 15
+      if (Math.abs(e.deltaY) < 15) return;
+
+      const now = Date.now();
+      const timeElapsed = now - lastScrollTime.current;
+      const isCooldown = timeElapsed < 600; // Perfect snappiness matching smooth scroll duration (600ms)
+
+      if (e.deltaY > 0) {
+        // User scrolls down
+        if (activeIndex < products.length - 1) {
+          e.preventDefault();
+          if (!isCooldown) {
+            lastScrollTime.current = now;
+            scrollToIndex(activeIndex + 1);
+          }
+        }
+      } else if (e.deltaY < 0) {
+        // User scrolls up
+        if (activeIndex > 0) {
+          e.preventDefault();
+          if (!isCooldown) {
+            lastScrollTime.current = now;
+            scrollToIndex(activeIndex - 1);
+          }
+        }
+      }
+    };
+
+    const element = containerRef.current;
+    if (element) {
+      element.addEventListener('wheel', handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (element) {
+        element.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, [activeIndex, products.length]);
+
   const currentProduct = products[activeIndex] || products[0];
 
   // Map product categories to luxury classifications
@@ -75,12 +139,11 @@ export default function Carousel({ products, onSelectProduct }: CarouselProps) {
     }
   };
 
-  // Smooth scroll handler to target precise index within the sticky track
+  // Smooth scroll handler to target precise index within the sticky track using static positions
   const scrollToIndex = (idx: number) => {
     if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const absoluteTop = window.scrollY + rect.top;
-    const sectionHeight = rect.height;
+    const absoluteTop = getAbsoluteTop();
+    const sectionHeight = containerRef.current.offsetHeight;
     const viewportHeight = window.innerHeight;
     const totalScrollableDistance = sectionHeight - viewportHeight;
     
@@ -124,7 +187,7 @@ export default function Carousel({ products, onSelectProduct }: CarouselProps) {
       id="range-carousel-section" 
       ref={containerRef}
       className="relative text-neutral-900 border-b border-stone-200/40 bg-[#FAF5EE]"
-      style={{ height: '300vh' }} // Spans 3 viewports on scroll
+      style={{ height: `${products.length * 100}vh` }} // Dynamic proportional track based on product count
     >
       {/* Absolute micro background grid lines to anchor the editorial feel */}
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#EFE8DE_1px,transparent_1px),linear-gradient(to_bottom,#EFE8DE_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-30 pointer-events-none" />
