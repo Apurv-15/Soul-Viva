@@ -3,214 +3,168 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-
-const CHAPTERS = [
-  {
-    id: '01',
-    year: '2022',
-    heading: 'In the Beginning',
-    quote: 'What would be the ultimate purity formulation?',
-    content: 'The Soul Viva formulation was born over a cold winter night in our laboratory. A small group of cosmetic chemists and skin-purity advocates gathered to ask a simple question: could we eliminate heavy synthetic fillers and binders and craft a luxury bar that acts directly like a block of solidified hydration? We worked through hundreds of gas chromatography tests to stabilize clear active lipids.',
-    mainImage: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=1200',
-    subImage: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: '02',
-    year: '2023',
-    heading: 'The Pure Gel Matrix',
-    quote: 'Could we suspend hydration without chemical compounds?',
-    content: 'Traditional soap matrices rely on solid animal tallows and drying starches to maintain structural stability. Our breakthrough was discovering a physical gel structure that locks organic humectants in a solid state using hydrogen bond networks. This allowed us to cast-pour crystal-clear bars that leave zero dry residue, keeping pores completely respiratory.',
-    mainImage: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=1200',
-    subImage: 'https://images.unsplash.com/photo-1607006342445-520e181f62ae?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: '03',
-    year: '2024',
-    heading: 'The Botanical Integration',
-    quote: 'How do you transport a real harvest atmosphere into the steam?',
-    content: 'We integrated pristine harvests—high-altitude Kashmir Lavender, raw meadow honey, and Calabria Mandarin. By cold-pressing these botanical distillates and vacuum-sealing individual blocks in oxygen-barrier films, the raw molecular active structures remain untouched and fully materialize into sensory aromatherapy only upon contact with bath water.',
-    mainImage: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200',
-    subImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9dD0QuaWEX2tN8_NKp5Xg1pqqWPg2AIkbqFJT03E3zWRzzuV4i98UY-1j-LnDOpnrTXFfu4dpL1ywAAgDYR9VTUhF7UgMNJVq0iLAqNpwJ_ZqyjcncEfikTH64PH4s86b0qdJs2z6PjHiyDCnTzvc_HtEuRwcJH6Q2TESeaBVM4mFFVbDsTl3M_-mbnYHShHK-CBM3_XwWjFbMDPT2_CyyboeenIwwxv6m2ECiEtQuXZGkOyyb7FQMh6FlnSUBciKofLf1KT-tEg'
-  }
-];
-
-// Aesthetic ink/paint splatters precisely styled after the Lauf webpage screenshot
-const SplatterLeft = () => (
-  <svg className="absolute left-0 top-[22%] w-24 sm:w-48 h-[600px] opacity-[0.25] text-[#2c2c2c] pointer-events-none z-0 select-none" viewBox="0 0 200 600" fill="currentColor">
-    <circle cx="15" cy="50" r="2.5" />
-    <circle cx="35" cy="45" r="4.5" />
-    <circle cx="45" cy="62" r="1.5" />
-    <circle cx="58" cy="38" r="5" />
-    <circle cx="30" cy="80" r="3" />
-    <circle cx="65" cy="110" r="2.5" />
-    <circle cx="25" cy="120" r="3.5" />
-    <circle cx="40" cy="140" r="6.5" />
-    {/* Fine mist/spray pattern */}
-    <circle cx="14" cy="180" r="2" />
-    <circle cx="18" cy="184" r="1.2" />
-    <circle cx="20" cy="178" r="1.8" />
-    <circle cx="28" cy="190" r="3.5" />
-    <circle cx="55" cy="210" r="4" />
-    <circle cx="48" cy="198" r="1.5" />
-    <circle cx="70" cy="220" r="2" />
-    <circle cx="95" cy="195" r="1.8" />
-    <circle cx="28" cy="240" r="5.5" />
-    <circle cx="42" cy="265" r="3" />
-    <circle cx="22" cy="290" r="2.5" />
-    <circle cx="50" cy="310" r="4" />
-    <circle cx="65" cy="325" r="1.5" />
-    <circle cx="38" cy="350" r="3.5" />
-    <circle cx="12" cy="410" r="2.5" />
-    <circle cx="45" cy="430" r="5" />
-    <circle cx="62" cy="460" r="1.8" />
-    <circle cx="28" cy="495" r="3" />
-    <circle cx="50" cy="530" r="4" />
-    {/* Speckled run trails */}
-    <path d="M 25 120 Q 28 135 22 142" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-    <path d="M 50 310 Q 53 328 48 335" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-  </svg>
-);
-
-const SplatterRight = () => (
-  <svg className="absolute right-0 top-[5%] w-32 sm:w-64 h-[400px] opacity-[0.22] text-[#2c2c2c] pointer-events-none z-0 select-none" viewBox="0 0 200 400" fill="currentColor">
-    <circle cx="180" cy="45" r="2" />
-    <circle cx="160" cy="62" r="3.5" />
-    <circle cx="145" cy="80" r="1.5" />
-    <circle cx="132" cy="55" r="4.5" />
-    <circle cx="110" cy="90" r="2" />
-    <circle cx="175" cy="120" r="3" />
-    <circle cx="190" cy="150" r="5.5" />
-    <circle cx="155" cy="180" r="2.5" />
-    <circle cx="140" cy="210" r="4" />
-    <circle cx="120" cy="240" r="1.8" />
-    <circle cx="165" cy="285" r="3.5" />
-    <circle cx="185" cy="310" r="5" />
-    {/* Fine specs */}
-    <circle cx="112" cy="135" r="1" />
-    <circle cx="128" cy="152" r="1.2" />
-    <circle cx="98" cy="202" r="1" />
-    <path d="M 190 150 Q 186 168 192 174" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-  </svg>
-);
+import React from 'react';
+import { Sparkles, Leaf, Award, Globe, Droplet, ShieldCheck } from 'lucide-react';
 
 export default function OurStorySection() {
-  const [activeChapterId, setActiveChapterId] = useState('01');
-  
-  const currentChapter = CHAPTERS.find(ch => ch.id === activeChapterId) || CHAPTERS[0];
-
   return (
-    <section id="our-story-section" className="py-20 sm:py-28 bg-[#FFFFFF] text-stone-900 relative overflow-hidden font-sans border-b border-stone-200/50">
+    <section id="our-story-section" className="py-24 bg-[#FAF8F5] text-stone-900 relative overflow-hidden font-sans border-b border-stone-200/50">
       
-      {/* Decorative ink/distressed grunge splatters styled precisely like Lauf Forks screenshot */}
-      <SplatterLeft />
-      <SplatterRight />
+      {/* Background Soft Glows */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#EAD9EC]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#E5DEC1]/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1300px] mx-auto px-6 md:px-16 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-20 relative z-10 space-y-16">
         
-        {/* TOP LAYOUT: Grand Header Block styled after Lauf "Our Story" */}
-        <div className="relative pb-4 select-none">
-          {/* Subtle scoop label at bottom left of title */}
-          <div className="flex items-center gap-4 mb-4">
-            <span className="w-10 h-[1.5px] bg-neutral-900" />
-            <span className="text-[10px] sm:text-xs font-black tracking-[0.2em] text-neutral-800 uppercase block">
-              Get the Inside Scoop
+        {/* Header Block */}
+        <div className="text-center md:text-left space-y-4">
+          <div className="flex items-center justify-center md:justify-start gap-3">
+            <span className="w-8 h-[1px] bg-[#2D3A2F]" />
+            <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-[#2D3A2F] uppercase">
+              Why Us
             </span>
           </div>
-
-          {/* Massively sized, impact-heavy rustic typography block */}
-          <h2 className="text-6xl sm:text-8xl md:text-[8.5rem] font-extrabold tracking-tighter text-neutral-950 font-[Impact, 'Arial Black', sans-serif] uppercase leading-[0.85] select-text">
-            Our Story
+          <h2 className="font-serif text-[42px] sm:text-[54px] md:text-[64px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight">
+            The Soul Viva <span className="italic font-serif">Difference</span>
           </h2>
+          <p className="font-sans text-sm md:text-base text-neutral-500 font-light max-w-xl leading-relaxed">
+            More than a soap. A feeling of freshness.
+          </p>
         </div>
 
-        {/* DOUBLE COLUMN SPLIT: Story on Left, Overlay Collage on Right */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-14 items-start pt-10">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           
-          {/* Narrative Content Column */}
-          <div className="md:col-span-5 space-y-8 text-left z-10">
-            
-            {/* Red high-contrast badge controls */}
-            <div className="flex gap-2">
-              {CHAPTERS.map((ch) => (
-                <button
-                  key={ch.id}
-                  onClick={() => setActiveChapterId(ch.id)}
-                  className={`w-9 h-9 flex items-center justify-center font-sans text-xs font-bold transition-all duration-300 cursor-pointer ${
-                    activeChapterId === ch.id
-                      ? 'bg-[#C52B3E] text-white border border-[#C52B3E]' // Brick red badge
-                      : 'bg-[#FAF5EE] text-stone-700 border border-stone-200/60 hover:border-stone-400'
-                  }`}
-                  aria-label={`Go to chapter ${ch.id}`}
-                >
-                  {ch.id}
-                </button>
-              ))}
+          {/* Card 1: 01 — Glycerin-Rich Gel Formula (Col Span 2) */}
+          <div className="col-span-1 md:col-span-2 bg-white border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-10 flex flex-col sm:flex-row gap-8 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300">
+            <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
+              <div className="space-y-4">
+                <span className="inline-block bg-[#E5DEC1]/40 text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+                  01 — Gel Formula
+                </span>
+                <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+                  Glycerin-Rich <br /><span className="italic">Gel Formula</span>
+                </h3>
+                <p className="font-sans text-xs md:text-sm text-neutral-600 font-light leading-relaxed">
+                  Unlike conventional soaps that strip the skin, Soul Viva's transparent glycerin base acts as a humectant — drawing moisture into the skin with every wash. The result is skin that feels soft and hydrated, not dry and tight. This is the fundamental difference between a bathing bar that merely cleans and one that actively cares.
+                </p>
+              </div>
+              <div className="flex items-center gap-3 text-neutral-500">
+                <div className="p-2 rounded-full bg-[#FAF8F5]">
+                  <Droplet className="w-4 h-4 text-[#2D3A2F]" />
+                </div>
+                <span className="font-serif text-xs italic text-stone-700">"Drawing moisture in with every wash."</span>
+              </div>
             </div>
-
-            {/* Main title and body text blocks */}
-            <div className="space-y-4">
-              <span className="font-mono text-[9px] tracking-[0.25em] font-bold text-stone-400 uppercase block select-none">
-                YEAR &bull; {currentChapter.year} CERTIFICATION
-              </span>
-              <h3 className="font-sans text-2xl sm:text-3.5xl font-extrabold text-[#111111] tracking-tight leading-tight select-text">
-                {currentChapter.heading}
-              </h3>
-              <p className="font-sans text-sm sm:text-base text-neutral-600 leading-relaxed font-light select-text">
-                {currentChapter.content}
-              </p>
+            <div className="w-full sm:w-[38%] min-h-[200px] rounded-2xl overflow-hidden relative shadow-sm">
+              <img 
+                src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=600" 
+                alt="Glycerin-rich gel formula" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
             </div>
-
-            {/* Bottom beautiful aesthetic quote with horizontal divider matching Lauf */}
-            <div className="pt-6">
-              <span className="font-serif text-[13px] sm:text-[14px] text-neutral-800 italic leading-snug block select-text font-medium">
-                "{currentChapter.quote}"
-              </span>
-              <div className="w-16 h-[2px] bg-neutral-900 mt-4" />
-            </div>
-
           </div>
 
-          {/* Overlapping Offset Collage Column */}
-          <div className="md:col-span-7 w-full pt-4 md:pt-0 pb-16 relative">
-            <div className="relative w-full max-w-[580px] mx-auto md:ml-auto">
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeChapterId}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                  className="relative w-full"
-                >
-                  {/* Large main offset horizontal picture */}
-                  <div className="w-[88%] aspect-[1.45] overflow-hidden rounded-xs border border-stone-200 shadow-[0_12px_44px_rgba(0,0,0,0.06)] relative bg-[#F7F5F0]">
-                    <img 
-                      src={currentChapter.mainImage} 
-                      alt={currentChapter.heading} 
-                      className="w-full h-full object-cover filter brightness-[0.94] contrast-[1.02]"
-                    />
-                  </div>
+          {/* Card 2: 02 — Genuine Natural Extracts (Col Span 1) */}
+          <div className="col-span-1 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300">
+            <div className="space-y-4 text-left">
+              <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+                02 — Extracts
+              </span>
+              <h3 className="font-serif text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+                Genuine <br /><span className="italic">Natural Extracts</span>
+              </h3>
+              <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed">
+                Every variant contains real botanical extracts — not artificial fragrance alone. Shea butter, cherry blossom, waterlily, sea minerals, black currant, mandarin — each ingredient selected not just for its name, but for its active skin-care benefit. Real botanicals, real results.
+              </p>
+            </div>
+            <div className="w-full h-[140px] rounded-2xl overflow-hidden shadow-inner">
+              <img 
+                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600" 
+                alt="Genuine natural extracts" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
 
-                  {/* Smaller overlapping vertical/portrait portrait picture lower right */}
-                  <div className="absolute right-0 bottom-[-16%] w-[45%] aspect-[0.8] rounded-xs border-[9px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.14)] overflow-hidden bg-[#FAF5EE] z-20">
-                    <img 
-                      src={currentChapter.subImage} 
-                      alt={`${currentChapter.heading} detailed perspective`} 
-                      className="w-full h-full object-cover filter brightness-[0.96]"
-                    />
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+          {/* Card 3: 03 — Sensory-First Design (Col Span 1) */}
+          <div className="col-span-1 bg-[#EAD9EC]/20 border border-[#DCBFDE]/45 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
+            <div className="space-y-4">
+              <span className="inline-block bg-[#EAD9EC]/50 text-[#6B2E76] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+                03 — Experience
+              </span>
+              <h3 className="font-serif text-2xl font-normal text-[#6B2E76] tracking-tight leading-tight">
+                Sensory-First <br /><span className="italic">Design</span>
+              </h3>
+              <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed">
+                Each variant is built around an emotional story — a feeling, a scene, an escape. The fragrance, the colour, the name, and the key visual all work together to create an experience that goes far beyond the functional. Soul Viva doesn't just clean skin. It transports the person using it.
+              </p>
+            </div>
+            <div className="flex items-center gap-2.5 text-[#6B2E76] bg-white/50 border border-[#DCBFDE]/25 rounded-2xl p-4">
+              <Sparkles className="w-5 h-5 text-[#6B2E76]" />
+              <span className="font-sans text-xs font-semibold">An immersive emotional journey.</span>
+            </div>
+          </div>
 
-              {/* Sophisticated downward pointing arrow helper from Lauf screenshot */}
-              <div className="absolute left-4 bottom-[-10%] flex items-center gap-1.5 opacity-40 select-none z-10 pointer-events-none">
-                <span className="font-mono text-[9px] font-bold text-neutral-800 tracking-wider">SCROLL</span>
-                <span className="text-xs">&darr;</span>
+          {/* Card 4: 04 — Premium Shelf Presence (Col Span 2) */}
+          <div className="col-span-1 md:col-span-2 bg-white border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-10 flex flex-col sm:flex-row-reverse gap-8 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300">
+            <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
+              <div className="space-y-4">
+                <span className="inline-block bg-[#E5DEC1]/40 text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+                  04 — Packaging
+                </span>
+                <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+                  Premium <br /><span className="italic">Shelf Presence</span>
+                </h3>
+                <p className="font-sans text-xs md:text-sm text-neutral-600 font-light leading-relaxed">
+                  Each bar is individually flow-wrapped and presented in a full-colour printed monocarton with matte lamination and Spot UV finishing. The packaging is designed to command attention on shelf — with bold colour, considered design, and a visual identity that stands far apart from commodity soap.
+                </p>
               </div>
+              <div className="flex items-center gap-3 text-neutral-500">
+                <div className="p-2 rounded-full bg-[#FAF8F5]">
+                  <Award className="w-4 h-4 text-[#2D3A2F]" />
+                </div>
+                <span className="font-serif text-xs italic text-stone-700">"Commanding attention with luxury print detailing."</span>
+              </div>
+            </div>
+            <div className="w-full sm:w-[38%] min-h-[200px] rounded-2xl overflow-hidden relative shadow-sm">
+              <img 
+                src="https://images.unsplash.com/photo-1607006342445-520e181f62ae?auto=format&fit=crop&q=80&w=600" 
+                alt="Premium shelf presence" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
 
+          {/* Card 5: 06 — Export-Ready from Day One (Col Span 3) */}
+          <div className="col-span-1 md:col-span-3 bg-[#2D3A2F] text-white rounded-[32px] p-8 md:p-10 flex flex-col md:flex-row gap-8 justify-between items-center overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300">
+            <div className="flex-1 space-y-4 text-left">
+              <span className="inline-block bg-white/10 text-emerald-200 px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+                06 — Global
+              </span>
+              <h3 className="font-serif text-3xl font-normal tracking-tight leading-tight text-white">
+                Export-Ready <span className="italic text-emerald-300">from Day One</span>
+              </h3>
+              <p className="font-sans text-xs md:text-sm text-neutral-300 font-light leading-relaxed max-w-2xl">
+                Manufactured by a certified contract partner with international export capability. GS1 barcodes registered via GS1 India DataKart. Compliant labelling for international markets. Soul Viva is built to be a global brand.
+              </p>
+            </div>
+            
+            <div className="flex flex-row md:flex-col gap-4 w-full md:w-auto">
+              <div className="flex-1 bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-3.5 text-left md:min-w-[220px]">
+                <Globe className="w-6 h-6 text-emerald-300 flex-shrink-0" />
+                <div>
+                  <span className="block font-mono text-[9px] uppercase tracking-wider text-neutral-400">Standard</span>
+                  <span className="font-serif text-xs font-semibold text-emerald-300">GS1 Registered EANs</span>
+                </div>
+              </div>
+              <div className="flex-1 bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-3.5 text-left md:min-w-[220px]">
+                <ShieldCheck className="w-6 h-6 text-emerald-300 flex-shrink-0" />
+                <div>
+                  <span className="block font-mono text-[9px] uppercase tracking-wider text-neutral-400">Compliance</span>
+                  <span className="font-serif text-xs font-semibold text-emerald-300">International Export-Ready</span>
+                </div>
+              </div>
             </div>
           </div>
 

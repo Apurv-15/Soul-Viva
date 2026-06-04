@@ -7,8 +7,8 @@ import { useState } from 'react';
 import { Search, Menu, X, Landmark, SlidersHorizontal, BookOpen } from 'lucide-react';
 
 interface HeaderProps {
-  currentScreen: 'home' | 'range' | 'craft' | 'story' | 'inquire';
-  setScreen: (screen: 'home' | 'range' | 'craft' | 'story' | 'inquire') => void;
+  currentScreen: 'home' | 'range' | 'story' | 'inquire' | 'admin';
+  setScreen: (screen: 'home' | 'range' | 'story' | 'inquire' | 'admin') => void;
   onOpenInquiry: () => void;
   onOpenSearch: () => void;
 }
@@ -23,11 +23,10 @@ export default function Header({
 
   const navItems = [
     { id: 'range', label: 'Range', icon: <SlidersHorizontal className="w-4 h-4 mr-2 md:hidden" /> },
-    { id: 'craft', label: 'The Craft', icon: <Landmark className="w-4 h-4 mr-2 md:hidden" /> },
     { id: 'story', label: 'Our Story', icon: <BookOpen className="w-4 h-4 mr-2 md:hidden" /> },
   ] as const;
 
-  const navigateTo = (screen: 'home' | 'range' | 'craft' | 'story' | 'inquire') => {
+  const navigateTo = (screen: 'home' | 'range' | 'story' | 'inquire' | 'admin') => {
     setScreen(screen);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -35,23 +34,16 @@ export default function Header({
 
   return (
     <nav className="fixed top-0 w-full z-40 bg-[#F5F2EB]/95 dark:bg-[#F5F2EB]/95 backdrop-blur-xl border-b border-[#E5DEC1]/75 dark:border-[#E5DEC1]/75 transition-all duration-300">
-      <div className="relative flex justify-between items-center px-6 md:px-20 h-20 w-full max-w-[1440px] mx-auto">
+      <div className="flex justify-between items-center px-6 md:px-20 h-20 w-full max-w-[1440px] mx-auto">
         
-        {/* Left Links - Desktop */}
-        <div className="hidden md:flex md:flex-1 items-center gap-10">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => navigateTo(item.id)}
-              className={`font-sans text-xs tracking-[0.18em] transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
-                currentScreen === item.id
-                  ? 'text-black border-black font-semibold'
-                  : 'text-neutral-700 hover:text-black border-transparent'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
+        {/* Left Side: Logo */}
+        <div className="flex items-center">
+          <button
+            onClick={() => navigateTo('home')}
+            className="font-sans text-[21px] tracking-[0.25em] font-light text-black cursor-pointer select-none hover:opacity-80 transition-opacity"
+          >
+            SOUL VIVA
+          </button>
         </div>
 
         {/* Mobile Menu Trigger */}
@@ -65,31 +57,45 @@ export default function Header({
           </button>
         </div>
 
-        {/* Center Logo */}
-        <div className="md:absolute md:left-1/2 md:-translate-x-1/2 md:transform flex-shrink-0 flex justify-center">
-          <button
-            onClick={() => navigateTo('home')}
-            className="font-sans text-[21px] tracking-[0.25em] font-light text-black cursor-pointer select-none pl-[0.25em] hover:opacity-80 transition-opacity"
-          >
-            SOUL VIVA
-          </button>
-        </div>
+        {/* Right Side: Navigation Links & Search Controls */}
+        <div className="flex items-center gap-10">
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center gap-10">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => navigateTo(item.id)}
+                className={`font-sans text-xs tracking-[0.18em] transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
+                  currentScreen === item.id
+                    ? 'text-black border-black font-semibold'
+                    : 'text-neutral-700 hover:text-black border-transparent'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+            <button
+              onClick={() => navigateTo('inquire')}
+              className={`font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
+                currentScreen === 'inquire'
+                  ? 'text-black border-black font-semibold'
+                  : 'text-neutral-700 hover:text-black border-transparent'
+              }`}
+            >
+              INQUIRE
+            </button>
+            {currentScreen === 'admin' && (
+              <button
+                onClick={() => navigateTo('admin')}
+                className="font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 text-black border-black font-semibold"
+              >
+                ADMIN
+              </button>
+            )}
+          </div>
 
-        {/* Right Controls */}
-        <div className="flex items-center gap-6 md:flex-1 md:justify-end">
-          <button
-            onClick={() => navigateTo('inquire')}
-            className={`hidden md:block font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
-              currentScreen === 'inquire'
-                ? 'text-black border-black font-semibold'
-                : 'text-neutral-700 hover:text-black border-transparent'
-            }`}
-          >
-            INQUIRE
-          </button>
-
-          <div className="flex items-center gap-4">
-            {/* Search Trigger */}
+          {/* Search Trigger */}
+          <div className="flex items-center">
             <button
               onClick={onOpenSearch}
               className="text-black hover:scale-105 transition-transform duration-300 cursor-pointer p-1.5 rounded-full hover:bg-black/5"
