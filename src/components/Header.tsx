@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -7,8 +9,8 @@ import { useState } from 'react';
 import { Search, Menu, X, Landmark, SlidersHorizontal, BookOpen } from 'lucide-react';
 
 interface HeaderProps {
-  currentScreen: 'home' | 'range' | 'story' | 'inquire' | 'admin';
-  setScreen: (screen: 'home' | 'range' | 'story' | 'inquire' | 'admin') => void;
+  currentScreen: 'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin';
+  setScreen: (screen: 'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin') => void;
   onOpenInquiry: () => void;
   onOpenSearch: () => void;
 }
@@ -26,7 +28,7 @@ export default function Header({
     { id: 'story', label: 'Our Story', icon: <BookOpen className="w-4 h-4 mr-2 md:hidden" /> },
   ] as const;
 
-  const navigateTo = (screen: 'home' | 'range' | 'story' | 'inquire' | 'admin') => {
+  const navigateTo = (screen: 'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin' | 'craft') => {
     setScreen(screen);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
