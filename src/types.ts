@@ -43,6 +43,17 @@ export interface Product {
   bloomShadowClass: string; // e.g. "shadow-[0_0_50px_rgba(253,186,116,0.35)]" or similar
   themeColor: string; // e.g. hex
   badge: string;
+  images?: string[]; // gallery of local images
+  
+  // Custom Variant Fields
+  productCategory?: string;
+  caseConfiguration?: string;
+  shelfLife?: string;
+  countryOfOrigin?: string;
+  eanBarcode?: string;
+  packaging?: string;
+  inciIngredients?: string;
+  claims?: string[];
 }
 
 export interface CartItem {

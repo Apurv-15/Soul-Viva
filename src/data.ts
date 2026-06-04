@@ -4,20 +4,25 @@ export const PRODUCTS: Product[] = [
   {
     id: 'sea-minerals-menthol',
     name: 'Sea Minerals & Menthol',
-    tagline: 'A Refreshing Dip in the Open Sea.',
-    subtitle: 'Cool, Refreshed, Purified Skin',
-    description: 'A bathing experience that feels like a dip in the ocean — cool, crisp, and alive. Waves wash over you as freshness awakens every sense.',
-    longDescription: 'Beneath it all, a quiet calm. Soul Viva Sea Minerals & Menthol brings that feeling to your shower, leaving you cool and refreshed. Experience absolute purification and skin-identical hydration. Each bar contains high-purity natural mint extracts and marine salts for a truly sensory awakening. Net weight: 100g.',
+    tagline: 'A Refreshing Dip in the Open Sea',
+    subtitle: 'For Cool, Refreshed & Purified Skin',
+    description: 'A bathing experience that feels like a dip in the ocean — cool, crisp, and alive. Waves wash over you as freshness awakens every sense. Beneath it all, a quiet calm. Soul Viva Sea Minerals & Menthol brings that feeling to your shower, leaving you cool and refreshed.',
+    longDescription: 'A bathing experience that feels like a dip in the ocean — cool, crisp, and alive. Waves wash over you as freshness awakens every sense. Beneath it all, a quiet calm. Soul Viva Sea Minerals & Menthol brings that feeling to your shower, leaving you cool and refreshed.',
     price: 35,
-    weight: '100g / 3.5 oz',
+    weight: '100g when packed',
     pHLevel: '5.5 (Skin-Identical)',
-    skinType: 'Cool, Refreshed, Purified Skin',
+    skinType: 'All skin types',
     accentClass: 'from-sky-100 to-blue-50',
     bloomShadowClass: 'shadow-[0_0_60px_rgba(56,189,248,0.3)]',
     themeColor: '#DFEAF2',
     badge: 'Cooling Rush',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCgLtfqgmWlshLIfTTyZkhoAuDw8CsmWZYPgzsJt4TdSQqcvfnSGQldGjeKvXN5FHKFmges0x3gEl7NL1sWQz2pwUupDs4pPHAgM056N-HyAy6pHoTeJQkHdMI93XfVo9teySungi2v6GcwstJK_NVt1wL3i7LUKi5GEm_5E9T-oOr9iORt6A0uSPLcBmBIYzY3ig4cWqt3T4WajhH9_6zYz_ZEgvMPogd7RHAVusvcINLGRdcSWAyORY24zYQO8LSLCxA04Mc2MCM',
-    bgImage: 'https://images.unsplash.com/photo-1546554137-f86b9593a222?auto=format&fit=crop&q=80&w=1200',
+    image: '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Front 1.png',
+    bgImage: '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Product 2.png',
+    images: [
+      '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Front 1.png',
+      '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Left 1.png',
+      '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Product 2.png'
+    ],
     scentNotes: {
       top: ['Crisp Menthol', 'Marine Mist'],
       heart: ['Ozone Accord', 'Coastal Kelp'],
@@ -25,22 +30,22 @@ export const PRODUCTS: Product[] = [
     },
     keyIngredients: [
       {
-        name: 'Glycerin',
-        role: 'Humectant Protector',
-        source: 'Organic Plants',
-        description: 'Draws in Moisture, Keeping Skin Soft and Smooth.'
-      },
-      {
         name: 'Sea Minerals',
         role: 'Purifying Cleanser',
         source: 'Ocean Purity',
-        description: 'Cleanse and Refresh with Ocean Purity.'
+        description: 'Cleanse and refresh with ocean-derived Aqua Marina minerals and trace elements'
       },
       {
         name: 'Menthol',
         role: 'Instant Refresher',
         source: 'Peppermint Distillate',
-        description: 'Delivers an Instant Cooling Rush.'
+        description: 'Delivers an instant cooling rush and invigorating refreshing sensation'
+      },
+      {
+        name: 'Glycerin',
+        role: 'Humectant Protector',
+        source: 'Organic Plants',
+        description: 'Draws in moisture, keeping skin soft and smooth all day long'
       }
     ],
     sensoryProfile: {
@@ -48,25 +53,45 @@ export const PRODUCTS: Product[] = [
       purity: 100,
       latherDensity: 85,
       longevity: 80
-    }
+    },
+    productCategory: 'Glycerin Based transparent gel bathing bar',
+    caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
+    shelfLife: '24 months',
+    countryOfOrigin: 'India',
+    eanBarcode: '8908030764058',
+    packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
+    inciIngredients: 'Sodium Laureth Sulfate, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Chloride, Parfum, Aqua Marina (Sea Water) Extract, Menthol, Cocamide DEA, Citric Acid, Sodium Benzoate, Potassium Sorbate, CI 42090',
+    claims: [
+      '100% Natural Extracts',
+      'Dermatologically Tested',
+      'Cruelty Free',
+      'Paraben Free',
+      'Silicon Free',
+      'Suitable for All Skin Types'
+    ]
   },
   {
     id: 'waterlily-pear',
     name: 'Waterlily & Pear',
-    tagline: 'An Escape into a Tropical Waterfall.',
+    tagline: 'An Escape into a Tropical Waterfall',
     subtitle: 'For Dewy Fresh Skin',
-    description: 'A bathing experience that feels like standing under a tropical waterfall. Fresh water flows over you, surrounded by lush greens and soft blooms.',
-    longDescription: 'Pure, vibrant, and alive. Soul Viva Waterlily & Pear brings that feeling to your shower, leaving your skin dewy and fresh. It is blended with deep-penetrating plant moisturizers and crisp garden fruit essences to balance high-clarity hydration with sensory bliss. Net weight: 100g.',
+    description: 'A bathing experience that feels like standing under the fresh water of a tropical waterfall, surrounded by lush greens and soft blooms. Pure, vibrant, and alive. Soul Viva Waterlily & Pear brings that feeling to your shower, leaving your skin dewy and fresh.',
+    longDescription: 'A bathing experience that feels like standing under the fresh water of a tropical waterfall, surrounded by lush greens and soft blooms. Pure, vibrant, and alive. Soul Viva Waterlily & Pear brings that feeling to your shower, leaving your skin dewy and fresh.',
     price: 35,
-    weight: '100g / 3.5 oz',
+    weight: '100g when packed',
     pHLevel: '5.5 (Acid Balanced)',
-    skinType: 'Dewy Fresh Skin',
+    skinType: 'All skin types',
     accentClass: 'from-emerald-50 to-teal-50',
     bloomShadowClass: 'shadow-[0_0_60px_rgba(52,211,153,0.25)]',
     themeColor: '#E6F4EA',
     badge: 'Dewy Fresh',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCgLtfqgmWlshLIfTTyZkhoAuDw8CsmWZYPgzsJt4TdSQqcvfnSGQldGjeKvXN5FHKFmges0x3gEl7NL1sWQz2pwUupDs4pPHAgM056N-HyAy6pHoTeJQkHdMI93XfVo9teySungi2v6GcwstJK_NVt1wL3i7LUKi5GEm_5E9T-oOr9iORt6A0uSPLcBmBIYzY3ig4cWqt3T4WajhH9_6zYz_ZEgvMPogd7RHAVusvcINLGRdcSWAyORY24zYQO8LSLCxA04Mc2MCM',
-    bgImage: 'https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&q=80&w=1200',
+    image: '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png',
+    bgImage: '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Right 1.png',
+    images: [
+      '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png',
+      '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Left 1.png',
+      '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Right 1.png'
+    ],
     scentNotes: {
       top: ['Crisp Pear', 'Lush Greens'],
       heart: ['Waterlily Extract', 'Lotus Blooms'],
@@ -74,22 +99,22 @@ export const PRODUCTS: Product[] = [
     },
     keyIngredients: [
       {
-        name: 'Glycerin',
-        role: 'Dewy Base',
-        source: 'Vegetable Oils',
-        description: 'Draws in Moisture, Keeping Skin Soft and Smooth.'
-      },
-      {
         name: 'Waterlily Extract',
         role: 'Flora Rejuvenator',
         source: 'Aquatic Flowers',
-        description: 'Hydrates and refreshes skin.'
+        description: 'Hydrates and refreshes skin with aquatic botanical actives from Nymphaea Alba'
       },
       {
-        name: 'Pear Essence',
+        name: 'Pear Extract',
         role: 'Aromatic Softener',
         source: 'Pressed Pears',
-        description: 'Leaves skin soft and supple.'
+        description: 'Leaves skin soft and supple with gentle fruit enzymes from Pyrus Communis'
+      },
+      {
+        name: 'Glycerin',
+        role: 'Dewy Base',
+        source: 'Vegetable Oils',
+        description: 'Draws in moisture, keeping skin soft and smooth all day long'
       }
     ],
     sensoryProfile: {
@@ -97,25 +122,45 @@ export const PRODUCTS: Product[] = [
       purity: 95,
       latherDensity: 82,
       longevity: 78
-    }
+    },
+    productCategory: 'Glycerin Based transparent gel bathing bar',
+    caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
+    shelfLife: '24 months',
+    countryOfOrigin: 'India',
+    eanBarcode: '8908030764003',
+    packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
+    inciIngredients: 'Sodium Laureth Sulfate, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Chloride, Parfum, Nymphaea Alba (Waterlily) Flower Extract, Pyrus Communis (Pear) Fruit Extract, Cocamide DEA, Citric Acid, Sodium Benzoate, Potassium Sorbate, CI 42090, CI 19140',
+    claims: [
+      '100% Natural Extracts',
+      'Dermatologically Tested',
+      'Cruelty Free',
+      'Paraben Free',
+      'Silicon Free',
+      'Suitable for All Skin Types'
+    ]
   },
   {
     id: 'cherry-blossom-strawberry',
     name: 'Cherry Blossom & Strawberry',
-    tagline: 'A Soft Romantic Bloom.',
-    subtitle: 'Soft Glowing Skin',
-    description: 'A bathing experience that feels like standing beneath blooming cherry blossoms. Petals drift through the air as a sweet, delicate fragrance surrounds you.',
-    longDescription: 'Light, tender, and romantic. Soul Viva Cherry Blossom & Strawberry brings that feeling to your shower, leaving your skin soft and glowing. Specially designed for dull skins seeking a gentle radiance renewal and continuous humectant support. Net weight: 100g.',
+    tagline: 'A Soft Romantic Bloom',
+    subtitle: 'For Soft Glowing Skin',
+    description: 'A bathing experience that feels like standing beneath blooming cherry blossoms. Petals drifting in the air as a sweet, delicate fragrance surrounds you. Light, tender, and romantic. Soul Viva Cherry Blossom & Strawberry brings that feeling to your shower, leaving your skin soft and glowing.',
+    longDescription: 'A bathing experience that feels like standing beneath blooming cherry blossoms. Petals drifting in the air as a sweet, delicate fragrance surrounds you. Light, tender, and romantic. Soul Viva Cherry Blossom & Strawberry brings that feeling to your shower, leaving your skin soft and glowing.',
     price: 35,
-    weight: '100g / 3.5 oz',
+    weight: '100g when packed',
     pHLevel: '5.5 (Skin Optimal)',
-    skinType: 'Soft Glowing Skin',
+    skinType: 'All skin types',
     accentClass: 'from-pink-100 to-rose-50',
     bloomShadowClass: 'shadow-[0_0_60px_rgba(244,63,94,0.25)]',
     themeColor: '#FFE4E6',
     badge: 'Romantic Bloom',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCgLtfqgmWlshLIfTTyZkhoAuDw8CsmWZYPgzsJt4TdSQqcvfnSGQldGjeKvXN5FHKFmges0x3gEl7NL1sWQz2pwUupDs4pPHAgM056N-HyAy6pHoTeJQkHdMI93XfVo9teySungi2v6GcwstJK_NVt1wL3i7LUKi5GEm_5E9T-oOr9iORt6A0uSPLcBmBIYzY3ig4cWqt3T4WajhH9_6zYz_ZEgvMPogd7RHAVusvcINLGRdcSWAyORY24zYQO8LSLCxA04Mc2MCM',
-    bgImage: 'https://images.unsplash.com/photo-1522748906645-95d8adfd52c7?auto=format&fit=crop&q=80&w=1200',
+    image: '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
+    bgImage: '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Right 1.png',
+    images: [
+      '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
+      '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Left 1.png',
+      '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Right 1.png'
+    ],
     scentNotes: {
       top: ['Wild Strawberry', 'Red Berries'],
       heart: ['Cherry Blossom', 'Sakura Petals'],
@@ -123,22 +168,22 @@ export const PRODUCTS: Product[] = [
     },
     keyIngredients: [
       {
-        name: 'Glycerin',
-        role: 'Elastic Cushioner',
-        source: 'Vegetable Source',
-        description: 'Draws in Moisture, Keeping Skin Soft and Smooth.'
-      },
-      {
-        name: 'Strawberry Essence',
-        role: 'Radiance Booster',
-        source: 'Ripe Strawberries',
-        description: 'Leaves skin radiant.'
-      },
-      {
         name: 'Cherry Blossom Extract',
         role: 'Luminosity Perfector',
         source: 'Sakura Petals',
-        description: 'Enhances Skin’s Natural Glow.'
+        description: 'Enhances skin\'s natural glow with Prunus Serrulata floral brightening actives'
+      },
+      {
+        name: 'Strawberry Extract',
+        role: 'Radiance Booster',
+        source: 'Ripe Strawberries',
+        description: 'Leaves skin radiant with natural AHAs and Vitamin C from Fragaria Vesca'
+      },
+      {
+        name: 'Glycerin',
+        role: 'Elastic Cushioner',
+        source: 'Vegetable Source',
+        description: 'Draws in moisture, keeping skin soft and smooth all day long'
       }
     ],
     sensoryProfile: {
@@ -146,25 +191,45 @@ export const PRODUCTS: Product[] = [
       purity: 90,
       latherDensity: 88,
       longevity: 82
-    }
+    },
+    productCategory: 'Glycerin Based transparent gel bathing bar',
+    caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
+    shelfLife: '24 months',
+    countryOfOrigin: 'India',
+    eanBarcode: '8908030764034',
+    packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
+    inciIngredients: 'Sodium Laureth Sulfate, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Chloride, Parfum, Prunus Serrulata (Cherry Blossom) Flower Extract, Fragaria Vesca (Strawberry) Fruit Extract, Cocamide DEA, Citric Acid, Sodium Benzoate, Potassium Sorbate, CI 17200, CI 45410',
+    claims: [
+      '100% Natural Extracts',
+      'Dermatologically Tested',
+      'Cruelty Free',
+      'Paraben Free',
+      'Silicon Free',
+      'Suitable for All Skin Types'
+    ]
   },
   {
     id: 'lavender-currant',
-    name: 'Lavender & Black Currant',
-    tagline: 'A Moment of Pure Relaxation.',
-    subtitle: 'Smooth & Happy Skin',
-    description: 'A bathing experience that feels like sinking into a calming lavender bath. Soft aromas ease the mind while gentle warmth relaxes the body.',
-    longDescription: 'Deeply soothing and serene. Soul Viva Lavender & Black Currant brings that feeling to your shower, leaving you calm and comforted. Packed with polyphenols and natural extracts, it provides the ultimate twilight wind-down. Net weight: 100g.',
+    name: 'Black Currant & Lavender',
+    tagline: 'A Moment of Pure Relaxation',
+    subtitle: 'For Smooth & Happy Skin',
+    description: 'A bathing experience that feels like sinking into a calming lavender bath. Soft aromas ease the mind while gentle warmth relaxes the body. Deeply soothing and serene. Soul Viva Black Currant & Lavender brings that feeling to your shower, leaving you calm and comforted.',
+    longDescription: 'A bathing experience that feels like sinking into a calming lavender bath. Soft aromas ease the mind while gentle warmth relaxes the body. Deeply soothing and serene. Soul Viva Black Currant & Lavender brings that feeling to your shower, leaving you calm and comforted.',
     price: 35,
-    weight: '100g / 3.5 oz',
+    weight: '100g when packed',
     pHLevel: '5.5 (Skin Balanced)',
-    skinType: 'Smooth & Happy Skin',
+    skinType: 'All skin types',
     accentClass: 'from-purple-100 to-indigo-50',
     bloomShadowClass: 'shadow-[0_0_60px_rgba(168,85,247,0.25)]',
     themeColor: '#ECCDF2',
     badge: 'Pure Relaxation',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCgLtfqgmWlshLIfTTyZkhoAuDw8CsmWZYPgzsJt4TdSQqcvfnSGQldGjeKvXN5FHKFmges0x3gEl7NL1sWQz2pwUupDs4pPHAgM056N-HyAy6pHoTeJQkHdMI93XfVo9teySungi2v6GcwstJK_NVt1wL3i7LUKi5GEm_5E9T-oOr9iORt6A0uSPLcBmBIYzY3ig4cWqt3T4WajhH9_6zYz_ZEgvMPogd7RHAVusvcINLGRdcSWAyORY24zYQO8LSLCxA04Mc2MCM',
-    bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCIiJGuNkuPzfhXoZIIfIH40WGoo6u9qqm2tAZX4JP055boJPuVj_JrjdIHh_liGrtw9LlphKB8U1XgFRSjbtJcPNb-5yDBV00_1cMQfQ3jbnX4d_OC9iv910CJwyfbzyhkWPjHGd7wXBaP944zu28JeKX633AXI9eYkmRDdynzUV8YR_LPi5vQcxK_EdJYjsETBYynKYbMAebKZPDgtmg9qESck5YBLVd0MsnCMLZZ9M5Trwf04-PbZhr8Jj9FxISVhzE-WwXN57A',
+    image: '/Black Currant/Soul Viva - Black Currant & Lavender - Front 1.png',
+    bgImage: '/Black Currant/Soul Viva - Black Currant & Lavender - Product 2.png',
+    images: [
+      '/Black Currant/Soul Viva - Black Currant & Lavender - Front 1.png',
+      '/Black Currant/Soul Viva - Black Currant & Lavender - Left 1.png',
+      '/Black Currant/Soul Viva - Black Currant & Lavender - Product 2.png'
+    ],
     scentNotes: {
       top: ['Black Currant Buds', 'Deep Berries'],
       heart: ['French Lavender', 'Warm Chamomile'],
@@ -172,22 +237,22 @@ export const PRODUCTS: Product[] = [
     },
     keyIngredients: [
       {
-        name: 'Glycerin',
-        role: 'Skin Smoother',
-        source: 'Botanical',
-        description: 'Draws in Moisture, Keeping Skin Soft and Smooth.'
-      },
-      {
         name: 'Black Currant Essence',
         role: 'Lipid Nourisher',
         source: 'Forest Currants',
-        description: 'Nourishes for Smoother Skin.'
+        description: 'Nourishes for smoother skin with antioxidant-rich Ribes Nigrum berry extract'
       },
       {
         name: 'Lavender Extract',
         role: 'Epidermal Calmer',
         source: 'Provence Lavender',
-        description: 'Calms and Soothes Skin.'
+        description: 'Calms and soothes skin with Lavandula Angustifolia flower actives'
+      },
+      {
+        name: 'Glycerin',
+        role: 'Skin Smoother',
+        source: 'Botanical',
+        description: 'Draws in moisture, keeping skin soft and smooth all day long'
       }
     ],
     sensoryProfile: {
@@ -195,25 +260,45 @@ export const PRODUCTS: Product[] = [
       purity: 98,
       latherDensity: 88,
       longevity: 85
-    }
+    },
+    productCategory: 'Glycerin Based transparent gel bathing bar',
+    caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
+    shelfLife: '24 months',
+    countryOfOrigin: 'India',
+    eanBarcode: '8908030764041',
+    packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
+    inciIngredients: 'Sodium Laureth Sulfate, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Chloride, Parfum, Ribes Nigrum (Black Currant) Fruit Extract, Lavandula Angustifolia (Lavender) Flower Extract, Cocamide DEA, Citric Acid, Sodium Benzoate, Potassium Sorbate, CI 42090, CI 17200',
+    claims: [
+      '100% Natural Extracts',
+      'Dermatologically Tested',
+      'Cruelty Free',
+      'Paraben Free',
+      'Silicon Free',
+      'Suitable for All Skin Types'
+    ]
   },
   {
     id: 'mandarin-peach',
     name: 'Mandarin & Peach',
-    tagline: 'A Burst of Fresh Energy.',
-    subtitle: 'Energised Fresh Skin',
-    description: 'A bathing experience that feels like a burst of citrus energy. Bright, juicy notes awaken your senses, filling the air with vibrant freshness.',
-    longDescription: 'Lively, uplifting, and radiant. Soul Viva Mandarin & Peach brings that feeling to your shower, leaving your skin energised and fresh. Infused with natural Vitamin-rich extracts that offer superb tone clarifying capabilities and fresh citrus therapy. Net weight: 100g.',
+    tagline: 'A Burst of Fresh Energy',
+    subtitle: 'For Energised Fresh Skin',
+    description: 'A bathing experience that feels like a burst of citrus energy. Bright, juicy notes awaken your senses, filling the air with vibrant freshness. Lively, uplifting, and radiant. Soul Viva Mandarin & Peach brings that feeling to your shower, leaving your skin energised and fresh.',
+    longDescription: 'A bathing experience that feels like a burst of citrus energy. Bright, juicy notes awaken your senses, filling the air with vibrant freshness. Lively, uplifting, and radiant. Soul Viva Mandarin & Peach brings that feeling to your shower, leaving your skin energised and fresh.',
     price: 35,
-    weight: '100g / 3.5 oz',
+    weight: '100g when packed',
     pHLevel: '5.5 (Acid Balanced)',
-    skinType: 'Energised Fresh Skin',
+    skinType: 'All skin types',
     accentClass: 'from-orange-100 to-amber-50',
     bloomShadowClass: 'shadow-[0_0_60px_rgba(249,115,22,0.25)]',
     themeColor: '#FFE5D9',
     badge: 'Citrus Energy',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCgLtfqgmWlshLIfTTyZkhoAuDw8CsmWZYPgzsJt4TdSQqcvfnSGQldGjeKvXN5FHKFmges0x3gEl7NL1sWQz2pwUupDs4pPHAgM056N-HyAy6pHoTeJQkHdMI93XfVo9teySungi2v6GcwstJK_NVt1wL3i7LUKi5GEm_5E9T-oOr9iORt6A0uSPLcBmBIYzY3ig4cWqt3T4WajhH9_6zYz_ZEgvMPogd7RHAVusvcINLGRdcSWAyORY24zYQO8LSLCxA04Mc2MCM',
-    bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuASCAe9iP9BWs_IKsTVNjk94b-Np4mog7CwyLQ5XdeZB46FsdrxyVEKDipHwPaK1hErO8912V0_CPnVVGt2bjGBON1OBk5AMv7LR4kztUrAQAlrWjHbIl1IDZLMxiYD8mI4k_2iCsjgh-oPsthoN2925uTIzhi2mjD5c3B1zh6FIrhWaMdoT0nFv4jEcxkVRa-cj9_iPEHIVtsmEEwU6KE_bxhGoOMT2En5xkQbX0DMLid97AGQc7Kndvkvu4KBV0dZzR9PfS2BnW4',
+    image: '/Mandarin/Soap_packaging_in_luxury_scene_202606041325.jpeg',
+    bgImage: '/Mandarin/Soul Viva - Mandarin & Peach - Product 2.png',
+    images: [
+      '/Mandarin/Soap_packaging_in_luxury_scene_202606041325.jpeg',
+      '/Mandarin/Soul Viva - Mandarin & Peach - Left 1.png',
+      '/Mandarin/Soul Viva - Mandarin & Peach - Product 2.png'
+    ],
     scentNotes: {
       top: ['Sun-Kissed Mandarin', 'Sweet Satsuma'],
       heart: ['White Peach Nectar', 'Bitter Orange Bloom'],
@@ -221,22 +306,22 @@ export const PRODUCTS: Product[] = [
     },
     keyIngredients: [
       {
-        name: 'Glycerin',
-        role: 'Elasticizer',
-        source: 'Vegetable',
-        description: 'Draws in Moisture, Keeping Skin Soft and Smooth.'
-      },
-      {
         name: 'Mandarin Extract',
         role: 'Vibrancy Stimulator',
         source: 'Calabrian Groves',
-        description: 'Refreshes and Energises Skin.'
+        description: 'Refreshes and energises skin with bright citrus actives and natural Vitamin C'
       },
       {
-        name: 'Peach Essence',
+        name: 'Peach Extract',
         role: 'Texture Velvetizer',
         source: 'Organic Orchards',
-        description: 'Softens and Smoothens Skin.'
+        description: 'Softens and smoothens skin with natural peach fruit acids and humectants'
+      },
+      {
+        name: 'Glycerin',
+        role: 'Elasticizer',
+        source: 'Vegetable',
+        description: 'Draws in moisture, keeping skin soft and smooth all day long'
       }
     ],
     sensoryProfile: {
@@ -244,25 +329,45 @@ export const PRODUCTS: Product[] = [
       purity: 96,
       latherDensity: 90,
       longevity: 70
-    }
+    },
+    productCategory: 'Glycerin Based transparent gel bathing bar',
+    caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
+    shelfLife: '24 months',
+    countryOfOrigin: 'India',
+    eanBarcode: '8908030764027',
+    packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
+    inciIngredients: 'Sodium Laureth Sulfate, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Chloride, Parfum, Citrus Reticulata (Mandarin) Peel Extract, Prunus Persica (Peach) Fruit Extract, Cocamide DEA, Citric Acid, Sodium Benzoate, Potassium Sorbate, CI 15985, CI 14720',
+    claims: [
+      '100% Natural Extracts',
+      'Dermatologically Tested',
+      'Cruelty Free',
+      'Paraben Free',
+      'Silicon Free',
+      'Suitable for All Skin Types'
+    ]
   },
   {
     id: 'shea-honey',
     name: 'Shea Butter & Honey',
-    tagline: 'A Warm, Comforting Embrace.',
-    subtitle: 'Deeply Nourished Skin',
-    description: 'A bathing experience that feels like a warm, cozy hug. Rich, creamy softness wraps around your skin, leaving you feeling nourished and comforted.',
-    longDescription: 'Gentle, smooth, and soothing. Soul Viva Shea Butter & Honey brings that feeling to your shower, leaving your skin deeply nourished and soft. Rich in active botanical lipids and lipids identical to the skin barrier. Net weight: 100g.',
+    tagline: 'A Warm, Comforting Embrace',
+    subtitle: 'For Deeply Nourished Skin',
+    description: 'A bathing experience that feels like a warm cozy hug. Rich, creamy softness that leaves your skin feeling nourished and comforted. Soul Viva Shea Butter & Honey brings that feeling to your shower, leaving your skin deeply nourished and soft.',
+    longDescription: 'A bathing experience that feels like a warm cozy hug. Rich, creamy softness that leaves your skin feeling nourished and comforted. Soul Viva Shea Butter & Honey brings that feeling to your shower, leaving your skin deeply nourished and soft.',
     price: 35,
-    weight: '100g / 3.5 oz',
+    weight: '100g when packed',
     pHLevel: '5.6 (lipid-rich)',
-    skinType: 'Deeply Nourished Skin',
+    skinType: 'All skin types',
     accentClass: 'from-amber-100 to-yellow-50',
     bloomShadowClass: 'shadow-[0_0_60px_rgba(245,158,11,0.25)]',
     themeColor: '#FFE5D9',
     badge: 'Comfort Shield',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCgLtfqgmWlshLIfTTyZkhoAuDw8CsmWZYPgzsJt4TdSQqcvfnSGQldGjeKvXN5FHKFmges0x3gEl7NL1sWQz2pwUupDs4pPHAgM056N-HyAy6pHoTeJQkHdMI93XfVo9teySungi2v6GcwstJK_NVt1wL3i7LUKi5GEm_5E9T-oOr9iORt6A0uSPLcBmBIYzY3ig4cWqt3T4WajhH9_6zYz_ZEgvMPogd7RHAVusvcINLGRdcSWAyORY24zYQO8LSLCxA04Mc2MCM',
-    bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBule4BSWFomZBlikgvjVWv33NBc1JJLgbMeFuX9SYb2qKKXAJbvb9FjEk_f8TM246I9xatTrBcijXNAdVGksWKXlCznMHuviJuvU1cLixDdGeTNPD02flbK554dB0f6B4Te29ric4cV7In6f6lP2SMnHXWTYivmU6CCAz8lfpt0BuTpdNCNWZdoKu3Vv3SeQWcULDGSv2yBwqGCsE322FGmvbYoxyBREjXLZHJxU2zl9H_rwlzsL0l69h-etS8x_0hZgFt3pvTmZQ',
+    image: '/Shea and butter/Soul Viva - Shea Butter & Honey - Front 1.png',
+    bgImage: '/Shea and butter/Soul Viva - Shea Butter & Honey - Product 2.png',
+    images: [
+      '/Shea and butter/Soul Viva - Shea Butter & Honey - Front 1.png',
+      '/Shea and butter/Soul Viva - Shea Butter & Honey - Right 1.png',
+      '/Shea and butter/Soul Viva - Shea Butter & Honey - Product 2.png'
+    ],
     scentNotes: {
       top: ['Warm Honeycomb', 'Amaretto Blossom'],
       heart: ['Creamy Raw Shea', 'Wild Heather'],
@@ -270,22 +375,22 @@ export const PRODUCTS: Product[] = [
     },
     keyIngredients: [
       {
-        name: 'Glycerin',
-        role: 'Humectant Lock',
-        source: 'Sustainable Sourced Plants',
-        description: 'Draws in Moisture, Keeping Skin Soft and Smooth.'
-      },
-      {
         name: 'Shea Butter',
         role: 'Deep Nourisher',
         source: 'Cold-Pressed Nut Oil',
-        description: 'Deeply Nourishes Dry Skin.'
+        description: 'Deeply nourishes dry skin with Butyrospermum Parkii fatty acids and Vitamins A, E, F'
       },
       {
         name: 'Honey Extract',
         role: 'Conditioner',
         source: 'Forest Beehive Extract',
-        description: 'Leaves Skin Soft and Smooth.'
+        description: 'Leaves skin soft and smooth with natural Mel humectant properties'
+      },
+      {
+        name: 'Glycerin',
+        role: 'Humectant Lock',
+        source: 'Sustainable Sourced Plants',
+        description: 'Draws in moisture, keeping skin soft and smooth all day long'
       }
     ],
     sensoryProfile: {
@@ -293,7 +398,22 @@ export const PRODUCTS: Product[] = [
       purity: 92,
       latherDensity: 95,
       longevity: 82
-    }
+    },
+    productCategory: 'Glycerin Based transparent gel bathing bar',
+    caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
+    shelfLife: '24 months',
+    countryOfOrigin: 'India',
+    eanBarcode: '8908030764010',
+    packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
+    inciIngredients: 'Sodium Laureth Sulfate, Aqua, Cocamidopropyl Betaine, Glycerin, Butyrospermum Parkii (Shea) Butter, Sodium Chloride, Parfum, Mel (Honey) Extract, Cocamide DEA, Citric Acid, Sodium Benzoate, Potassium Sorbate, CI 19140, CI 15985',
+    claims: [
+      '100% Natural Extracts',
+      'Dermatologically Tested',
+      'Cruelty Free',
+      'Paraben Free',
+      'Silicon Free',
+      'Suitable for All Skin Types'
+    ]
   }
 ];
 
