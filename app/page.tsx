@@ -173,15 +173,6 @@ export default function App() {
                           >
                             Explore Collection
                           </button>
-                          <button
-                            onClick={() => {
-                              setScreen('craft');
-                              window.scrollTo({ top: 0, behavior: 'smooth' });
-                            }}
-                            className="glass-pill border border-white/30 text-white px-8 py-4 font-sans text-xs tracking-widest rounded-full uppercase transition-all duration-300 hover:bg-white/20 active:scale-98 cursor-pointer font-bold"
-                          >
-                            Our Process
-                          </button>
                         </div>
                       </div>
 
