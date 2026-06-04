@@ -217,7 +217,7 @@ export default function Carousel({ products, onSelectProduct }: CarouselProps) {
                   COSMETIC SANCTUARY
                 </span>
                 <h2 className="font-sans text-xl font-light tracking-tight text-neutral-900">
-                  The Formulation Range
+                  Our Collection
                 </h2>
               </div>
             </div>
@@ -397,7 +397,7 @@ export default function Carousel({ products, onSelectProduct }: CarouselProps) {
             COSMETIC SANCTUARY
           </span>
           <h2 className="font-sans text-3xl font-light tracking-tight text-neutral-950">
-            The Formulation Range
+            Our Collection
           </h2>
           <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed pt-1">
             Our limited capsule batches suspension-molded with high-pressure formulation techniques.
