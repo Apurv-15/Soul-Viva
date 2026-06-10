@@ -156,6 +156,7 @@ export const PRODUCTS: Product[] = [
     badge: 'Romantic Bloom',
     image: '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
     bgImage: '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Right 1.png',
+    video: '/Strawberry/Skincare_commercial_lakeside_atm…_202606091109.mp4',
     images: [
       '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
       '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Left 1.png',

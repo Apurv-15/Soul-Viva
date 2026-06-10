@@ -44,7 +44,9 @@ export interface Product {
   themeColor: string; // e.g. hex
   badge: string;
   images?: string[]; // gallery of local images
-  
+  video?: string; // product promotional video background
+
+
   // Custom Variant Fields
   productCategory?: string;
   caseConfiguration?: string;
