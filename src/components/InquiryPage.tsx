@@ -847,68 +847,68 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pt-2 font-sans text-xs">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pt-2 font-sans text-sm">
               
               {/* Compliance Item 1 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-2.5 text-left flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                 <div>
-                  <h4 className="font-semibold text-neutral-800 text-sm flex items-center gap-2 mb-2">
+                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
                     GS1 Barcodes
                   </h4>
-                  <p className="text-neutral-500 leading-relaxed font-light">
+                  <p className="text-neutral-600 leading-relaxed">
                     All six variants carry internationally registered GS1 EAN-13 barcodes, registered under Belleaves Private Limited via GS1 India's DataKart platform. Globally scannable and recognised at point of sale in all major retail markets.
                   </p>
                 </div>
               </div>
 
               {/* Compliance Item 2 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-2.5 text-left flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                 <div>
-                  <h4 className="font-semibold text-neutral-800 text-sm flex items-center gap-2 mb-2">
+                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
                     INCI Declarations
                   </h4>
-                  <p className="text-neutral-500 leading-relaxed font-light">
+                  <p className="text-neutral-600 leading-relaxed">
                     Full INCI (International Nomenclature Cosmetic Ingredient) ingredient lists have been prepared to international convention — with correct IUPAC nomenclature, Latin binomials for all botanical extracts, and proper descending-concentration order as required by EU and Latin American regulations.
                   </p>
                 </div>
               </div>
 
               {/* Compliance Item 3 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-2.5 text-left flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                 <div>
-                  <h4 className="font-semibold text-neutral-800 text-sm flex items-center gap-2 mb-2">
+                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
                     Export Documentation
                   </h4>
-                  <p className="text-neutral-500 leading-relaxed font-light">
+                  <p className="text-neutral-600 leading-relaxed">
                     Belleaves Private Limited holds an active Import Export Code (IEC) and is registered under Udyam as an MSME (manufacturing category). Full export documentation is available upon request, including commercial invoices, certificates of origin, and certificates of analysis.
                   </p>
                 </div>
               </div>
 
               {/* Compliance Item 4 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-2.5 text-left flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                 <div>
-                  <h4 className="font-semibold text-neutral-800 text-sm flex items-center gap-2 mb-2">
+                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
                     Claims Substantiation
                   </h4>
-                  <p className="text-neutral-500 leading-relaxed font-light">
+                  <p className="text-neutral-600 leading-relaxed">
                     All variants are dermatologically tested for all skin types. All product claims are substantiated: 100% Natural Extracts, Cruelty Free, Paraben Free, Silicon Free. The product is classified as a cosmetic/toiletry for customs and import purposes in all target markets.
                   </p>
                 </div>
               </div>
 
               {/* Compliance Item 5 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2.5 flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-3.5 flex flex-col justify-between">
                 <div>
-                  <h4 className="font-semibold text-neutral-800 text-sm flex items-center gap-2 mb-2">
+                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
                     Mandatory Labeling
                   </h4>
-                  <p className="text-neutral-500 leading-relaxed font-light">
+                  <p className="text-neutral-600 leading-relaxed">
                     All product labels carry the full set of mandatory information required for international trade: product name and category, net weight (100g), country of origin (India), full ingredient list (INCI), shelf life (24 months), manufacturer name and address, and brand owner address.
                   </p>
                 </div>
@@ -926,11 +926,11 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
             <h3 className="font-sans text-xl md:text-3xl font-light text-[#2D5A56]">
               Production Facility — <span className="italic">Crafted by Experts in Soap Making</span>
             </h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-2">
-              <p className="font-sans text-xs md:text-sm text-neutral-500 leading-relaxed font-light">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-2 text-sm md:text-base">
+              <p className="font-sans text-neutral-600 leading-relaxed">
                 Soul Viva is manufactured by a certified contract manufacturing partner in India — specialists in glycerin-based soap and gel bar production who supply some of India's most well-known personal care brands.
               </p>
-              <p className="font-sans text-xs md:text-sm text-neutral-500 leading-relaxed font-light">
+              <p className="font-sans text-neutral-600 leading-relaxed">
                 The manufacturing partner has extensive expertise in transparent glycerin soap technology — the core format of Soul Viva — and is equipped to handle the precision required for consistent colour, fragrance load, and bar weight across all six variants.
               </p>
             </div>
@@ -945,39 +945,39 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               
               {/* Fact 1 */}
-              <div className="bg-white rounded-2xl p-5 border border-neutral-150 shadow-xs text-left space-y-1.5 flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
                 <div>
-                  <span className="text-[9px] tracking-widest uppercase font-bold text-[#5EC7B6] block">Location</span>
-                  <span className="font-sans text-sm font-semibold text-neutral-800 block mt-1">Maharashtra, India</span>
+                  <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Location</span>
+                  <span className="font-sans text-base font-bold text-neutral-800 block mt-1">Maharashtra, India</span>
                 </div>
-                <span className="font-sans text-xs text-neutral-400 block font-light leading-relaxed mt-2.5">Certified contract partner supplying leading personal care brands.</span>
+                <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">Certified contract partner supplying leading personal care brands.</span>
               </div>
 
               {/* Fact 2 */}
-              <div className="bg-white rounded-2xl p-5 border border-neutral-150 shadow-xs text-left space-y-1.5 flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
                 <div>
-                  <span className="text-[9px] tracking-widest uppercase font-bold text-[#5EC7B6] block">Speciality & Standards</span>
-                  <span className="font-sans text-sm font-semibold text-neutral-800 block mt-1">Glycerin Soap & Gel Bars</span>
+                  <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Speciality & Standards</span>
+                  <span className="font-sans text-base font-bold text-neutral-800 block mt-1">Glycerin Soap & Gel Bars</span>
                 </div>
-                <span className="font-sans text-xs text-neutral-400 block font-light leading-relaxed mt-2.5">Built to international export standards & scalable to meet demand.</span>
+                <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">Built to international export standards & scalable to meet demand.</span>
               </div>
 
               {/* Fact 3 */}
-              <div className="bg-white rounded-2xl p-5 border border-neutral-150 shadow-xs text-left space-y-1.5 flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
                 <div>
-                  <span className="text-[9px] tracking-widest uppercase font-bold text-[#5EC7B6] block">Quality Control</span>
-                  <span className="font-sans text-sm font-semibold text-neutral-800 block mt-1">Full Batch QC & Traceability</span>
+                  <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Quality Control</span>
+                  <span className="font-sans text-base font-bold text-neutral-800 block mt-1">Full Batch QC & Traceability</span>
                 </div>
-                <span className="font-sans text-xs text-neutral-400 block font-light leading-relaxed mt-2.5">End-to-end batch traceability on every production run.</span>
+                <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">End-to-end batch traceability on every production run.</span>
               </div>
 
               {/* Fact 4 */}
-              <div className="bg-white rounded-2xl p-5 border border-neutral-150 shadow-xs text-left space-y-1.5 flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
                 <div>
-                  <span className="text-[9px] tracking-widest uppercase font-bold text-[#5EC7B6] block">Carton & Logistics</span>
-                  <span className="font-sans text-sm font-semibold text-neutral-800 block mt-1">48 Units / Master Carton</span>
+                  <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Carton & Logistics</span>
+                  <span className="font-sans text-base font-bold text-neutral-800 block mt-1">48 Units / Master Carton</span>
                 </div>
-                <span className="font-sans text-xs text-neutral-400 block font-light leading-relaxed mt-2.5">8 shrinkpacks × 6 units. Guaranteed 24 months shelf life.</span>
+                <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">8 shrinkpacks × 6 units. Guaranteed 24 months shelf life.</span>
               </div>
 
             </div>

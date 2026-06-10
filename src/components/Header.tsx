@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, Menu, X, Landmark, SlidersHorizontal, BookOpen } from 'lucide-react';
 
 interface HeaderProps {
@@ -22,6 +22,23 @@ export default function Header({
   onOpenSearch,
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const isTransparent = currentScreen === 'home' && !isScrolled;
 
   const navItems = [
     { id: 'range', label: 'Range', icon: <SlidersHorizontal className="w-4 h-4 mr-2 md:hidden" /> },
@@ -35,7 +52,11 @@ export default function Header({
   };
 
   return (
-    <nav className="fixed top-0 w-full z-40 bg-[#F5F2EB]/95 dark:bg-[#F5F2EB]/95 backdrop-blur-xl border-b border-[#E5DEC1]/75 dark:border-[#E5DEC1]/75 transition-all duration-300">
+    <nav className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+      isTransparent
+        ? 'bg-[#F5F2EB]/40 backdrop-blur-md border-b border-[#E5DEC1]/30'
+        : 'bg-[#F5F2EB]/95 dark:bg-[#F5F2EB]/95 backdrop-blur-xl border-b border-[#E5DEC1]/75 dark:border-[#E5DEC1]/75 shadow-xs'
+    }`}>
       <div className="flex justify-between items-center px-6 md:px-20 h-20 w-full max-w-[1440px] mx-auto">
         
         {/* Left Side: Logo */}
