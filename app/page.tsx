@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect, useMemo, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
 import {
   Sparkles,
   Droplet,
@@ -15,10 +15,8 @@ import {
   ArrowRight,
   Check,
   Layers,
-  Star,
-  Recycle,
   Leaf,
-  Shield
+  ChevronDown
 } from 'lucide-react';
 
 import { Product } from '../src/types';
@@ -44,6 +42,58 @@ export default function App() {
   const [storyProduct, setStoryProduct] = useState<Product | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [inquiryOpen, setInquiryOpen] = useState(false);
+
+  // Hero section ref and motion values
+  const heroRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { stiffness: 80, damping: 15 };
+  const xSpring = useSpring(mouseX, springConfig);
+  const ySpring = useSpring(mouseY, springConfig);
+
+  const rotateX = useTransform(ySpring, y => -y * 0.15);
+  const rotateY = useTransform(xSpring, x => x * 0.15);
+
+  const scale = useMotionValue(1.0);
+  const brightness = useMotionValue(1.0);
+
+  const scaleSpring = useSpring(scale, springConfig);
+  const brightnessSpring = useSpring(brightness, springConfig);
+  const filterString = useTransform(brightnessSpring, b => `brightness(${b})`);
+
+  // Base image subtle transforms (creates deep parallax depth separation)
+  const baseTranslateX = useTransform(xSpring, x => x * 0.25);
+  const baseTranslateY = useTransform(ySpring, y => y * 0.25);
+  const baseRotateX = useTransform(ySpring, y => -y * 0.05);
+  const baseRotateY = useTransform(xSpring, x => x * 0.05);
+  const baseScale = useTransform(scaleSpring, s => 1 + (s - 1) * 0.3);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const el = heroRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    // Calculate relative mouse position from center (-0.5 to 0.5)
+    const relativeX = (event.clientX - rect.left) / width - 0.5;
+    const relativeY = (event.clientY - rect.top) / height - 0.5;
+
+    // Multiply by 40 to get ±20px range
+    mouseX.set(relativeX * 40);
+    mouseY.set(relativeY * 40);
+
+    scale.set(1.02);
+    brightness.set(1.05);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+    scale.set(1.0);
+    brightness.set(1.0);
+  };
 
   // Sync URL Hash with Navigation State
   useEffect(() => {
@@ -116,7 +166,7 @@ export default function App() {
       )}
 
       {/* Dynamic Content Frame */}
-      <main className="flex-1 pt-20">
+      <main className={`flex-1 ${currentScreen === 'home' ? '' : 'pt-20'}`}>
         <AnimatePresence mode="wait">
           {!loading && (
             <motion.div
@@ -132,50 +182,45 @@ export default function App() {
                 <div className="space-y-0">
 
                   {/* HERO AREA: Poetic display layout */}
-                  <section id="hero-section" className="relative min-h-[95vh] h-[95vh] md:h-screen w-full flex items-center justify-start overflow-hidden bg-black">
-                    {/* Background Video */}
-                    <div className="absolute inset-0 z-0">
-                      <video
-                        src="/Video/heropage_video.mp4"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover opacity-85"
+                  <section 
+                    id="hero-section" 
+                    ref={heroRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    className="relative min-h-[95vh] h-[95vh] md:h-screen w-full flex items-center justify-start overflow-hidden bg-[#F5F2EB]"
+                    style={{ perspective: 1200 }}
+                  >
+                    {/* Background Images with 3D Parallax Hover Effect */}
+                    <div className="absolute inset-0 z-0 select-none pointer-events-none">
+                      {/* Base Image (subtle movement) */}
+                      <motion.img
+                        src="/Hero_page/base.jpeg"
+                        alt="Soul Viva Hero Base"
+                        className="w-full h-full object-cover"
+                        style={{
+                          x: baseTranslateX,
+                          y: baseTranslateY,
+                          rotateX: baseRotateX,
+                          rotateY: baseRotateY,
+                          scale: baseScale,
+                        }}
                       />
-                      {/* Luxurious soft ambient overlay matching premium aesthetics */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/10 md:to-transparent" />
-                    </div>
-
-                    <div className="relative z-10 w-full max-w-[1440px] px-6 md:px-20 grid grid-cols-1 md:grid-cols-12 gap-8 items-center h-full pt-10 md:pt-20">
-                      {/* Left title area */}
-                      <div className="md:col-span-6 flex flex-col justify-center max-w-xl text-left space-y-6 md:space-y-8">
-                        <span className="font-sans text-[11px] tracking-[0.4em] text-white/90 font-bold uppercase block">
-                          SOUL VIVA
-                        </span>
-
-                        <h1 className="font-serif text-[56px] sm:text-[76px] md:text-[88px] lg:text-[100px] font-light leading-[0.95] tracking-tight text-white">
-                          <span className="italic block font-serif text-neutral-100">Feel Fresh.</span>
-                          <span className="block font-serif tracking-wide text-white">Feel Alive.</span>
-                        </h1>
-
-                        <p className="font-sans text-base md:text-lg text-white/90 font-light max-w-md leading-relaxed tracking-wide">
-                          Where Skin Care meets sensory indulgence.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4 pt-2">
-                          <button
-                            onClick={() => {
-                              setScreen('range');
-                              window.scrollTo({ top: 0, behavior: 'smooth' });
-                            }}
-                            className="bg-white hover:bg-neutral-100 text-brand-dark px-8 py-4 font-sans text-xs tracking-widest rounded-full uppercase transition-all duration-300 shadow-sm active:scale-98 cursor-pointer font-bold"
-                          >
-                            Explore Collection
-                          </button>
-                        </div>
+                      {/* Floating Overlay (moves with mouse + keyframe float) */}
+                      <div className="absolute inset-0 w-full h-full animate-hero-float">
+                        <motion.img
+                          src="/Hero_page/hover.png"
+                          alt="Soul Viva Hero Overlay"
+                          className="w-full h-full object-cover origin-center"
+                          style={{
+                            x: xSpring,
+                            y: ySpring,
+                            rotateX,
+                            rotateY,
+                            scale: scaleSpring,
+                            filter: filterString,
+                          }}
+                        />
                       </div>
-
                     </div>
 
                     {/* Right-aligned next arrow slider like in reference screenshot */}
@@ -189,6 +234,26 @@ export default function App() {
                       >
                         <ChevronRight className="w-5 h-5" />
                       </button>
+                    </div>
+
+                    {/* Scroll Down Indicator */}
+                    <div 
+                      onClick={() => {
+                        const catalog = document.getElementById('catalog-section');
+                        if (catalog) {
+                          catalog.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                      className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 cursor-pointer group bg-[#F5F2EB]/50 hover:bg-[#F5F2EB]/80 backdrop-blur-md px-5 py-2.5 rounded-full border border-[#E5DEC1]/50 shadow-md transition-all duration-300 active:scale-95"
+                    >
+                      <span className="text-[10px] tracking-[0.25em] text-[#2D3A2F] uppercase font-sans font-bold transition-colors duration-300">Scroll Down</span>
+                      <motion.div
+                        animate={{ y: [0, 5, 0] }}
+                        transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+                        className="text-[#2D3A2F]"
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </motion.div>
                     </div>
                   </section>
 
@@ -216,162 +281,6 @@ export default function App() {
 
                     </div>
                   </section>
-
-                  {/* EDITORIAL STORY: WHY YOUR SKIN DESERVES THE BEST */}
-                  <section className="py-24 bg-[#F9F7F2] border-t border-[#E5DEC1]/30">
-                    <div className="max-w-[1440px] mx-auto px-6 md:px-20 space-y-16">
-
-                      {/* Header Title with review rating */}
-                      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 border-b border-[#E5DEC1]/55 pb-10">
-                        <div className="space-y-4 max-w-2xl">
-                          <h2 className="font-serif text-[42px] sm:text-[54px] md:text-[64px] font-normal leading-[1.08] text-[#2D3A2F] tracking-tight text-left">
-                            Why Your Skin <br />
-                            <span className="italic">Deserves the Best</span>
-                          </h2>
-                        </div>
-
-                        {/* Reviews block */}
-                        <div className="flex flex-col items-start md:items-end gap-2">
-                          <div className="flex items-center gap-1">
-                            {[1, 2, 3, 4, 5].map((s) => (
-                              <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400 stroke-[1]" />
-                            ))}
-                          </div>
-                          <span className="font-sans text-[11px] uppercase tracking-widest font-semibold text-neutral-400">
-                            4.7 (1,109 reviews)
-                          </span>
-                          {/* Overlapping small circular models review stickers */}
-                          <div className="flex items-center -space-x-2 mt-1">
-                            <img
-                              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=80"
-                              className="w-8 h-8 rounded-full border-2 border-white object-cover"
-                              alt="Reviewer 1"
-                            />
-                            <img
-                              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&auto=format&fit=crop&q=80"
-                              className="w-8 h-8 rounded-full border-2 border-white object-cover"
-                              alt="Reviewer 2"
-                            />
-                            <img
-                              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=80"
-                              className="w-8 h-8 rounded-full border-2 border-white object-cover"
-                              alt="Reviewer 3"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Content Grid Layout */}
-                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                        
-                        {/* Left column large card with skin model and floating card */}
-                        <div className="lg:col-span-6 relative rounded-[32px] overflow-hidden min-h-[500px] shadow-sm flex items-end">
-                          <img
-                            src="https://images.unsplash.com/photo-1552046122-03184de85e08?w=900&auto=format&fit=crop&q=80"
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                            alt="Skincare face beauty close-up"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-
-                          {/* Floating Proven Card */}
-                          <div className="relative z-10 glass m-6 sm:m-8 p-6 rounded-[24px] max-w-sm border border-white/60 shadow-xl backdrop-blur-md">
-                            <div className="flex items-center gap-3 mb-2.5">
-                              <div className="w-8 h-8 rounded-full bg-[#2D3A2F]/10 flex items-center justify-center text-[#2D3A2F]">
-                                <Shield className="w-4 h-4 stroke-[2]" />
-                              </div>
-                              <span className="font-sans text-xs tracking-widest font-bold text-[#2D3A2F] uppercase">
-                                Proven
-                              </span>
-                            </div>
-                            <h3 className="font-serif text-2xl font-light text-[#2D3A2F] leading-tight mb-2 text-left">
-                              Proven <br />
-                              <span className="italic">Effectiveness</span>
-                            </h3>
-                            <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed text-left">
-                              Every product is carefully crafted to meet the highest quality standards.
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Right column with stack of two unique cards */}
-                        <div className="lg:col-span-6 flex flex-col gap-6">
-                          
-                          {/* Top Card: Eco-Friendly Packaging (Warm Grey/Beige) */}
-                          <div className="bg-[#ECEAE4] rounded-[32px] p-8 flex flex-col sm:flex-row justify-between items-center relative overflow-hidden flex-1 shadow-sm min-h-[240px]">
-                            <div className="space-y-4 max-w-sm z-10 text-left">
-                              <div className="w-10 h-10 rounded-full bg-[#2D3A2F]/5 flex items-center justify-center text-[#2D3A2F]">
-                                <Recycle className="w-5 h-5 stroke-[1.5]" />
-                              </div>
-                              <h3 className="font-serif text-3xl font-light text-[#2D3A2F] leading-tight">
-                                Eco-Friendly <br />
-                                <span className="italic">Packaging</span>
-                              </h3>
-                              <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed max-w-[280px]">
-                                Eco-friendly materials designed to care for the planet as much as your skin.
-                              </p>
-                            </div>
-
-                            {/* Dropper product mockup centered on right side */}
-                            <div className="relative w-44 h-44 sm:h-full flex items-center justify-center z-10">
-                              <img
-                                src="https://images.unsplash.com/photo-1608248597481-496100c80836?w=350&auto=format&fit=crop&q=80"
-                                className="w-auto h-48 object-contain drop-shadow-lg filter brightness-105"
-                                alt="Eco dropper bottle"
-                              />
-                            </div>
-                          </div>
-
-                          {/* Bottom Card: 100% Natural (Forest Green) */}
-                          <div className="bg-[#2D3A2F] text-white rounded-[32px] p-8 flex flex-col sm:flex-row gap-8 justify-between items-center flex-1 shadow-sm min-h-[240px]">
-                            {/* Left part: leaf closeup cutout */}
-                            <div className="relative w-40 h-40 rounded-full overflow-hidden flex items-center justify-center bg-white/5 border border-white/10 p-2">
-                              <img
-                                src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=300&auto=format&fit=crop&q=80"
-                                className="w-full h-full object-cover rounded-full"
-                                alt="Leaf detail"
-                              />
-                            </div>
-
-                            {/* Right part: copy and dynamic specs list */}
-                            <div className="space-y-4 flex-1 text-left z-10">
-                              <h3 className="font-serif text-3xl font-light text-white leading-tight">
-                                100% Natural <br />
-                                <span className="italic text-emerald-200/90">100% You</span>
-                              </h3>
-                              
-                              <ul className="space-y-2.5 pt-2">
-                                <li className="flex items-center gap-2.5 font-sans text-xs text-neutral-200 font-light">
-                                  <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-emerald-300 text-[10px]">🧪</span>
-                                  No Harsh Chemicals
-                                </li>
-                                <li className="flex items-center gap-2.5 font-sans text-xs text-neutral-200 font-light">
-                                  <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-emerald-300 text-[10px]">🌿</span>
-                                  Plant-Based Goodness
-                                </li>
-                                <li className="flex items-center gap-2.5 font-sans text-xs text-neutral-200 font-light">
-                                  <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-emerald-300 text-[10px]">👥</span>
-                                  Ethically Sourced
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </section>
-
-                  {/* INTEGRATED HERITAGE TIMELINE */}
-                  <div className="border-t border-stone-200/40">
-                    <OurStorySection />
-                  </div>
-
-                  {/* INTEGRATED AESTHETIC INQUIRY FORM */}
-                  <div className="border-t border-stone-200/40 bg-[#FAF5EE]/30 py-8">
-                    <InquiryPage onBackToHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
-                  </div>
 
                 </div>
               )}
@@ -460,6 +369,7 @@ export default function App() {
               setScreen('inquire');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
+            setScreen={setScreen}
           />
         )}
 

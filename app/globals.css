@@ -34,6 +34,22 @@
   animation: float 6s ease-in-out infinite;
 }
 
+@keyframes hero-float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-hero-float {
+  animation: hero-float 6s ease-in-out infinite;
+}
+
 .animate-ripple {
   animation: ripple 3s ease-out infinite;
 }
