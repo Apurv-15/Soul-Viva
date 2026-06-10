@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data';
-import { X, Heart } from 'lucide-react';
+import { X, Heart, Play } from 'lucide-react';
 
 const dropletPattern = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" opacity="0.08"><defs><radialGradient id="drop" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.9"/><stop offset="50%" stop-color="%23ffffff" stop-opacity="0"/><stop offset="80%" stop-color="%23000000" stop-opacity="0.08"/><stop offset="100%" stop-color="%23000000" stop-opacity="0.25"/></radialGradient></defs><circle cx="30" cy="40" r="10" fill="url(%23drop)"/><circle cx="80" cy="120" r="7" fill="url(%23drop)"/><circle cx="150" cy="60" r="14" fill="url(%23drop)"/><circle cx="110" cy="160" r="9" fill="url(%23drop)"/><circle cx="50" cy="180" r="5" fill="url(%23drop)"/><circle cx="180" cy="20" r="6" fill="url(%23drop)"/><circle cx="20" cy="100" r="8" fill="url(%23drop)"/><circle cx="160" cy="130" r="10" fill="url(%23drop)"/></svg>`;
 
@@ -64,14 +64,92 @@ const PRODUCT_THEMES: Record<string, ProductTheme> = {
   },
 };
 
+import Header from './Header';
+
+interface IngredientCard3DProps {
+  name: string;
+  description: string;
+  source: string;
+}
+
+function IngredientCard3D({ name, description, source }: IngredientCard3DProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Proportional rotation calculation (max 15 degrees tilt)
+    const rotateX = ((rect.height / 2 - y) / (rect.height / 2)) * 15;
+    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 15;
+    
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      className="relative p-6 rounded-2xl transition-all duration-300 ease-out cursor-pointer h-full bg-white/70 backdrop-blur-md border border-neutral-200/60 shadow-sm hover:shadow-xl hover:border-neutral-400/30"
+      style={{
+        perspective: 1000,
+        transformStyle: 'preserve-3d',
+        transform: isHovered 
+          ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.02)` 
+          : 'rotateX(0deg) rotateY(0deg) scale(1)',
+      }}
+    >
+      {/* Gloss overlay reflection */}
+      <div 
+        className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-neutral-100/30 to-white/40 pointer-events-none" 
+        style={{ transform: 'translateZ(10px)' }}
+      />
+      
+      <div className="relative z-10 flex flex-col justify-between h-full" style={{ transform: 'translateZ(30px)' }}>
+        <div className="space-y-2">
+          <div className="flex justify-between items-baseline gap-2">
+            <h4 className="font-sans text-base md:text-lg font-bold text-neutral-800 tracking-tight leading-tight">
+              {name}
+            </h4>
+            <span className="font-sans text-[9px] text-neutral-400 uppercase tracking-widest font-semibold px-2 py-0.5 bg-neutral-100/85 rounded border border-neutral-200/30 whitespace-nowrap">
+              {source || 'Bio-compound'}
+            </span>
+          </div>
+          <p className="font-sans text-xs md:text-sm text-neutral-600 font-normal leading-relaxed mt-2">
+            {description}
+          </p>
+        </div>
+        
+        <div className="flex justify-between items-center mt-6 pt-4 border-t border-neutral-100">
+          <span className="text-[10px] text-neutral-400 font-semibold tracking-wider uppercase">Active Botanical</span>
+          <div className={`w-2 h-2 rounded-full transition-transform duration-500 bg-neutral-400 ${isHovered ? 'scale-125 bg-black' : ''}`} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 interface ProductDetailsModalProps {
   product: Product;
   onClose: () => void;
   onProductSelect: (product: Product) => void;
   onInquire: () => void;
+  setScreen?: (screen: 'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin') => void;
 }
 
-export default function ProductDetailsModal({ product, onClose, onProductSelect, onInquire }: ProductDetailsModalProps) {
+export default function ProductDetailsModal({ product, onClose, onProductSelect, onInquire, setScreen }: ProductDetailsModalProps) {
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [isFavorited, setIsFavorited] = useState<boolean>(false);
   
@@ -158,21 +236,27 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
 
   const thumbnails = getThumbnails();
 
-  const toggleAccordion = (tab: 'info' | 'benefits' | 'ingredients') => {
-    setOpenAccordion(openAccordion === tab ? null : tab);
+  interface ProductMedia {
+    type: 'image' | 'video';
+    url: string;
+  }
+
+  const getMediaList = (): ProductMedia[] => {
+    const list: ProductMedia[] = [];
+    if (product.video) {
+      list.push({ type: 'video', url: product.video });
+    }
+    const imgs = getThumbnails();
+    imgs.forEach(url => {
+      list.push({ type: 'image', url });
+    });
+    return list;
   };
 
-  // Scent list styling helper
-  const renderScentBubbles = (notes: string[]) => {
-    return (
-      <div className="flex flex-wrap gap-1.5 mt-2">
-        {notes.map((note, index) => (
-          <span key={index} className="px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 text-[10px] tracking-wide font-light border border-neutral-200/40">
-            {note}
-          </span>
-        ))}
-      </div>
-    );
+  const mediaList = getMediaList();
+
+  const toggleAccordion = (tab: 'info' | 'benefits' | 'ingredients') => {
+    setOpenAccordion(openAccordion === tab ? null : tab);
   };
 
   return (
@@ -183,113 +267,137 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
-      {/* 1. Header Navigation Bar (Matches Mock Layout exactly) */}
-      <header className="sticky top-0 z-30 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-neutral-200/50 h-20 flex items-center justify-between px-6 md:px-20">
-        <div className="hidden lg:flex items-center gap-8 font-sans text-[11px] tracking-[0.25em] text-neutral-500 uppercase select-none">
-          <span className="hover:text-black cursor-pointer transition-colors">Collections</span>
-          <span className="hover:text-black cursor-pointer transition-colors">Products</span>
-          <span className="hover:text-black cursor-pointer transition-colors">Brand</span>
-          <span className="hover:text-black cursor-pointer transition-colors">Journal</span>
-        </div>
+      {/* 1. Header Navigation Bar */}
+      <Header
+        currentScreen="range"
+        setScreen={(screen) => {
+          onClose();
+          if (setScreen) {
+            setScreen(screen);
+          }
+        }}
+        onOpenInquiry={() => {
+          onClose();
+          if (setScreen) {
+            setScreen('inquire');
+          }
+        }}
+        onOpenSearch={() => {}}
+      />
 
-        <div className="font-sans text-[20px] tracking-[0.3em] font-light text-black pl-[0.3em] select-none">
-          SOUL VIVA
+      {/* Ambient environmental background image or video with gradient fade-away (Only displayed for Strawberry variant) */}
+      {product.id === 'cherry-blossom-strawberry' && (
+        <div className="absolute inset-x-0 top-20 h-[45vh] md:h-[50vh] pointer-events-none overflow-hidden z-0 select-none">
+          {product.video ? (
+            <video
+              src={product.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover object-center opacity-95"
+            />
+          ) : (
+            <img src={theme.topBanner} alt="" className="w-full h-full object-cover object-center opacity-95" />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FAF9F5] to-95%" />
         </div>
-
-        <div className="flex items-center gap-6">
-          <button 
-            onClick={() => setIsFavorited(!isFavorited)}
-            className="flex items-center gap-1.5 text-neutral-500 hover:text-red-500 transition-colors p-2 text-xs font-sans tracking-widest cursor-pointer uppercase"
-          >
-            <Heart className={`w-4 h-4 transition-transform ${isFavorited ? 'fill-red-500 text-red-500 scale-110' : 'text-neutral-500'}`} />
-            <span className="hidden md:inline">Favorites</span>
-          </button>
-          <button 
-            onClick={onClose}
-            className="flex items-center gap-2 text-neutral-800 hover:text-black transition-colors font-sans text-xs uppercase tracking-widest p-2 rounded-full hover:bg-neutral-100/60 cursor-pointer"
-          >
-            <span>Close</span>
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-      </header>
-
-      {/* Ambient environmental background image with gradient fade-away */}
-      <div className="absolute inset-x-0 top-20 h-[500px] pointer-events-none overflow-hidden z-0 select-none">
-        <img src={theme.topBanner} alt="" className="w-full h-full object-cover opacity-35" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FAF9F5]/70 to-[#FAF9F5]" />
-      </div>
+      )}
 
       {/* Main Grid Content Container (Directly on page, full-screen, no card wrapper overlay) */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-20 pt-[220px] pb-24 flex-1">
+      <div className={`relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-20 pb-24 flex-1 ${
+        product.id === 'cherry-blossom-strawberry' 
+          ? 'pt-[35vh] md:pt-[40vh]' 
+          : 'pt-28 md:pt-32'
+      }`}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
-          {/* COLUMN A: Vertical list of interactive Thumbnails (Matches mockup) */}
-          <div className="lg:col-span-1 flex lg:flex-col gap-3 order-2 lg:order-1 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 scrollbar-thin">
-            {thumbnails.map((thumbUrl, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveImageIndex(idx)}
-                className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-white border-2 transition-all duration-300 p-1 flex items-center justify-center cursor-pointer ${
-                  activeImageIndex === idx 
-                    ? 'border-neutral-900 shadow-sm scale-95' 
-                    : 'border-neutral-200/50 hover:border-neutral-400/80 hover:scale-102'
-                }`}
-              >
-                <img 
-                  src={thumbUrl} 
-                  alt={`Product view thumbnail ${idx + 1}`} 
-                  className="w-full h-full object-cover rounded-lg"
-                />
-              </button>
-            ))}
-          </div>
-
-          {/* COLUMN B: Large Main Interactive Showcase Image */}
-          <div className="lg:col-span-6 order-1 lg:order-2">
-            <div className="relative aspect-square w-full rounded-[24px] md:rounded-[36px] overflow-hidden bg-neutral-100/60 border border-neutral-200/30 p-8 md:p-12 flex items-center justify-center shadow-inner">
-              {/* Premium abstract dynamic color glow based on product accent class */}
-              <div className={`absolute inset-0 opacity-40 bg-gradient-to-tr ${product.accentClass}`} />
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeImageIndex}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full h-full flex items-center justify-center relative z-10"
+          {/* Left Column Wrapper: Groups thumbnails and main image into a sticky element on desktop */}
+          <div className="lg:col-span-7 lg:sticky lg:top-28 grid grid-cols-1 lg:grid-cols-7 gap-4 items-start order-1 lg:order-1 w-full">
+            {/* COLUMN A: Vertical list of interactive Thumbnails (Matches mockup) */}
+            <div className="lg:col-span-1 flex lg:flex-col gap-3 order-2 lg:order-1 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 scrollbar-thin">
+              {mediaList.map((media, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveImageIndex(idx)}
+                  className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-white border-2 transition-all duration-300 p-1 flex items-center justify-center cursor-pointer relative ${
+                    activeImageIndex === idx 
+                      ? 'border-neutral-900 shadow-sm scale-95' 
+                      : 'border-neutral-200/50 hover:border-neutral-400/80 hover:scale-102'
+                  }`}
                 >
-                  {product.id === 'lavender-currant' && !product.images && (activeImageIndex === 0 || activeImageIndex === 2) ? (
-                    <video
-                      src="/Sun_rises_over_lavender_field_202605271434.mp4"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover rounded-2xl md:rounded-3xl shadow-md"
-                    />
+                  {media.type === 'video' ? (
+                    <div className="w-full h-full relative">
+                      <video 
+                        src={media.url} 
+                        muted 
+                        className="w-full h-full object-cover rounded-lg opacity-80" 
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/25 rounded-lg">
+                        <Play className="w-5 h-5 text-white drop-shadow-md" fill="white" />
+                      </div>
+                    </div>
                   ) : (
-                    <img
-                      src={thumbnails[activeImageIndex]}
-                      alt={`${product.name} large view`}
-                      className="w-full h-full object-cover rounded-2xl md:rounded-3xl shadow-md"
+                    <img 
+                      src={media.url} 
+                      alt={`Product view thumbnail ${idx + 1}`} 
+                      className="w-full h-full object-cover rounded-lg"
                     />
                   )}
-                </motion.div>
-              </AnimatePresence>
+                </button>
+              ))}
+            </div>
 
-              {/* Floater crystal bar indicator in bottom right */}
-              {product.id === 'crystal-clarity' && (
-                <div className="absolute bottom-4 right-4 z-20 glass px-3 py-1.5 rounded-full border border-white/60 text-[9px] tracking-widest font-semibold uppercase text-neutral-500 shadow-sm pointer-events-none">
-                  Crystalline solid form
-                </div>
-              )}
+            {/* COLUMN B: Large Main Interactive Showcase Image/Video */}
+            <div className="lg:col-span-6 order-1 lg:order-2 w-full">
+              <div className={`relative w-full rounded-[24px] md:rounded-[36px] overflow-hidden bg-neutral-100/60 border border-neutral-200/30 flex items-center justify-center shadow-inner transition-all duration-300 ${
+                mediaList[activeImageIndex]?.type === 'video' 
+                  ? 'aspect-[3/2] p-0' 
+                  : 'aspect-square p-8 md:p-12'
+              }`}>
+                {/* Premium abstract dynamic color glow based on product accent class */}
+                <div className={`absolute inset-0 opacity-40 bg-gradient-to-tr ${product.accentClass}`} />
+                
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeImageIndex}
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full h-full flex items-center justify-center relative z-10"
+                  >
+                    {mediaList[activeImageIndex]?.type === 'video' ? (
+                      <video
+                        src={mediaList[activeImageIndex].url}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover rounded-2xl md:rounded-3xl shadow-md"
+                      />
+                    ) : (
+                      <img
+                        src={mediaList[activeImageIndex]?.url}
+                        alt={`${product.name} large view`}
+                        className="w-full h-full object-cover rounded-2xl md:rounded-3xl shadow-md"
+                      />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Floater crystal bar indicator in bottom right */}
+                {product.id === 'crystal-clarity' && (
+                  <div className="absolute bottom-4 right-4 z-20 glass px-3 py-1.5 rounded-full border border-white/60 text-[9px] tracking-widest font-semibold uppercase text-neutral-500 shadow-sm pointer-events-none">
+                    Crystalline solid form
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
           {/* COLUMN C: Premium Product Details & Controls Panel */}
-          <div className="lg:col-span-5 order-3 space-y-8 text-left">
+          <div className="lg:col-span-5 order-2 lg:order-2 space-y-8 text-left">
             
             {/* Category / Subtitle */}
             <div className="space-y-2">
@@ -326,8 +434,8 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
             {/* Ingredient bullets matching user mockup */}
             <ul className="space-y-2.5 pt-1 text-neutral-600 font-medium text-sm md:text-base">
               {product.keyIngredients.map((ing, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="text-base leading-none text-neutral-400">•</span>
+                <li key={idx} className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
                   <span>
                     <strong className="font-bold text-neutral-800">{ing.name}</strong> — {ing.description}
                   </span>
@@ -362,7 +470,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                 onClick={onInquire}
                 className="w-full h-[56px] bg-black text-white hover:bg-neutral-800 font-sans text-sm tracking-[0.2em] rounded-xl uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-sm active:scale-98 font-bold"
               >
-                Inquire About Formulation
+                Enquire for Demo
               </button>
             </div>
 
@@ -390,17 +498,68 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                 <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-4">
                   Technical Details
                 </h3>
-                <div className="font-sans text-sm text-neutral-600 font-normal leading-relaxed space-y-3.5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <p><strong>Category:</strong> {product.productCategory || 'Glycerin Based transparent gel bathing bar'}</p>
-                    <p><strong>Skin Type:</strong> {product.skinType}</p>
-                    <p><strong>Case Configuration:</strong> {product.caseConfiguration}</p>
-                    <p><strong>Shelf Life:</strong> {product.shelfLife}</p>
-                    <p><strong>Country of Origin:</strong> {product.countryOfOrigin} — Manufactured in Maharashtra</p>
-                    <p><strong>pH Level:</strong> pH {product.pHLevel}</p>
-                  </div>
-                  <p className="pt-2"><strong>Packaging:</strong> {product.packaging}</p>
-                </div>
+                <ul className="space-y-3 font-sans text-sm text-neutral-600 font-normal">
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Category:</strong> {product.productCategory || 'Glycerin Based transparent gel bathing bar'}
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Skin Type:</strong> {product.skinType}
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Case Configuration:</strong> {product.caseConfiguration}
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Shelf Life:</strong> {product.shelfLife}
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Country of Origin:</strong> {product.countryOfOrigin} — Manufactured in Maharashtra
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">pH Level:</strong> pH {product.pHLevel}
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Packaging:</strong> {product.packaging}
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Top Notes:</strong> {product.scentNotes.top.join(', ')}
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Heart Notes:</strong> {product.scentNotes.heart.join(', ')}
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-[2px] bg-neutral-400 mt-2.5 flex-shrink-0" />
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Base Notes:</strong> {product.scentNotes.base.join(', ')}
+                    </span>
+                  </li>
+                </ul>
               </div>
 
               {/* Section 2: Ingredients */}
@@ -409,38 +568,18 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                   Ingredients
                 </h3>
                 <div className="space-y-5">
-                  {/* Botanical Ingredients List */}
+                  {/* Botanical Ingredients List: Rendered in 3D interactive grid cards */}
                   <div className="space-y-3">
                     <span className="font-sans text-xs tracking-wider text-neutral-400 font-bold uppercase block">Key Biocompounds</span>
-                    <div className="divide-y divide-neutral-250 bg-white/40 border border-neutral-200 rounded-xl overflow-hidden">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {product.keyIngredients.map((ing, idx) => (
-                        <div key={idx} className="p-4 text-left">
-                          <div className="flex justify-between items-baseline">
-                            <span className="font-sans text-sm md:text-base font-semibold text-neutral-800">{ing.name}</span>
-                            <span className="font-sans text-xs text-neutral-500 tracking-wider uppercase font-semibold">{ing.source}</span>
-                          </div>
-                          <p className="font-sans text-xs md:text-sm text-neutral-600 font-normal mt-1 leading-relaxed">{ing.description}</p>
-                        </div>
+                        <IngredientCard3D
+                          key={idx}
+                          name={ing.name}
+                          description={ing.description}
+                          source={ing.source}
+                        />
                       ))}
-                    </div>
-                  </div>
-
-                  {/* Fragrance pyramid breakdown */}
-                  <div className="space-y-3">
-                    <span className="font-sans text-xs tracking-wider text-neutral-400 font-bold uppercase block">Aromatic Fragrance Pyramid</span>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                      <div className="bg-[#FAF9F5] border border-neutral-200 p-3.5 rounded-lg text-left">
-                        <span className="text-xs text-neutral-400 font-bold uppercase block tracking-wider">Top Notes</span>
-                        {renderScentBubbles(product.scentNotes.top)}
-                      </div>
-                      <div className="bg-[#FAF9F5] border border-neutral-200 p-3.5 rounded-lg text-left">
-                        <span className="text-xs text-neutral-400 font-bold uppercase block tracking-wider">Heart Notes</span>
-                        {renderScentBubbles(product.scentNotes.heart)}
-                      </div>
-                      <div className="bg-[#FAF9F5] border border-neutral-200 p-3.5 rounded-lg text-left">
-                        <span className="text-xs text-neutral-400 font-bold uppercase block tracking-wider">Base Notes</span>
-                        {renderScentBubbles(product.scentNotes.base)}
-                      </div>
                     </div>
                   </div>
 
@@ -471,60 +610,71 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
         </div>
       </div>
 
-        {/* 3. Discover Our Collection (Horizontal scrolling grid) */}
-        <div className="w-full border-t border-neutral-200/50 py-16 mt-16 text-left">
-          <div className="space-y-2 mb-8">
-            <span className="font-sans text-[10px] tracking-[0.25em] font-semibold text-neutral-400 uppercase block">
-              Formulation Sanctuary
-            </span>
-            <h2 className="font-sans text-2xl md:text-3xl font-light tracking-tight text-neutral-900 leading-tight">
-              Our Ritual Collection
-            </h2>
-          </div>
-          
-          {/* Horizontal scrolling row with high-end auto-crawl effect */}
-          <div 
-            ref={scrollRef}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="flex gap-6 overflow-x-auto pb-6 hide-scrollbar -mx-6 px-6 md:-mx-0 md:px-0 select-none"
-          >
-            {PRODUCTS.filter(p => p.id !== product.id).map((item) => (
-              <div 
-                key={item.id}
-                onClick={() => {
-                  onProductSelect(item);
-                  document.querySelector('.fixed')?.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="flex-shrink-0 w-[280px] sm:w-[320px] bg-white rounded-3xl border border-neutral-200/40 p-5 hover:border-neutral-400/60 transition-all duration-300 cursor-pointer group"
-              >
-                {/* Product Image Frame */}
-                <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-neutral-100/50 flex items-center justify-center">
-                  <div className={`absolute inset-0 opacity-30 bg-gradient-to-tr ${item.accentClass}`} />
-                  <img 
-                    src={item.bgImage} 
-                    alt={item.name} 
-                    className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-103"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                </div>
-
-                {/* Info */}
-                <div className="mt-4 space-y-1">
-                  <span className="text-[9px] tracking-wider text-neutral-400 uppercase font-semibold block">
-                    {item.subtitle}
-                  </span>
-                  <h3 className="font-sans text-base text-neutral-800 font-medium group-hover:text-black transition-colors block truncate">
-                    {item.name}
-                  </h3>
-                  <p className="font-sans text-xs text-neutral-500 font-light line-clamp-1">
-                    {item.tagline}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* 3. Discover Our Collection (Horizontal scrolling grid) */}
+      <div className="w-full border-t border-neutral-200/50 py-16 mt-16 text-left px-6 md:px-20 relative z-10">
+        <div className="space-y-2 mb-8">
+          <span className="font-sans text-[10px] tracking-[0.25em] font-semibold text-neutral-400 uppercase block">
+            Formulation Sanctuary
+          </span>
+          <h2 className="font-sans text-2xl md:text-3xl font-light tracking-tight text-neutral-900 leading-tight">
+            Our Ritual Collection
+          </h2>
         </div>
+        
+        {/* Horizontal scrolling row with high-end auto-crawl effect */}
+        <div 
+          ref={scrollRef}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="flex gap-6 overflow-x-auto pb-6 hide-scrollbar -mx-6 px-6 md:-mx-0 md:px-0 select-none"
+        >
+          {PRODUCTS.filter(p => p.id !== product.id).map((item) => (
+            <div 
+              key={item.id}
+              onClick={() => {
+                onProductSelect(item);
+                document.querySelector('.fixed')?.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="flex-shrink-0 w-[280px] sm:w-[320px] bg-white rounded-3xl border border-neutral-200/40 p-5 hover:border-neutral-400/60 transition-all duration-300 cursor-pointer group"
+            >
+              {/* Product Image Frame */}
+              <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-neutral-100/50 flex items-center justify-center">
+                <div className={`absolute inset-0 opacity-30 bg-gradient-to-tr ${item.accentClass}`} />
+                <img 
+                  src={item.bgImage} 
+                  alt={item.name} 
+                  className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-103"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+
+              {/* Info */}
+              <div className="mt-4 space-y-1">
+                <span className="text-[9px] tracking-wider text-neutral-400 uppercase font-semibold block">
+                  {item.subtitle}
+                </span>
+                <h3 className="font-sans text-base text-neutral-800 font-medium group-hover:text-black transition-colors block truncate">
+                  {item.name}
+                </h3>
+                <p className="font-sans text-xs text-neutral-500 font-light line-clamp-1">
+                  {item.tagline}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 4. Botanical Bottom Banner Decoration */}
+      {theme.bottomBanner && (
+        <div className="w-full mt-auto pointer-events-none select-none overflow-hidden h-[120px] md:h-[180px] relative z-10 flex items-end">
+          <img 
+            src={theme.bottomBanner} 
+            alt="" 
+            className="w-full object-contain object-bottom max-h-full"
+          />
+        </div>
+      )}
 
     </motion.div>
   );

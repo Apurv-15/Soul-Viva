@@ -64,13 +64,13 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
       {/* Main product visual cutout container */}
       <div className="flex-1 flex items-center justify-center relative mt-8 mb-4">
         {/* Ambient background glow on hover */}
-        <div className="absolute w-36 h-36 rounded-full bg-white/20 blur-2xl group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
+        <div className="absolute w-52 h-52 rounded-full bg-white/20 blur-2xl group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
 
         {/* Clean floating soap cutout image */}
         <motion.img
           src={product.image}
           alt={product.name}
-          className="w-44 h-44 object-contain drop-shadow-xl z-10 select-none pointer-events-none"
+          className="w-64 h-64 object-contain drop-shadow-xl z-10 select-none pointer-events-none"
           whileHover={{ y: -10, scale: 1.05 }}
           transition={{ type: "spring", stiffness: 150, damping: 15 }}
         />
