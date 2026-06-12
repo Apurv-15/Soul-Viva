@@ -9,6 +9,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Phone, Globe, MapPin, Clock, CheckCircle2, ChevronDown, Check } from 'lucide-react';
 import { PRODUCTS } from '../data';
+import { db } from '../firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 interface InquiryPageProps {
   onBackToHome?: () => void;
@@ -66,34 +68,27 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
   const [showSampleCountry, setShowSampleCountry] = useState(false);
   const [showSampleType, setShowSampleType] = useState(false);
 
-  const handleTradeSubmit = (e: React.FormEvent) => {
+  const handleTradeSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSending(true);
 
-    const newSubmission = {
-      id: 'sub_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-      type: 'trade',
-      timestamp: new Date().toISOString(),
-      status: 'pending',
-      data: { ...tradeForm }
-    };
-
     try {
-      const existing = localStorage.getItem('soulviva_inquiries');
-      const inquiries = existing ? JSON.parse(existing) : [];
-      inquiries.unshift(newSubmission);
-      localStorage.setItem('soulviva_inquiries', JSON.stringify(inquiries));
-    } catch (err) {
-      console.error('Failed to save trade inquiry to localStorage:', err);
-    }
-
-    setTimeout(() => {
+      await addDoc(collection(db, 'inquiries'), {
+        type: 'trade',
+        timestamp: new Date().toISOString(),
+        status: 'pending',
+        data: { ...tradeForm }
+      });
       setIsSending(false);
       setSubmitted(true);
-    }, 1500);
+    } catch (err) {
+      console.error('Failed to save trade inquiry to Firestore:', err);
+      setIsSending(false);
+      alert('Failed to submit inquiry. Please check your network and try again.');
+    }
   };
 
-  const handleSampleSubmit = (e: React.FormEvent) => {
+  const handleSampleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!sampleForm.confirmed) {
       alert("Please confirm you are requesting samples as a qualified trade buyer.");
@@ -101,27 +96,20 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
     }
     setIsSending(true);
 
-    const newSubmission = {
-      id: 'sub_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-      type: 'sample',
-      timestamp: new Date().toISOString(),
-      status: 'pending',
-      data: { ...sampleForm }
-    };
-
     try {
-      const existing = localStorage.getItem('soulviva_inquiries');
-      const inquiries = existing ? JSON.parse(existing) : [];
-      inquiries.unshift(newSubmission);
-      localStorage.setItem('soulviva_inquiries', JSON.stringify(inquiries));
-    } catch (err) {
-      console.error('Failed to save sample request to localStorage:', err);
-    }
-
-    setTimeout(() => {
+      await addDoc(collection(db, 'inquiries'), {
+        type: 'sample',
+        timestamp: new Date().toISOString(),
+        status: 'pending',
+        data: { ...sampleForm }
+      });
       setIsSending(false);
       setSubmitted(true);
-    }, 1500);
+    } catch (err) {
+      console.error('Failed to save sample request to Firestore:', err);
+      setIsSending(false);
+      alert('Failed to submit sample request. Please check your network and try again.');
+    }
   };
 
   const handleReset = () => {
@@ -197,7 +185,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
                   : 'border-transparent text-neutral-400 hover:text-neutral-600'
               }`}
             >
-              General Trade Inquiry
+              General Trade Contact
             </button>
             <button
               onClick={() => { setActiveTab('sample'); setSubmitted(false); }}
@@ -222,13 +210,13 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
                   transition={{ duration: 0.35 }}
                   className="space-y-4"
                 >
-                  {/* Tab 1: General Trade Inquiry Form */}
+                  {/* Tab 1: General Trade Contact Form */}
                   {activeTab === 'trade' && (
                     <form onSubmit={handleTradeSubmit} className="space-y-4 text-left">
                       <div className="mb-2">
-                        <h3 className="font-serif text-lg font-normal text-neutral-800">General Trade Inquiry</h3>
+                        <h3 className="font-serif text-lg font-normal text-neutral-800">General Trade Contact</h3>
                         <p className="font-sans text-xs text-neutral-400 font-light mt-1">
-                          For distributors, retailers, importers and wholesalers who wish to enquire about Soul Viva for stocking.
+                          For distributors, retailers, importers and wholesalers who wish to contact us about Soul Viva for stocking.
                         </p>
                       </div>
 
@@ -397,7 +385,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
                           disabled={isSending}
                           className="w-full bg-[#2D3A2F] hover:bg-[#1E2720] text-white font-sans text-xs tracking-widest font-bold py-4 px-6 rounded-xl cursor-pointer shadow-sm hover:shadow transition-all duration-300 active:scale-99 flex justify-center items-center gap-2 outline-none uppercase"
                         >
-                          {isSending ? 'Sending...' : 'Submit Enquiry'}
+                          {isSending ? 'Sending...' : 'Submit Contact Request'}
                         </button>
                       </div>
                     </form>
@@ -699,7 +687,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
 
                   <div className="space-y-2">
                     <h3 className="font-sans text-xl font-bold text-neutral-800 tracking-tight select-text">
-                      Enquiry Received
+                      Contact Request Received
                     </h3>
                     <p className="font-sans text-xs md:text-sm text-neutral-500 leading-relaxed font-light select-text max-w-sm">
                       Thank you for contacting Soul Viva. Your request has been logged successfully. A trade representative will review the details and reach back to you within 1–2 business days.
@@ -710,7 +698,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
                     onClick={handleReset}
                     className="font-sans text-xs font-bold tracking-wider uppercase text-neutral-800 hover:text-black px-6 py-2.5 border border-neutral-200 hover:border-neutral-400 rounded-xl cursor-pointer transition-colors"
                   >
-                    Submit Another Inquiry
+                    Submit Another Contact Form
                   </button>
                 </motion.div>
               )}
@@ -724,7 +712,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
                 onClick={onBackToHome}
                 className="font-sans text-xs font-bold text-neutral-400 hover:text-neutral-700 transition-colors cursor-pointer block md:inline"
               >
-                &larr; Return to Cosmetic Formulation Story
+                &larr; Return to Cosmetic Formulation & About Us
               </button>
             )}
           </div>
@@ -813,179 +801,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
           </div>
 
         </div>
-
       </div>
-
-      {/* COMMERCIAL & EXPORT SPECIFICATIONS MODULE */}
-      <div className="mt-16 space-y-12">
-        <div className="text-center md:text-left space-y-3">
-          <span className="font-sans text-[10px] tracking-[0.3em] font-bold text-neutral-400 uppercase block select-none">
-            B2B OPERATIONS & SPECIFICATIONS
-          </span>
-          <h2 className="font-sans text-2xl md:text-4xl font-light tracking-tight text-[#2D5A56] leading-none">
-            Commercial & Export Information
-          </h2>
-          <p className="font-sans text-xs md:text-sm text-neutral-500 font-light max-w-2xl leading-relaxed">
-            Direct access to our micro-batch contract logistics, certified standards, and regulatory documentation.
-          </p>
-        </div>
-
-        {/* Specs bento grids */}
-        <div className="text-left">
-          
-          {/* Card C: Export Compliance & Regulatory Standards */}
-          <div className="bg-[#f0f9f7]/50 border border-[#dbece7] rounded-[32px] p-8 md:p-12 shadow-sm space-y-6">
-            <div className="space-y-2 text-left">
-              <span className="inline-block bg-[#5EC7B6]/20 text-[#2d5a56] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
-                Regulatory Standards
-              </span>
-              <h3 className="font-sans text-xl md:text-2xl font-normal text-neutral-850">
-                Export Compliance — <span className="italic">Built for International Markets</span>
-              </h3>
-              <p className="font-sans text-xs md:text-sm text-neutral-500 font-light max-w-4xl leading-relaxed">
-                Soul Viva is designed and documented for export from India. Every element — from labelling to barcoding to ingredient declarations — is built to meet the requirements of international trade partners and regulatory authorities.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pt-2 font-sans text-sm">
-              
-              {/* Compliance Item 1 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
-                <div>
-                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
-                    GS1 Barcodes
-                  </h4>
-                  <p className="text-neutral-600 leading-relaxed">
-                    All six variants carry internationally registered GS1 EAN-13 barcodes, registered under Belleaves Private Limited via GS1 India's DataKart platform. Globally scannable and recognised at point of sale in all major retail markets.
-                  </p>
-                </div>
-              </div>
-
-              {/* Compliance Item 2 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
-                <div>
-                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
-                    INCI Declarations
-                  </h4>
-                  <p className="text-neutral-600 leading-relaxed">
-                    Full INCI (International Nomenclature Cosmetic Ingredient) ingredient lists have been prepared to international convention — with correct IUPAC nomenclature, Latin binomials for all botanical extracts, and proper descending-concentration order as required by EU and Latin American regulations.
-                  </p>
-                </div>
-              </div>
-
-              {/* Compliance Item 3 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
-                <div>
-                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
-                    Export Documentation
-                  </h4>
-                  <p className="text-neutral-600 leading-relaxed">
-                    Belleaves Private Limited holds an active Import Export Code (IEC) and is registered under Udyam as an MSME (manufacturing category). Full export documentation is available upon request, including commercial invoices, certificates of origin, and certificates of analysis.
-                  </p>
-                </div>
-              </div>
-
-              {/* Compliance Item 4 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
-                <div>
-                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
-                    Claims Substantiation
-                  </h4>
-                  <p className="text-neutral-600 leading-relaxed">
-                    All variants are dermatologically tested for all skin types. All product claims are substantiated: 100% Natural Extracts, Cruelty Free, Paraben Free, Silicon Free. The product is classified as a cosmetic/toiletry for customs and import purposes in all target markets.
-                  </p>
-                </div>
-              </div>
-
-              {/* Compliance Item 5 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-3.5 flex flex-col justify-between">
-                <div>
-                  <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
-                    Mandatory Labeling
-                  </h4>
-                  <p className="text-neutral-600 leading-relaxed">
-                    All product labels carry the full set of mandatory information required for international trade: product name and category, net weight (100g), country of origin (India), full ingredient list (INCI), shelf life (24 months), manufacturer name and address, and brand owner address.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-        {/* Section: Manufacturing Facilities Allocation Details */}
-        <div className="bg-[#f0f9f7] border border-[#dbece7] rounded-[32px] p-8 md:p-12 text-left space-y-8">
-          <div className="space-y-4">
-            <span className="font-sans text-[10px] tracking-widest font-bold text-neutral-400 uppercase block">Production Infrastructure</span>
-            <h3 className="font-sans text-xl md:text-3xl font-light text-[#2D5A56]">
-              Production Facility — <span className="italic">Crafted by Experts in Soap Making</span>
-            </h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-2 text-sm md:text-base">
-              <p className="font-sans text-neutral-600 leading-relaxed">
-                Soul Viva is manufactured by a certified contract manufacturing partner in India — specialists in glycerin-based soap and gel bar production who supply some of India's most well-known personal care brands.
-              </p>
-              <p className="font-sans text-neutral-600 leading-relaxed">
-                The manufacturing partner has extensive expertise in transparent glycerin soap technology — the core format of Soul Viva — and is equipped to handle the precision required for consistent colour, fragrance load, and bar weight across all six variants.
-              </p>
-            </div>
-          </div>
-
-          <div className="w-full h-[1px] bg-[#dbece7]" />
-
-          <div className="space-y-4">
-            <h4 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800">
-              Facility Key Facts
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              
-              {/* Fact 1 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Location</span>
-                  <span className="font-sans text-base font-bold text-neutral-800 block mt-1">Maharashtra, India</span>
-                </div>
-                <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">Certified contract partner supplying leading personal care brands.</span>
-              </div>
-
-              {/* Fact 2 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Speciality & Standards</span>
-                  <span className="font-sans text-base font-bold text-neutral-800 block mt-1">Glycerin Soap & Gel Bars</span>
-                </div>
-                <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">Built to international export standards & scalable to meet demand.</span>
-              </div>
-
-              {/* Fact 3 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Quality Control</span>
-                  <span className="font-sans text-base font-bold text-neutral-800 block mt-1">Full Batch QC & Traceability</span>
-                </div>
-                <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">End-to-end batch traceability on every production run.</span>
-              </div>
-
-              {/* Fact 4 */}
-              <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Carton & Logistics</span>
-                  <span className="font-sans text-base font-bold text-neutral-800 block mt-1">48 Units / Master Carton</span>
-                </div>
-                <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">8 shrinkpacks × 6 units. Guaranteed 24 months shelf life.</span>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
   );
 }
