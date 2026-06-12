@@ -27,6 +27,19 @@ import {
   Truck
 } from 'lucide-react';
 import { PRODUCTS } from '../data';
+import { db } from '../firebase';
+import {
+  collection,
+  onSnapshot,
+  query,
+  orderBy,
+  doc,
+  updateDoc,
+  deleteDoc,
+  addDoc,
+  writeBatch,
+  getDocs
+} from 'firebase/firestore';
 
 interface Submission {
   id: string;
@@ -59,9 +72,8 @@ interface AdminDashboardProps {
   onBackToHome?: () => void;
 }
 
-const MOCK_SUBMISSIONS: Submission[] = [
+const MOCK_SUBMISSIONS: Omit<Submission, 'id'>[] = [
   {
-    id: 'sub_mock_1',
     type: 'trade',
     timestamp: new Date(Date.now() - 3600000 * 4).toISOString(), // 4 hours ago
     status: 'pending',
@@ -77,7 +89,6 @@ const MOCK_SUBMISSIONS: Submission[] = [
     }
   },
   {
-    id: 'sub_mock_2',
     type: 'sample',
     timestamp: new Date(Date.now() - 3600000 * 25).toISOString(), // 25 hours ago
     status: 'reviewed',
@@ -100,7 +111,6 @@ const MOCK_SUBMISSIONS: Submission[] = [
     }
   },
   {
-    id: 'sub_mock_3',
     type: 'trade',
     timestamp: new Date(Date.now() - 3600000 * 50).toISOString(), // ~2 days ago
     status: 'reviewed',
@@ -116,7 +126,6 @@ const MOCK_SUBMISSIONS: Submission[] = [
     }
   },
   {
-    id: 'sub_mock_4',
     type: 'sample',
     timestamp: new Date(Date.now() - 3600000 * 75).toISOString(), // ~3 days ago
     status: 'dispatched',
@@ -148,61 +157,86 @@ export default function AdminDashboard({ onBackToHome }: AdminDashboardProps) {
   const [filterStatus, setFilterStatus] = useState('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  // Load inquiries
-  const loadInquiries = () => {
-    try {
-      const stored = localStorage.getItem('soulviva_inquiries');
-      if (stored) {
-        setInquiries(JSON.parse(stored));
-      } else {
-        // First time, set with mock data to showcase the portal beautifully
-        localStorage.setItem('soulviva_inquiries', JSON.stringify(MOCK_SUBMISSIONS));
-        setInquiries(MOCK_SUBMISSIONS);
-      }
-    } catch (err) {
-      console.error('Error loading inquiries:', err);
-    }
-  };
-
+  // Setup real-time listener to Firestore
   useEffect(() => {
-    loadInquiries();
+    const q = query(collection(db, 'inquiries'), orderBy('timestamp', 'desc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const fetchedInquiries: Submission[] = [];
+      snapshot.forEach((doc) => {
+        fetchedInquiries.push({
+          id: doc.id,
+          ...doc.data()
+        } as Submission);
+      });
+      setInquiries(fetchedInquiries);
+    }, (err) => {
+      console.error('Error listening to inquiries:', err);
+    });
+
+    return () => unsubscribe();
   }, []);
 
   // Update Status
-  const handleUpdateStatus = (id: string, newStatus: 'pending' | 'reviewed' | 'dispatched') => {
-    const updated = inquiries.map(item => {
-      if (item.id === id) {
-        return { ...item, status: newStatus };
-      }
-      return item;
-    });
-    setInquiries(updated);
-    localStorage.setItem('soulviva_inquiries', JSON.stringify(updated));
+  const handleUpdateStatus = async (id: string, newStatus: 'pending' | 'reviewed' | 'dispatched') => {
+    try {
+      const docRef = doc(db, 'inquiries', id);
+      await updateDoc(docRef, { status: newStatus });
+    } catch (err) {
+      console.error('Error updating status in Firestore:', err);
+      alert('Failed to update status. Please try again.');
+    }
   };
 
   // Delete Inquiry
-  const handleDeleteInquiry = (id: string, e: React.MouseEvent) => {
+  const handleDeleteInquiry = async (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     if (!confirm('Are you sure you want to delete this submission?')) return;
-    const updated = inquiries.filter(item => item.id !== id);
-    setInquiries(updated);
-    localStorage.setItem('soulviva_inquiries', JSON.stringify(updated));
-    if (expandedId === id) setExpandedId(null);
+    try {
+      const docRef = doc(db, 'inquiries', id);
+      await deleteDoc(docRef);
+      if (expandedId === id) setExpandedId(null);
+    } catch (err) {
+      console.error('Error deleting inquiry from Firestore:', err);
+      alert('Failed to delete inquiry. Please try again.');
+    }
   };
 
   // Clear All
-  const handleClearAll = () => {
+  const handleClearAll = async () => {
     if (!confirm('Warning! This will clear all logged inquiries and sample requests. Continue?')) return;
-    localStorage.removeItem('soulviva_inquiries');
-    setInquiries([]);
-    setExpandedId(null);
+    try {
+      const querySnapshot = await getDocs(collection(db, 'inquiries'));
+      const batch = writeBatch(db);
+      querySnapshot.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+      await batch.commit();
+      setExpandedId(null);
+    } catch (err) {
+      console.error('Error clearing database:', err);
+      alert('Failed to clear database. Please try again.');
+    }
   };
 
   // Generate Mock Data
-  const handleGenerateMocks = () => {
-    localStorage.setItem('soulviva_inquiries', JSON.stringify(MOCK_SUBMISSIONS));
-    setInquiries(MOCK_SUBMISSIONS);
-    setExpandedId(null);
+  const handleGenerateMocks = async () => {
+    try {
+      const batch = writeBatch(db);
+      MOCK_SUBMISSIONS.forEach((mock) => {
+        const docRef = doc(collection(db, 'inquiries'));
+        batch.set(docRef, mock);
+      });
+      await batch.commit();
+      setExpandedId(null);
+    } catch (err) {
+      console.error('Error seeding mock data:', err);
+      alert('Failed to seed mock data. Please try again.');
+    }
+  };
+
+  const loadInquiries = () => {
+    // Left as no-op or status message since onSnapshot keeps it synced in real-time
+    console.log('Real-time sync active, manually refreshed snapshot connection.');
   };
 
   // Export CSV
@@ -517,31 +551,31 @@ export default function AdminDashboard({ onBackToHome }: AdminDashboardProps) {
                 {/* Header row (Click to expand) */}
                 <div
                   onClick={() => setExpandedId(isExpanded ? null : item.id)}
-                  className="p-6 md:p-8 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 select-none hover:bg-stone-50/50 transition-colors"
+                  className="p-8 md:p-10 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-6 select-none hover:bg-stone-50/50 transition-colors"
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-5">
                     {/* Icon based on type */}
-                    <div className={`p-3 rounded-2xl flex items-center justify-center ${
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${
                       item.type === 'trade' 
                         ? 'bg-[#E8F3F1] text-[#2d5a56] border border-[#C5DFDA]' 
                         : 'bg-indigo-50 text-indigo-700 border border-indigo-150'
                     }`}>
-                      {item.type === 'trade' ? <Briefcase className="w-5 h-5" /> : <Layers className="w-5 h-5" />}
+                      {item.type === 'trade' ? <Briefcase className="w-7 h-7" /> : <Layers className="w-7 h-7" />}
                     </div>
 
-                    <div className="space-y-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-sans text-xs font-bold text-neutral-800 select-text">
+                    <div className="space-y-1.5">
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <span className="font-sans text-sm sm:text-base font-bold text-neutral-800 select-text">
                           {item.type === 'trade' 
                             ? item.data.name 
                             : `${item.data.firstName} ${item.data.lastName}`}
                         </span>
-                        <span className="font-mono text-[9px] text-neutral-400 bg-neutral-100 rounded px-1.5 py-0.5">
+                        <span className="font-mono text-[10px] sm:text-xs text-neutral-400 bg-neutral-100 rounded px-2 py-0.5">
                           {item.data.company}
                         </span>
                         
                         {/* Type badge */}
-                        <span className={`text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full ${
+                        <span className={`text-[10px] sm:text-xs uppercase tracking-wider font-bold px-2.5 py-1 rounded-full ${
                           item.type === 'trade' 
                             ? 'bg-[#C5DFDA]/40 text-[#2d5a56]' 
                             : 'bg-indigo-100/60 text-indigo-700'
@@ -550,7 +584,7 @@ export default function AdminDashboard({ onBackToHome }: AdminDashboardProps) {
                         </span>
                       </div>
                       
-                      <div className="flex flex-wrap items-center gap-3 text-neutral-400 text-xs font-light select-text">
+                      <div className="flex flex-wrap items-center gap-3 text-neutral-400 text-xs sm:text-sm font-light select-text">
                         <span>{item.data.businessType}</span>
                         <span>&bull;</span>
                         <span>{item.data.country}</span>
@@ -560,9 +594,9 @@ export default function AdminDashboard({ onBackToHome }: AdminDashboardProps) {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 self-end md:self-auto">
+                  <div className="flex items-center gap-4 self-end md:self-auto">
                     {/* Status Badge */}
-                    <span className={`text-[10px] tracking-wider uppercase font-bold px-3 py-1 rounded-full border ${
+                    <span className={`text-xs tracking-wider uppercase font-bold px-4 py-2 rounded-full border ${
                       item.status === 'pending'
                         ? 'bg-amber-50 text-amber-700 border-amber-200'
                         : item.status === 'reviewed'
@@ -575,10 +609,10 @@ export default function AdminDashboard({ onBackToHome }: AdminDashboardProps) {
                     {/* Delete button */}
                     <button
                       onClick={(e) => handleDeleteInquiry(item.id, e)}
-                      className="p-2 text-neutral-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors cursor-pointer"
+                      className="p-3 text-neutral-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors cursor-pointer"
                       title="Delete inquiry"
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-5 h-5" />
                     </button>
                   </div>
                 </div>
