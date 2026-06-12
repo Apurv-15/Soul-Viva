@@ -231,25 +231,8 @@ export default function StorytellerModal({ product, onClose, onInquire }: Storyt
                       CHAPTER III &bull; CLINICAL SYNTHESIS
                     </span>
                     <h3 className="font-sans text-3xl md:text-4xl font-light tracking-tight text-neutral-950 select-none">
-                      Active Botanical Bio-ingredients
+                      Sensory & Hydration Profile
                     </h3>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
-                      {product.keyIngredients.map((ing, idx) => (
-                        <div 
-                          key={idx} 
-                          className="bg-white border border-stone-200/50 hover:bg-stone-50/50 p-5 sm:p-6 rounded-2xl space-y-3 transition-colors duration-300 shadow-xs"
-                        >
-                          <span className="w-6 h-6 rounded-full bg-neutral-100 text-xs flex items-center justify-center font-bold text-neutral-600">{idx + 1}</span>
-                          <div className="space-y-1">
-                            <h4 className="font-sans text-sm font-bold tracking-wide text-neutral-900">{ing.name}</h4>
-                            <span className="font-sans text-[10px] font-semibold tracking-wide text-[#2B7A78] uppercase block">{ing.role}</span>
-                          </div>
-                          <p className="font-sans text-xs text-neutral-600 leading-relaxed font-light">{ing.description}</p>
-                          <span className="font-sans text-[9px] text-neutral-400 font-medium tracking-wide font-mono block">Source: {ing.source}</span>
-                        </div>
-                      ))}
-                    </div>
 
                     {/* Sensorics profile slider visualization */}
                     <div className="pt-4 space-y-3 bg-white p-5 border border-stone-201/20 rounded-2xl shadow-xs">
@@ -400,7 +383,7 @@ export default function StorytellerModal({ product, onClose, onInquire }: Storyt
                           </>
                         ) : (
                           <>
-                            <Mail className="w-4 h-4 text-white" /> Inquire About Variant
+                            <Mail className="w-4 h-4 text-white" /> Contact Us About Variant
                           </>
                         )}
                       </button>
