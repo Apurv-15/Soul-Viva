@@ -29,10 +29,19 @@ import SearchModal from '../src/components/SearchModal';
 import InquiryModal from '../src/components/InquiryModal';
 import TheCraftVisualizer from '../src/components/TheCraftVisualizer';
 import OurStorySection from '../src/components/OurStorySection';
+import BrandIntro from '../src/components/BrandIntro';
+import SplashCursor from '../src/components/SplashCursor';
 import InquiryPage from '../src/components/InquiryPage';
 import StorytellerModal from '../src/components/StorytellerModal';
 import GradualBlur from '../src/components/GradualBlur';
 import AdminDashboard from '../src/components/AdminDashboard';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+}
 
 export default function App() {
   // Screens state
@@ -95,6 +104,46 @@ export default function App() {
     brightness.set(1.0);
   };
 
+  // Initialize GSAP ScrollSmoother
+  useEffect(() => {
+    if (loading) return;
+
+    const smoother = ScrollSmoother.create({
+      wrapper: '#smooth-wrapper',
+      content: '#smooth-content',
+      smooth: 1,
+      effects: true,
+      smoothTouch: 0.1,
+    });
+
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+
+    return () => {
+      clearTimeout(timer);
+      smoother.kill();
+    };
+  }, [loading, currentScreen]);
+
+  // Restore scroll position when closing modal and refresh ScrollTrigger
+  const lastScrollPos = useRef(0);
+  useEffect(() => {
+    if (selectedProduct) {
+      lastScrollPos.current = window.scrollY;
+      window.scrollTo(0, 0);
+    } else {
+      const timer = setTimeout(() => {
+        window.scrollTo(0, lastScrollPos.current);
+      }, 80);
+      return () => clearTimeout(timer);
+    }
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+    return () => clearTimeout(refreshTimer);
+  }, [selectedProduct]);
+
   // Sync URL Hash with Navigation State
   useEffect(() => {
     if (loading) return; // Wait for loader to finish
@@ -145,6 +194,9 @@ export default function App() {
   return (
     <div className="min-h-screen bg-brand-light text-brand-dark antialiased font-sans flex flex-col justify-between selection:bg-brand-dark selection:text-white">
 
+      {/* Interactive Fluid Cursor Effect */}
+      <SplashCursor RAINBOW_MODE={true} />
+
       {/* Superb animated luxury Loader */}
       <AnimatePresence>
         {loading && (
@@ -165,8 +217,12 @@ export default function App() {
         </>
       )}
 
-      {/* Dynamic Content Frame */}
-      <main className={`flex-1 ${currentScreen === 'home' ? '' : 'pt-20'}`}>
+      {/* GSAP ScrollSmoother wrappers */}
+      <div id="smooth-wrapper" className="w-full flex-1 flex flex-col">
+        <div id="smooth-content" className="w-full flex-1 flex flex-col">
+          <div data-lag="0.5" className={selectedProduct ? "hidden" : "w-full flex-1 flex flex-col"}>
+            {/* Dynamic Content Frame */}
+            <main className={`flex-1 ${currentScreen === 'home' ? '' : 'pt-20'}`}>
         <AnimatePresence mode="wait">
           {!loading && (
             <motion.div
@@ -257,6 +313,9 @@ export default function App() {
                     </div>
                   </section>
 
+                  {/* BRAND INTRODUCTION SECTION */}
+                  <BrandIntro />
+
                   {/* COMPLETE RITUAL RANGE (CATALOG GRID SECTION) */}
                   <section id="catalog-section" className="py-24 bg-[#F5F2EB]/50 min-h-[90vh]">
                     <div className="max-w-[1440px] mx-auto px-6 md:px-20 space-y-16">
@@ -269,7 +328,7 @@ export default function App() {
                       </div>
 
                       {/* Catalog core grid showing all soaps */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {PRODUCTS.map((p) => (
                           <ProductCard
                             key={p.id}
@@ -298,7 +357,7 @@ export default function App() {
                     </div>
 
                     {/* Catalog core grid showing all soaps */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                       {PRODUCTS.map((p) => (
                         <ProductCard
                           key={p.id}
@@ -317,12 +376,12 @@ export default function App() {
                 <TheCraftVisualizer />
               )}
 
-              {/* SCREEN 4: Our Story timelines */}
+              {/* SCREEN 4: About Us section */}
               {currentScreen === 'story' && (
                 <OurStorySection />
               )}
 
-              {/* SCREEN 5: Dedicated B2B Inquiry Apple Form Page */}
+              {/* SCREEN 5: Dedicated B2B Contact Us Apple Form Page */}
               {currentScreen === 'inquire' && (
                 <InquiryPage onBackToHome={() => {
                   setScreen('home');
@@ -342,52 +401,6 @@ export default function App() {
           )}
         </AnimatePresence>
       </main>
-
-      {/* EXPANDED INTERACTIVE DRAWERS */}
-      <AnimatePresence>
-        {/* Storyteller Immersive Experience Modal */}
-        {storyProduct && (
-          <StorytellerModal
-            product={storyProduct}
-            onClose={() => setStoryProduct(null)}
-            onInquire={() => {
-              setStoryProduct(null);
-              setScreen('inquire');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-          />
-        )}
-
-        {/* Product Details Drawer panel */}
-        {selectedProduct && (
-          <ProductDetailsModal
-            product={selectedProduct}
-            onClose={() => setSelectedProduct(null)}
-            onProductSelect={setSelectedProduct}
-            onInquire={() => {
-              setSelectedProduct(null);
-              setScreen('inquire');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            setScreen={setScreen}
-          />
-        )}
-
-        {/* Search Input catalog popup */}
-        {searchOpen && (
-          <SearchModal
-            onClose={() => setSearchOpen(false)}
-            onSelectProduct={setSelectedProduct}
-          />
-        )}
-
-        {/* Inquiry customized consultation drawer */}
-        {inquiryOpen && (
-          <InquiryModal
-            onClose={() => setInquiryOpen(false)}
-          />
-        )}
-      </AnimatePresence>
 
       {/* METICULOUS FOOTER DESIGN (Mockup Matching Redesign) */}
       {!loading && (
@@ -514,6 +527,59 @@ export default function App() {
           </div>
         </footer>
       )}
+
+          </div>
+
+          {/* Product Details overlay inside smooth-content */}
+          <AnimatePresence>
+            {selectedProduct && (
+              <ProductDetailsModal
+                product={selectedProduct}
+                onClose={() => setSelectedProduct(null)}
+                onProductSelect={setSelectedProduct}
+                onInquire={() => {
+                  setSelectedProduct(null);
+                  setScreen('inquire');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                setScreen={setScreen}
+              />
+            )}
+          </AnimatePresence>
+
+        </div>
+      </div>
+
+      {/* EXPANDED INTERACTIVE DRAWERS */}
+      <AnimatePresence>
+        {/* Storyteller Immersive Experience Modal */}
+        {storyProduct && (
+          <StorytellerModal
+            product={storyProduct}
+            onClose={() => setStoryProduct(null)}
+            onInquire={() => {
+              setStoryProduct(null);
+              setScreen('inquire');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
+
+        {/* Search Input catalog popup */}
+        {searchOpen && (
+          <SearchModal
+            onClose={() => setSearchOpen(false)}
+            onSelectProduct={setSelectedProduct}
+          />
+        )}
+
+        {/* Inquiry customized consultation drawer */}
+        {inquiryOpen && (
+          <InquiryModal
+            onClose={() => setInquiryOpen(false)}
+          />
+        )}
+      </AnimatePresence>
 
     </div>
   );
