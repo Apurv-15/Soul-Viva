@@ -6,7 +6,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { Search, Menu, X, Landmark, SlidersHorizontal, BookOpen } from 'lucide-react';
+import { Menu, X, Home, SlidersHorizontal, BookOpen } from 'lucide-react';
 
 interface HeaderProps {
   currentScreen: 'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin';
@@ -41,6 +41,7 @@ export default function Header({
   const isTransparent = currentScreen === 'home' && !isScrolled;
 
   const navItems = [
+    { id: 'home', label: 'Home', icon: <Home className="w-4 h-4 mr-2 md:hidden" /> },
     { id: 'range', label: 'Range', icon: <SlidersHorizontal className="w-4 h-4 mr-2 md:hidden" /> },
     { id: 'story', label: 'About Us', icon: <BookOpen className="w-4 h-4 mr-2 md:hidden" /> },
   ] as const;
@@ -57,20 +58,10 @@ export default function Header({
         ? 'bg-[#F5F2EB]/40 backdrop-blur-md border-b border-[#E5DEC1]/30'
         : 'bg-[#F5F2EB]/95 dark:bg-[#F5F2EB]/95 backdrop-blur-xl border-b border-[#E5DEC1]/75 dark:border-[#E5DEC1]/75 shadow-xs'
     }`}>
-      <div className="flex justify-between items-center px-6 md:px-20 h-20 w-full max-w-[1440px] mx-auto">
+      <div className="flex justify-between items-center px-6 md:px-20 h-20 w-full max-w-[1440px] mx-auto relative">
         
-        {/* Left Side: Logo */}
-        <div className="flex items-center">
-          <button
-            onClick={() => navigateTo('home')}
-            className="font-sans text-[21px] tracking-[0.25em] font-light text-black cursor-pointer select-none hover:opacity-80 transition-opacity"
-          >
-            SOUL VIVA
-          </button>
-        </div>
-
-        {/* Mobile Menu Trigger */}
-        <div className="flex md:hidden">
+        {/* Mobile Menu Trigger (Hamburger) on the left */}
+        <div className="flex md:hidden z-50">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-black cursor-pointer p-1"
@@ -80,53 +71,49 @@ export default function Header({
           </button>
         </div>
 
-        {/* Right Side: Navigation Links & Search Controls */}
-        <div className="flex items-center gap-10">
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-10">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => navigateTo(item.id)}
-                className={`font-sans text-xs tracking-[0.18em] transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
-                  currentScreen === item.id
-                    ? 'text-black border-black font-semibold'
-                    : 'text-neutral-700 hover:text-black border-transparent'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+        {/* Logo - Centered on mobile, left-aligned on desktop */}
+        <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 z-40">
+          <button
+            onClick={() => navigateTo('home')}
+            className="font-sans text-[21px] tracking-[0.25em] font-light text-black cursor-pointer select-none hover:opacity-80 transition-opacity"
+          >
+            SOUL VIVA
+          </button>
+        </div>
+
+        {/* Right Side: Desktop Navigation Links (No Search) */}
+        <div className="hidden md:flex items-center gap-10 z-40">
+          {navItems.map((item) => (
             <button
-              onClick={() => navigateTo('inquire')}
-              className={`font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
-                currentScreen === 'inquire'
+              key={item.id}
+              onClick={() => navigateTo(item.id)}
+              className={`font-sans text-xs tracking-[0.18em] transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
+                currentScreen === item.id
                   ? 'text-black border-black font-semibold'
                   : 'text-neutral-700 hover:text-black border-transparent'
               }`}
             >
-              CONTACT US
+              {item.label}
             </button>
-            {currentScreen === 'admin' && (
-              <button
-                onClick={() => navigateTo('admin')}
-                className="font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 text-black border-black font-semibold"
-              >
-                ADMIN
-              </button>
-            )}
-          </div>
-
-          {/* Search Trigger */}
-          <div className="flex items-center">
+          ))}
+          <button
+            onClick={() => navigateTo('inquire')}
+            className={`font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
+              currentScreen === 'inquire'
+                ? 'text-black border-black font-semibold'
+                : 'text-neutral-700 hover:text-black border-transparent'
+            }`}
+          >
+            CONTACT US
+          </button>
+          {currentScreen === 'admin' && (
             <button
-              onClick={onOpenSearch}
-              className="text-black hover:scale-105 transition-transform duration-300 cursor-pointer p-1.5 rounded-full hover:bg-black/5"
-              aria-label="Search"
+              onClick={() => navigateTo('admin')}
+              className="font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 text-black border-black font-semibold"
             >
-              <Search className="w-5 h-5 stroke-[1.8] text-black" />
+              ADMIN
             </button>
-          </div>
+          )}
         </div>
       </div>
 

@@ -8,13 +8,13 @@ import { Sparkles, Leaf, Award, Globe, Droplet, ShieldCheck } from 'lucide-react
 
 export default function OurStorySection() {
   return (
-    <section id="our-story-section" className="py-24 bg-[#FAF8F5] text-stone-900 relative overflow-hidden font-sans border-b border-stone-200/50">
+    <section id="our-story-section" className="py-12 md:py-16 bg-[#FAF8F5] text-stone-900 relative overflow-hidden font-sans border-b border-stone-200/50">
       
       {/* Background Soft Glows */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#EAD9EC]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#E5DEC1]/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto px-6 md:px-20 relative z-10 space-y-16">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-20 relative z-10 space-y-8">
         
         {/* Header Block */}
         <div className="text-center md:text-left space-y-4">
@@ -171,7 +171,7 @@ export default function OurStorySection() {
         </div>
 
         {/* COMMERCIAL & EXPORT SPECIFICATIONS MODULE */}
-        <div className="mt-24 space-y-12 pt-8 border-t border-stone-200/50">
+        <div className="mt-12 space-y-8 pt-8 border-t border-stone-200/50">
           <div className="text-center md:text-left space-y-3">
             <span className="font-sans text-[10px] tracking-[0.3em] font-bold text-neutral-400 uppercase block select-none">
               B2B OPERATIONS & SPECIFICATIONS
