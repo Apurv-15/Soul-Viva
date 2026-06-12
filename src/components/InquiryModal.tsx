@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { InquiryForm } from '../types';
 import { X, Sparkles, Send, CheckCircle2, Building, Calendar, PackageOpen } from 'lucide-react';
+import { db } from '../firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 interface InquiryModalProps {
   onClose: () => void;
@@ -25,13 +27,37 @@ export default function InquiryModal({ onClose }: InquiryModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSending(true);
-    setTimeout(() => {
+    try {
+      const topicLabels: Record<string, string> = {
+        hospitality: 'Resort & Spa',
+        gifting: 'Bespoke Gifts',
+        bridal: 'Special Occasion'
+      };
+
+      await addDoc(collection(db, 'inquiries'), {
+        type: 'trade',
+        timestamp: new Date().toISOString(),
+        status: 'pending',
+        data: {
+          name: form.name,
+          company: topicLabels[form.interestIn] || 'Bespoke Inquiry',
+          email: form.email,
+          phone: form.phone,
+          country: 'India',
+          businessType: form.interestIn === 'hospitality' ? 'Hotel / Hospitality' : 'Other',
+          message: `${form.subject}: ${form.message}\n(Volume: ${form.quantityNeeded})`
+        }
+      });
       setIsSending(false);
       setSubmitted(true);
-    }, 1800);
+    } catch (err) {
+      console.error('Failed to submit consultation inquiry:', err);
+      setIsSending(false);
+      alert('Failed to dispatch inquiry. Please check your network and try again.');
+    }
   };
 
   return (
@@ -76,14 +102,14 @@ export default function InquiryModal({ onClose }: InquiryModalProps) {
                   EXPERIENTIAL CONSULTATION
                 </span>
                 <h3 className="font-sans text-2xl font-light tracking-tight text-neutral-900">
-                  Custom & Hospitality Inquiry
+                  Custom & Hospitality Contact Us
                 </h3>
                 <p className="font-sans text-xs text-neutral-500 leading-relaxed">
                   We formulate customized signature batches of transparent gel bar soaps for luxury resorts, spas, design offices, and bridal rituals.
                 </p>
               </div>
 
-              {/* Inquiry topic selectors */}
+              {/* Contact topic selectors */}
               <div className="grid grid-cols-3 gap-3">
                 {[
                   { id: 'hospitality', label: 'Resorts & Spa', icon: <Building className="w-4 h-4 text-emerald-500 mb-1" /> },
@@ -193,7 +219,7 @@ export default function InquiryModal({ onClose }: InquiryModalProps) {
                     </span>
                   ) : (
                     <>
-                      <Send className="w-4 h-4" /> Dispatch Consultation Inquiry
+                      <Send className="w-4 h-4" /> Dispatch Consultation Request
                     </>
                   )}
                 </button>
@@ -219,13 +245,13 @@ export default function InquiryModal({ onClose }: InquiryModalProps) {
                 </h3>
               </div>
               <p className="font-sans text-xs text-neutral-500 leading-relaxed max-w-sm mx-auto">
-                Thank you for inquiring, <strong>{form.name}</strong>. A dedicated Soul Viva formulation specialist has received your spa/hospitality parameters. We will review your vision and reach out to you within 24 business hours.
+                Thank you for contacting Soul Viva. Your request has been logged successfully. A dedicated Soul Viva formulation specialist has received your spa/hospitality parameters. We will review your vision and reach out to you within 24 business hours.
               </p>
               <button
                 onClick={onClose}
                 className="bg-brand-dark hover:bg-neutral-800 text-white font-sans text-xs tracking-widest uppercase px-8 py-3.5 rounded-full outline-none w-full max-w-xs cursor-pointer"
               >
-                Close Inquiry Panel
+                Close Contact Panel
               </button>
             </motion.div>
           )}

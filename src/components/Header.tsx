@@ -42,7 +42,7 @@ export default function Header({
 
   const navItems = [
     { id: 'range', label: 'Range', icon: <SlidersHorizontal className="w-4 h-4 mr-2 md:hidden" /> },
-    { id: 'story', label: 'Our Story', icon: <BookOpen className="w-4 h-4 mr-2 md:hidden" /> },
+    { id: 'story', label: 'About Us', icon: <BookOpen className="w-4 h-4 mr-2 md:hidden" /> },
   ] as const;
 
   const navigateTo = (screen: 'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin' | 'craft') => {
@@ -105,7 +105,7 @@ export default function Header({
                   : 'text-neutral-700 hover:text-black border-transparent'
               }`}
             >
-              INQUIRE
+              CONTACT US
             </button>
             {currentScreen === 'admin' && (
               <button
@@ -155,7 +155,7 @@ export default function Header({
                 currentScreen === 'inquire' ? 'text-black font-semibold' : 'text-neutral-700 hover:text-black'
               }`}
             >
-              Consult & Inquire
+              Consult & Contact Us
             </button>
           </div>
         </div>
