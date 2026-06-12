@@ -34,24 +34,24 @@ export default function BrandIntro() {
   return (
     <section 
       id="brand-intro-section" 
-      className="py-24 md:py-32 bg-[#FAF8F5] text-[#2D3A2F] relative overflow-hidden font-sans border-b border-[#E5DEC1]/30"
+      className="pt-12 pb-4 md:pt-16 md:pb-6 bg-[#FAF8F5] text-[#2D3A2F] relative overflow-hidden font-sans border-b border-[#E5DEC1]/30"
     >
       {/* Background Soft Organic Glows */}
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#E5DEC1]/10 rounded-full blur-3xl pointer-events-none animate-slow-pan" />
       <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#EAD9EC]/8 animate-float rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto px-6 md:px-20 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 relative z-10">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start"
         >
           {/* Left Column: Typographic Hook + Parallax Floating Visual */}
           <motion.div 
             variants={itemVariants} 
-            className="lg:col-span-5 flex flex-col space-y-10 text-left"
+            className="lg:col-span-5 flex flex-col space-y-8 text-left"
           >
             {/* Header Block */}
             <div className="space-y-6">
@@ -73,9 +73,26 @@ export default function BrandIntro() {
             </div>
 
             {/* Premium Layered Floating Product Composition */}
-            <div className="relative w-full max-w-md mx-auto lg:mx-0 pr-8 pb-8">
+            <div className="relative w-full max-w-xl mx-auto lg:mx-0 pr-12 pb-12">
+              {/* BRAND ELEMENT WATERMARK (Droplet, gel-bar outline, botanical leaf) at 5% opacity */}
+              <div className="absolute inset-0 -z-10 opacity-5 flex items-center justify-center pointer-events-none transform scale-125 translate-x-4 text-[#2D3A2F]">
+                <svg width="450" height="450" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Droplet & Soap bar outline combination */}
+                  <path d="M200 40 C110 160 100 240 100 280 C100 335 145 380 200 380 C255 380 300 335 300 280 C300 240 290 160 200 40 Z" stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 4" />
+                  {/* Botanical leaf path in the center */}
+                  <path d="M200 120 C240 160 240 240 200 280 C160 240 160 160 200 120 Z" stroke="currentColor" strokeWidth="2.5" />
+                  <path d="M200 120 V280" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M200 160 C215 170 225 185 225 200" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M200 190 C185 200 175 215 175 230" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M200 220 C215 230 225 245 225 260" stroke="currentColor" strokeWidth="1.5" />
+                  {/* Concentric luxury circles/ripple lines */}
+                  <circle cx="200" cy="280" r="110" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 8" />
+                  <circle cx="200" cy="280" r="130" stroke="currentColor" strokeWidth="0.8" />
+                </svg>
+              </div>
+
               {/* Luxury Scene Background Frame */}
-              <div className="w-full aspect-[4/3] rounded-[28px] overflow-hidden border border-[#E5DEC1]/50 shadow-md">
+              <div className="w-full aspect-[4/3] rounded-[32px] overflow-hidden border border-[#E5DEC1]/55 shadow-md">
                 <img 
                   src="/Waterlily and Pear/Soap_packaging_in_luxury_scene_202606121132.jpeg" 
                   alt="Soul Viva Luxury Packaging Scene" 
@@ -85,13 +102,13 @@ export default function BrandIntro() {
 
               {/* Floating 3D Packaging Box Overlay */}
               <motion.div 
-                animate={{ y: [0, -10, 0] }}
+                animate={{ y: [0, -12, 0] }}
                 transition={{ 
                   repeat: Infinity, 
                   duration: 5.5, 
                   ease: "easeInOut" 
                 }}
-                className="absolute -bottom-6 -right-2 w-32 h-32 sm:w-40 sm:h-40 z-20 drop-shadow-[0_20px_35px_rgba(45,58,47,0.18)] pointer-events-none"
+                className="absolute -bottom-6 -right-6 w-44 h-44 sm:w-56 sm:h-56 z-20 drop-shadow-[0_25px_40px_rgba(45,58,47,0.22)] pointer-events-none"
               >
                 <img 
                   src="/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png" 
@@ -105,7 +122,7 @@ export default function BrandIntro() {
           {/* Right Column: High Hierarchy Story Cards */}
           <motion.div 
             variants={itemVariants} 
-            className="lg:col-span-7 flex flex-col space-y-6 max-w-xl lg:ml-auto"
+            className="lg:col-span-7 flex flex-col space-y-6 lg:ml-auto w-full"
           >
             {/* Story Card 1: Inspired by Nature */}
             <div className="bg-white/80 border border-[#E5DEC1]/40 rounded-[28px] p-6 md:p-8 shadow-xs hover:shadow-md hover:bg-white hover:border-[#2D3A2F]/20 transition-all duration-300 flex flex-col space-y-4 text-left">

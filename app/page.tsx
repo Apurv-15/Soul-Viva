@@ -30,7 +30,6 @@ import InquiryModal from '../src/components/InquiryModal';
 import TheCraftVisualizer from '../src/components/TheCraftVisualizer';
 import OurStorySection from '../src/components/OurStorySection';
 import BrandIntro from '../src/components/BrandIntro';
-import SplashCursor from '../src/components/SplashCursor';
 import InquiryPage from '../src/components/InquiryPage';
 import StorytellerModal from '../src/components/StorytellerModal';
 import GradualBlur from '../src/components/GradualBlur';
@@ -194,9 +193,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-brand-light text-brand-dark antialiased font-sans flex flex-col justify-between selection:bg-brand-dark selection:text-white">
 
-      {/* Interactive Fluid Cursor Effect */}
-      <SplashCursor RAINBOW_MODE={true} />
-
       {/* Superb animated luxury Loader */}
       <AnimatePresence>
         {loading && (
@@ -209,7 +205,10 @@ export default function App() {
         <>
           <Header
             currentScreen={currentScreen}
-            setScreen={setScreen}
+            setScreen={(screen) => {
+              setSelectedProduct(null);
+              setScreen(screen);
+            }}
             onOpenInquiry={() => setInquiryOpen(true)}
             onOpenSearch={() => setSearchOpen(true)}
           />
@@ -317,8 +316,8 @@ export default function App() {
                   <BrandIntro />
 
                   {/* COMPLETE RITUAL RANGE (CATALOG GRID SECTION) */}
-                  <section id="catalog-section" className="py-24 bg-[#F5F2EB]/50 min-h-[90vh]">
-                    <div className="max-w-[1440px] mx-auto px-6 md:px-20 space-y-16">
+                  <section id="catalog-section" className="pt-2 pb-12 md:pt-4 md:pb-16 bg-[#F5F2EB]/50">
+                    <div className="max-w-[1440px] mx-auto px-6 md:px-20 space-y-8">
 
                       {/* Header Title in large font */}
                       <div className="text-center max-w-4xl mx-auto py-4">
@@ -346,8 +345,8 @@ export default function App() {
 
               {/* SCREEN 2: Catalog Range Grid */}
               {currentScreen === 'range' && (
-                <section id="catalog-section" className="py-24 bg-[#F5F2EB]/50 min-h-[90vh]">
-                  <div className="max-w-[1440px] mx-auto px-6 md:px-20 space-y-16">
+                <section id="catalog-section" className="pt-2 pb-12 md:pt-4 md:pb-16 bg-[#F5F2EB]/50">
+                  <div className="max-w-[1440px] mx-auto px-6 md:px-20 space-y-8">
 
                     {/* Header Title in large font */}
                     <div className="text-center max-w-4xl mx-auto py-4">
