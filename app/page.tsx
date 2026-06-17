@@ -16,7 +16,8 @@ import {
   Check,
   Layers,
   Leaf,
-  ChevronDown
+  ChevronDown,
+  Instagram
 } from 'lucide-react';
 
 import { Product } from '../src/types';
@@ -127,6 +128,8 @@ export default function App() {
 
   // Restore scroll position when closing modal and refresh ScrollTrigger
   const lastScrollPos = useRef(0);
+  const hashSynced = useRef(false);
+  
   useEffect(() => {
     if (selectedProduct) {
       lastScrollPos.current = window.scrollY;
@@ -166,6 +169,7 @@ export default function App() {
           setScreen('home');
         }
       }
+      hashSynced.current = true;
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -177,7 +181,7 @@ export default function App() {
 
   // Sync state changes back to Hash to keep URL updated (enables browser back/forward)
   useEffect(() => {
-    if (loading) return;
+    if (loading || !hashSynced.current) return;
 
     if (selectedProduct) {
       if (window.location.hash !== `#product-${selectedProduct.id}`) {
@@ -377,7 +381,10 @@ export default function App() {
 
               {/* SCREEN 4: About Us section */}
               {currentScreen === 'story' && (
-                <OurStorySection />
+                <div className="space-y-0">
+                  <BrandIntro />
+                  <OurStorySection />
+                </div>
               )}
 
               {/* SCREEN 5: Dedicated B2B Contact Us Apple Form Page */}
@@ -408,8 +415,9 @@ export default function App() {
 
             {/* Giant Brand Logo Text */}
             <div className="w-full text-center py-6">
-              <h2 className="font-sans font-extrabold text-[12vw] tracking-tighter leading-none text-[#1C1B1B] m-0 select-none uppercase">
-                SOUL VIVA
+              <h2 className="m-0 select-none text-[12vw] leading-none text-[#1C1B1B]">
+                <span className="font-serif font-normal tracking-tight uppercase">SOUL</span>
+                <span className="font-sans font-light tracking-wide uppercase ml-[0.25em]">VIVA</span>
               </h2>
             </div>
 
@@ -479,7 +487,7 @@ export default function App() {
 
               {/* Left links (Capsules matching image) */}
               <div className="flex flex-wrap items-center justify-center gap-2">
-                {['Legal', 'T&Cs', 'Safety', 'Cookies', 'Support', 'Admin Portal'].map((link) => (
+                {['Support', 'Admin Portal'].map((link) => (
                   <button
                     key={link}
                     onClick={() => {
@@ -489,8 +497,6 @@ export default function App() {
                       } else if (link === 'Admin Portal') {
                         window.location.hash = 'admin';
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                      } else {
-                        alert(`${link} documentation is detailed inside our B2B formulation handbook.`);
                       }
                     }}
                     className="border-2 border-[#DCD5C5] hover:border-black text-neutral-700 hover:text-black rounded-full px-5 py-2 text-[10px] md:text-xs uppercase tracking-wider font-bold transition-all duration-300 cursor-pointer bg-white/20 hover:bg-white/60"
@@ -501,24 +507,25 @@ export default function App() {
               </div>
 
               {/* Center Copyright & Back to Top */}
-              <div className="flex flex-col items-center justify-center gap-2">
+              <div className="flex flex-col items-center justify-center gap-2 md:ml-auto">
+                <a 
+                  href="https://www.instagram.com/soulvivaskin/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-neutral-500 hover:text-[#E1306C] transition-colors mb-1"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                </a>
                 <span className="text-[10px] md:text-xs tracking-wider uppercase font-semibold text-neutral-500 text-center">
                   &copy; 2026 Belleaves Private Limited.
                 </span>
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="text-[10px] md:text-xs tracking-widest uppercase text-purple-700 hover:text-purple-900 font-bold flex items-center gap-1 transition-colors cursor-pointer border-b border-transparent hover:border-purple-800 pb-0.5"
+                  className="text-[10px] md:text-xs tracking-widest uppercase text-[#2D3A2F] hover:text-black font-bold flex items-center gap-1 transition-colors cursor-pointer border-b border-transparent hover:border-black pb-0.5"
                 >
                   Back to top ↑
                 </button>
-              </div>
-
-              {/* Right Authorized Badge (Matches image color exactly) */}
-              <div className="flex items-center gap-2.5 text-[10px] md:text-xs tracking-wider">
-                <span className="font-sans text-[10px] uppercase font-bold text-neutral-400">AUTHORIZED BY</span>
-                <span className="bg-[#EAD9EC] border border-[#DCBFDE]/50 text-[#6B2E76] px-4 py-2 rounded font-mono text-[10px] md:text-xs uppercase tracking-widest font-bold shadow-xs">
-                  SOUL VIVA OPS
-                </span>
               </div>
 
             </div>
