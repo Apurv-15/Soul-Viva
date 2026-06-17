@@ -72,82 +72,7 @@ interface AdminDashboardProps {
   onBackToHome?: () => void;
 }
 
-const MOCK_SUBMISSIONS: Omit<Submission, 'id'>[] = [
-  {
-    type: 'trade',
-    timestamp: new Date(Date.now() - 3600000 * 4).toISOString(), // 4 hours ago
-    status: 'pending',
-    data: {
-      name: 'Alejandro Silva',
-      company: 'Importaciones del Sur S.A.',
-      jobTitle: 'CEO / Sourcing Director',
-      email: 'a.silva@importacionesdelsur.com.ar',
-      phone: '+54 9 11 5555-1234',
-      country: 'Argentina',
-      businessType: 'Distributor / Importer',
-      message: 'We are a leading premium personal care importer and distributor in Argentina and Chile. We supply over 450 luxury pharmacy outlets and health boutiques. We would love to distribute Soul Viva moisturising gel bars to our retail network. Please share your commercial pricing sheet, minimum order quantities (MOQ) for FOB export, and technical dossier.'
-    }
-  },
-  {
-    type: 'sample',
-    timestamp: new Date(Date.now() - 3600000 * 25).toISOString(), // 25 hours ago
-    status: 'reviewed',
-    data: {
-      firstName: 'Sarah',
-      lastName: 'Jenkins',
-      company: 'Wellness Boutique UK',
-      email: 'sarah.j@wellnessboutique.co.uk',
-      phone: '+44 7911 123456',
-      businessType: 'Retailer / Chain Store',
-      variants: ['sea-minerals-menthol', 'waterlily-pear', 'cherry-blossom-strawberry'],
-      address1: '10 High Street',
-      address2: 'Flat 2B, Kensington',
-      city: 'London',
-      state: 'Greater London',
-      zip: 'SW1A 1AA',
-      country: 'UK',
-      notes: 'We are planning to stock physical samples in our flagship London store. Please include your B2B trade brochure and commercial retail pricing sheet.',
-      confirmed: true
-    }
-  },
-  {
-    type: 'trade',
-    timestamp: new Date(Date.now() - 3600000 * 50).toISOString(), // ~2 days ago
-    status: 'reviewed',
-    data: {
-      name: 'Michael Vance',
-      company: 'Eco Hospitality Group',
-      jobTitle: 'VP of Procurement',
-      email: 'mvance@ecohospitality.com',
-      phone: '+1 416-555-0199',
-      country: 'Canada',
-      businessType: 'Hotel / Hospitality',
-      message: 'Interested in sourcing high-glycerin gel bars for our chain of eco-luxury lodges across British Columbia. We require customized soap weights (50g/75g) or standard 100g bars wrapped in sustainable plastic-free cartons. Looking forward to your response.'
-    }
-  },
-  {
-    type: 'sample',
-    timestamp: new Date(Date.now() - 3600000 * 75).toISOString(), // ~3 days ago
-    status: 'dispatched',
-    data: {
-      firstName: 'James',
-      lastName: 'Miller',
-      company: 'Naturals Australia Ltd',
-      email: 'jmiller@naturals.com.au',
-      phone: '+61 2 9876 5432',
-      businessType: 'Wholesaler',
-      variants: ['shea-honey', 'lavender-currant', 'mandarin-peach', 'waterlily-pear'],
-      address1: '55 Harbourview Terrace',
-      address2: 'Unit 4, Pyrmont',
-      city: 'Sydney',
-      state: 'New South Wales',
-      zip: '2009',
-      country: 'Australia',
-      notes: 'Testing the moisturizing retention claims of the glycerin base. We supply natural organic lines to domestic Australian chains.',
-      confirmed: true
-    }
-  }
-];
+
 
 export default function AdminDashboard({ onBackToHome }: AdminDashboardProps) {
   const [inquiries, setInquiries] = useState<Submission[]>([]);
@@ -201,38 +126,7 @@ export default function AdminDashboard({ onBackToHome }: AdminDashboardProps) {
     }
   };
 
-  // Clear All
-  const handleClearAll = async () => {
-    if (!confirm('Warning! This will clear all logged inquiries and sample requests. Continue?')) return;
-    try {
-      const querySnapshot = await getDocs(collection(db, 'inquiries'));
-      const batch = writeBatch(db);
-      querySnapshot.forEach((doc) => {
-        batch.delete(doc.ref);
-      });
-      await batch.commit();
-      setExpandedId(null);
-    } catch (err) {
-      console.error('Error clearing database:', err);
-      alert('Failed to clear database. Please try again.');
-    }
-  };
 
-  // Generate Mock Data
-  const handleGenerateMocks = async () => {
-    try {
-      const batch = writeBatch(db);
-      MOCK_SUBMISSIONS.forEach((mock) => {
-        const docRef = doc(collection(db, 'inquiries'));
-        batch.set(docRef, mock);
-      });
-      await batch.commit();
-      setExpandedId(null);
-    } catch (err) {
-      console.error('Error seeding mock data:', err);
-      alert('Failed to seed mock data. Please try again.');
-    }
-  };
 
   const loadInquiries = () => {
     // Left as no-op or status message since onSnapshot keeps it synced in real-time
@@ -507,20 +401,7 @@ export default function AdminDashboard({ onBackToHome }: AdminDashboardProps) {
             </button>
           </div>
 
-          <div className="flex items-center gap-2 self-end sm:self-auto">
-            <button
-              onClick={handleGenerateMocks}
-              className="text-[10px] tracking-widest font-bold uppercase text-[#2D5A56] hover:text-[#1c3835] bg-[#E8F3F1] border border-[#C5DFDA] px-3.5 py-2 rounded-xl transition-all cursor-pointer"
-            >
-              Load Demo Data
-            </button>
-            <button
-              onClick={handleClearAll}
-              className="text-[10px] tracking-widest font-bold uppercase text-red-600 hover:text-red-800 bg-red-50 border border-red-200 px-3.5 py-2 rounded-xl transition-all cursor-pointer"
-            >
-              Clear Database
-            </button>
-          </div>
+
         </div>
 
       </div>
@@ -831,7 +712,7 @@ export default function AdminDashboard({ onBackToHome }: AdminDashboardProps) {
             <div className="space-y-1">
               <h4 className="font-sans text-sm font-semibold text-neutral-800">No submissions found</h4>
               <p className="font-sans text-xs text-neutral-400 font-light max-w-sm mx-auto leading-relaxed">
-                Try resetting search queries and filters, generating demo entries, or submitting a new B2B trade inquiry form.
+                Try resetting search queries and filters, or wait for a new B2B trade inquiry form submission.
               </p>
             </div>
           </div>
