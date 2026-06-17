@@ -6,7 +6,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Home, SlidersHorizontal, BookOpen } from 'lucide-react';
+import { Menu, X, Home, SlidersHorizontal, BookOpen, Facebook, Instagram } from 'lucide-react';
 
 interface HeaderProps {
   currentScreen: 'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin';
@@ -114,6 +114,28 @@ export default function Header({
               ADMIN
             </button>
           )}
+
+          {/* Social Icons separator and links */}
+          <div className="flex items-center gap-4 border-l border-neutral-400/30 pl-6">
+            <a
+              href="https://www.facebook.com/profile.php?id=61590660097743"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-600 hover:text-black transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-4.5 h-4.5" />
+            </a>
+            <a
+              href="https://www.instagram.com/soulviva.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-600 hover:text-black transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-4.5 h-4.5" />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -144,6 +166,28 @@ export default function Header({
             >
               Consult & Contact Us
             </button>
+
+            {/* Mobile Social Links */}
+            <div className="flex items-center gap-6 mt-4 pt-4 border-t border-black/10">
+              <a
+                href="https://www.facebook.com/profile.php?id=61590660097743"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-neutral-700 hover:text-black transition-colors"
+              >
+                <Facebook className="w-4.5 h-4.5 text-neutral-600" />
+                <span>Facebook</span>
+              </a>
+              <a
+                href="https://www.instagram.com/soulviva.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-neutral-700 hover:text-black transition-colors"
+              >
+                <Instagram className="w-4.5 h-4.5 text-neutral-600" />
+                <span>Instagram</span>
+              </a>
+            </div>
           </div>
         </div>
       )}
