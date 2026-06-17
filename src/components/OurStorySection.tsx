@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Sparkles, Leaf, Award, Globe, Droplet, ShieldCheck } from 'lucide-react';
+import { Sparkles, Leaf, Award, Globe, Droplet, ShieldCheck, Facebook, Instagram } from 'lucide-react';
 
 export default function OurStorySection() {
   return (
@@ -36,10 +36,10 @@ export default function OurStorySection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
           
           {/* Card 1: 01 — 100% Natural Extracts (Col Span 6 - Row 1 Left) */}
-          <div className="col-span-1 md:col-span-6 bg-white border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-10 flex flex-col sm:flex-row gap-8 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300">
+          <div className="col-span-1 md:col-span-6 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 md:p-10 flex flex-col sm:flex-row gap-8 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300">
             <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
               <div className="space-y-4">
-                <span className="inline-block bg-[#E5DEC1]/40 text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+                <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
                   01 — Extracts
                 </span>
                 <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
@@ -50,7 +50,7 @@ export default function OurStorySection() {
                 </p>
               </div>
               <div className="flex items-center gap-3 text-neutral-500">
-                <div className="p-2 rounded-full bg-[#FAF8F5]">
+                <div className="p-2 rounded-full bg-white">
                   <Leaf className="w-4 h-4 text-[#2D3A2F]" />
                 </div>
                 <span className="font-serif text-xs italic text-stone-700">"Real botanicals, real results."</span>
@@ -96,28 +96,28 @@ export default function OurStorySection() {
           </div>
 
           {/* Card 3: 03 — Glycerin-Rich Gel Formula (Col Span 4 - Row 2 Left) */}
-          <div className="col-span-1 md:col-span-4 bg-[#EAD9EC]/20 border border-[#DCBFDE]/45 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
+          <div className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
             <div className="space-y-4">
-              <span className="inline-block bg-[#EAD9EC]/50 text-[#6B2E76] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+              <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
                 03 — Gel Formula
               </span>
-              <h3 className="font-serif text-2xl font-normal text-[#6B2E76] tracking-tight leading-tight">
+              <h3 className="font-serif text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Glycerin-Rich <br /><span className="italic">Gel Formula</span>
               </h3>
               <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed">
                 Unlike conventional soaps that strip the skin, Soul Viva's transparent glycerin base acts as a humectant — drawing moisture into the skin with every wash. The result is skin that feels soft and hydrated, not dry and tight. This is the fundamental difference between a bathing bar that merely cleans and one that actively cares.
               </p>
             </div>
-            <div className="flex items-center gap-2.5 text-[#6B2E76] bg-white/50 border border-[#DCBFDE]/25 rounded-2xl p-4">
-              <Droplet className="w-5 h-5 text-[#6B2E76]" />
+            <div className="flex items-center gap-2.5 text-[#2D3A2F] bg-white border border-[#E5DEC1]/60 rounded-2xl p-4">
+              <Droplet className="w-5 h-5 text-[#2D3A2F]" />
               <span className="font-sans text-xs font-semibold">Drawing moisture in with every wash.</span>
             </div>
           </div>
 
           {/* Card 4: 04 — Premium Shelf Presence (Col Span 4 - Row 2 Center) */}
-          <div className="col-span-1 md:col-span-4 bg-white border border-[#E5DEC1]/50 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
+          <div className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
             <div className="space-y-4">
-              <span className="inline-block bg-[#E5DEC1]/40 text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+              <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
                 04 — Packaging
               </span>
               <h3 className="font-serif text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
@@ -137,13 +137,13 @@ export default function OurStorySection() {
           </div>
 
           {/* Card 5: 06 — Export-Ready from Day One (Col Span 4 - Row 2 Right) */}
-          <div className="col-span-1 md:col-span-4 bg-[#F0F7FF] border border-[#C5DDFC] text-neutral-900 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
+          <div className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 text-neutral-900 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
             <div className="space-y-4">
-              <span className="inline-block bg-[#D6EAFF] text-sky-850 px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+              <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
                 06 — Global
               </span>
-              <h3 className="font-serif text-2xl font-normal tracking-tight leading-tight text-sky-950">
-                Export-Ready <br /><span className="italic text-sky-700">from Day One</span>
+              <h3 className="font-serif text-2xl font-normal tracking-tight leading-tight text-[#2D3A2F]">
+                Export-Ready <br /><span className="italic text-stone-700">from Day One</span>
               </h3>
               <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed">
                 Manufactured by a certified contract partner with international export capability. GS1 barcodes registered via GS1 India DataKart. Compliant labelling for international markets. Soul Viva is built to be a global brand.
@@ -151,18 +151,18 @@ export default function OurStorySection() {
             </div>
             
             <div className="flex flex-col gap-3.5 w-full">
-              <div className="bg-white/70 border border-[#C5DDFC]/60 rounded-2xl p-4 flex items-center gap-3.5">
-                <Globe className="w-6 h-6 text-sky-600 flex-shrink-0" />
+              <div className="bg-white border border-[#E5DEC1]/60 rounded-2xl p-4 flex items-center gap-3.5">
+                <Globe className="w-6 h-6 text-[#2D3A2F] flex-shrink-0" />
                 <div>
                   <span className="block font-mono text-[9px] uppercase tracking-wider text-neutral-500">Standard</span>
-                  <span className="font-serif text-xs font-semibold text-sky-800">GS1 Registered EANs</span>
+                  <span className="font-serif text-xs font-semibold text-[#2D3A2F]">GS1 Registered EANs</span>
                 </div>
               </div>
-              <div className="bg-white/70 border border-[#C5DDFC]/60 rounded-2xl p-4 flex items-center gap-3.5">
-                <ShieldCheck className="w-6 h-6 text-sky-600 flex-shrink-0" />
+              <div className="bg-white border border-[#E5DEC1]/60 rounded-2xl p-4 flex items-center gap-3.5">
+                <ShieldCheck className="w-6 h-6 text-[#2D3A2F] flex-shrink-0" />
                 <div>
                   <span className="block font-mono text-[9px] uppercase tracking-wider text-neutral-500">Compliance</span>
-                  <span className="font-serif text-xs font-semibold text-sky-800">International Export-Ready</span>
+                  <span className="font-serif text-xs font-semibold text-[#2D3A2F]">International Export-Ready</span>
                 </div>
               </div>
             </div>
@@ -176,7 +176,7 @@ export default function OurStorySection() {
             <span className="font-sans text-[10px] tracking-[0.3em] font-bold text-neutral-400 uppercase block select-none">
               B2B OPERATIONS & SPECIFICATIONS
             </span>
-            <h2 className="font-sans text-2xl md:text-4xl font-light tracking-tight text-[#2D5A56] leading-none">
+            <h2 className="font-sans text-2xl md:text-4xl font-light tracking-tight text-[#2D3A2F] leading-none">
               Commercial & Export Information
             </h2>
             <p className="font-sans text-xs md:text-sm text-neutral-500 font-light max-w-2xl leading-relaxed">
@@ -188,9 +188,9 @@ export default function OurStorySection() {
           <div className="text-left">
             
             {/* Card C: Export Compliance & Regulatory Standards */}
-            <div className="bg-[#f0f9f7]/50 border border-[#dbece7] rounded-[32px] p-8 md:p-12 shadow-sm space-y-6">
+            <div className="bg-[#FAF8F5] border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-12 shadow-sm space-y-6">
               <div className="space-y-2 text-left">
-                <span className="inline-block bg-[#5EC7B6]/20 text-[#2d5a56] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
+                <span className="inline-block bg-white text-[#2D3A2F] border border-[#E5DEC1]/60 px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
                   Regulatory Standards
                 </span>
                 <h3 className="font-sans text-xl md:text-2xl font-normal text-neutral-850">
@@ -201,13 +201,13 @@ export default function OurStorySection() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pt-2 font-sans text-sm">
+              <div className="flex flex-wrap justify-center gap-6 pt-2 font-sans text-sm w-full">
                 
                 {/* Compliance Item 1 */}
-                <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
+                <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                   <div>
                     <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
+                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
                       GS1 Barcodes
                     </h4>
                     <p className="text-neutral-600 leading-relaxed">
@@ -217,10 +217,10 @@ export default function OurStorySection() {
                 </div>
 
                 {/* Compliance Item 2 */}
-                <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
+                <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                   <div>
                     <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
+                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
                       INCI Declarations
                     </h4>
                     <p className="text-neutral-600 leading-relaxed">
@@ -230,10 +230,10 @@ export default function OurStorySection() {
                 </div>
 
                 {/* Compliance Item 3 */}
-                <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
+                <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                   <div>
                     <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
+                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
                       Export Documentation
                     </h4>
                     <p className="text-neutral-600 leading-relaxed">
@@ -243,10 +243,10 @@ export default function OurStorySection() {
                 </div>
 
                 {/* Compliance Item 4 */}
-                <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
+                <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                   <div>
                     <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
+                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
                       Claims Substantiation
                     </h4>
                     <p className="text-neutral-600 leading-relaxed">
@@ -256,10 +256,10 @@ export default function OurStorySection() {
                 </div>
 
                 {/* Compliance Item 5 */}
-                <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-3.5 flex flex-col justify-between">
+                <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs text-left space-y-3.5 flex flex-col justify-between">
                   <div>
                     <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#5EC7B6]" />
+                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
                       Mandatory Labeling
                     </h4>
                     <p className="text-neutral-600 leading-relaxed">
@@ -274,10 +274,10 @@ export default function OurStorySection() {
           </div>
 
           {/* Section: Manufacturing Facilities Allocation Details */}
-          <div className="bg-[#f0f9f7] border border-[#dbece7] rounded-[32px] p-8 md:p-12 text-left space-y-8">
+          <div className="bg-[#FAF8F5] border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-12 text-left space-y-8">
             <div className="space-y-4">
               <span className="font-sans text-[10px] tracking-widest font-bold text-neutral-400 uppercase block">Production Infrastructure</span>
-              <h3 className="font-sans text-xl md:text-3xl font-light text-[#2D5A56]">
+              <h3 className="font-sans text-xl md:text-3xl font-light text-[#2D3A2F]">
                 Production Facility — <span className="italic">Crafted by Experts in Soap Making</span>
               </h3>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-2 text-sm md:text-base">
@@ -290,7 +290,7 @@ export default function OurStorySection() {
               </div>
             </div>
 
-            <div className="w-full h-[1px] bg-[#dbece7]" />
+            <div className="w-full h-[1px] bg-[#E5DEC1]/50" />
 
             <div className="space-y-4">
               <h4 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800">
@@ -299,36 +299,36 @@ export default function OurStorySection() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 {/* Fact 1 */}
-                <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
+                <div className="bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs text-left space-y-2 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Location</span>
+                    <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D3A2F] block">Location</span>
                     <span className="font-sans text-base font-bold text-neutral-800 block mt-1">Maharashtra, India</span>
                   </div>
                   <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">Certified contract partner supplying leading personal care brands.</span>
                 </div>
 
                 {/* Fact 2 */}
-                <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
+                <div className="bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs text-left space-y-2 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Speciality & Standards</span>
+                    <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D3A2F] block">Speciality & Standards</span>
                     <span className="font-sans text-base font-bold text-neutral-800 block mt-1">Glycerin Soap & Gel Bars</span>
                   </div>
                   <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">Built to international export standards & scalable to meet demand.</span>
                 </div>
 
                 {/* Fact 3 */}
-                <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
+                <div className="bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs text-left space-y-2 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Quality Control</span>
+                    <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D3A2F] block">Quality Control</span>
                     <span className="font-sans text-base font-bold text-neutral-800 block mt-1">Full Batch QC & Traceability</span>
                   </div>
                   <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">End-to-end batch traceability on every production run.</span>
                 </div>
 
                 {/* Fact 4 */}
-                <div className="bg-white rounded-2xl p-6 border border-neutral-150 shadow-xs text-left space-y-2 flex flex-col justify-between">
+                <div className="bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs text-left space-y-2 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D5A56] block">Carton & Logistics</span>
+                    <span className="text-[10px] sm:text-xs tracking-widest uppercase font-bold text-[#2D3A2F] block">Carton & Logistics</span>
                     <span className="font-sans text-base font-bold text-neutral-800 block mt-1">48 Units / Master Carton</span>
                   </div>
                   <span className="font-sans text-sm text-neutral-600 block leading-relaxed mt-3">8 shrinkpacks × 6 units. Guaranteed 24 months shelf life.</span>
