@@ -330,7 +330,7 @@ export default function App() {
 
                   {/* COMPLETE RITUAL RANGE (CATALOG GRID SECTION) */}
                   <section id="catalog-section" className="pt-2 pb-12 md:pt-4 md:pb-16 bg-[#F5F2EB]/50">
-                    <div className="max-w-[1440px] mx-auto px-6 md:px-20 space-y-8">
+                    <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 space-y-12">
 
                       {/* Header Title in large font */}
                       <div className="text-center max-w-4xl mx-auto py-4">
@@ -340,7 +340,7 @@ export default function App() {
                       </div>
 
                       {/* Catalog core grid showing all soaps */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
                         {PRODUCTS.map((p) => (
                           <ProductCard
                             key={p.id}
@@ -359,7 +359,7 @@ export default function App() {
               {/* SCREEN 2: Catalog Range Grid */}
               {currentScreen === 'range' && (
                 <section id="catalog-section" className="pt-2 pb-12 md:pt-4 md:pb-16 bg-[#F5F2EB]/50">
-                  <div className="max-w-[1440px] mx-auto px-6 md:px-20 space-y-8">
+                  <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 space-y-12">
 
                     {/* Header Title in large font */}
                     <div className="text-center max-w-4xl mx-auto py-4">
@@ -369,7 +369,7 @@ export default function App() {
                     </div>
 
                     {/* Catalog core grid showing all soaps */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
                       {PRODUCTS.map((p) => (
                         <ProductCard
                           key={p.id}

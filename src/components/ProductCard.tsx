@@ -52,7 +52,7 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
-        className="relative aspect-square w-full rounded-[28px] overflow-hidden bg-[#FAF5EE] flex items-center justify-center p-0 transition-all duration-500 hover:shadow-[0_25px_50px_rgba(45,90,86,0.12)] hover:bg-[#F5ECE2]"
+      className="relative aspect-[4/3] w-full rounded-[28px] overflow-hidden bg-[#FAF5EE] flex items-center justify-center p-0 transition-all duration-500 hover:shadow-[0_25px_50px_rgba(45,90,86,0.12)] hover:bg-[#F5ECE2]"
         style={{
           perspective: 1000,
           transformStyle: 'preserve-3d',
