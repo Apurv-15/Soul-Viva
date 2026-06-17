@@ -16,10 +16,11 @@ export const PRODUCTS: Product[] = [
     bloomShadowClass: 'shadow-[0_0_60px_rgba(249,115,22,0.25)]',
     themeColor: '#FFE5D9',
     badge: 'Citrus Energy',
-    image: '/Mandarin/Soap_packaging_in_luxury_scene_202606041325.jpeg',
-    bgImage: '/Mandarin/Soul Viva - Mandarin & Peach - Product 2.png',
+    image: '/Mandarin/Soul Viva - Mandarin & Peach - Product 2.png',
+    bgImage: '/Images/Manadrin.png',
+    video: '/Mandarin/Luxury_bathroom_advertisement_video_202606091012.mp4',
     images: [
-      '/Mandarin/Soap_packaging_in_luxury_scene_202606041325.jpeg',
+      '/Images/Manadrin.png',
       '/Mandarin/Soul Viva - Mandarin & Peach - Front 1.png',
       '/Mandarin/Soul Viva - Mandarin & Peach - Left 1.png',
       '/Mandarin/Soul Viva - Mandarin & Peach - Product 2.png'
@@ -86,10 +87,11 @@ export const PRODUCTS: Product[] = [
     bloomShadowClass: 'shadow-[0_0_60px_rgba(52,211,153,0.25)]',
     themeColor: '#E6F4EA',
     badge: 'Dewy Fresh',
-    image: '/Waterlily and Pear/Soap_packaging_in_luxury_scene_202606121132.jpeg',
-    bgImage: '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Right 1.png',
+    image: '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png',
+    bgImage: '/Images/Waterlily_kv.jpeg',
+    video: '/Video/waterlily.mp4',
     images: [
-      '/Waterlily and Pear/Soap_packaging_in_luxury_scene_202606121132.jpeg',
+      '/Images/Waterlily_kv.jpeg',
       '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png',
       '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Left 1.png',
       '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Right 1.png'
@@ -157,8 +159,10 @@ export const PRODUCTS: Product[] = [
     themeColor: '#ECCDF2',
     badge: 'Pure Relaxation',
     image: '/Black Currant/Soul Viva - Black Currant & Lavender - Front 1.png',
-    bgImage: '/Black Currant/Soul Viva - Black Currant & Lavender - Product 2.png',
+    bgImage: '/Images/Black_current_kv.jpeg',
+    video: '/Video/Lavender.mp4',
     images: [
+      '/Images/Black_current_kv.jpeg',
       '/Black Currant/Soul Viva - Black Currant & Lavender - Front 1.png',
       '/Black Currant/Soul Viva - Black Currant & Lavender - Left 1.png',
       '/Black Currant/Soul Viva - Black Currant & Lavender - Product 2.png'
@@ -226,8 +230,10 @@ export const PRODUCTS: Product[] = [
     themeColor: '#FFE5D9',
     badge: 'Comfort Shield',
     image: '/Shea and butter/Soul Viva - Shea Butter & Honey - Front 1.png',
-    bgImage: '/Shea and butter/Soul Viva - Shea Butter & Honey - Product 2.png',
+    bgImage: '/Images/Shea_butter.jpeg',
+    video: '/Video/Shea_butter.mp4',
     images: [
+      '/Images/Shea_butter.jpeg',
       '/Shea and butter/Soul Viva - Shea Butter & Honey - Front 1.png',
       '/Shea and butter/Soul Viva - Shea Butter & Honey - Right 1.png',
       '/Shea and butter/Soul Viva - Shea Butter & Honey - Product 2.png'
@@ -295,9 +301,10 @@ export const PRODUCTS: Product[] = [
     themeColor: '#FFE4E6',
     badge: 'Romantic Bloom',
     image: '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
-    bgImage: '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Right 1.png',
-    video: '/Strawberry/Skincare_commercial_lakeside_atm…_202606091109.mp4',
+    bgImage: '/Images/Cherry_blossom.jpeg',
+    video: '/Video/vi.mp4',
     images: [
+      '/Images/Cherry_blossom.jpeg',
       '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
       '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Left 1.png',
       '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Right 1.png'
@@ -365,8 +372,10 @@ export const PRODUCTS: Product[] = [
     themeColor: '#DFEAF2',
     badge: 'Cooling Rush',
     image: '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Front 1.png',
-    bgImage: '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Product 2.png',
+    bgImage: '/Images/Sea_mineral_kv.jpeg',
+    video: '/Video/Sea_minerals.mp4',
     images: [
+      '/Images/Sea_mineral_kv.jpeg',
       '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Front 1.png',
       '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Left 1.png',
       '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Product 2.png'
