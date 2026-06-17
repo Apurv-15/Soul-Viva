@@ -49,12 +49,12 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
-        className="relative aspect-square w-full rounded-[28px] overflow-hidden bg-[#FAF5EE] flex items-center justify-center p-0 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(45,90,86,0.06)] hover:bg-[#F5ECE2]"
+        className="relative aspect-square w-full rounded-[28px] overflow-hidden bg-[#FAF5EE] flex items-center justify-center p-0 transition-all duration-500 hover:shadow-[0_25px_50px_rgba(45,90,86,0.12)] hover:bg-[#F5ECE2]"
         style={{
           perspective: 1000,
           transformStyle: 'preserve-3d',
           transform: isHovered 
-            ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.02)` 
+            ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.035)` 
             : 'rotateX(0deg) rotateY(0deg) scale(1)',
         }}
       >
@@ -67,39 +67,47 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
           }}
         />
 
-        {/* 3D shadow depth layering for the product image */}
+        {/* The main background image */}
         <motion.img
           src={product.bgImage}
           alt={product.name}
-          className="w-full h-full object-cover z-10 select-none pointer-events-none group-hover:scale-[1.06] transition-transform duration-700 ease-out"
-          style={{ transform: 'translateZ(35px)' }}
-          animate={{ opacity: isHovered && product.image ? 0 : 1 }}
+          className="w-full h-full object-cover z-10 select-none pointer-events-none group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+          style={{ transform: 'translateZ(30px)' }}
           transition={{ duration: 0.4 }}
         />
 
-        {product.image && (
-          <motion.img
-            src={product.image}
-            alt={`${product.name} Hover View`}
-            className="absolute inset-0 w-full h-full object-cover z-15 select-none pointer-events-none"
-            style={{ transform: 'translateZ(35px)' }}
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1.06 : 1 }}
-            transition={{ duration: 0.4 }}
-          />
-        )}
+        {/* Premium Glassmorphic 3D Pop-out Arrow Button Overlay */}
+        <div 
+          className={`absolute inset-0 z-20 flex items-center justify-center pointer-events-none transition-all duration-500 bg-neutral-900/10 ${
+            isHovered ? 'opacity-100 backdrop-blur-[2px]' : 'opacity-0 backdrop-blur-none'
+          }`}
+        >
+          <div
+            className={`w-14 h-14 rounded-full bg-white/90 border border-white/40 shadow-lg flex items-center justify-center text-black transition-all duration-500 transform ${
+              isHovered ? 'scale-100 rotate-0' : 'scale-75 -rotate-45'
+            }`}
+            style={{ 
+              transform: isHovered ? 'translateZ(70px) scale(1)' : 'translateZ(0px) scale(0.75)',
+              transformStyle: 'preserve-3d'
+            }}
+          >
+            <ArrowUpRight className="w-6 h-6 stroke-[2]" />
+          </div>
+        </div>
         
         {/* Inner light glare sweep on hover */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-25" />
       </div>
 
       {/* Details Row Underneath Card */}
-      <div className="flex justify-between items-start px-2 py-1">
-        <h3 className="font-sans text-[15px] sm:text-[16px] font-semibold text-neutral-900 tracking-tight leading-snug group-hover:text-black flex items-center gap-1 flex-1 pr-4">
-          <span>{product.name}</span>
-          <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400 opacity-0 group-hover:opacity-100 group-hover:text-black transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0" />
+      <div className="flex flex-col items-center text-center w-full px-2 py-1 mt-1 space-y-0.5">
+        <h3 className="font-sans text-[15px] sm:text-[16px] font-semibold text-neutral-900 tracking-tight leading-tight group-hover:text-black">
+          {product.name.replace(/\s+(Moisturizing|Moisturising)\s+Gel\s+Bar$/i, '')}
         </h3>
-        <span className="font-sans text-[15px] sm:text-[16px] font-medium text-neutral-750 flex-shrink-0">
+        <span className="font-sans text-xs text-neutral-500 block leading-tight">
+          Moisturising Gel Bar
+        </span>
+        <span className="font-sans text-xs text-neutral-700 font-medium block leading-tight">
           100g
         </span>
       </div>
