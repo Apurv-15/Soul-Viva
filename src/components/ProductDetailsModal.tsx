@@ -23,35 +23,35 @@ interface ProductTheme {
 
 const PRODUCT_THEMES: Record<string, ProductTheme> = {
   'sea-minerals-menthol': {
-    topBanner: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&q=80&w=1200',
+    topBanner: '/Images/Sea_mineral_kv.jpeg',
     bottomBanner: '/Sea Minerals/bottom_banner.png',
     ean: '8908030764058',
     textColor: 'text-sky-900',
     subtextColor: 'text-sky-700',
   },
   'waterlily-pear': {
-    topBanner: '/Waterlily and Pear/Soap_packaging_in_luxury_scene_202606121132.jpeg',
+    topBanner: '/Images/Waterlily_kv.jpeg',
     bottomBanner: '/Waterlily and Pear/bottom_banner.png',
     ean: '8908030764003',
     textColor: 'text-emerald-950',
     subtextColor: 'text-emerald-800',
   },
   'cherry-blossom-strawberry': {
-    topBanner: 'https://images.unsplash.com/photo-1522748906645-95d8adfd52c7?auto=format&fit=crop&q=80&w=1200',
+    topBanner: '/Images/Cherry_blossom.jpeg',
     bottomBanner: '/Strawberry/bottom_banner.png',
     ean: '8908030764034',
     textColor: 'text-rose-955',
     subtextColor: 'text-rose-800',
   },
   'lavender-currant': {
-    topBanner: 'https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&q=80&w=1200',
+    topBanner: '/Images/Black_current_kv.jpeg',
     bottomBanner: '/Black Currant/bottom_banner.png',
     ean: '8908030764041',
     textColor: 'text-purple-900',
     subtextColor: 'text-purple-700',
   },
   'mandarin-peach': {
-    topBanner: '/Mandarin/Soap_packaging_in_luxury_scene_202606041325.jpeg',
+    topBanner: '/Images/Manadrin.png',
     bottomBanner: '/Mandarin/bottom_banner.png',
     ean: '8908030764027',
     textColor: 'text-orange-950',
@@ -143,6 +143,12 @@ function IngredientCard3D({ name, description, source }: IngredientCard3DProps) 
   );
 }
 
+const encodePath = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  return path.split('/').map(segment => encodeURIComponent(segment)).join('/');
+};
+
 interface ProductDetailsModalProps {
   product: Product;
   onClose: () => void;
@@ -188,9 +194,10 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
         // ~35px per second slow drift rate
         el.scrollLeft += delta * 35;
         
-        // Wrap around at the end
-        if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 1) {
-          el.scrollLeft = 0;
+        // Wrap around at 1/3 of the scrollWidth for a seamless infinite loop
+        const oneThird = el.scrollWidth / 3;
+        if (el.scrollLeft >= oneThird) {
+          el.scrollLeft = el.scrollLeft - oneThird;
         }
       }
       lastTime = time;
@@ -315,6 +322,12 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
   useEffect(() => {
     if (mediaList.length <= 1) return;
 
+    // If current media is a video, do not auto-advance with the timer.
+    // The video's onEnded event will trigger the transition instead.
+    if (mediaList[activeImageIndex]?.type === 'video') {
+      return;
+    }
+
     const interval = setInterval(() => {
       setActiveImageIndex((prev) => (prev + 1) % mediaList.length);
     }, 4500);
@@ -348,57 +361,29 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
         onOpenSearch={() => {}}
       />
 
-      {/* Ambient environmental background image or video with gradient fade-away (Only displayed for Strawberry variant) */}
-      {product.id === 'cherry-blossom-strawberry' && (
-        <div className="absolute inset-x-0 top-20 h-[45vh] md:h-[50vh] pointer-events-none overflow-hidden z-0 select-none">
-          {product.video ? (
-            <video
-              src={product.video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover object-center opacity-95"
-            />
-          ) : (
-            <img src={theme.topBanner} alt="" className="w-full h-full object-cover object-center opacity-95" />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FAF9F5] to-95%" />
-        </div>
-      )}
-
-      {/* Full-screen immersive background image for all variants (except Strawberry which has its own video banner) */}
-      {product.id !== 'cherry-blossom-strawberry' && (
-        <div className="absolute inset-x-0 top-0 h-screen pointer-events-none overflow-hidden z-0 select-none">
-          <img 
-            src={theme.topBanner} 
-            alt="" 
-            className="w-full h-full object-cover object-center opacity-20 md:opacity-30 transition-opacity duration-700" 
-          />
-          {/* Multi-stage linear and radial gradient to blend nicely with the cream page color (#FAF9F5) and preserve text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FAF9F5]/50 to-[#FAF9F5] to-95%" />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FAF9F5]/45 to-[#FAF9F5] to-80% hidden lg:block" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F5]/20 via-[#FAF9F5]/75 to-[#FAF9F5] lg:hidden" />
-        </div>
-      )}
+      {/* Full-screen immersive background image for all variants */}
+      <div className="absolute inset-x-0 top-0 h-screen pointer-events-none overflow-hidden z-0 select-none">
+        <img 
+          src={encodePath(theme.topBanner)} 
+          alt="" 
+          className="w-full h-full object-cover object-center opacity-20 md:opacity-30 transition-opacity duration-700" 
+        />
+        {/* Multi-stage linear and radial gradient to blend nicely with the cream page color (#FAF9F5) and preserve text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FAF9F5]/50 to-[#FAF9F5] to-95%" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FAF9F5]/45 to-[#FAF9F5] to-80% hidden lg:block" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F5]/20 via-[#FAF9F5]/75 to-[#FAF9F5] lg:hidden" />
+      </div>
 
       {/* Main Grid Content Container (Directly on page, full-screen, no card wrapper overlay) */}
-      <div className={`relative z-10 w-full max-w-[1440px] mx-auto pl-6 pr-6 lg:pl-8 lg:pr-20 pb-24 flex-1 ${
-        product.id === 'cherry-blossom-strawberry' 
-          ? 'pt-[35vh] md:pt-[40vh]' 
-          : 'pt-36 md:pt-44'
-      }`}>
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto pl-6 pr-6 lg:pl-8 lg:pr-20 pb-24 flex-1 pt-36 md:pt-44">
         <div id="product-details-grid" className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
           {/* Left Column Wrapper: Groups thumbnails and main image into a sticky element on desktop */}
           <div id="left-sticky-wrapper" className="lg:col-span-7 order-1 lg:order-1 w-full self-stretch">
-            <div id="left-sticky-column" className="flex flex-col gap-6 items-start w-full relative">
+            <div id="left-sticky-column" className="flex flex-col gap-5 items-start w-full relative">
               
-              {/* Large Main Interactive Showcase Image/Video */}
               <div className="w-full">
-                <div data-lag="0.5" className="relative w-full rounded-[24px] md:rounded-[36px] overflow-hidden transition-all duration-300 shadow-sm border border-neutral-200/20 bg-[#FAF9F5] aspect-[16/11.5]">
-                  {/* Premium abstract dynamic color glow based on product accent class */}
-                  <div className={`absolute inset-0 opacity-40 bg-gradient-to-tr ${product.accentClass}`} />
+                <div data-lag="0.5" className="relative w-full rounded-[24px] md:rounded-[32px] overflow-hidden transition-all duration-300 aspect-[4/3] md:aspect-[16/10] bg-white/30 border border-neutral-200/40">
                   
                   <AnimatePresence>
                     <motion.div
@@ -411,18 +396,27 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                     >
                       {mediaList[activeImageIndex]?.type === 'video' ? (
                         <video
-                          src={mediaList[activeImageIndex].url}
+                          src={encodePath(mediaList[activeImageIndex].url)}
                           autoPlay
-                          loop
+                          loop={false}
                           muted
                           playsInline
-                          className="w-full h-full object-cover transition-transform duration-500 scale-[1.02]"
+                          onEnded={() => {
+                            // After the video completes, let the user see the 2nd media item (index 1 in mediaList)
+                            setActiveImageIndex(1);
+                          }}
+                          className="w-full h-full object-cover transition-transform duration-500"
                         />
                       ) : (
                         <img
-                          src={mediaList[activeImageIndex]?.url}
+                          src={encodePath(mediaList[activeImageIndex]?.url)}
                           alt={`${product.name} large view`}
-                          className="w-full h-full object-cover transition-transform duration-500 scale-[1.02]"
+                          className={`w-full h-full transition-transform duration-500 ${
+                            mediaList[activeImageIndex]?.url.includes('/Images/') || 
+                            mediaList[activeImageIndex]?.url.includes('unsplash.com')
+                              ? 'object-cover'
+                              : 'object-contain p-1 md:p-2'
+                          }`}
                         />
                       )}
                     </motion.div>
@@ -438,21 +432,21 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               </div>
 
               {/* Horizontal list of interactive Thumbnails (Underneath main image) */}
-              <div data-lag="0.3" className="flex gap-3 overflow-x-auto pb-2 scrollbar-none select-none w-full">
+              <div data-lag="0.3" className="flex justify-center gap-3 overflow-x-auto pb-2 scrollbar-none select-none w-full mt-2">
                 {mediaList.map((media, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveImageIndex(idx)}
-                    className={`flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer relative bg-[#FAF9F5] ${
+                    className={`flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-xl overflow-hidden transition-all duration-300 cursor-pointer relative bg-white/50 ${
                       activeImageIndex === idx 
                         ? 'ring-2 ring-neutral-900/40 ring-offset-2 scale-95 opacity-100' 
-                        : 'opacity-70 hover:opacity-100 hover:scale-102 border border-neutral-200/10'
+                        : 'opacity-70 hover:opacity-100 hover:scale-102 border border-neutral-200/30'
                     }`}
                   >
                     {media.type === 'video' ? (
-                      <div className="w-full h-full relative">
+                      <div className="w-full h-full relative bg-neutral-100/50">
                         <video 
-                          src={media.url} 
+                          src={encodePath(media.url)} 
                           muted 
                           className="w-full h-full object-cover opacity-80" 
                         />
@@ -462,9 +456,9 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                       </div>
                     ) : (
                       <img 
-                        src={media.url} 
+                        src={encodePath(media.url)} 
                         alt={`Product view thumbnail ${idx + 1}`} 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover bg-neutral-100/50"
                       />
                     )}
                   </button>
@@ -475,7 +469,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
           </div>
 
           {/* COLUMN C: Premium Product Details & Controls Panel */}
-          <div className="lg:col-span-5 order-2 lg:order-2 space-y-8 text-left">
+          <div className="lg:col-span-5 order-2 lg:order-2 space-y-5 text-left">
             
             {/* Category / Subtitle */}
             <div className="space-y-2">
@@ -499,17 +493,17 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
             <div className="w-full h-[1px] bg-neutral-200/60" />
 
             {/* Catalog specifications */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               <span className="font-sans text-xs tracking-widest text-neutral-400 font-bold uppercase block">
                 Formulation Specifications
               </span>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white p-6 rounded-2xl border border-neutral-300 shadow-md hover:shadow-lg transition-shadow duration-300 text-left">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-white p-5 rounded-2xl border border-neutral-300 shadow-md hover:shadow-lg transition-shadow duration-300 text-left">
                   <span className="text-xs text-neutral-500 uppercase tracking-wider block font-bold">Available Casing</span>
                   <span className="font-sans text-base md:text-lg text-neutral-900 font-bold block mt-1.5">Frosted Glassmorphic Box</span>
                   <span className="font-sans text-xs text-neutral-650 block font-normal mt-1">Recyclable Slow Craft Pulp</span>
                 </div>
-                <div className="bg-white p-6 rounded-2xl border border-neutral-300 shadow-md hover:shadow-lg transition-shadow duration-300 text-left">
+                <div className="bg-white p-5 rounded-2xl border border-neutral-300 shadow-md hover:shadow-lg transition-shadow duration-300 text-left">
                   <span className="text-xs text-neutral-500 uppercase tracking-wider block font-bold">Standard Weight</span>
                   <span className="font-sans text-base md:text-lg text-neutral-900 font-bold block mt-1.5">{product.weight.split('/')[0]}</span>
                   <span className="font-sans text-xs text-neutral-650 block font-normal mt-1">Custom B2B batches available</span>
@@ -518,12 +512,12 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
             </div>
 
             {/* 3. Information & Ingredients Sections */}
-            <div className="space-y-8">
+            <div className="space-y-5">
               
               {/* Section: Claims Badges */}
               {product.claims && product.claims.length > 0 && (
-                <div className="border-b border-neutral-200/50 pb-6">
-                  <span className="font-sans text-xs tracking-widest text-neutral-400 font-bold uppercase block mb-3.5">
+                <div className="border-b border-neutral-200/50 pb-4">
+                  <span className="font-sans text-xs tracking-widest text-neutral-400 font-bold uppercase block mb-3">
                     Product Claims
                   </span>
                   <div className="flex flex-wrap gap-2">
@@ -537,11 +531,11 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               )}
 
               {/* Section 1: Information */}
-              <div className="border-b border-neutral-200/50 pb-6">
-                <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-4">
+              <div className="border-b border-neutral-200/50 pb-4">
+                <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
                   Technical Details
                 </h3>
-                <ul className="space-y-4 font-sans text-[16px] text-neutral-650 font-normal leading-[1.6]">
+                <ul className="space-y-2.5 font-sans text-[16px] text-neutral-650 font-normal leading-[1.6]">
                   <li className="flex items-center gap-3">
                     <span className="text-xl flex-shrink-0">🏷️</span>
                     <span>
@@ -606,14 +600,14 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               </div>
 
               {/* Section 2: Ingredients */}
-              <div className="border-b border-neutral-200/50 pb-6">
-                <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-4">
+              <div className="border-b border-neutral-200/50 pb-4">
+                <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
                   Ingredients
                 </h3>
 
                 {/* INCI Ingredients List */}
                 {product.inciIngredients && (
-                  <div className="space-y-3 pt-2">
+                  <div className="space-y-2 pt-2">
                     <span className="font-sans text-[13px] tracking-wider text-neutral-450 font-bold uppercase block">Full INCI Listing</span>
                     <p className="font-sans text-[16px] text-neutral-650 leading-[1.6] bg-[#FAF9F5] border border-neutral-200 rounded-xl p-5">
                       {product.inciIngredients}
@@ -628,7 +622,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
             </div>
 
             {/* Card Footer matching user mockup */}
-            <div className="flex justify-between items-center pt-6 border-t border-neutral-200/50 text-xs md:text-sm font-sans tracking-widest text-neutral-400 font-bold uppercase">
+            <div className="flex justify-between items-center pt-4 border-t border-neutral-200/50 text-xs md:text-sm font-sans tracking-widest text-neutral-400 font-bold uppercase">
               <span>Net weight: {product.weight}</span>
               <span>EAN: {product.eanBarcode || theme.ean}</span>
             </div>
@@ -655,20 +649,29 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
           onMouseLeave={() => setIsHovered(false)}
           className="flex gap-6 overflow-x-auto pb-6 hide-scrollbar -mx-6 px-6 md:-mx-0 md:px-0 select-none"
         >
-          {PRODUCTS.filter(p => p.id !== product.id).map((item) => (
+          {[
+            ...PRODUCTS.filter(p => p.id !== product.id),
+            ...PRODUCTS.filter(p => p.id !== product.id),
+            ...PRODUCTS.filter(p => p.id !== product.id)
+          ].map((item, idx) => (
             <div 
-              key={item.id}
+              key={`${item.id}-${idx}`}
               onClick={() => {
                 onProductSelect(item);
-                document.querySelector('.fixed')?.scrollTo({ top: 0, behavior: 'smooth' });
+                const modalContainer = document.querySelector('.fixed');
+                if (modalContainer) {
+                  modalContainer.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
               }}
-              className="flex-shrink-0 w-[280px] sm:w-[320px] bg-white rounded-3xl border border-neutral-200/40 p-5 hover:border-neutral-400/60 transition-all duration-300 cursor-pointer group"
+              className="flex-shrink-0 w-[280px] sm:w-[320px] bg-white rounded-3xl border border-neutral-200/40 overflow-hidden hover:border-neutral-400/60 transition-all duration-300 cursor-pointer group"
             >
               {/* Product Image Frame */}
-              <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-neutral-100/50 flex items-center justify-center">
+              <div className="relative aspect-[4/3] w-full bg-neutral-100/50 flex items-center justify-center">
                 <div className={`absolute inset-0 opacity-30 bg-gradient-to-tr ${item.accentClass}`} />
                 <img 
-                  src={item.bgImage} 
+                  src={encodePath(item.bgImage)} 
                   alt={item.name} 
                   className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-103"
                 />
@@ -676,7 +679,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               </div>
 
               {/* Info */}
-              <div className="mt-4 space-y-1">
+              <div className="p-5 space-y-1">
                 <span className="text-[9px] tracking-wider text-neutral-400 uppercase font-semibold block">
                   {item.subtitle}
                 </span>
@@ -769,7 +772,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
 
             {/* Left links */}
             <div className="flex flex-wrap items-center justify-center gap-2">
-              {['Legal', 'T&Cs', 'Safety', 'Cookies', 'Support', 'Admin Portal'].map((link) => (
+              {['Support', 'Admin Portal'].map((link) => (
                 <button
                   key={link}
                   onClick={() => {
@@ -785,8 +788,6 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                         setScreen('admin');
                       }
                       window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
-                      alert(`${link} documentation is detailed inside our B2B formulation handbook.`);
                     }
                   }}
                   className="border-2 border-[#DCD5C5] hover:border-black text-neutral-700 hover:text-black rounded-full px-5 py-2 text-[10px] md:text-xs uppercase tracking-wider font-bold transition-all duration-300 cursor-pointer bg-white/20 hover:bg-white/60"
@@ -797,24 +798,16 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
             </div>
 
             {/* Center Copyright & Back to Top */}
-            <div className="flex flex-col items-center justify-center gap-2">
+            <div className="flex flex-col items-center justify-center gap-2 md:ml-auto">
               <span className="text-[10px] md:text-xs tracking-wider uppercase font-semibold text-neutral-500 text-center">
                 &copy; 2026 Belleaves Private Limited.
               </span>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="text-[10px] md:text-xs tracking-widest uppercase text-purple-700 hover:text-purple-900 font-bold flex items-center gap-1 transition-colors cursor-pointer border-b border-transparent hover:border-purple-800 pb-0.5"
+                className="text-[10px] md:text-xs tracking-widest uppercase text-[#2D3A2F] hover:text-black font-bold flex items-center gap-1 transition-colors cursor-pointer border-b border-transparent hover:border-black pb-0.5"
               >
                 Back to top ↑
               </button>
-            </div>
-
-            {/* Right Authorized Badge */}
-            <div className="flex items-center gap-2.5 text-[10px] md:text-xs tracking-wider">
-              <span className="font-sans text-[10px] uppercase font-bold text-neutral-400">AUTHORIZED BY</span>
-              <span className="bg-[#EAD9EC] border border-[#DCBFDE]/50 text-[#6B2E76] px-4 py-2 rounded font-mono text-[10px] md:text-xs uppercase tracking-widest font-bold shadow-xs">
-                SOUL VIVA OPS
-              </span>
             </div>
 
           </div>
