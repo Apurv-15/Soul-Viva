@@ -1,7 +1,10 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
+
+const MotionImage = motion(Image);
 import {
   Sparkles,
   Droplet,
@@ -252,10 +255,13 @@ export default function App() {
                     {/* Background Images with 3D Parallax Hover Effect */}
                     <div className="absolute inset-0 z-0 select-none pointer-events-none">
                       {/* Base Image (subtle movement) */}
-                      <motion.img
+                      <MotionImage
                         src="/Hero_page/base.jpeg"
                         alt="Soul Viva Hero Base"
-                        className="w-full h-full object-cover"
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover"
                         style={{
                           x: baseTranslateX,
                           y: baseTranslateY,
@@ -266,10 +272,13 @@ export default function App() {
                       />
                       {/* Floating Overlay (moves with mouse + keyframe float) */}
                       <div className="absolute inset-0 w-full h-full animate-hero-float">
-                        <motion.img
+                        <MotionImage
                           src="/Hero_page/hover.png"
                           alt="Soul Viva Hero Overlay"
-                          className="w-full h-full object-cover origin-center"
+                          fill
+                          priority
+                          sizes="100vw"
+                          className="object-cover origin-center"
                           style={{
                             x: xSpring,
                             y: ySpring,
