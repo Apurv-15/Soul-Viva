@@ -1,7 +1,10 @@
 import React, { useState, useRef } from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Product } from '../types';
 import { ArrowUpRight } from 'lucide-react';
+
+const MotionImage = motion(Image);
 
 interface ProductCardProps {
   key?: string;
@@ -68,12 +71,13 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
         />
 
         {/* The main background image */}
-        <motion.img
+        <MotionImage
           src={product.bgImage}
           alt={product.name}
-          className="w-full h-full object-cover z-10 select-none pointer-events-none group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover z-10 select-none pointer-events-none group-hover:scale-[1.04] transition-transform duration-700 ease-out"
           style={{ transform: 'translateZ(30px)' }}
-          transition={{ duration: 0.4 }}
         />
 
         {/* Premium Glassmorphic 3D Pop-out Arrow Button Overlay */}
