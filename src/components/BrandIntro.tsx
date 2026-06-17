@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { Sparkles, Leaf, Droplet } from 'lucide-react';
+import { Sparkles, Leaf, Droplet, Facebook, Instagram, ChevronDown } from 'lucide-react';
 
 export default function BrandIntro() {
   const containerVariants = {
@@ -34,7 +34,7 @@ export default function BrandIntro() {
   return (
     <section 
       id="brand-intro-section" 
-      className="pt-12 pb-4 md:pt-16 md:pb-6 bg-[#FAF8F5] text-[#2D3A2F] relative overflow-hidden font-sans border-b border-[#E5DEC1]/30"
+      className="pt-12 pb-20 md:pt-16 md:pb-24 bg-[#FAF8F5] text-[#2D3A2F] relative overflow-hidden font-sans border-b border-[#E5DEC1]/30"
     >
       {/* Background Soft Organic Glows */}
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#E5DEC1]/10 rounded-full blur-3xl pointer-events-none animate-slow-pan" />
@@ -46,9 +46,9 @@ export default function BrandIntro() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center"
         >
-          {/* Left Column: Typographic Hook + Parallax Floating Visual */}
+          {/* Left Column: Typographic Hook */}
           <motion.div 
             variants={itemVariants} 
             className="lg:col-span-5 flex flex-col space-y-8 text-left"
@@ -70,52 +70,28 @@ export default function BrandIntro() {
                   Transforming everyday bathing into a ritual of renewal.
                 </p>
               </div>
-            </div>
 
-            {/* Premium Layered Floating Product Composition */}
-            <div className="relative w-full max-w-xl mx-auto lg:mx-0 pr-12 pb-12">
-              {/* BRAND ELEMENT WATERMARK (Droplet, gel-bar outline, botanical leaf) at 5% opacity */}
-              <div className="absolute inset-0 -z-10 opacity-5 flex items-center justify-center pointer-events-none transform scale-125 translate-x-4 text-[#2D3A2F]">
-                <svg width="450" height="450" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Droplet & Soap bar outline combination */}
-                  <path d="M200 40 C110 160 100 240 100 280 C100 335 145 380 200 380 C255 380 300 335 300 280 C300 240 290 160 200 40 Z" stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 4" />
-                  {/* Botanical leaf path in the center */}
-                  <path d="M200 120 C240 160 240 240 200 280 C160 240 160 160 200 120 Z" stroke="currentColor" strokeWidth="2.5" />
-                  <path d="M200 120 V280" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M200 160 C215 170 225 185 225 200" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M200 190 C185 200 175 215 175 230" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M200 220 C215 230 225 245 225 260" stroke="currentColor" strokeWidth="1.5" />
-                  {/* Concentric luxury circles/ripple lines */}
-                  <circle cx="200" cy="280" r="110" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 8" />
-                  <circle cx="200" cy="280" r="130" stroke="currentColor" strokeWidth="0.8" />
-                </svg>
+              {/* Social Links under the text */}
+              <div className="flex items-center gap-4 pt-4">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61590660097743"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-11 h-11 rounded-full border border-[#2D3A2F]/15 text-[#2D3A2F]/70 hover:text-black hover:border-black/50 transition-all duration-300 bg-white/40 hover:bg-white/90 shadow-2xs hover:shadow-xs"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://www.instagram.com/soulviva.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-11 h-11 rounded-full border border-[#2D3A2F]/15 text-[#2D3A2F]/70 hover:text-black hover:border-black/50 transition-all duration-300 bg-white/40 hover:bg-white/90 shadow-2xs hover:shadow-xs"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
               </div>
-
-              {/* Luxury Scene Background Frame */}
-              <div className="w-full aspect-[4/3] rounded-[32px] overflow-hidden border border-[#E5DEC1]/55 shadow-md">
-                <img 
-                  src="/Waterlily and Pear/Soap_packaging_in_luxury_scene_202606121132.jpeg" 
-                  alt="Soul Viva Luxury Packaging Scene" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-out"
-                />
-              </div>
-
-              {/* Floating 3D Packaging Box Overlay */}
-              <motion.div 
-                animate={{ y: [0, -12, 0] }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 5.5, 
-                  ease: "easeInOut" 
-                }}
-                className="absolute -bottom-6 -right-6 w-44 h-44 sm:w-56 sm:h-56 z-20 drop-shadow-[0_25px_40px_rgba(45,58,47,0.22)] pointer-events-none"
-              >
-                <img 
-                  src="/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png" 
-                  alt="Floating Waterlily & Pear Packaging"
-                  className="w-full h-full object-contain"
-                />
-              </motion.div>
             </div>
           </motion.div>
 
@@ -125,9 +101,9 @@ export default function BrandIntro() {
             className="lg:col-span-7 flex flex-col space-y-6 lg:ml-auto w-full"
           >
             {/* Story Card 1: Inspired by Nature */}
-            <div className="bg-white/80 border border-[#E5DEC1]/40 rounded-[28px] p-6 md:p-8 shadow-xs hover:shadow-md hover:bg-white hover:border-[#2D3A2F]/20 transition-all duration-300 flex flex-col space-y-4 text-left">
+            <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[28px] p-6 md:p-8 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-4 text-left">
               <div className="flex items-center gap-4">
-                <div className="p-3 rounded-2xl bg-[#F5F2EB] text-[#2D3A2F] border border-[#E5DEC1]/30">
+                <div className="p-3 rounded-2xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
                   <Leaf className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <h4 className="font-serif italic text-xl md:text-2xl text-[#2D3A2F] font-semibold">
@@ -140,9 +116,9 @@ export default function BrandIntro() {
             </div>
 
             {/* Story Card 2: Crafted for Skin */}
-            <div className="bg-white/80 border border-[#E5DEC1]/40 rounded-[28px] p-6 md:p-8 shadow-xs hover:shadow-md hover:bg-white hover:border-[#2D3A2F]/20 transition-all duration-300 flex flex-col space-y-4 text-left">
+            <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[28px] p-6 md:p-8 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-4 text-left">
               <div className="flex items-center gap-4">
-                <div className="p-3 rounded-2xl bg-[#F5F2EB] text-[#2D3A2F] border border-[#E5DEC1]/30">
+                <div className="p-3 rounded-2xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
                   <Droplet className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <h4 className="font-serif italic text-xl md:text-2xl text-[#2D3A2F] font-semibold">
@@ -155,9 +131,9 @@ export default function BrandIntro() {
             </div>
 
             {/* Story Card 3: Designed for Experience */}
-            <div className="bg-white/80 border border-[#E5DEC1]/40 rounded-[28px] p-6 md:p-8 shadow-xs hover:shadow-md hover:bg-white hover:border-[#2D3A2F]/20 transition-all duration-300 flex flex-col space-y-4 text-left">
+            <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[28px] p-6 md:p-8 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-4 text-left">
               <div className="flex items-center gap-4">
-                <div className="p-3 rounded-2xl bg-[#F5F2EB] text-[#2D3A2F] border border-[#E5DEC1]/30">
+                <div className="p-3 rounded-2xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
                   <Sparkles className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <h4 className="font-serif italic text-xl md:text-2xl text-[#2D3A2F] font-semibold">
@@ -169,6 +145,26 @@ export default function BrandIntro() {
               </p>
             </div>
           </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Scroll Down Indicator */}
+      <div 
+        onClick={() => {
+          const nextSection = document.getElementById('our-story-section') || document.getElementById('catalog-section');
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 cursor-pointer group bg-white/60 hover:bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-full border border-[#E5DEC1]/50 shadow-xs transition-all duration-300 active:scale-95 select-none"
+      >
+        <span className="text-[10px] tracking-[0.25em] text-[#2D3A2F] uppercase font-sans font-bold transition-colors duration-300">Scroll Down</span>
+        <motion.div
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          className="text-[#2D3A2F]"
+        >
+          <ChevronDown className="w-4 h-4" />
         </motion.div>
       </div>
     </section>
