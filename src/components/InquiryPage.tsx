@@ -719,29 +719,25 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
 
         </div>
 
-        {/* RIGHT COLUMN: Beautiful Forest Green Contact Details Panel */}
-        <div className="w-full lg:w-[38%] bg-[#2D3A2F] text-white relative overflow-hidden flex flex-col justify-between p-8 md:p-12 select-none min-h-[500px]">
-          
-          {/* Subtle Ambient light elements */}
-          <div className="absolute top-[10%] right-[-10%] w-72 h-72 bg-[#5EC7B6]/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-[10%] left-[-10%] w-72 h-72 bg-[#E5DEC1]/15 rounded-full blur-3xl pointer-events-none" />
+        {/* RIGHT COLUMN: Beautiful Premium Cream Contact Details Panel */}
+        <div className="w-full lg:w-[38%] bg-[#F5F2EB] text-[#2D3A2F] border-l border-[#E5DEC1]/60 relative overflow-hidden flex flex-col justify-between p-8 md:p-12 select-none min-h-[500px]">
 
           {/* Top details block */}
           <div className="space-y-8 relative z-10 text-left">
             <div className="space-y-2">
-              <span className="font-mono text-[9px] uppercase tracking-widest text-[#5EC7B6] font-bold">Quick Channels</span>
-              <h3 className="font-serif text-2xl md:text-3xl font-normal leading-tight text-white">Contact Details</h3>
+              <span className="font-mono text-[9px] uppercase tracking-widest text-[#2D3A2F]/80 font-bold">Quick Channels</span>
+              <h3 className="font-serif text-2xl md:text-3xl font-normal leading-tight text-[#2D3A2F]">Contact Details</h3>
             </div>
 
             <div className="space-y-6">
               {/* Detail 1 */}
               <div className="flex gap-4 items-start">
-                <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-emerald-300">
+                <div className="p-3 bg-white border border-[#E5DEC1]/60 rounded-xl text-[#2D3A2F]">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="block font-sans text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Email Address</span>
-                  <a href="mailto:reach.us@soulviva.in" className="font-sans text-sm font-semibold text-white hover:text-[#5EC7B6] transition-colors block mt-0.5 border-b border-white/10 hover:border-[#5EC7B6] w-fit">
+                  <span className="block font-sans text-[10px] text-neutral-500 font-bold uppercase tracking-wider">Email Address</span>
+                  <a href="mailto:reach.us@soulviva.in" className="font-sans text-sm font-semibold text-[#2D3A2F] hover:text-black transition-colors block mt-0.5 border-b border-[#2D3A2F]/20 hover:border-black w-fit">
                     reach.us@soulviva.in
                   </a>
                 </div>
@@ -749,12 +745,12 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
 
               {/* Detail 2 */}
               <div className="flex gap-4 items-start">
-                <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-[#ffd653]">
+                <div className="p-3 bg-white border border-[#E5DEC1]/60 rounded-xl text-[#2D3A2F]">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="block font-sans text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Phone / WhatsApp</span>
-                  <a href="tel:+919773778579" className="font-sans text-sm font-semibold text-white hover:text-[#ffd653] transition-colors block mt-0.5">
+                  <span className="block font-sans text-[10px] text-neutral-500 font-bold uppercase tracking-wider">Phone / WhatsApp</span>
+                  <a href="tel:+919773778579" className="font-sans text-sm font-semibold text-[#2D3A2F] hover:text-black transition-colors block mt-0.5">
                     (+91) 97737 78579
                   </a>
                 </div>
@@ -762,12 +758,12 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
 
               {/* Detail 3 */}
               <div className="flex gap-4 items-start">
-                <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-emerald-300">
+                <div className="p-3 bg-white border border-[#E5DEC1]/60 rounded-xl text-[#2D3A2F]">
                   <Globe className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="block font-sans text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Website URL</span>
-                  <a href="https://www.soulviva.in" target="_blank" rel="noopener noreferrer" className="font-sans text-sm font-semibold text-white hover:text-[#5EC7B6] transition-colors block mt-0.5 border-b border-white/10 hover:border-[#5EC7B6] w-fit">
+                  <span className="block font-sans text-[10px] text-neutral-500 font-bold uppercase tracking-wider">Website URL</span>
+                  <a href="https://www.soulviva.in" target="_blank" rel="noopener noreferrer" className="font-sans text-sm font-semibold text-[#2D3A2F] hover:text-black transition-colors block mt-0.5 border-b border-[#2D3A2F]/20 hover:border-black w-fit">
                     www.soulviva.in
                   </a>
                 </div>
@@ -775,12 +771,12 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
 
               {/* Detail 4 */}
               <div className="flex gap-4 items-start">
-                <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-[#fcd116]">
+                <div className="p-3 bg-white border border-[#E5DEC1]/60 rounded-xl text-[#2D3A2F]">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="block font-sans text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Office Address</span>
-                  <span className="font-sans text-xs font-light text-neutral-200 block mt-0.5 leading-relaxed">
+                  <span className="block font-sans text-[10px] text-neutral-500 font-bold uppercase tracking-wider">Office Address</span>
+                  <span className="font-sans text-xs font-light text-neutral-700 block mt-0.5 leading-relaxed">
                     D 9, Ground Floor, Sector 3,<br />
                     Noida, Uttar Pradesh 201301, India
                   </span>
@@ -790,12 +786,12 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
           </div>
 
           {/* Bottom details block */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-5 text-left relative z-10 space-y-2 mt-8">
-            <div className="flex items-center gap-2 text-emerald-300">
+          <div className="bg-white border border-[#E5DEC1]/60 rounded-2xl p-5 text-left relative z-10 space-y-2 mt-8">
+            <div className="flex items-center gap-2 text-[#2D3A2F]">
               <Clock className="w-4 h-4" />
               <span className="font-sans text-[10px] font-bold uppercase tracking-widest">Response Guarantee</span>
             </div>
-            <p className="font-sans text-xs text-neutral-300 font-light leading-relaxed">
+            <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed">
               We respond to all verified trade buyer enquiries within 1–2 business days (IST).
             </p>
           </div>
