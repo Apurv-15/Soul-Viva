@@ -4,6 +4,7 @@
  */
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data';
@@ -363,9 +364,12 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
 
       {/* Full-screen immersive background image for all variants */}
       <div className="absolute inset-x-0 top-0 h-screen pointer-events-none overflow-hidden z-0 select-none">
-        <img 
+        <Image 
           src={encodePath(theme.topBanner)} 
           alt="" 
+          fill
+          priority
+          sizes="100vw"
           className="w-full h-full object-cover object-center opacity-20 md:opacity-30 transition-opacity duration-700" 
         />
         {/* Multi-stage linear and radial gradient to blend nicely with the cream page color (#FAF9F5) and preserve text readability */}
@@ -408,9 +412,11 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                           className="w-full h-full object-cover transition-transform duration-500"
                         />
                       ) : (
-                        <img
+                        <Image
                           src={encodePath(mediaList[activeImageIndex]?.url)}
                           alt={`${product.name} large view`}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 60vw"
                           className={`w-full h-full transition-transform duration-500 ${
                             mediaList[activeImageIndex]?.url.includes('/Images/') || 
                             mediaList[activeImageIndex]?.url.includes('unsplash.com')
@@ -455,10 +461,12 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                         </div>
                       </div>
                     ) : (
-                      <img 
+                      <Image 
                         src={encodePath(media.url)} 
                         alt={`Product view thumbnail ${idx + 1}`} 
-                        className="w-full h-full object-cover bg-neutral-100/50"
+                        fill
+                        sizes="(max-width: 768px) 48px, 64px"
+                        className="object-cover bg-neutral-100/50"
                       />
                     )}
                   </button>
@@ -670,9 +678,11 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               {/* Product Image Frame */}
               <div className="relative aspect-[4/3] w-full bg-neutral-100/50 flex items-center justify-center">
                 <div className={`absolute inset-0 opacity-30 bg-gradient-to-tr ${item.accentClass}`} />
-                <img 
+                <Image 
                   src={encodePath(item.bgImage)} 
                   alt={item.name} 
+                  fill
+                  sizes="(max-width: 768px) 280px, 320px"
                   className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-103"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
