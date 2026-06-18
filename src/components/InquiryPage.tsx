@@ -705,17 +705,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
             </AnimatePresence>
           </div>
 
-          {/* Simple Clean footer anchor link */}
-          <div className="pt-6 border-t border-stone-200/40 text-center md:text-left self-stretch mt-8">
-            {onBackToHome && (
-              <button
-                onClick={onBackToHome}
-                className="font-sans text-xs font-bold text-neutral-400 hover:text-neutral-700 transition-colors cursor-pointer block md:inline"
-              >
-                &larr; Return to Cosmetic Formulation & About Us
-              </button>
-            )}
-          </div>
+
 
         </div>
 

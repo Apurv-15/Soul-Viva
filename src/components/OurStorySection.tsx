@@ -18,16 +18,11 @@ export default function OurStorySection() {
         
         {/* Header Block */}
         <div className="text-center md:text-left space-y-4">
-          <div className="flex items-center justify-center md:justify-start gap-3">
-            <span className="w-8 h-[1px] bg-[#2D3A2F]" />
-            <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-[#2D3A2F] uppercase">
-              Why Us
-            </span>
-          </div>
+
           <h2 className="font-serif text-[38px] sm:text-[48px] md:text-[56px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
             WHY US — THE SOUL VIVA DIFFERENCE
           </h2>
-          <p className="font-sans text-sm md:text-base text-neutral-500 font-light max-w-xl leading-relaxed">
+          <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light max-w-xl leading-[1.8]">
             More than a soap. A feeling of freshness.
           </p>
         </div>
@@ -39,13 +34,11 @@ export default function OurStorySection() {
           <div className="col-span-1 md:col-span-6 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 md:p-10 flex flex-col sm:flex-row gap-8 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300">
             <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
               <div className="space-y-4">
-                <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
-                  01 — Extracts
-                </span>
+
                 <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                   100% <br /><span className="italic">Natural Extracts</span>
                 </h3>
-                <p className="font-sans text-xs md:text-sm text-neutral-600 font-light leading-relaxed">
+                <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-[1.8]">
                   Every variant contains real botanical extracts — not artificial fragrance alone. Shea butter, cherry blossom, waterlily, sea minerals, black currant, mandarin — each ingredient selected not just for its name, but for its active skin-care benefit. Real botanicals, real results.
                 </p>
               </div>
@@ -69,13 +62,11 @@ export default function OurStorySection() {
           <div className="col-span-1 md:col-span-6 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 md:p-10 flex flex-col sm:flex-row gap-8 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
             <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
               <div className="space-y-4">
-                <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
-                  02 — Design
-                </span>
+
                 <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                   Sensory-First <br /><span className="italic">Design</span>
                 </h3>
-                <p className="font-sans text-xs md:text-sm text-neutral-600 font-light leading-relaxed">
+                <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-[1.8]">
                   Each variant is built around an emotional story — a feeling, a scene, an escape. The fragrance, the colour, the name, and the key visual all work together to create an experience that goes far beyond the functional. Soul Viva doesn't just clean skin. It transports the person using it.
                 </p>
               </div>
@@ -98,13 +89,11 @@ export default function OurStorySection() {
           {/* Card 3: 03 — Glycerin-Rich Gel Formula (Col Span 4 - Row 2 Left) */}
           <div className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
             <div className="space-y-4">
-              <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
-                03 — Gel Formula
-              </span>
+
               <h3 className="font-serif text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Glycerin-Rich <br /><span className="italic">Gel Formula</span>
               </h3>
-              <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed">
+              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-[1.8]">
                 Unlike conventional soaps that strip the skin, Soul Viva's transparent glycerin base acts as a humectant — drawing moisture into the skin with every wash. The result is skin that feels soft and hydrated, not dry and tight. This is the fundamental difference between a bathing bar that merely cleans and one that actively cares.
               </p>
             </div>
@@ -117,13 +106,11 @@ export default function OurStorySection() {
           {/* Card 4: 04 — Premium Shelf Presence (Col Span 4 - Row 2 Center) */}
           <div className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
             <div className="space-y-4">
-              <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
-                04 — Packaging
-              </span>
+
               <h3 className="font-serif text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Premium <br /><span className="italic">Shelf Presence</span>
               </h3>
-              <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed">
+              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-[1.8]">
                 Each bar is individually flow-wrapped and presented in a full-colour printed monocarton with matte lamination and Spot UV finishing. The packaging is designed to command attention on shelf — with bold colour, considered design, and a visual identity that stands far apart from commodity soap.
               </p>
             </div>
@@ -139,13 +126,11 @@ export default function OurStorySection() {
           {/* Card 5: 06 — Export-Ready from Day One (Col Span 4 - Row 2 Right) */}
           <div className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 text-neutral-900 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
             <div className="space-y-4">
-              <span className="inline-block bg-white text-[#2D3A2F] px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
-                06 — Global
-              </span>
+
               <h3 className="font-serif text-2xl font-normal tracking-tight leading-tight text-[#2D3A2F]">
                 Export-Ready <br /><span className="italic text-stone-700">from Day One</span>
               </h3>
-              <p className="font-sans text-xs text-neutral-600 font-light leading-relaxed">
+              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-[1.8]">
                 Manufactured by a certified contract partner with international export capability. GS1 barcodes registered via GS1 India DataKart. Compliant labelling for international markets. Soul Viva is built to be a global brand.
               </p>
             </div>
@@ -171,15 +156,12 @@ export default function OurStorySection() {
         </div>
 
         {/* COMMERCIAL & EXPORT SPECIFICATIONS MODULE */}
-        <div className="mt-12 space-y-8 pt-8 border-t border-stone-200/50">
-          <div className="text-center md:text-left space-y-3">
-            <span className="font-sans text-[10px] tracking-[0.3em] font-bold text-neutral-400 uppercase block select-none">
-              B2B OPERATIONS & SPECIFICATIONS
-            </span>
-            <h2 className="font-sans text-2xl md:text-4xl font-light tracking-tight text-[#2D3A2F] leading-none">
+        <div className="mt-8 space-y-4 pt-8 border-t border-stone-200/50">
+          <div className="text-center md:text-left space-y-4">
+            <h2 className="font-serif text-[38px] sm:text-[48px] md:text-[56px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Commercial & Export Information
             </h2>
-            <p className="font-sans text-xs md:text-sm text-neutral-500 font-light max-w-2xl leading-relaxed">
+            <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light max-w-xl leading-[1.8]">
               Direct access to our micro-batch contract logistics, certified standards, and regulatory documentation.
             </p>
           </div>
@@ -189,14 +171,11 @@ export default function OurStorySection() {
             
             {/* Card C: Export Compliance & Regulatory Standards */}
             <div className="bg-[#FAF8F5] border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-12 shadow-sm space-y-6">
-              <div className="space-y-2 text-left">
-                <span className="inline-block bg-white text-[#2D3A2F] border border-[#E5DEC1]/60 px-3.5 py-1 rounded-full text-[9px] uppercase tracking-widest font-bold">
-                  Regulatory Standards
-                </span>
-                <h3 className="font-sans text-xl md:text-2xl font-normal text-neutral-850">
-                  Export Compliance — <span className="italic">Built for International Markets</span>
+              <div className="space-y-4 text-left">
+                <h3 className="font-serif text-[26px] sm:text-[34px] md:text-[40px] font-normal leading-[1.2] text-[#2D3A2F] tracking-tight uppercase">
+                  Export Compliance — Built for International Markets
                 </h3>
-                <p className="font-sans text-xs md:text-sm text-neutral-500 font-light max-w-4xl leading-relaxed">
+                <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light max-w-4xl leading-[1.8]">
                   Soul Viva is designed and documented for export from India. Every element — from labelling to barcoding to ingredient declarations — is built to meet the requirements of international trade partners and regulatory authorities.
                 </p>
               </div>
@@ -275,16 +254,15 @@ export default function OurStorySection() {
 
           {/* Section: Manufacturing Facilities Allocation Details */}
           <div className="bg-[#FAF8F5] border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-12 text-left space-y-8">
-            <div className="space-y-4">
-              <span className="font-sans text-[10px] tracking-widest font-bold text-neutral-400 uppercase block">Production Infrastructure</span>
-              <h3 className="font-sans text-xl md:text-3xl font-light text-[#2D3A2F]">
-                Production Facility — <span className="italic">Crafted by Experts in Soap Making</span>
+            <div className="space-y-6">
+              <h3 className="font-serif text-[26px] sm:text-[34px] md:text-[40px] font-normal leading-[1.2] text-[#2D3A2F] tracking-tight uppercase">
+                Production Facility — Crafted by Experts in Soap Making
               </h3>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-2 text-sm md:text-base">
-                <p className="font-sans text-neutral-600 leading-relaxed">
+              <div className="space-y-4 max-w-4xl font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-[1.8]">
+                <p>
                   Soul Viva is manufactured by a certified contract manufacturing partner in India — specialists in glycerin-based soap and gel bar production who supply some of India's most well-known personal care brands.
                 </p>
-                <p className="font-sans text-neutral-600 leading-relaxed">
+                <p>
                   The manufacturing partner has extensive expertise in transparent glycerin soap technology — the core format of Soul Viva — and is equipped to handle the precision required for consistent colour, fragrance load, and bar weight across all six variants.
                 </p>
               </div>
