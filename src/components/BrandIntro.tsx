@@ -66,7 +66,7 @@ export default function BrandIntro() {
             </div>
 
             {/* Editorial Copy */}
-            <div className="space-y-8 font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 leading-[1.8] font-light">
+            <div className="space-y-8 font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 leading-relaxed font-light">
               <p>
                 Every day, millions of people step into the shower for a moment that is entirely their own. Soul Viva is built around that moment — transforming a daily routine into a sensory escape inspired by nature and emotion.
               </p>

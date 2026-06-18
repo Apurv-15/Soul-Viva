@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
 
-const MotionImage = motion(Image);
+const MotionImage = motion.create(Image);
 import {
   Sparkles,
   Droplet,

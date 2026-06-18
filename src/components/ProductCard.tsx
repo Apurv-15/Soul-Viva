@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { Product } from '../types';
 import { ArrowUpRight } from 'lucide-react';
 
-const MotionImage = motion(Image);
+const MotionImage = motion.create(Image);
 
 interface ProductCardProps {
   key?: string;
