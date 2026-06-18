@@ -26,6 +26,7 @@ import {
 import { Product } from '../src/types';
 import { PRODUCTS } from '../src/data';
 import LoadingScreen from '../src/components/LoadingScreen';
+import CinematicIntro from '../src/components/CinematicIntro';
 import Header from '../src/components/Header';
 import ProductCard from '../src/components/ProductCard';
 import ProductDetailsModal from '../src/components/ProductDetailsModal';
@@ -49,8 +50,25 @@ if (typeof window !== 'undefined') {
 export default function App() {
   // Screens state
   const [loading, setLoading] = useState(true);
+  const [cinematicActive, setCinematicActive] = useState(false);
+  const [introVideoUrl, setIntroVideoUrl] = useState('/Video/Lavender.mp4');
+
+  const handleLoadingComplete = () => {
+    setLoading(false);
+  };
   const [currentScreen, setScreen] = useState<'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin'>('home');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [pendingProduct, setPendingProduct] = useState<Product | null>(null);
+
+  const handleProductClick = (p: Product) => {
+    if (p.video) {
+      setIntroVideoUrl(p.video);
+      setPendingProduct(p);
+      setCinematicActive(true);
+    } else {
+      setSelectedProduct(p);
+    }
+  };
   const [storyProduct, setStoryProduct] = useState<Product | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [inquiryOpen, setInquiryOpen] = useState(false);
@@ -216,7 +234,7 @@ export default function App() {
       {/* Superb animated luxury Loader */}
       <AnimatePresence>
         {loading && (
-          <LoadingScreen onLoadingComplete={() => setLoading(false)} />
+          <LoadingScreen onLoadingComplete={handleLoadingComplete} />
         )}
       </AnimatePresence>
 
@@ -358,7 +376,7 @@ export default function App() {
                           <ProductCard
                             key={p.id}
                             product={p}
-                            onSelect={setSelectedProduct}
+                            onSelect={handleProductClick}
                           />
                         ))}
                       </div>
@@ -387,7 +405,7 @@ export default function App() {
                         <ProductCard
                           key={p.id}
                           product={p}
-                          onSelect={setSelectedProduct}
+                          onSelect={handleProductClick}
                         />
                       ))}
                     </div>
@@ -560,13 +578,17 @@ export default function App() {
               <ProductDetailsModal
                 product={selectedProduct}
                 onClose={() => setSelectedProduct(null)}
-                onProductSelect={setSelectedProduct}
+                onProductSelect={handleProductClick}
                 onInquire={() => {
                   setSelectedProduct(null);
                   setScreen('inquire');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 setScreen={setScreen}
+                onTriggerCinematicIntro={(videoUrl) => {
+                  setIntroVideoUrl(videoUrl);
+                  setCinematicActive(true);
+                }}
               />
             )}
           </AnimatePresence>
@@ -593,7 +615,7 @@ export default function App() {
         {searchOpen && (
           <SearchModal
             onClose={() => setSearchOpen(false)}
-            onSelectProduct={setSelectedProduct}
+            onSelectProduct={handleProductClick}
           />
         )}
 
@@ -604,6 +626,21 @@ export default function App() {
           />
         )}
       </AnimatePresence>
+
+      {cinematicActive && (
+        <CinematicIntro
+          videoUrl={introVideoUrl}
+          onRevealStart={() => {
+            if (pendingProduct) {
+              setSelectedProduct(pendingProduct);
+            }
+          }}
+          onComplete={() => {
+            setCinematicActive(false);
+            setPendingProduct(null);
+          }}
+        />
+      )}
 
     </div>
   );

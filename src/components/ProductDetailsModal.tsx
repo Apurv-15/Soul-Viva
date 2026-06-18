@@ -156,9 +156,10 @@ interface ProductDetailsModalProps {
   onProductSelect: (product: Product) => void;
   onInquire: () => void;
   setScreen?: (screen: 'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin') => void;
+  onTriggerCinematicIntro?: (videoUrl: string) => void;
 }
 
-export default function ProductDetailsModal({ product, onClose, onProductSelect, onInquire, setScreen }: ProductDetailsModalProps) {
+export default function ProductDetailsModal({ product, onClose, onProductSelect, onInquire, setScreen, onTriggerCinematicIntro }: ProductDetailsModalProps) {
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [isFavorited, setIsFavorited] = useState<boolean>(false);
   
@@ -399,18 +400,32 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                       className="absolute inset-0 w-full h-full flex items-center justify-center z-10"
                     >
                       {mediaList[activeImageIndex]?.type === 'video' ? (
-                        <video
-                          src={encodePath(mediaList[activeImageIndex].url)}
-                          autoPlay
-                          loop={false}
-                          muted
-                          playsInline
-                          onEnded={() => {
-                            // After the video completes, let the user see the 2nd media item (index 1 in mediaList)
-                            setActiveImageIndex(1);
+                        <div 
+                          className="w-full h-full relative cursor-pointer group"
+                          onClick={() => {
+                            if (onTriggerCinematicIntro) {
+                              onTriggerCinematicIntro(mediaList[activeImageIndex].url);
+                            }
                           }}
-                          className="w-full h-full object-cover transition-transform duration-500"
-                        />
+                        >
+                          <video
+                            src={encodePath(mediaList[activeImageIndex].url)}
+                            autoPlay
+                            loop={false}
+                            muted
+                            playsInline
+                            onEnded={() => {
+                              // After the video completes, let the user see the 2nd media item (index 1 in mediaList)
+                              setActiveImageIndex(1);
+                            }}
+                            className="w-full h-full object-cover transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition-colors duration-300">
+                            <div className="p-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white scale-100 group-hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg">
+                              <Play className="w-8 h-8 fill-white text-white translate-x-[2px]" />
+                            </div>
+                          </div>
+                        </div>
                       ) : (
                         <Image
                           src={encodePath(mediaList[activeImageIndex]?.url)}
@@ -442,7 +457,13 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                 {mediaList.map((media, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setActiveImageIndex(idx)}
+                    onClick={() => {
+                      if (media.type === 'video' && onTriggerCinematicIntro) {
+                        onTriggerCinematicIntro(media.url);
+                      } else {
+                        setActiveImageIndex(idx);
+                      }
+                    }}
                     className={`flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-xl overflow-hidden transition-all duration-300 cursor-pointer relative bg-white/50 ${
                       activeImageIndex === idx 
                         ? 'ring-2 ring-neutral-900/40 ring-offset-2 scale-95 opacity-100' 
