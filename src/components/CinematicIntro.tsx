@@ -41,6 +41,9 @@ export default function CinematicIntro({ videoUrl, onComplete, onRevealStart }: 
     }, 200);
   };
 
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerStartedRef = useRef(false);
+
   // Lock scroll on mount
   useEffect(() => {
     const originalHtmlOverflow = document.documentElement.style.overflow;
@@ -49,16 +52,21 @@ export default function CinematicIntro({ videoUrl, onComplete, onRevealStart }: 
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 
-    const timer = setTimeout(() => {
-      handleRevealRef.current();
-    }, 3000);
-
     return () => {
       document.documentElement.style.overflow = originalHtmlOverflow;
       document.body.style.overflow = originalBodyOverflow;
-      clearTimeout(timer);
+      if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
+
+  const handleVideoPlaying = () => {
+    if (!timerStartedRef.current) {
+      timerStartedRef.current = true;
+      timerRef.current = setTimeout(() => {
+        handleRevealRef.current();
+      }, 3000);
+    }
+  };
 
   const handleVideoEnded = () => {
     handleRevealRef.current();
@@ -92,6 +100,7 @@ export default function CinematicIntro({ videoUrl, onComplete, onRevealStart }: 
           autoPlay
           playsInline
           className="w-full h-full object-cover scale-100"
+          onPlaying={handleVideoPlaying}
           onEnded={handleVideoEnded}
           style={{ pointerEvents: 'none' }}
         />
