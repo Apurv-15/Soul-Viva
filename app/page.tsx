@@ -329,18 +329,18 @@ export default function App() {
                   <BrandIntro />
 
                   {/* COMPLETE RITUAL RANGE (CATALOG GRID SECTION) */}
-                  <section id="catalog-section" className="pt-2 pb-12 md:pt-4 md:pb-16 bg-[#F5F2EB]/50">
-                    <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 space-y-12">
+                  <section id="catalog-section" className="pt-4 pb-16 md:pt-8 md:pb-24 bg-[#F5F2EB]/50">
+                    <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col items-center">
 
                       {/* Header Title in large font */}
-                      <div className="text-center max-w-4xl mx-auto py-4">
+                      <div className="text-center w-full mb-16 md:mb-24">
                         <h2 className="font-serif text-[42px] sm:text-[56px] md:text-[68px] lg:text-[76px] font-normal leading-tight text-[#2D3A2F] tracking-tight">
                           Our Collection
                         </h2>
                       </div>
 
                       {/* Catalog core grid showing all soaps */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 w-full">
                         {PRODUCTS.map((p) => (
                           <ProductCard
                             key={p.id}
@@ -358,18 +358,18 @@ export default function App() {
 
               {/* SCREEN 2: Catalog Range Grid */}
               {currentScreen === 'range' && (
-                <section id="catalog-section" className="pt-2 pb-12 md:pt-4 md:pb-16 bg-[#F5F2EB]/50">
-                  <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 space-y-12">
+                <section id="catalog-section" className="pt-4 pb-16 md:pt-8 md:pb-24 bg-[#F5F2EB]/50">
+                  <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col items-center">
 
                     {/* Header Title in large font */}
-                    <div className="text-center max-w-4xl mx-auto py-4">
+                    <div className="text-center w-full mb-16 md:mb-24">
                       <h2 className="font-serif text-[42px] sm:text-[56px] md:text-[68px] lg:text-[76px] font-normal leading-tight text-[#2D3A2F] tracking-tight">
                         Our Collection
                       </h2>
                     </div>
 
                     {/* Catalog core grid showing all soaps */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 w-full">
                       {PRODUCTS.map((p) => (
                         <ProductCard
                           key={p.id}

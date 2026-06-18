@@ -34,7 +34,7 @@ export default function BrandIntro() {
   return (
     <section 
       id="brand-intro-section" 
-      className="min-h-screen w-full flex items-center justify-center pt-28 pb-28 md:pt-36 md:pb-36 bg-[#FAF8F5] text-[#2D3A2F] relative overflow-hidden font-sans border-b border-[#E5DEC1]/30"
+      className="min-h-fit w-full flex items-center justify-center pt-16 pb-12 md:pt-24 md:pb-16 bg-[#FAF8F5] text-[#2D3A2F] relative overflow-hidden font-sans border-b border-[#E5DEC1]/30"
     >
       {/* Background Soft Organic Glows */}
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#E5DEC1]/10 rounded-full blur-3xl pointer-events-none animate-slow-pan" />
