@@ -75,9 +75,10 @@ export default function Header({
         <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 z-40">
           <button
             onClick={() => navigateTo('home')}
-            className="font-sans text-[21px] tracking-[0.25em] font-light text-black cursor-pointer select-none hover:opacity-80 transition-opacity"
+            className="select-none hover:opacity-80 transition-opacity flex items-center justify-center"
           >
-            SOUL VIVA
+            <span className="font-serif font-normal text-[20px] tracking-tight uppercase text-black">SOUL</span>
+            <span className="font-sans font-light text-[20px] tracking-wide uppercase text-black ml-[0.25em]">VIVA</span>
           </button>
         </div>
 
@@ -127,7 +128,7 @@ export default function Header({
               <Facebook className="w-4.5 h-4.5" />
             </a>
             <a
-              href="https://www.instagram.com/soulviva.in/"
+              href="https://www.instagram.com/soulvivaskin/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-600 hover:text-black transition-colors"
@@ -179,7 +180,7 @@ export default function Header({
                 <span>Facebook</span>
               </a>
               <a
-                href="https://www.instagram.com/soulviva.in/"
+                href="https://www.instagram.com/soulvivaskin/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-neutral-700 hover:text-black transition-colors"
