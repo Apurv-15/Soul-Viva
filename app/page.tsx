@@ -469,10 +469,6 @@ export default function App() {
                     <span className="w-2 h-2 rounded-full bg-neutral-500"></span>
                     Udyam MSME Registered
                   </li>
-                  <li className="flex items-center gap-2 font-medium text-emerald-800">
-                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                    Dermatologically Tested
-                  </li>
                 </ul>
               </div>
 
@@ -483,7 +479,7 @@ export default function App() {
                   Soul Viva is a brand of Belleaves Private Limited.
                 </p>
                 <p className="leading-relaxed font-normal text-neutral-700">
-                  Soul Viva is a registered trademark of Belleaves Pvt. Ltd.
+                  Soul Viva is a trademark of Belleaves Pvt. Ltd.
                 </p>
                 <p className="leading-relaxed font-normal text-neutral-700">
                   Manufactured in India. All rights reserved.

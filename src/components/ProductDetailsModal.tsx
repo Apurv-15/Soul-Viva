@@ -494,7 +494,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
             <div className="w-full h-[1px] bg-neutral-200/60" />
 
             {/* Description text */}
-            <p className="font-sans text-[18px] text-neutral-650 font-normal leading-[1.7]">
+            <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-[1.8]">
               {product.longDescription || product.description}
             </p>
 
@@ -711,8 +711,9 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
 
           {/* Giant Brand Logo Text */}
           <div className="w-full text-center py-6">
-            <h2 className="font-sans font-extrabold text-[12vw] tracking-tighter leading-none text-[#1C1B1B] m-0 select-none uppercase">
-              SOUL VIVA
+            <h2 className="m-0 select-none text-[12vw] leading-none text-[#1C1B1B]">
+              <span className="font-serif font-normal tracking-tight uppercase">SOUL</span>
+              <span className="font-sans font-light tracking-wide uppercase ml-[0.25em]">VIVA</span>
             </h2>
           </div>
 
@@ -755,10 +756,6 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                   <span className="w-2 h-2 rounded-full bg-neutral-500"></span>
                   Udyam MSME Registered
                 </li>
-                <li className="flex items-center gap-2 font-medium text-emerald-800">
-                  <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                  Dermatologically Tested
-                </li>
               </ul>
             </div>
 
@@ -769,7 +766,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                 Soul Viva is a brand of Belleaves Private Limited.
               </p>
               <p className="leading-relaxed font-normal text-neutral-700">
-                Soul Viva is a registered trademark of Belleaves Pvt. Ltd.
+                Soul Viva is a trademark of Belleaves Pvt. Ltd.
               </p>
               <p className="leading-relaxed font-normal text-neutral-700">
                 Manufactured in India. All rights reserved.
