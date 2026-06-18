@@ -99,13 +99,13 @@ export default function Header({
           ))}
           <button
             onClick={() => navigateTo('inquire')}
-            className={`font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
+            className={`font-sans text-xs tracking-[0.2em] transition-all duration-300 pb-1 cursor-pointer border-b-2 hover:text-black hover:border-black/50 ${
               currentScreen === 'inquire'
                 ? 'text-black border-black font-semibold'
                 : 'text-neutral-700 hover:text-black border-transparent'
             }`}
           >
-            CONTACT US
+            Contact Us
           </button>
           {currentScreen === 'admin' && (
             <button
