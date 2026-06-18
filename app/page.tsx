@@ -111,12 +111,25 @@ export default function App() {
   useEffect(() => {
     if (loading) return;
 
+    // Skip ScrollSmoother on touch devices and small viewports to prevent jank/lag
+    const isTouchOrMobile = 
+      window.innerWidth < 1024 || 
+      'ontouchstart' in window || 
+      navigator.maxTouchPoints > 0;
+
+    if (isTouchOrMobile) {
+      const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+
     const smoother = ScrollSmoother.create({
       wrapper: '#smooth-wrapper',
       content: '#smooth-content',
       smooth: 1,
       effects: true,
-      smoothTouch: 0.1,
+      smoothTouch: false, // Use native touch scroll physics on mobile
     });
 
     const timer = setTimeout(() => {
