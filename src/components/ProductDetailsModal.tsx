@@ -379,7 +379,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       </div>
 
       {/* Main Grid Content Container (Directly on page, full-screen, no card wrapper overlay) */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto pl-6 pr-6 lg:pl-8 lg:pr-20 pb-24 flex-1 pt-36 md:pt-44">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto pl-6 pr-6 lg:pl-8 lg:pr-20 pb-6 md:pb-8 flex-1 pt-36 md:pt-44">
         <div id="product-details-grid" className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
           {/* Left Column Wrapper: Groups thumbnails and main image into a sticky element on desktop */}
@@ -640,7 +640,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       </div>
 
       {/* 3. Discover Our Collection (Horizontal scrolling grid) */}
-      <div className="w-full border-t border-neutral-200/50 py-8 md:py-16 mt-6 md:mt-16 text-left px-6 md:px-20 relative z-10">
+      <div className="w-full border-t border-neutral-200/50 py-8 md:py-10 mt-6 md:mt-8 text-left px-6 md:px-20 relative z-10">
         <div className="space-y-2 mb-8">
           <span className="font-sans text-[10px] tracking-[0.25em] font-semibold text-neutral-400 uppercase block">
             Formulation Sanctuary
