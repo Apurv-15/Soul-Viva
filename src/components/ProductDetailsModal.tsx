@@ -184,6 +184,11 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
   const autoScrollHasRunRef = useRef<boolean>(false);
 
   useEffect(() => {
+    // Disable auto-scroll on mobile
+    if (window.innerWidth < 768) {
+      return;
+    }
+
     // If we are already scrolled down on mount/product change, do not auto-scroll
     if (window.scrollY > 20) {
       autoScrollHasRunRef.current = true;
@@ -420,7 +425,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       />
 
       {/* Full-screen Hero Banner featuring the variant key visual background */}
-      <div className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden z-10 select-none bg-[#FAF9F5]">
+      <div className="hidden md:flex relative w-full h-screen flex-col items-center justify-center overflow-hidden z-10 select-none bg-[#FAF9F5]">
         {/* Full-screen clear background video or key visual */}
         <div className="absolute inset-0 z-0 bg-black">
           {product.video && product.id === 'cherry-blossom-strawberry' ? (
@@ -481,7 +486,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       </div>
 
       {/* Main Grid Content Container (Directly on page, full-screen, no card wrapper overlay) */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-12 pb-16 md:pb-24 flex-1 pt-16 md:pt-24">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-12 pb-16 md:pb-24 flex-1 pt-24 md:pt-24">
         <div id="product-details-grid" className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
           {/* Left Column Wrapper: Groups thumbnails and main image into a sticky element on desktop */}
