@@ -13,28 +13,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onSelect }: ProductCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = cardRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    // Proportional rotation (max 12 degrees tilt)
-    const rotateX = ((rect.height / 2 - y) / (rect.height / 2)) * 12;
-    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 12;
-    
-    setTilt({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTilt({ x: 0, y: 0 });
-  };
 
   return (
     <motion.div
@@ -46,27 +25,17 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* 3D tilt image frame */}
+      {/* 2D image frame with scaling hover effect */}
       <div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeave}
-      className="relative aspect-[4/3] w-full rounded-[28px] overflow-hidden bg-[#FAF5EE] flex items-center justify-center p-0 transition-all duration-500 hover:shadow-[0_25px_50px_rgba(45,90,86,0.12)] hover:bg-[#F5ECE2]"
-        style={{
-          perspective: 1000,
-          transformStyle: 'preserve-3d',
-          transform: isHovered 
-            ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.035)` 
-            : 'rotateX(0deg) rotateY(0deg) scale(1)',
-        }}
+        onMouseLeave={() => setIsHovered(false)}
+        className="relative aspect-[4/3] w-full rounded-[28px] overflow-hidden bg-[#FAF5EE] flex items-center justify-center p-0 transition-all duration-500 hover:shadow-[0_25px_50px_rgba(45,90,86,0.12)] hover:bg-[#F5ECE2] transform group-hover:scale-[1.035]"
       >
         {/* Soft dynamic color backing glow aura */}
         <div 
           className="absolute w-48 h-48 rounded-full opacity-0 group-hover:opacity-35 transition-all duration-500 pointer-events-none blur-3xl"
           style={{ 
             backgroundColor: product.themeColor,
-            transform: 'translateZ(10px)'
           }}
         />
 
@@ -77,10 +46,9 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover z-10 select-none pointer-events-none group-hover:scale-[1.04] transition-transform duration-700 ease-out"
-          style={{ transform: 'translateZ(30px)' }}
         />
 
-        {/* Premium Glassmorphic 3D Pop-out Arrow Button Overlay */}
+        {/* Premium Glassmorphic Pop-out Arrow Button Overlay */}
         <div 
           className={`absolute inset-0 z-20 flex items-center justify-center pointer-events-none transition-all duration-500 bg-neutral-900/10 ${
             isHovered ? 'opacity-100 backdrop-blur-[2px]' : 'opacity-0 backdrop-blur-none'
@@ -90,10 +58,6 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
             className={`w-14 h-14 rounded-full bg-white/90 border border-white/40 shadow-lg flex items-center justify-center text-black transition-all duration-500 transform ${
               isHovered ? 'scale-100 rotate-0' : 'scale-75 -rotate-45'
             }`}
-            style={{ 
-              transform: isHovered ? 'translateZ(70px) scale(1)' : 'translateZ(0px) scale(0.75)',
-              transformStyle: 'preserve-3d'
-            }}
           >
             <ArrowUpRight className="w-6 h-6 stroke-[2]" />
           </div>

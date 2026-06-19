@@ -58,7 +58,7 @@ export default function OurStorySection() {
                 <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                   The <span className="italic">Soul Viva</span> Difference
                 </h3>
-                <p className="font-sans text-[15px] md:text-[16px] text-neutral-700 font-light leading-relaxed">
+                <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
                   More than a soap, Soul Viva is a daily ritual designed to elevate your skin care. By combining active transparent glycerin bases with 100% natural botanical extracts, we create a bathing bar that actively hydrates, nourishes, and protects your skin.
                 </p>
               </div>
@@ -85,7 +85,7 @@ export default function OurStorySection() {
               <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 100% <span className="italic">Natural Extracts</span>
               </h3>
-              <p className="font-sans text-[15px] md:text-[16px] text-neutral-700 font-light leading-relaxed">
+              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
                 Every variant contains real botanical extracts — not artificial fragrance alone. Shea butter, cherry blossom, waterlily, sea minerals, black currant, mandarin — each ingredient is selected for its active skin-care benefits.
               </p>
             </div>
@@ -107,7 +107,7 @@ export default function OurStorySection() {
               <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Glycerin-Rich <span className="italic">Gel Base</span>
               </h3>
-              <p className="font-sans text-[14px] text-neutral-700 font-light leading-relaxed">
+              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
                 Unlike conventional soaps that strip the skin, Soul Viva's transparent glycerin base acts as a humectant — drawing moisture into the skin with every wash, leaving it soft and hydrated.
               </p>
             </div>
@@ -129,7 +129,7 @@ export default function OurStorySection() {
               <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Signature <span className="italic">Fragrances</span>
               </h3>
-              <p className="font-sans text-[14px] text-neutral-700 font-light leading-relaxed">
+              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
                 Crafted by master perfumers to evoke emotions. Each fragrance is built around a distinct scene and story, lingering beautifully on the skin long after bathing.
               </p>
             </div>
@@ -151,7 +151,7 @@ export default function OurStorySection() {
               <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Sensory <span className="italic">Experience</span>
               </h3>
-              <p className="font-sans text-[14px] text-neutral-700 font-light leading-relaxed">
+              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
                 Color, fragrance, texture, and elegant presentation work in concert to transport your senses, elevating a simple daily routine into a transcendent ritual.
               </p>
             </div>
@@ -166,14 +166,14 @@ export default function OurStorySection() {
 
         </div>
 
-        {/* COMMERCIAL & EXPORT SPECIFICATIONS MODULE */}
-        <div className="mt-8 space-y-4 pt-8 border-t border-stone-200/50">
+        {/* EXPORT COMPLIANCE SPECIFICATIONS MODULE */}
+        <div className="mt-8 space-y-8 pt-8 border-t border-stone-200/50">
           <div className="text-center md:text-left space-y-4">
             <h2 className="font-serif text-[38px] sm:text-[48px] md:text-[56px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
-              Commercial & Export Information
+              Export Compliance — Built for International Markets
             </h2>
-            <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light max-w-xl leading-relaxed">
-              Direct access to our micro-batch contract logistics, certified standards, and regulatory documentation.
+            <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light max-w-4xl leading-relaxed">
+              Soul Viva is designed and documented for export from India. Every element — from labelling to barcoding to ingredient declarations — is built to meet the requirements of international trade partners and regulatory authorities.
             </p>
           </div>
 
@@ -182,14 +182,6 @@ export default function OurStorySection() {
             
             {/* Card C: Export Compliance & Regulatory Standards */}
             <div className="bg-[#FAF8F5] border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-12 shadow-sm space-y-6">
-              <div className="space-y-4 text-left">
-                <h3 className="font-serif text-[26px] sm:text-[34px] md:text-[40px] font-normal leading-[1.2] text-[#2D3A2F] tracking-tight uppercase">
-                  Export Compliance — Built for International Markets
-                </h3>
-                <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light max-w-4xl leading-relaxed">
-                  Soul Viva is designed and documented for export from India. Every element — from labelling to barcoding to ingredient declarations — is built to meet the requirements of international trade partners and regulatory authorities.
-                </p>
-              </div>
 
               <div className="flex flex-wrap justify-center gap-6 pt-2 font-sans text-sm w-full">
                 
@@ -264,20 +256,21 @@ export default function OurStorySection() {
           </div>
 
           {/* Section: Manufacturing Facilities Allocation Details */}
-          <div className="bg-[#FAF8F5] border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-12 text-left space-y-8">
-            <div className="space-y-6">
-              <h3 className="font-serif text-[26px] sm:text-[34px] md:text-[40px] font-normal leading-[1.2] text-[#2D3A2F] tracking-tight uppercase">
-                Production Facility — Crafted by Experts in Soap Making
-              </h3>
-              <div className="space-y-4 max-w-4xl font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
-                <p>
-                  Soul Viva is manufactured by a certified contract manufacturing partner in India — specialists in glycerin-based soap and gel bar production who supply some of India's most well-known personal care brands.
-                </p>
-                <p>
-                  The manufacturing partner has extensive expertise in transparent glycerin soap technology — the core format of Soul Viva — and is equipped to handle the precision required for consistent colour, fragrance load, and bar weight across all six variants.
-                </p>
-              </div>
+          <div className="text-center md:text-left space-y-4 mt-16">
+            <h2 className="font-serif text-[38px] sm:text-[48px] md:text-[56px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+              Production Facility — Crafted by Experts in Soap Making
+            </h2>
+            <div className="space-y-4 max-w-4xl font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
+              <p>
+                Soul Viva is manufactured by a certified contract manufacturing partner in India — specialists in glycerin-based soap and gel bar production who supply some of India's most well-known personal care brands.
+              </p>
+              <p>
+                The manufacturing partner has extensive expertise in transparent glycerin soap technology — the core format of Soul Viva — and is equipped to handle the precision required for consistent colour, fragrance load, and bar weight across all six variants.
+              </p>
             </div>
+          </div>
+
+          <div className="bg-[#FAF8F5] border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-12 text-left space-y-8 mt-8">
 
             <div className="w-full h-[1px] bg-[#E5DEC1]/50" />
 
