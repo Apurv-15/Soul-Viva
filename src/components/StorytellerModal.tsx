@@ -33,7 +33,7 @@ export default function StorytellerModal({ product, onClose, onInquire }: Storyt
   const [packSize, setPackSize] = useState<1 | 3 | 6>(1);
   const [added, setAdded] = useState(false);
 
-  const slidesCount = 4;
+  const slidesCount = 3;
 
   // Auto-progress is not recommended for story-driven details unless wanted, let's keep it manual so they can read at their own pace, but provide simple help indicators.
   const handleNext = () => {
@@ -161,74 +161,12 @@ export default function StorytellerModal({ product, onClose, onInquire }: Storyt
                 </div>
               )}
 
-              {/* Slide 1: Olfactory Pyramid Scent Story */}
+              {/* Slide 1: Active Bio-Ingredients Spec */}
               {currentSlide === 1 && (
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center w-full">
-                  <div className="md:col-span-6 space-y-6 text-left order-2 md:order-1">
-                    <span className="font-sans text-[10px] tracking-[0.25em] font-extrabold text-amber-805 uppercase block">
-                      CHAPTER II &bull; THE OLFACTORY ARCHITECTURE
-                    </span>
-                    <h3 className="font-sans text-3xl sm:text-5xl font-light tracking-tight text-neutral-950 leading-tight">
-                      Spectroscopic Scent Layers
-                    </h3>
-                    <p className="font-sans text-sm text-neutral-600 leading-relaxed font-light">
-                      Like an ambient composition, our fragrances unfold sequentially as water dissolves the hydrogen bond matrix, releasing complex essential distillates into the steam.
-                    </p>
-
-                    <div className="space-y-4 pt-2">
-                      <div className="flex gap-4 items-start pb-4 border-b border-stone-200/40">
-                        <span className="font-sans font-mono text-xs text-amber-800 font-bold tracking-wider pt-0.5">TOP</span>
-                        <div>
-                          <p className="font-sans text-sm font-medium text-neutral-900">{product.scentNotes.top.join('  &bull;  ')}</p>
-                          <p className="font-sans text-xs text-neutral-500 font-light mt-0.5">Atmospheric introduction. Energizing, dewy, and volatile.</p>
-                        </div>
-                      </div>
-
-                      <div className="flex gap-4 items-start pb-4 border-b border-stone-200/40">
-                        <span className="font-sans font-mono text-xs text-amber-805 font-bold tracking-wider pt-0.5">CORE</span>
-                        <div>
-                          <p className="font-sans text-sm font-medium text-neutral-900">{product.scentNotes.heart.join('  &bull;  ')}</p>
-                          <p className="font-sans text-xs text-neutral-500 font-light mt-0.5">The structural scent identity that characterizes the steam ritual.</p>
-                        </div>
-                      </div>
-
-                      <div className="flex gap-4 items-start">
-                        <span className="font-sans font-mono text-xs text-[#2B7A78] font-bold tracking-wider pt-0.5">BASE</span>
-                        <div>
-                          <p className="font-sans text-sm font-medium text-neutral-900">{product.scentNotes.base.join('  &bull;  ')}</p>
-                          <p className="font-sans text-xs text-neutral-500 font-light mt-0.5">The lingering warm residue that stays close to skin pores for hours.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="md:col-span-6 order-1 md:order-2 flex justify-center">
-                    <div className="aspect-square w-full max-w-sm rounded-[40px] border border-stone-200/60 overflow-hidden relative shadow-md">
-                      <img
-                        src={product.bgImage}
-                        alt="Harvest setting background"
-                        className="w-full h-full object-cover filter brightness-95 scale-in"
-                      />
-                      <div className="absolute inset-x-4 bottom-4 p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-stone-200/40 shadow-sm text-left">
-                        <Compass className="w-5 h-5 text-amber-800 mb-2" />
-                        <h4 className="font-sans text-[11px] font-bold tracking-wider text-neutral-900 uppercase select-none">
-                          Botanical Integrity Certificate
-                        </h4>
-                        <p className="font-sans text-[10px] text-neutral-600 font-light leading-relaxed mt-1">
-                          Our extracts are hand-sourced via sustainable cooperatives and verified by high-pressure gas chromatography to maintain 100% molecular active purity.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Slide 2: Active Bio-Ingredients Spec */}
-              {currentSlide === 2 && (
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center w-full animate-fade-in">
                   <div className="md:col-span-12 space-y-6 text-left">
                     <span className="font-sans text-[10px] tracking-[0.25em] font-extrabold text-[#2B7A78] uppercase block">
-                      CHAPTER III &bull; CLINICAL SYNTHESIS
+                      CHAPTER II &bull; CLINICAL SYNTHESIS
                     </span>
                     <h3 className="font-sans text-3xl md:text-4xl font-light tracking-tight text-neutral-950 select-none">
                       Sensory & Hydration Profile
@@ -284,12 +222,12 @@ export default function StorytellerModal({ product, onClose, onInquire }: Storyt
                 </div>
               )}
 
-              {/* Slide 3: Interactive Purchase and Packaging Ritual */}
-              {currentSlide === 3 && (
+              {/* Slide 2: Interactive Purchase and Packaging Ritual */}
+              {currentSlide === 2 && (
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center w-full">
                   <div className="md:col-span-6 space-y-6 text-left">
                     <span className="font-sans text-[10px] tracking-[0.25em] font-extrabold text-amber-805 uppercase block">
-                      CHAPTER IV &bull; THE RITUAL DISPATCH
+                      CHAPTER III &bull; THE RITUAL DISPATCH
                     </span>
                     <h3 className="font-sans text-3xl sm:text-[44px] font-light tracking-tight text-neutral-950 leading-tight">
                       Elevate Your Bath Sanctuary
@@ -337,7 +275,7 @@ export default function StorytellerModal({ product, onClose, onInquire }: Storyt
                             className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
                               packSize === pack.val
                                 ? 'border-neutral-950 bg-stone-50 text-neutral-950 font-bold'
-                                  : 'border-stone-200 bg-white hover:border-neutral-400 text-neutral-500'
+                                  : 'border-stone-250 bg-white hover:border-neutral-400 text-neutral-500'
                             }`}
                           >
                             <span className="font-sans text-[10px] block">{pack.label}</span>

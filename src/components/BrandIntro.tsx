@@ -86,12 +86,12 @@ export default function BrandIntro() {
              className="lg:col-span-6 flex flex-col space-y-8 lg:ml-auto w-full self-center"
            >
              {/* Pillar 1: Botanicals */}
-             <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 md:p-10 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-4 text-left">
-               <div className="flex items-center gap-5">
-                 <div className="p-3.5 rounded-2xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
-                   <Leaf className="w-7 h-7 md:w-8 md:h-8" />
+             <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-5 md:p-6 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2.5 text-left">
+               <div className="flex items-center gap-4">
+                 <div className="p-2.5 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
+                   <Leaf className="w-6 h-6 md:w-7 md:h-7" />
                  </div>
-                 <h4 className="font-sans text-xl sm:text-2xl md:text-[26px] text-[#2D3A2F] font-bold tracking-tight">
+                 <h4 className="font-sans text-xl sm:text-2xl text-[#2D3A2F] font-bold tracking-tight">
                    Skin-Loving Botanicals
                  </h4>
                </div>
@@ -101,12 +101,12 @@ export default function BrandIntro() {
              </div>
  
              {/* Pillar 2: Fragrances */}
-             <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 md:p-10 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-4 text-left">
-               <div className="flex items-center gap-5">
-                 <div className="p-3.5 rounded-2xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
-                   <Sparkles className="w-7 h-7 md:w-8 md:h-8" />
+             <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-5 md:p-6 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2.5 text-left">
+               <div className="flex items-center gap-4">
+                 <div className="p-2.5 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
+                   <Sparkles className="w-6 h-6 md:w-7 md:h-7" />
                  </div>
-                 <h4 className="font-sans text-xl sm:text-2xl md:text-[26px] text-[#2D3A2F] font-bold tracking-tight">
+                 <h4 className="font-sans text-xl sm:text-2xl text-[#2D3A2F] font-bold tracking-tight">
                    Mood-Enlivening Fragrances
                  </h4>
                </div>
@@ -116,12 +116,12 @@ export default function BrandIntro() {
              </div>
  
              {/* Pillar 3: Glycerin-Rich */}
-             <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 md:p-10 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-4 text-left">
-               <div className="flex items-center gap-5">
-                 <div className="p-3.5 rounded-2xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
-                   <Droplet className="w-7 h-7 md:w-8 md:h-8" />
+             <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-5 md:p-6 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2.5 text-left">
+               <div className="flex items-center gap-4">
+                 <div className="p-2.5 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
+                   <Droplet className="w-6 h-6 md:w-7 md:h-7" />
                  </div>
-                 <h4 className="font-sans text-xl sm:text-2xl md:text-[26px] text-[#2D3A2F] font-bold tracking-tight">
+                 <h4 className="font-sans text-xl sm:text-2xl text-[#2D3A2F] font-bold tracking-tight">
                    Glycerin-Rich Formula
                  </h4>
                </div>
