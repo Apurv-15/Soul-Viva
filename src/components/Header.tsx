@@ -7,6 +7,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Home, SlidersHorizontal, BookOpen, Facebook, Instagram } from 'lucide-react';
+import Image from 'next/image';
 
 interface HeaderProps {
   currentScreen: 'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin';
@@ -72,13 +73,19 @@ export default function Header({
         </div>
 
         {/* Logo - Centered on mobile, left-aligned on desktop */}
-        <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 z-40">
+        <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 z-40 flex items-center h-full">
           <button
             onClick={() => navigateTo('home')}
-            className="select-none hover:opacity-80 transition-opacity flex items-baseline justify-center text-[20px] uppercase text-black"
+            className="select-none hover:opacity-80 transition-opacity flex items-center justify-center cursor-pointer"
           >
-            <span className="font-serif font-normal">S</span>
-            <span className="font-sans font-light tracking-wide">OUL VIVA</span>
+            <Image 
+              src="/Logo.png" 
+              alt="Soul Viva" 
+              width={160} 
+              height={40} 
+              className="h-7 md:h-9 w-auto object-contain drop-shadow-sm"
+              priority
+            />
           </button>
         </div>
 

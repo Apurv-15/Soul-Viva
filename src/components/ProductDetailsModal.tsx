@@ -164,7 +164,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
   const [isFavorited, setIsFavorited] = useState<boolean>(false);
   
   const theme = PRODUCT_THEMES[product.id] || {
-    topBanner: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&q=80&w=1200',
+    topBanner: '/Hero_page/base.jpeg',
     bottomBanner: '/Sea Minerals/bottom_banner.png',
     ean: '8908030764010',
     textColor: 'text-neutral-900',
@@ -328,31 +328,9 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       return product.images;
     }
 
-    const defaultHand = "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=600";
-    
-    const textures: Record<string, string> = {
-      'sea-minerals-menthol': 'https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&q=80&w=600',
-      'waterlily-pear': 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=600',
-      'cherry-blossom-strawberry': 'https://images.unsplash.com/photo-1522748906645-95d8adfd52c7?auto=format&fit=crop&q=80&w=600',
-      'lavender-currant': 'https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&q=80&w=600',
-      'mandarin-peach': 'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&q=80&w=600',
-      'shea-honey': 'https://images.unsplash.com/photo-1589733901241-5e8a40070c10?auto=format&fit=crop&q=80&w=600',
-    };
-
-    const hands: Record<string, string> = {
-      'sea-minerals-menthol': 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600',
-      'waterlily-pear': 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600',
-      'cherry-blossom-strawberry': 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=600',
-      'lavender-currant': 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=600',
-      'mandarin-peach': 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600',
-      'shea-honey': 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600',
-    };
-
     return [
       product.bgImage, // Thumbnail 1: Context Setting
       product.image,   // Thumbnail 2: Transparent soap bar detail
-      textures[product.id] || product.bgImage, // Thumbnail 3: Sensorial texture zoom
-      hands[product.id] || defaultHand, // Thumbnail 4: Luxury application
     ];
   };
 
@@ -794,10 +772,15 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
 
           {/* Giant Brand Logo Text */}
           <div className="w-full text-center py-6 flex justify-center">
-            <h2 className="m-0 select-none text-[12vw] leading-none text-[#1C1B1B] uppercase flex items-baseline justify-center">
-              <span className="font-serif font-normal">S</span>
-              <span className="font-sans font-light tracking-wide">OUL VIVA</span>
-            </h2>
+            <div className="relative w-[75vw] max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-[60px] sm:h-[80px] md:h-[120px]">
+              <Image 
+                src="/Logo.png" 
+                alt="Soul Viva Logo" 
+                fill
+                className="object-contain drop-shadow-sm"
+                sizes="(max-width: 768px) 75vw, 600px"
+              />
+            </div>
           </div>
 
           {/* Mandatory Footer Information Grid */}

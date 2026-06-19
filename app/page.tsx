@@ -127,6 +127,7 @@ export default function App() {
       const imageUrls = new Set<string>();
       const videoUrls = new Set<string>();
 
+      // 1. Load all product-specific assets defined in src/data.ts
       PRODUCTS.forEach((p) => {
         if (p.image) imageUrls.add(p.image);
         if (p.bgImage) imageUrls.add(p.bgImage);
@@ -134,18 +135,44 @@ export default function App() {
         if (p.video) videoUrls.add(p.video);
       });
 
-      // Add general background assets
+      // 2. Load core brand layout & identity assets
+      imageUrls.add('/Logo.png');
       imageUrls.add('/Hero_page/base.jpeg');
       imageUrls.add('/Hero_page/hover.png');
 
-      // Preload images into browser memory cache
+      // 3. Load Why Us / Our Story bento grid assets
+      const STORY_ASSETS = [
+        '/About_Us/Natural Extracts.png',
+        '/About_Us/Fragrance.png',
+        '/About_Us/Glucerin.png',
+        '/About_Us/Extracts - Diff.png',
+        '/About_Us/Sensory Exp.png'
+      ];
+      STORY_ASSETS.forEach(url => imageUrls.add(url));
+
+      // 4. Load product detail key visuals & banners
+      const PRODUCT_THEME_ASSETS = [
+        '/Images/Sea_mineral_kv.jpeg', '/Sea Minerals/bottom_banner.png',
+        '/Images/Waterlily_kv.jpeg', '/Waterlily and Pear/bottom_banner.png',
+        '/Images/Cherry_blossom.jpeg', '/Strawberry/bottom_banner.png',
+        '/Images/Black_current_kv.jpeg', '/Black Currant/bottom_banner.png',
+        '/Images/Manadrin.png', '/Mandarin/bottom_banner.png',
+        '/Images/Shea_butter.jpeg', '/Shea and butter/bottom_banner.png'
+      ];
+      PRODUCT_THEME_ASSETS.forEach(url => imageUrls.add(url));
+
+      // 5. Preload images into browser memory cache
       imageUrls.forEach((url) => {
         const img = new window.Image();
         img.src = url;
       });
 
-      // Preload videos in background to populate HTTP cache
+      // Preload videos in background to populate browser cache
       videoUrls.forEach((url) => {
+        const video = document.createElement('video');
+        video.src = url;
+        video.preload = 'auto';
+        
         fetch(url)
           .catch((err) => console.warn(`Failed to preload video: ${url}`, err));
       });
@@ -456,7 +483,7 @@ export default function App() {
               {/* SCREEN 4: About Us section */}
               {currentScreen === 'story' && (
                 <div className="space-y-0">
-                  <BrandIntro />
+                  <BrandIntro hidePillars={true} />
                   <OurStorySection />
                 </div>
               )}
@@ -489,10 +516,15 @@ export default function App() {
 
             {/* Giant Brand Logo Text */}
             <div className="w-full text-center py-6 flex justify-center">
-              <h2 className="m-0 select-none text-[12vw] leading-none text-[#1C1B1B] uppercase flex items-baseline justify-center">
-                <span className="font-serif font-normal">S</span>
-                <span className="font-sans font-light tracking-wide">OUL VIVA</span>
-              </h2>
+              <div className="relative w-[75vw] max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-[60px] sm:h-[80px] md:h-[120px]">
+                <Image 
+                  src="/Logo.png" 
+                  alt="Soul Viva Logo" 
+                  fill
+                  className="object-contain drop-shadow-sm"
+                  sizes="(max-width: 768px) 75vw, 600px"
+                />
+              </div>
             </div>
 
             {/* Mandatory Footer Information Grid */}
