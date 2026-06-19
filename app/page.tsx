@@ -61,13 +61,7 @@ export default function App() {
   const [pendingProduct, setPendingProduct] = useState<Product | null>(null);
 
   const handleProductClick = (p: Product) => {
-    if (p.video) {
-      setIntroVideoUrl(p.video);
-      setPendingProduct(p);
-      setCinematicActive(true);
-    } else {
-      setSelectedProduct(p);
-    }
+    setSelectedProduct(p);
   };
   const [storyProduct, setStoryProduct] = useState<Product | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);

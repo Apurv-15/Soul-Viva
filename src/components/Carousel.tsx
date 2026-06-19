@@ -243,37 +243,6 @@ export default function Carousel({ products, onSelectProduct }: CarouselProps) {
                     </p>
                   </div>
 
-                  {/* Scent Olfactory Notes Highlight Panel - Generous padding & premium grid */}
-                  <div className="p-6 rounded-2xl bg-white/70 border border-[#EFE8DE]/80 backdrop-blur-md space-y-4 shadow-[0_8px_32px_rgba(139,115,85,0.02)] max-w-lg">
-                    <div className="flex items-center gap-2 border-b border-stone-200/40 pb-2.5">
-                      <Compass className="w-4 h-4 text-neutral-500 stroke-[1.5]" />
-                      <span className="font-sans text-[10px] tracking-[0.15em] uppercase font-bold text-neutral-500">Olfactory Architecture</span>
-                    </div>
-                    
-                    <div className="grid grid-cols-3 gap-6 pt-1">
-                      <div>
-                        <span className="font-sans text-[9px] tracking-widest font-mono text-neutral-400 uppercase block mb-1">TOP</span>
-                        <span className="font-sans text-sm text-neutral-850 font-medium block leading-tight">
-                          {currentProduct.scentNotes.top.join(', ')}
-                        </span>
-                      </div>
-
-                      <div>
-                        <span className="font-sans text-[9px] tracking-widest font-mono text-neutral-400 uppercase block mb-1">CORE</span>
-                        <span className="font-sans text-sm text-neutral-850 font-medium block leading-tight">
-                          {currentProduct.scentNotes.heart.join(', ')}
-                        </span>
-                      </div>
-
-                      <div>
-                        <span className="font-sans text-[9px] tracking-widest font-mono text-neutral-400 uppercase block mb-1">BASE</span>
-                        <span className="font-sans text-sm text-neutral-850 font-medium block leading-tight">
-                          {currentProduct.scentNotes.base.join(', ')}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Technical Specifications details */}
                   <div className="flex gap-8 text-xs font-sans text-neutral-500 font-normal py-1">
                     <div className="flex items-center gap-2">
@@ -437,28 +406,7 @@ export default function Carousel({ products, onSelectProduct }: CarouselProps) {
                 </div>
               </div>
 
-              {/* Simple Olfactory Architecture */}
-              <div className="p-4 rounded-xl bg-white/60 border border-[#E9E2D7]/60 space-y-3">
-                <div className="flex items-center gap-1.5 text-neutral-500 select-none">
-                  <Compass className="w-3.5 h-3.5" />
-                  <span className="font-sans text-[9px] tracking-wider uppercase font-semibold">Olfactory Architecture</span>
-                </div>
-                
-                <div className="grid grid-cols-3 gap-2">
-                  <div>
-                    <span className="font-sans text-[7px] tracking-widest font-mono text-neutral-400 block">TOP</span>
-                    <span className="font-sans text-[11px] text-neutral-800 font-medium block truncate">{p.scentNotes.top[0]}</span>
-                  </div>
-                  <div>
-                    <span className="font-sans text-[7px] tracking-widest font-mono text-neutral-400 block">CORE</span>
-                    <span className="font-sans text-[11px] text-neutral-800 font-medium block truncate">{p.scentNotes.heart[0]}</span>
-                  </div>
-                  <div>
-                    <span className="font-sans text-[7px] tracking-widest font-mono text-neutral-400 block">BASE</span>
-                    <span className="font-sans text-[11px] text-neutral-800 font-medium block truncate">{p.scentNotes.base[0]}</span>
-                  </div>
-                </div>
-              </div>
+
 
               {/* Specs & CTA */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-2 gap-4">
