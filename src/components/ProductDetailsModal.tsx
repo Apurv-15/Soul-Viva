@@ -59,7 +59,7 @@ const PRODUCT_THEMES: Record<string, ProductTheme> = {
     subtextColor: 'text-orange-800',
   },
   'shea-honey': {
-    topBanner: 'https://images.unsplash.com/photo-1589733901241-5e8a40070c10?auto=format&fit=crop&q=80&w=1200',
+    topBanner: '/Images/Shea_butter.jpeg',
     bottomBanner: '/Shea and butter/bottom_banner.png',
     ean: '8908030764010',
     textColor: 'text-amber-950',
