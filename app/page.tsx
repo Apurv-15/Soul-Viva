@@ -125,6 +125,46 @@ export default function App() {
     brightness.set(1.0);
   };
 
+  // Background preloader for all images and videos to eliminate lag
+  useEffect(() => {
+    if (loading) return;
+
+    const preloadAssets = () => {
+      const imageUrls = new Set<string>();
+      const videoUrls = new Set<string>();
+
+      PRODUCTS.forEach((p) => {
+        if (p.image) imageUrls.add(p.image);
+        if (p.bgImage) imageUrls.add(p.bgImage);
+        if (p.images) p.images.forEach(img => imageUrls.add(img));
+        if (p.video) videoUrls.add(p.video);
+      });
+
+      // Add general background assets
+      imageUrls.add('/Hero_page/base.jpeg');
+      imageUrls.add('/Hero_page/hover.png');
+
+      // Preload images into browser memory cache
+      imageUrls.forEach((url) => {
+        const img = new window.Image();
+        img.src = url;
+      });
+
+      // Preload videos in background to populate HTTP cache
+      videoUrls.forEach((url) => {
+        fetch(url)
+          .catch((err) => console.warn(`Failed to preload video: ${url}`, err));
+      });
+    };
+
+    // Run preload after a slight delay to avoid competing with initial home render
+    const timer = setTimeout(() => {
+      preloadAssets();
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, [loading]);
+
   // Initialize GSAP ScrollSmoother
   useEffect(() => {
     if (loading) return;
