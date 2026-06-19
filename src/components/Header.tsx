@@ -75,10 +75,10 @@ export default function Header({
         <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 z-40">
           <button
             onClick={() => navigateTo('home')}
-            className="select-none hover:opacity-80 transition-opacity flex items-center justify-center"
+            className="select-none hover:opacity-80 transition-opacity flex items-baseline justify-center text-[20px] uppercase text-black"
           >
-            <span className="font-serif font-normal text-[20px] tracking-tight uppercase text-black">SOUL</span>
-            <span className="font-sans font-light text-[20px] tracking-wide uppercase text-black ml-[0.25em]">VIVA</span>
+            <span className="font-serif font-normal">S</span>
+            <span className="font-sans font-light tracking-wide">OUL VIVA</span>
           </button>
         </div>
 
