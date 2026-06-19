@@ -98,6 +98,7 @@ export default function CinematicIntro({ videoUrl, onComplete, onRevealStart }: 
           ref={videoRef}
           src={videoUrl}
           autoPlay
+          muted
           playsInline
           className="w-full h-full object-cover scale-100"
           onPlaying={handleVideoPlaying}
