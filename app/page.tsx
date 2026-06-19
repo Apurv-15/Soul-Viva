@@ -25,20 +25,23 @@ import {
 
 import { Product } from '../src/types';
 import { PRODUCTS } from '../src/data';
+import dynamic from 'next/dynamic';
 import LoadingScreen from '../src/components/LoadingScreen';
-import CinematicIntro from '../src/components/CinematicIntro';
 import Header from '../src/components/Header';
 import ProductCard from '../src/components/ProductCard';
-import ProductDetailsModal from '../src/components/ProductDetailsModal';
-import SearchModal from '../src/components/SearchModal';
-import InquiryModal from '../src/components/InquiryModal';
-import TheCraftVisualizer from '../src/components/TheCraftVisualizer';
 import OurStorySection from '../src/components/OurStorySection';
 import BrandIntro from '../src/components/BrandIntro';
-import InquiryPage from '../src/components/InquiryPage';
-import StorytellerModal from '../src/components/StorytellerModal';
 import GradualBlur from '../src/components/GradualBlur';
-import AdminDashboard from '../src/components/AdminDashboard';
+
+// Dynamically imported components to reduce initial bundle size
+const ProductDetailsModal = dynamic(() => import('../src/components/ProductDetailsModal'));
+const SearchModal = dynamic(() => import('../src/components/SearchModal'));
+const InquiryModal = dynamic(() => import('../src/components/InquiryModal'));
+const TheCraftVisualizer = dynamic(() => import('../src/components/TheCraftVisualizer'));
+const InquiryPage = dynamic(() => import('../src/components/InquiryPage'));
+const StorytellerModal = dynamic(() => import('../src/components/StorytellerModal'));
+const AdminDashboard = dynamic(() => import('../src/components/AdminDashboard'));
+const CinematicIntro = dynamic(() => import('../src/components/CinematicIntro'));
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
@@ -50,11 +53,20 @@ if (typeof window !== 'undefined') {
 export default function App() {
   // Screens state
   const [loading, setLoading] = useState(true);
+  const [animationComplete, setAnimationComplete] = useState(false);
+  const [criticalAssetsLoaded, setCriticalAssetsLoaded] = useState(false);
+
   const [cinematicActive, setCinematicActive] = useState(false);
   const [introVideoUrl, setIntroVideoUrl] = useState('/Video/Lavender.mp4');
 
+  useEffect(() => {
+    if (animationComplete && criticalAssetsLoaded) {
+      setLoading(false);
+    }
+  }, [animationComplete, criticalAssetsLoaded]);
+
   const handleLoadingComplete = () => {
-    setLoading(false);
+    setAnimationComplete(true);
   };
   const [currentScreen, setScreen] = useState<'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin'>('home');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -119,7 +131,33 @@ export default function App() {
     brightness.set(1.0);
   };
 
-  // Background preloader for all images and videos to eliminate lag
+  // Critical assets preloader (Blocks loading screen dismissal)
+  useEffect(() => {
+    const preloadImage = (src: string): Promise<void> => {
+      return new Promise((resolve) => {
+        const img = new window.Image();
+        img.src = src;
+        img.onload = () => resolve();
+        img.onerror = () => resolve(); // continue even on error
+      });
+    };
+
+    const loadCriticalAssets = async () => {
+      const criticalImages = [
+        '/Hero_page/base.jpeg',
+        '/Hero_page/hover.png',
+        '/Logo.png',
+        ...PRODUCTS.map(p => p.bgImage)
+      ];
+      
+      await Promise.all(criticalImages.map(preloadImage));
+      setCriticalAssetsLoaded(true);
+    };
+
+    loadCriticalAssets();
+  }, []);
+
+  // Background preloader for all secondary images and videos to eliminate lag
   useEffect(() => {
     if (loading) return;
 
@@ -130,17 +168,9 @@ export default function App() {
       // 1. Load all product-specific assets defined in src/data.ts
       PRODUCTS.forEach((p) => {
         if (p.image) imageUrls.add(p.image);
-        if (p.bgImage) imageUrls.add(p.bgImage);
         if (p.images) p.images.forEach(img => imageUrls.add(img));
         if (p.video) videoUrls.add(p.video);
       });
-
-      // 2. Load core brand layout & identity assets
-      imageUrls.add('/Logo.png');
-      imageUrls.add('/Hero_page/base.jpeg');
-      imageUrls.add('/Hero_page/hover.png');
-
-      // 3. Load Why Us / Our Story bento grid assets
       const STORY_ASSETS = [
         '/About_Us/Natural Extracts.png',
         '/About_Us/Fragrance.png',
