@@ -46,10 +46,15 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
       transition={{ duration: 0.6, ease: 'easeInOut' }}
     >
       <div className="flex flex-col items-center justify-center relative select-none">
-        <h1 className="font-sans text-4xl sm:text-5xl font-light tracking-[0.45em] uppercase text-brand-dark flex items-center pl-[0.45em]">
-          <span>{text}</span>
+        <h1 className="text-4xl sm:text-5xl uppercase text-brand-dark flex items-baseline pl-[0.45em]">
+          {text.length > 0 && (
+            <span className="font-serif font-normal">{text[0]}</span>
+          )}
+          {text.length > 1 && (
+            <span className="font-sans font-light tracking-[0.45em] ml-1">{text.slice(1)}</span>
+          )}
           <motion.span
-            className="w-[2px] h-8 sm:h-10 bg-brand-dark/80 ml-2 inline-block"
+            className="w-[2px] h-6 sm:h-8 bg-brand-dark/80 ml-1 inline-block"
             animate={{ opacity: [1, 0, 1] }}
             transition={{ repeat: Infinity, duration: 0.8, ease: 'easeInOut' }}
           />
