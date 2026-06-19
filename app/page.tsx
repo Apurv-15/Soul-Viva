@@ -488,10 +488,10 @@ export default function App() {
           <div className="max-w-[1440px] mx-auto flex flex-col items-center justify-between gap-12">
 
             {/* Giant Brand Logo Text */}
-            <div className="w-full text-center py-6">
-              <h2 className="m-0 select-none text-[12vw] leading-none text-[#1C1B1B]">
-                <span className="font-serif font-normal tracking-tight uppercase">SOUL</span>
-                <span className="font-sans font-light tracking-wide uppercase ml-[0.25em]">VIVA</span>
+            <div className="w-full text-center py-6 flex justify-center">
+              <h2 className="m-0 select-none text-[12vw] leading-none text-[#1C1B1B] uppercase flex items-baseline justify-center">
+                <span className="font-serif font-normal">S</span>
+                <span className="font-sans font-light tracking-wide">OUL VIVA</span>
               </h2>
             </div>
 

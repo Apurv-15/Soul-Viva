@@ -58,15 +58,15 @@ export default function BrandIntro() {
 
               
               <div className="space-y-4">
-                <h2 className="leading-[0.95] select-none flex flex-wrap items-baseline">
-                  <span className="font-serif font-normal text-[54px] sm:text-[68px] md:text-[80px] lg:text-[88px] tracking-tight uppercase text-[#2D3A2F]">SOUL</span>
-                  <span className="font-sans font-light text-[54px] sm:text-[68px] md:text-[80px] lg:text-[88px] tracking-wide uppercase text-[#2D3A2F] ml-[0.25em]">VIVA</span>
+                <h2 className="leading-[0.95] select-none text-[54px] sm:text-[68px] md:text-[80px] lg:text-[88px] uppercase text-[#2D3A2F] flex items-baseline">
+                  <span className="font-serif font-normal">S</span>
+                  <span className="font-sans font-light tracking-wide">OUL VIVA</span>
                 </h2>
               </div>
             </div>
 
             {/* Editorial Copy */}
-            <div className="space-y-8 font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 leading-relaxed font-light">
+            <div className="space-y-8 font-sans text-[15px] sm:text-[17px] md:text-[19px] text-neutral-700 leading-normal font-light">
               <p>
                 Every day, millions of people step into the shower for a moment that is entirely their own. Soul Viva is built around that moment — transforming a daily routine into a sensory escape inspired by nature and emotion.
               </p>
