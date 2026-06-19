@@ -3,10 +3,28 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
-import { Sparkles, Leaf, Award, Globe, Droplet, ShieldCheck, Facebook, Instagram } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Sparkles, Leaf, Award, Globe, Droplet, ShieldCheck, Facebook, Instagram, X } from 'lucide-react';
 
 export default function OurStorySection() {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedImage(null);
+    };
+    if (selectedImage) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [selectedImage]);
+
   return (
     <section id="our-story-section" className="py-12 md:py-16 bg-[#FAF8F5] text-stone-900 relative overflow-hidden font-sans border-b border-stone-200/50">
       
@@ -30,126 +48,119 @@ export default function OurStorySection() {
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
           
-          {/* Card 1: 01 — 100% Natural Extracts (Col Span 6 - Row 1 Left) */}
-          <div className="col-span-1 md:col-span-6 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 md:p-10 flex flex-col sm:flex-row gap-8 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300">
-            <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
-              <div className="space-y-4">
-
+          {/* Card 1: The Soul Viva Difference (Col Span 7) */}
+          <div 
+            onClick={() => setSelectedImage({ src: '/About_Us/Extracts - Diff.png', title: 'The Soul Viva Difference' })}
+            className="col-span-1 md:col-span-7 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col md:flex-row gap-6 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+          >
+            <div className="flex-1 flex flex-col justify-between space-y-4">
+              <div className="space-y-3">
                 <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
-                  100% <br /><span className="italic">Natural Extracts</span>
+                  The <span className="italic">Soul Viva</span> Difference
                 </h3>
-                <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
-                  Every variant contains real botanical extracts — not artificial fragrance alone. Shea butter, cherry blossom, waterlily, sea minerals, black currant, mandarin — each ingredient selected not just for its name, but for its active skin-care benefit. Real botanicals, real results.
+                <p className="font-sans text-[15px] md:text-[16px] text-neutral-700 font-light leading-relaxed">
+                  More than a soap, Soul Viva is a daily ritual designed to elevate your skin care. By combining active transparent glycerin bases with 100% natural botanical extracts, we create a bathing bar that actively hydrates, nourishes, and protects your skin.
                 </p>
               </div>
-              <div className="flex items-center gap-3 text-neutral-500">
-                <div className="p-2 rounded-full bg-white">
-                  <Leaf className="w-4 h-4 text-[#2D3A2F]" />
-                </div>
-                <span className="font-serif text-xs italic text-stone-700">"Real botanicals, real results."</span>
+              <div className="flex items-center gap-2 text-[#2D3A2F]">
+                <Sparkles className="w-4 h-4" />
+                <span className="font-serif text-xs italic text-stone-700">"A feeling of freshness, redefined."</span>
               </div>
             </div>
-            <div className="w-full sm:w-[38%] min-h-[200px] rounded-2xl overflow-hidden relative shadow-sm">
+            <div className="w-full md:w-[45%] rounded-2xl overflow-hidden relative shadow-sm flex items-center justify-center min-h-[220px] aspect-[4/3] md:aspect-auto flex-shrink-0">
               <img 
-                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600" 
-                alt="Genuine natural extracts" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                src="/About_Us/Extracts - Diff.png" 
+                alt="The Soul Viva Difference" 
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
             </div>
           </div>
 
-          {/* Card 2: 02 — Sensory-First Design (Col Span 6 - Row 1 Right) */}
-          <div className="col-span-1 md:col-span-6 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 md:p-10 flex flex-col sm:flex-row gap-8 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
-            <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
-              <div className="space-y-4">
-
-                <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
-                  Sensory-First <br /><span className="italic">Design</span>
-                </h3>
-                <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
-                  Each variant is built around an emotional story — a feeling, a scene, an escape. The fragrance, the colour, the name, and the key visual all work together to create an experience that goes far beyond the functional. Soul Viva doesn't just clean skin. It transports the person using it.
-                </p>
-              </div>
-              <div className="flex items-center gap-3 text-neutral-500">
-                <div className="p-2 rounded-full bg-white">
-                  <Sparkles className="w-4 h-4 text-[#2D3A2F]" />
-                </div>
-                <span className="font-serif text-xs italic text-stone-700">"Transporting the senses beyond function."</span>
-              </div>
+          {/* Card 2: 100% Natural Extracts (Col Span 5) */}
+          <div 
+            onClick={() => setSelectedImage({ src: '/About_Us/Natural Extracts.png', title: '100% Natural Extracts' })}
+            className="col-span-1 md:col-span-5 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+          >
+            <div className="space-y-3">
+              <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+                100% <span className="italic">Natural Extracts</span>
+              </h3>
+              <p className="font-sans text-[15px] md:text-[16px] text-neutral-700 font-light leading-relaxed">
+                Every variant contains real botanical extracts — not artificial fragrance alone. Shea butter, cherry blossom, waterlily, sea minerals, black currant, mandarin — each ingredient is selected for its active skin-care benefits.
+              </p>
             </div>
-            <div className="w-full sm:w-[38%] min-h-[200px] rounded-2xl overflow-hidden relative shadow-sm">
+            <div className="w-full rounded-2xl overflow-hidden relative shadow-sm aspect-[16/10]">
               <img 
-                src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=600" 
-                alt="Sensory-first design" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                src="/About_Us/Natural Extracts.png" 
+                alt="100% Natural Extracts" 
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
             </div>
           </div>
 
-          {/* Card 3: 03 — Glycerin-Rich Gel Formula (Col Span 4 - Row 2 Left) */}
-          <div className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
-            <div className="space-y-4">
-
-              <h3 className="font-serif text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
-                Glycerin-Rich <br /><span className="italic">Gel Formula</span>
+          {/* Card 3: Glycerin-Rich Gel Base (Col Span 4) */}
+          <div 
+            onClick={() => setSelectedImage({ src: '/About_Us/Glucerin.png', title: 'Glycerin-Rich Gel Base' })}
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+          >
+            <div className="space-y-3">
+              <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+                Glycerin-Rich <span className="italic">Gel Base</span>
               </h3>
-              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
-                Unlike conventional soaps that strip the skin, Soul Viva's transparent glycerin base acts as a humectant — drawing moisture into the skin with every wash. The result is skin that feels soft and hydrated, not dry and tight. This is the fundamental difference between a bathing bar that merely cleans and one that actively cares.
+              <p className="font-sans text-[14px] text-neutral-700 font-light leading-relaxed">
+                Unlike conventional soaps that strip the skin, Soul Viva's transparent glycerin base acts as a humectant — drawing moisture into the skin with every wash, leaving it soft and hydrated.
               </p>
             </div>
-            <div className="flex items-center gap-2.5 text-[#2D3A2F] bg-white border border-[#E5DEC1]/60 rounded-2xl p-4">
-              <Droplet className="w-5 h-5 text-[#2D3A2F]" />
-              <span className="font-sans text-xs font-semibold">Drawing moisture in with every wash.</span>
-            </div>
-          </div>
-
-          {/* Card 4: 04 — Premium Shelf Presence (Col Span 4 - Row 2 Center) */}
-          <div className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
-            <div className="space-y-4">
-
-              <h3 className="font-serif text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
-                Premium <br /><span className="italic">Shelf Presence</span>
-              </h3>
-              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
-                Each bar is individually flow-wrapped and presented in a full-colour printed monocarton with matte lamination and Spot UV finishing. The packaging is designed to command attention on shelf — with bold colour, considered design, and a visual identity that stands far apart from commodity soap.
-              </p>
-            </div>
-            <div className="w-full h-[160px] rounded-2xl overflow-hidden shadow-inner">
+            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden relative shadow-sm">
               <img 
-                src="/Waterlily and Pear/Soap_packaging_in_luxury_scene_202606121132.jpeg" 
-                alt="Premium shelf presence" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                src="/About_Us/Glucerin.png" 
+                alt="Glycerin-Rich Gel Base" 
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
             </div>
           </div>
 
-          {/* Card 5: 06 — Export-Ready from Day One (Col Span 4 - Row 2 Right) */}
-          <div className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 text-neutral-900 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-md transition-all duration-300 text-left">
-            <div className="space-y-4">
-
-              <h3 className="font-serif text-2xl font-normal tracking-tight leading-tight text-[#2D3A2F]">
-                Export-Ready <br /><span className="italic text-stone-700">from Day One</span>
+          {/* Card 4: Signature Fragrance Design (Col Span 4) */}
+          <div 
+            onClick={() => setSelectedImage({ src: '/About_Us/Fragrance.png', title: 'Signature Fragrances' })}
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+          >
+            <div className="space-y-3">
+              <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+                Signature <span className="italic">Fragrances</span>
               </h3>
-              <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-relaxed">
-                Manufactured by a certified contract partner with international export capability. GS1 barcodes registered via GS1 India DataKart. Compliant labelling for international markets. Soul Viva is built to be a global brand.
+              <p className="font-sans text-[14px] text-neutral-700 font-light leading-relaxed">
+                Crafted by master perfumers to evoke emotions. Each fragrance is built around a distinct scene and story, lingering beautifully on the skin long after bathing.
               </p>
             </div>
-            
-            <div className="flex flex-col gap-3.5 w-full">
-              <div className="bg-white border border-[#E5DEC1]/60 rounded-2xl p-4 flex items-center gap-3.5">
-                <Globe className="w-6 h-6 text-[#2D3A2F] flex-shrink-0" />
-                <div>
-                  <span className="block font-mono text-[9px] uppercase tracking-wider text-neutral-500">Standard</span>
-                  <span className="font-serif text-xs font-semibold text-[#2D3A2F]">GS1 Registered EANs</span>
-                </div>
-              </div>
-              <div className="bg-white border border-[#E5DEC1]/60 rounded-2xl p-4 flex items-center gap-3.5">
-                <ShieldCheck className="w-6 h-6 text-[#2D3A2F] flex-shrink-0" />
-                <div>
-                  <span className="block font-mono text-[9px] uppercase tracking-wider text-neutral-500">Compliance</span>
-                  <span className="font-serif text-xs font-semibold text-[#2D3A2F]">International Export-Ready</span>
-                </div>
-              </div>
+            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden relative shadow-sm">
+              <img 
+                src="/About_Us/Fragrance.png" 
+                alt="Signature Fragrances" 
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+              />
+            </div>
+          </div>
+
+          {/* Card 5: Sensory Experience (Col Span 4) */}
+          <div 
+            onClick={() => setSelectedImage({ src: '/About_Us/Sensory Exp.png', title: 'Sensory Experience' })}
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+          >
+            <div className="space-y-3">
+              <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+                Sensory <span className="italic">Experience</span>
+              </h3>
+              <p className="font-sans text-[14px] text-neutral-700 font-light leading-relaxed">
+                Color, fragrance, texture, and elegant presentation work in concert to transport your senses, elevating a simple daily routine into a transcendent ritual.
+              </p>
+            </div>
+            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden relative shadow-sm">
+              <img 
+                src="/About_Us/Sensory Exp.png" 
+                alt="Sensory Experience" 
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+              />
             </div>
           </div>
 
@@ -319,6 +330,41 @@ export default function OurStorySection() {
         </div>
 
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          onClick={() => setSelectedImage(null)}
+          className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-10 cursor-zoom-out animate-fade-in"
+        >
+          <button 
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-6 text-white hover:text-stone-300 bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 shadow-md"
+            aria-label="Close details"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          
+          <div className="max-w-5xl w-full flex flex-col items-center gap-4 text-center">
+            <h4 className="font-serif text-white text-xl md:text-2xl font-light tracking-wide">
+              {selectedImage.title}
+            </h4>
+            <div 
+              onClick={(e) => e.stopPropagation()} 
+              className="relative max-h-[80vh] w-full flex items-center justify-center bg-[#FAF8F5]/5 p-2 rounded-2xl border border-white/10 shadow-2xl overflow-hidden"
+            >
+              <img 
+                src={selectedImage.src} 
+                alt={selectedImage.title} 
+                className="max-h-[75vh] w-auto max-w-full object-contain rounded-lg animate-scale-up"
+              />
+            </div>
+            <p className="text-stone-400 font-sans text-xs md:text-sm italic">
+              Click anywhere outside or press ESC to close
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
