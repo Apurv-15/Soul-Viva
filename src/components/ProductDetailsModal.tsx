@@ -175,9 +175,24 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  // Reset active image index when product changes
+  // Scroll to top and reset states when product changes
   useEffect(() => {
     setActiveImageIndex(0);
+    
+    // Reset autoScrollHasRunRef so auto-scroll works for new product
+    autoScrollHasRunRef.current = false;
+
+    // Scroll window/smoother to top
+    if ((window as any).ScrollSmoother) {
+      const smoother = (window as any).ScrollSmoother.get();
+      if (smoother) {
+        smoother.scrollTo(0, false);
+      } else {
+        window.scrollTo(0, 0);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [product]);
 
   // Auto-scroll to details grid after 3.5 seconds, but cancel if user scrolls manually first
@@ -707,7 +722,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
             Formulation Sanctuary
           </span>
           <h2 className="font-sans text-2xl md:text-3xl font-light tracking-tight text-neutral-900 leading-tight">
-            Our Ritual Collection
+            Our Collection
           </h2>
         </div>
         
