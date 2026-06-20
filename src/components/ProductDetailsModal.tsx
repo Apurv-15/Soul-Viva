@@ -718,9 +718,6 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       {/* 3. Discover Our Collection (Horizontal scrolling grid) */}
       <div className="w-full border-t border-neutral-200/50 py-8 md:py-10 mt-6 md:mt-8 text-left px-6 md:px-20 relative z-10">
         <div className="space-y-2 mb-8">
-          <span className="font-sans text-[10px] tracking-[0.25em] font-semibold text-neutral-400 uppercase block">
-            Formulation Sanctuary
-          </span>
           <h2 className="font-sans text-2xl md:text-3xl font-light tracking-tight text-neutral-900 leading-tight">
             Our Collection
           </h2>

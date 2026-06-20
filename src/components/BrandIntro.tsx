@@ -45,7 +45,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#E5DEC1]/10 rounded-full blur-3xl pointer-events-none animate-slow-pan" />
       <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#EAD9EC]/8 animate-float rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-20 relative z-10">
         <motion.div 
           variants={containerVariants}
           initial="hidden"

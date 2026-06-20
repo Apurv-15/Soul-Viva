@@ -452,7 +452,7 @@ export default function App() {
 
                   {/* COMPLETE RITUAL RANGE (CATALOG GRID SECTION) */}
                   <section id="catalog-section" className="pt-4 pb-16 md:pt-8 md:pb-24 bg-[#F5F2EB]/50">
-                    <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col items-center">
+                    <div className="max-w-[1600px] mx-auto px-6 md:px-20 flex flex-col items-center">
 
                       {/* Header Title in large font */}
                       <div className="text-center w-full mb-16 md:mb-24">
@@ -481,7 +481,7 @@ export default function App() {
               {/* SCREEN 2: Catalog Range Grid */}
               {currentScreen === 'range' && (
                 <section id="catalog-section" className="pt-4 pb-16 md:pt-8 md:pb-24 bg-[#F5F2EB]/50">
-                  <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col items-center">
+                  <div className="max-w-[1600px] mx-auto px-6 md:px-20 flex flex-col items-center">
 
                     {/* Header Title in large font */}
                     <div className="text-center w-full mb-16 md:mb-24">
