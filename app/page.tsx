@@ -57,7 +57,7 @@ export default function App() {
   const [criticalAssetsLoaded, setCriticalAssetsLoaded] = useState(false);
 
   const [cinematicActive, setCinematicActive] = useState(false);
-  const [introVideoUrl, setIntroVideoUrl] = useState('/Video/Lavender.mp4');
+  const [introVideoUrl, setIntroVideoUrl] = useState('/Video/Sun_rises_over_lavender.mp4');
 
   useEffect(() => {
     if (animationComplete && criticalAssetsLoaded) {
@@ -146,7 +146,7 @@ export default function App() {
       const criticalImages = [
         '/Hero_page/base.jpeg',
         '/Hero_page/hover.png',
-        '/Logo.png',
+        '/Hero_page/Hero_mobile.jpeg',
         ...PRODUCTS.map(p => p.bgImage)
       ];
       
@@ -374,42 +374,57 @@ export default function App() {
                     className="relative min-h-[95vh] h-[95vh] md:h-screen w-full flex items-center justify-start overflow-hidden bg-[#F5F2EB]"
                     style={{ perspective: 1200 }}
                   >
-                    {/* Background Images with 3D Parallax Hover Effect */}
+                    {/* Background Images with Responsive display */}
                     <div className="absolute inset-0 z-0 select-none pointer-events-none">
-                      {/* Base Image (subtle movement) */}
-                      <MotionImage
-                        src="/Hero_page/base.jpeg"
-                        alt="Soul Viva Hero Base"
-                        fill
-                        priority
-                        sizes="100vw"
-                        className="object-cover"
-                        style={{
-                          x: baseTranslateX,
-                          y: baseTranslateY,
-                          rotateX: baseRotateX,
-                          rotateY: baseRotateY,
-                          scale: baseScale,
-                        }}
-                      />
-                      {/* Floating Overlay (moves with mouse + keyframe float) */}
-                      <div className="absolute inset-0 w-full h-full animate-hero-float">
-                        <MotionImage
-                          src="/Hero_page/hover.png"
-                          alt="Soul Viva Hero Overlay"
+                      {/* Mobile static hero image */}
+                      <div className="block md:hidden absolute inset-0 w-full h-full">
+                        <Image
+                          src="/Hero_page/Hero_mobile.jpeg"
+                          alt="Soul Viva Hero Mobile"
                           fill
                           priority
                           sizes="100vw"
-                          className="object-cover origin-center"
+                          className="object-cover"
+                        />
+                      </div>
+
+                      {/* Desktop 3D Parallax Hover Effect */}
+                      <div className="hidden md:block absolute inset-0 w-full h-full">
+                        {/* Base Image (subtle movement) */}
+                        <MotionImage
+                          src="/Hero_page/base.jpeg"
+                          alt="Soul Viva Hero Base"
+                          fill
+                          priority
+                          sizes="100vw"
+                          className="object-cover"
                           style={{
-                            x: xSpring,
-                            y: ySpring,
-                            rotateX,
-                            rotateY,
-                            scale: scaleSpring,
-                            filter: filterString,
+                            x: baseTranslateX,
+                            y: baseTranslateY,
+                            rotateX: baseRotateX,
+                            rotateY: baseRotateY,
+                            scale: baseScale,
                           }}
                         />
+                        {/* Floating Overlay (moves with mouse + keyframe float) */}
+                        <div className="absolute inset-0 w-full h-full animate-hero-float">
+                          <MotionImage
+                            src="/Hero_page/hover.png"
+                            alt="Soul Viva Hero Overlay"
+                            fill
+                            priority
+                            sizes="100vw"
+                            className="object-cover origin-center"
+                            style={{
+                              x: xSpring,
+                              y: ySpring,
+                              rotateX,
+                              rotateY,
+                              scale: scaleSpring,
+                              filter: filterString,
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
 
@@ -546,15 +561,9 @@ export default function App() {
 
             {/* Giant Brand Logo Text */}
             <div className="w-full text-center py-6 flex justify-center">
-              <div className="relative w-[75vw] max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-[60px] sm:h-[80px] md:h-[120px]">
-                <Image 
-                  src="/Logo.png" 
-                  alt="Soul Viva Logo" 
-                  fill
-                  className="object-contain drop-shadow-sm"
-                  sizes="(max-width: 768px) 75vw, 600px"
-                />
-              </div>
+              <span className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-[0.2em] text-[#1c1b1b] uppercase font-normal select-none">
+                SOUL VIVA
+              </span>
             </div>
 
             {/* Mandatory Footer Information Grid */}

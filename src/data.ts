@@ -160,7 +160,7 @@ export const PRODUCTS: Product[] = [
     badge: 'Pure Relaxation',
     image: '/Black Currant/Soul Viva - Black Currant & Lavender - Front 1.png',
     bgImage: '/Images/Black_current_kv.jpeg',
-    video: '/Video/Lavender.mp4',
+    video: '/Video/Sun_rises_over_lavender.mp4',
     images: [
       '/Images/Black_current_kv.jpeg',
       '/Black Currant/Soul Viva - Black Currant & Lavender - Front 1.png',

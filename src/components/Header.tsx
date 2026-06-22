@@ -78,14 +78,9 @@ export default function Header({
             onClick={() => navigateTo('home')}
             className="select-none hover:opacity-80 transition-opacity flex items-center justify-center cursor-pointer"
           >
-            <Image 
-              src="/Logo.png" 
-              alt="Soul Viva" 
-              width={160} 
-              height={40} 
-              className="h-7 md:h-9 w-auto object-contain drop-shadow-sm"
-              priority
-            />
+            <span className="font-serif text-xl md:text-2xl tracking-[0.18em] text-[#1c1b1b] uppercase font-normal">
+              SOUL VIVA
+            </span>
           </button>
         </div>
 

@@ -64,15 +64,10 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                 WHAT IS SOUL VIVA
               </span>
               <div className="space-y-3">
-                <div className="relative w-[60vw] max-w-[300px] sm:max-w-[400px] md:max-w-[500px] h-[60px] sm:h-[80px] md:h-[100px] -ml-2">
-                  <Image 
-                    src="/Logo.png" 
-                    alt="Soul Viva" 
-                    fill
-                    className="object-contain object-left drop-shadow-sm"
-                    sizes="(max-width: 768px) 60vw, 500px"
-                    priority
-                  />
+                <div className="py-2">
+                  <span className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-[0.18em] text-[#1c1b1b] uppercase font-normal select-none">
+                    SOUL VIVA
+                  </span>
                 </div>
                 <p className="font-serif text-[18px] sm:text-[20px] md:text-[22px] italic text-[#2D3A2F] font-normal leading-relaxed mt-1">
                   Where Skincare meets sensory indulgence.

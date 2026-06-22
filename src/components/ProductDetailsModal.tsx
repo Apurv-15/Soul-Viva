@@ -10,6 +10,7 @@ import { Product } from '../types';
 import { PRODUCTS } from '../data';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
 import { X, Heart, Play } from 'lucide-react';
 
 const dropletPattern = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" opacity="0.08"><defs><radialGradient id="drop" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.9"/><stop offset="50%" stop-color="%23ffffff" stop-opacity="0"/><stop offset="80%" stop-color="%23000000" stop-opacity="0.08"/><stop offset="100%" stop-color="%23000000" stop-opacity="0.25"/></radialGradient></defs><circle cx="30" cy="40" r="10" fill="url(%23drop)"/><circle cx="80" cy="120" r="7" fill="url(%23drop)"/><circle cx="150" cy="60" r="14" fill="url(%23drop)"/><circle cx="110" cy="160" r="9" fill="url(%23drop)"/><circle cx="50" cy="180" r="5" fill="url(%23drop)"/><circle cx="180" cy="20" r="6" fill="url(%23drop)"/><circle cx="20" cy="100" r="8" fill="url(%23drop)"/><circle cx="160" cy="130" r="10" fill="url(%23drop)"/></svg>`;
@@ -183,13 +184,9 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
     autoScrollHasRunRef.current = false;
 
     // Scroll window/smoother to top
-    if ((window as any).ScrollSmoother) {
-      const smoother = (window as any).ScrollSmoother.get();
-      if (smoother) {
-        smoother.scrollTo(0, false);
-      } else {
-        window.scrollTo(0, 0);
-      }
+    const smoother = ScrollSmoother.get();
+    if (smoother) {
+      smoother.scrollTo(0, false);
     } else {
       window.scrollTo(0, 0);
     }
@@ -248,7 +245,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
         }
       }
       window.removeEventListener('scroll', handleScroll);
-    }, 3500);
+    }, 5000);
 
     return () => {
       clearTimeout(timer);
@@ -421,7 +418,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       <div className="hidden md:flex relative w-full h-screen flex-col items-center justify-center overflow-hidden z-10 select-none bg-[#FAF9F5]">
         {/* Full-screen clear background video or key visual */}
         <div className="absolute inset-0 z-0 bg-black">
-          {product.video && product.id === 'cherry-blossom-strawberry' ? (
+          {product.video ? (
             <video 
               src={encodePath(product.video)}
               autoPlay
@@ -739,12 +736,6 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               key={`${item.id}-${idx}`}
               onClick={() => {
                 onProductSelect(item);
-                const modalContainer = document.querySelector('.fixed');
-                if (modalContainer) {
-                  modalContainer.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
               }}
               className="flex-shrink-0 w-[280px] sm:w-[320px] bg-white rounded-3xl border border-neutral-200/40 overflow-hidden hover:border-neutral-400/60 transition-all duration-300 cursor-pointer group"
             >
@@ -784,15 +775,9 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
 
           {/* Giant Brand Logo Text */}
           <div className="w-full text-center py-6 flex justify-center">
-            <div className="relative w-[75vw] max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-[60px] sm:h-[80px] md:h-[120px]">
-              <Image 
-                src="/Logo.png" 
-                alt="Soul Viva Logo" 
-                fill
-                className="object-contain drop-shadow-sm"
-                sizes="(max-width: 768px) 75vw, 600px"
-              />
-            </div>
+            <span className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-[0.2em] text-[#1c1b1b] uppercase font-normal select-none">
+              SOUL VIVA
+            </span>
           </div>
 
           {/* Mandatory Footer Information Grid */}
