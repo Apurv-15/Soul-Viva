@@ -7,23 +7,6 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, Leaf, Award, Globe, Droplet, ShieldCheck, Facebook, Instagram, X } from 'lucide-react';
 
 export default function OurStorySection() {
-  const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedImage(null);
-    };
-    if (selectedImage) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
-  }, [selectedImage]);
 
   return (
     <section id="our-story-section" className="py-12 md:py-16 bg-[#FAF8F5] text-stone-900 relative overflow-hidden font-sans border-b border-stone-200/50">
@@ -50,8 +33,7 @@ export default function OurStorySection() {
           
           {/* Card 1: 100% Natural Extracts (Col Span 7) */}
           <div 
-            onClick={() => setSelectedImage({ src: '/About_Us/Natural Extracts.png', title: '100% Natural Extracts' })}
-            className="col-span-1 md:col-span-7 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col md:flex-row gap-6 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+            className="col-span-1 md:col-span-7 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col md:flex-row gap-6 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="flex-1 flex flex-col justify-between space-y-3">
               <div className="space-y-2">
@@ -78,8 +60,7 @@ export default function OurStorySection() {
 
           {/* Card 2: Sensory-First Design (Col Span 5) */}
           <div 
-            onClick={() => setSelectedImage({ src: '/About_Us/Fragrance.png', title: 'Sensory-First Design' })}
-            className="col-span-1 md:col-span-5 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+            className="col-span-1 md:col-span-5 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
               <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
@@ -100,8 +81,7 @@ export default function OurStorySection() {
 
           {/* Card 3: Glycerin-Rich Gel Formula (Col Span 4) */}
           <div 
-            onClick={() => setSelectedImage({ src: '/About_Us/Glucerin.png', title: 'Glycerin-Rich Gel Formula' })}
-            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
               <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
@@ -122,8 +102,7 @@ export default function OurStorySection() {
 
           {/* Card 4: Premium Shelf Presence (Col Span 4) */}
           <div 
-            onClick={() => setSelectedImage({ src: '/About_Us/Extracts - Diff.png', title: 'Premium Shelf Presence' })}
-            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
               <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
@@ -144,8 +123,7 @@ export default function OurStorySection() {
 
           {/* Card 5: Export-Ready from Day One (Col Span 4) */}
           <div 
-            onClick={() => setSelectedImage({ src: '/About_Us/Sensory Exp.png', title: 'Export-Ready from Day One' })}
-            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 cursor-pointer group text-left"
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
               <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
@@ -324,40 +302,6 @@ export default function OurStorySection() {
 
       </div>
 
-      {/* Lightbox Modal */}
-      {selectedImage && (
-        <div 
-          onClick={() => setSelectedImage(null)}
-          className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-10 cursor-zoom-out animate-fade-in"
-        >
-          <button 
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-6 right-6 text-white hover:text-stone-300 bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 shadow-md"
-            aria-label="Close details"
-          >
-            <X className="w-6 h-6" />
-          </button>
-          
-          <div className="max-w-5xl w-full flex flex-col items-center gap-4 text-center">
-            <h4 className="font-serif text-white text-xl md:text-2xl font-light tracking-wide">
-              {selectedImage.title}
-            </h4>
-            <div 
-              onClick={(e) => e.stopPropagation()} 
-              className="relative max-h-[80vh] w-full flex items-center justify-center bg-[#FAF8F5]/5 p-2 rounded-2xl border border-white/10 shadow-2xl overflow-hidden"
-            >
-              <img 
-                src={selectedImage.src} 
-                alt={selectedImage.title} 
-                className="max-h-[75vh] w-auto max-w-full object-contain rounded-lg animate-scale-up"
-              />
-            </div>
-            <p className="text-stone-400 font-sans text-xs md:text-sm italic">
-              Click anywhere outside or press ESC to close
-            </p>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

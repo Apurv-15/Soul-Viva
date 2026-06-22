@@ -131,89 +131,105 @@ export default function App() {
     brightness.set(1.0);
   };
 
-  // Critical assets preloader (Blocks loading screen dismissal)
+  // Phase 1 — Critical: only the 3 hero images block the loader
   useEffect(() => {
-    const preloadImage = (src: string): Promise<void> => {
-      return new Promise((resolve) => {
+    const preloadImage = (src: string): Promise<void> =>
+      new Promise((resolve) => {
         const img = new window.Image();
         img.src = src;
         img.onload = () => resolve();
-        img.onerror = () => resolve(); // continue even on error
+        img.onerror = () => resolve();
       });
-    };
 
     const loadCriticalAssets = async () => {
-      const criticalImages = [
+      await Promise.all([
         '/Hero_page/base.jpeg',
         '/Hero_page/hover.png',
         '/Hero_page/Hero_mobile.jpeg',
-        ...PRODUCTS.map(p => p.bgImage)
-      ];
-      
-      await Promise.all(criticalImages.map(preloadImage));
+      ].map(preloadImage));
       setCriticalAssetsLoaded(true);
     };
 
     loadCriticalAssets();
   }, []);
 
-  // Background preloader for all secondary images and videos to eliminate lag
+  // Phase 2 — Homepage visible: load catalog card assets (bgImages + floating bar images)
+  // so the product grid renders immediately without any blank cards.
   useEffect(() => {
     if (loading) return;
 
-    const preloadAssets = () => {
-      const imageUrls = new Set<string>();
-      const videoUrls = new Set<string>();
+    const cacheImage = (src: string) => {
+      const img = new window.Image();
+      img.src = src;
+    };
 
-      // 1. Load all product-specific assets defined in src/data.ts
-      PRODUCTS.forEach((p) => {
-        if (p.image) imageUrls.add(p.image);
-        if (p.images) p.images.forEach(img => imageUrls.add(img));
-        if (p.video) videoUrls.add(p.video);
-      });
-      const STORY_ASSETS = [
+    // These are visible on the homepage without any navigation
+    PRODUCTS.forEach((p) => {
+      cacheImage(p.bgImage);
+      if (p.image) cacheImage(p.image);
+    });
+  }, [loading]);
+
+  // Phase 3 — After homepage settles: images for other pages, then videos last
+  useEffect(() => {
+    if (loading) return;
+
+    const cacheImage = (src: string) => {
+      const img = new window.Image();
+      img.src = src;
+    };
+
+    // Fire image preloads ~600ms after homepage is shown — avoids bandwidth
+    // contention with Phase 2 card images while still arriving well before
+    // the user navigates away.
+    const imageTimer = setTimeout(() => {
+      // About Us page images
+      [
         '/About_Us/Natural Extracts.png',
         '/About_Us/Fragrance.png',
         '/About_Us/Glucerin.png',
         '/About_Us/Extracts - Diff.png',
-        '/About_Us/Sensory Exp.png'
-      ];
-      STORY_ASSETS.forEach(url => imageUrls.add(url));
+        '/About_Us/Sensory Exp.png',
+      ].forEach(cacheImage);
 
-      // 4. Load product detail key visuals & banners
-      const PRODUCT_THEME_ASSETS = [
-        '/Images/Sea_mineral_kv.jpeg', '/Sea Minerals/bottom_banner.png',
-        '/Images/Waterlily_kv.jpeg', '/Waterlily and Pear/bottom_banner.png',
-        '/Images/Cherry_blossom.jpeg', '/Strawberry/bottom_banner.png',
-        '/Images/Black_current_kv.jpeg', '/Black Currant/bottom_banner.png',
-        '/Images/Manadrin.png', '/Mandarin/bottom_banner.png',
-        '/Images/Shea_butter.jpeg', '/Shea and butter/bottom_banner.png'
-      ];
-      PRODUCT_THEME_ASSETS.forEach(url => imageUrls.add(url));
+      // Product detail key visuals & bottom banners
+      [
+        '/Images/Sea_mineral_kv.jpeg',    '/Sea Minerals/bottom_banner.png',
+        '/Images/Waterlily_kv.jpeg',      '/Waterlily and Pear/bottom_banner.png',
+        '/Images/Cherry_blossom.jpeg',    '/Strawberry/bottom_banner.png',
+        '/Images/Black_current_kv.jpeg',  '/Black Currant/bottom_banner.png',
+        '/Images/Manadrin.png',           '/Mandarin/bottom_banner.png',
+        '/Images/Shea_butter.jpeg',       '/Shea and butter/bottom_banner.png',
+      ].forEach(cacheImage);
 
-      // 5. Preload images into browser memory cache
-      imageUrls.forEach((url) => {
-        const img = new window.Image();
-        img.src = url;
+      // Product gallery images
+      PRODUCTS.forEach((p) => {
+        if (p.images) p.images.forEach(cacheImage);
       });
+    }, 600);
 
-      // Preload videos in background to populate browser cache
-      videoUrls.forEach((url) => {
+    // Videos are lowest priority — fetch metadata first so the player can
+    // show a poster frame instantly, then let the browser cache the full
+    // stream in the background.
+    const videoTimer = setTimeout(() => {
+      PRODUCTS.forEach((p) => {
+        if (!p.video) return;
         const video = document.createElement('video');
-        video.src = url;
-        video.preload = 'auto';
-        
-        fetch(url)
-          .catch((err) => console.warn(`Failed to preload video: ${url}`, err));
+        video.preload = 'metadata'; // grab duration + first frame only
+        video.src = p.video;
+
+        // After metadata is ready, fetch the full file into the HTTP cache
+        video.addEventListener('loadedmetadata', () => {
+          fetch(p.video!, { priority: 'low' } as RequestInit)
+            .catch(() => {/* silently ignore — cache miss is fine */});
+        }, { once: true });
       });
+    }, 2000);
+
+    return () => {
+      clearTimeout(imageTimer);
+      clearTimeout(videoTimer);
     };
-
-    // Run preload after a slight delay to avoid competing with initial home render
-    const timer = setTimeout(() => {
-      preloadAssets();
-    }, 1500);
-
-    return () => clearTimeout(timer);
   }, [loading]);
 
   // Initialize GSAP ScrollSmoother
