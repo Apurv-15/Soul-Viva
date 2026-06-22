@@ -415,7 +415,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       />
 
       {/* Full-screen Hero Banner featuring the variant key visual background */}
-      <div className="hidden md:flex relative w-full h-screen flex-col items-center justify-center overflow-hidden z-10 select-none bg-[#FAF9F5]">
+      <div className="hidden md:flex relative w-full h-[88vh] flex-col items-center justify-center overflow-hidden z-10 select-none bg-[#FAF9F5]">
         {/* Full-screen clear background video or key visual */}
         <div className="absolute inset-0 z-0 bg-black">
           {product.video ? (
@@ -425,7 +425,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               loop
               muted
               playsInline
-              className="w-full h-full object-cover opacity-100 transition-opacity duration-700 border-0 outline-none scale-[1.025]"
+              className="w-full h-full object-cover object-bottom opacity-100 transition-opacity duration-700 border-0 outline-none scale-[1.025]"
               style={{ border: 'none', outline: 'none', boxShadow: 'none' }}
             />
           ) : (
@@ -608,7 +608,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
             <div className="w-full h-[1px] bg-neutral-200/60" />
 
             {/* Description text */}
-            <p className="font-sans text-[17px] sm:text-[19px] md:text-[21px] text-neutral-700 font-light leading-[1.8]">
+            <p className="font-sans text-[16px] text-neutral-700 font-light leading-[1.8]">
               {product.longDescription || product.description}
             </p>
 
@@ -690,7 +690,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                 {product.inciIngredients && (
                   <div className="space-y-2 pt-2">
                     <span className="font-sans text-[13px] tracking-wider text-neutral-450 font-bold uppercase block">Full INCI Listing</span>
-                    <p className="font-sans text-[16px] text-neutral-650 leading-[1.6] bg-[#FAF9F5] border border-neutral-200 rounded-xl p-5">
+                    <p className="font-sans text-[16px] text-neutral-700 font-light leading-[1.6] bg-[#FAF9F5] border border-neutral-200 rounded-xl p-5">
                       {product.inciIngredients}
                       <span className="block mt-3 text-xs text-neutral-450 italic leading-relaxed">
                         Ingredients listed in descending order of concentration per INCI convention. Full safety data sheet and certificate of analysis available to qualified trade buyers on request.

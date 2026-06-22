@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
     badge: 'Citrus Energy',
     image: '/Mandarin/Soul Viva - Mandarin & Peach - Product 2.png',
     bgImage: '/Images/Manadrin.png',
-    video: '/Mandarin/Luxury_bathroom_advertisement_video_202606091012.mp4',
+    video: '/Video/Mandarin_video.mp4',
     images: [
       '/Images/Manadrin.png',
       '/Mandarin/Soul Viva - Mandarin & Peach - Front 1.png',
