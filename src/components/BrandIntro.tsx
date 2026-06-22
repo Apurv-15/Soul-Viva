@@ -56,7 +56,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
           {/* Left Column: Typographic Hook and Brand Philosophy Editorial */}
           <motion.div 
             variants={itemVariants} 
-            className={`${hidePillars ? 'lg:col-span-12 max-w-4xl mx-auto' : 'lg:col-span-6'} flex flex-col space-y-10 text-left`}
+            className={`${hidePillars ? 'lg:col-span-12 max-w-4xl' : 'lg:col-span-6'} flex flex-col space-y-10 text-left`}
           >
             {/* Header Block */}
             <div className="space-y-4">
@@ -76,7 +76,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
             </div>
 
             {/* Editorial Copy */}
-            <div className="space-y-6 font-sans text-[15px] sm:text-[17px] md:text-[19px] text-neutral-700 leading-normal font-light">
+            <div className="space-y-6 font-sans text-[14.5px] text-neutral-700 leading-normal font-light">
               <p>
                 Every day, millions of people step into the shower for a moment that is entirely their own. Soul Viva is built around that moment — not just to cleanse, but to transport.
               </p>
@@ -106,7 +106,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                      Skin-Loving Botanicals
                    </h4>
                  </div>
-                 <p className="font-sans text-[16px] sm:text-[18px] text-neutral-650 leading-relaxed font-light">
+                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
                    Natural extracts of skin-loving botanicals for nourishment.
                  </p>
                </div>
@@ -121,7 +121,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                      Mood-Enlivening Fragrances
                    </h4>
                  </div>
-                 <p className="font-sans text-[16px] sm:text-[18px] text-neutral-650 leading-relaxed font-light">
+                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
                    Delightful fresh fragrances to evoke freshness and enliven the mood.
                  </p>
                </div>
@@ -136,7 +136,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                      Glycerin-Rich Formula
                    </h4>
                  </div>
-                 <p className="font-sans text-[16px] sm:text-[18px] text-neutral-650 leading-relaxed font-light">
+                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
                    Glycerin-Rich Formula for long-lasting skin moisturisation.
                  </p>
                </div>
