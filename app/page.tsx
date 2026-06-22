@@ -50,6 +50,15 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 }
 
+const VALID_SCREENS = ['home', 'range', 'craft', 'story', 'inquire', 'admin'] as const;
+type Screen = typeof VALID_SCREENS[number];
+
+function readScreenFromHash(): Screen {
+  if (typeof window === 'undefined') return 'home';
+  const hash = window.location.hash.replace('#', '');
+  return (VALID_SCREENS as readonly string[]).includes(hash) ? (hash as Screen) : 'home';
+}
+
 export default function App() {
   // Screens state
   const [loading, setLoading] = useState(true);
@@ -68,7 +77,10 @@ export default function App() {
   const handleLoadingComplete = () => {
     setAnimationComplete(true);
   };
-  const [currentScreen, setScreen] = useState<'home' | 'range' | 'craft' | 'story' | 'inquire' | 'admin'>('home');
+
+  // Read the hash on mount so refresh always restores the correct screen.
+  // 'home' is the safe server-side fallback (loading screen covers any flash).
+  const [currentScreen, setScreen] = useState<Screen>(readScreenFromHash);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [pendingProduct, setPendingProduct] = useState<Product | null>(null);
 
@@ -78,6 +90,14 @@ export default function App() {
   const [storyProduct, setStoryProduct] = useState<Product | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [inquiryOpen, setInquiryOpen] = useState(false);
+
+  // Disable browser scroll restoration so we always control the scroll position.
+  // Without this, the browser restores the user's old scroll depth on refresh,
+  // making the page appear to be mid-scroll even though the content is correct.
+  useEffect(() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  }, []);
 
   // Hero section ref and motion values
   const heroRef = useRef<HTMLDivElement>(null);
@@ -306,9 +326,9 @@ export default function App() {
         }
       } else {
         setSelectedProduct(null);
-        const screen = hash.replace('#', '') as any;
-        if (['home', 'range', 'craft', 'story', 'inquire', 'admin'].includes(screen)) {
-          setScreen(screen);
+        const screen = hash.replace('#', '');
+        if ((VALID_SCREENS as readonly string[]).includes(screen)) {
+          setScreen(screen as Screen);
         } else if (!hash) {
           setScreen('home');
         }

@@ -40,7 +40,7 @@ export default function OurStorySection() {
                 <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                   100% <span className="italic">Natural Extracts</span>
                 </h3>
-                <p className="font-sans text-[13px] sm:text-[14px] md:text-[15px] text-neutral-700 font-light leading-normal">
+                <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                   Every variant contains real botanical extracts — not artificial fragrance alone. Shea butter, cherry blossom, waterlily, sea minerals, black currant, mandarin — each ingredient selected not just for its name, but for its active skin-care benefit. Real botanicals, real results.
                 </p>
               </div>
@@ -66,7 +66,7 @@ export default function OurStorySection() {
               <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Sensory-First <span className="italic">Design</span>
               </h3>
-              <p className="font-sans text-[13px] sm:text-[14px] md:text-[15px] text-neutral-700 font-light leading-normal">
+              <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Each variant is built around an emotional story — a feeling, a scene, an escape. The fragrance, the colour, the name, and the key visual all work together to create an experience that goes far beyond the functional. Soul Viva doesn't just clean skin. It transports the person using it.
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function OurStorySection() {
               <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Glycerin-Rich <span className="italic">Gel Formula</span>
               </h3>
-              <p className="font-sans text-[13px] sm:text-[14px] md:text-[15px] text-neutral-700 font-light leading-normal">
+              <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Unlike conventional soaps that strip the skin, Soul Viva's transparent glycerin base acts as a humectant — drawing moisture into the skin with every wash. The result is skin that feels soft and hydrated, not dry and tight. This is the fundamental difference between a bathing bar that merely cleans and one that actively cares.
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function OurStorySection() {
               <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Premium <span className="italic">Shelf Presence</span>
               </h3>
-              <p className="font-sans text-[13px] sm:text-[14px] md:text-[15px] text-neutral-700 font-light leading-normal">
+              <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Each bar is individually flow-wrapped and presented in a full-colour printed monocarton with matte lamination and Spot UV finishing. The packaging is designed to command attention on shelf — with bold colour, considered design, and a visual identity that stands far apart from commodity soap.
               </p>
             </div>
@@ -129,7 +129,7 @@ export default function OurStorySection() {
               <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Export-Ready <span className="italic">from Day One</span>
               </h3>
-              <p className="font-sans text-[13px] sm:text-[14px] md:text-[15px] text-neutral-700 font-light leading-normal">
+              <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Manufactured by a certified contract partner with international export capability. GS1 barcodes registered via GS1 India DataKart. Compliant labelling for international markets. Soul Viva is built to be a global brand.
               </p>
             </div>
