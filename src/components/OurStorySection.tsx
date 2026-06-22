@@ -9,7 +9,7 @@ import { Sparkles, Leaf, Award, Globe, Droplet, ShieldCheck, Facebook, Instagram
 export default function OurStorySection() {
 
   return (
-    <section id="our-story-section" className="py-12 md:py-16 bg-[#FAF8F5] text-stone-900 relative overflow-hidden font-sans border-b border-stone-200/50">
+    <section id="our-story-section" className="pt-8 pb-12 md:pt-10 md:pb-16 bg-[#FAF8F5] text-stone-900 relative overflow-hidden font-sans border-b border-stone-200/50">
       
       {/* Background Soft Glows */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#EAD9EC]/10 rounded-full blur-3xl pointer-events-none" />
