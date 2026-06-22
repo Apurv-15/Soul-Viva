@@ -220,10 +220,13 @@ export default function App() {
   useEffect(() => {
     if (loading) return;
 
+    // Reset scroll position on every screen change before smoother is (re)created
+    window.scrollTo(0, 0);
+
     // Skip ScrollSmoother on touch devices and small viewports to prevent jank/lag
-    const isTouchOrMobile = 
-      window.innerWidth < 1024 || 
-      'ontouchstart' in window || 
+    const isTouchOrMobile =
+      window.innerWidth < 1024 ||
+      'ontouchstart' in window ||
       navigator.maxTouchPoints > 0;
 
     if (isTouchOrMobile) {
