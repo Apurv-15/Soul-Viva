@@ -56,7 +56,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
           {/* Left Column: Typographic Hook and Brand Philosophy Editorial */}
           <motion.div 
             variants={itemVariants} 
-            className={`${hidePillars ? 'lg:col-span-12 max-w-4xl' : 'lg:col-span-6'} flex flex-col space-y-10 text-left`}
+            className={`${hidePillars ? 'lg:col-span-12 max-w-4xl' : 'lg:col-span-6'} flex flex-col space-y-5 text-left`}
           >
             {/* Header Block */}
             <div className="space-y-2">
@@ -74,14 +74,14 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
             </div>
 
             {/* Editorial Copy */}
-            <div className="space-y-6 font-sans text-[14.5px] text-neutral-700 leading-normal font-light">
-              <p>
+            <div className="space-y-4">
+              <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Every day, millions of people step into the shower for a moment that is entirely their own. Soul Viva is built around that moment — not just to cleanse, but to transport.
               </p>
-              <p>
+              <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Soul Viva is a range of Moisturising Gel Bars crafted from a glycerin-rich transparent base infused with real botanical extracts. Six variants, each inspired by a different natural world — a burst of citrus energy, the calm of a lavender field, the crisp shock of the open sea. Together, they form a collection of sensory escapes that fit into the most ordinary daily ritual.
               </p>
-              <p>
+              <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 The result is not just fresh skin. It's a reason to feel joy in the ordinary. To feel fresh. To feel alive.
               </p>
             </div>
