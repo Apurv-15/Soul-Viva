@@ -415,7 +415,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       />
 
       {/* Full-screen Hero Banner featuring the variant key visual background */}
-      <div className="hidden md:flex relative w-full h-[88vh] flex-col items-center justify-center overflow-hidden z-10 select-none bg-[#FAF9F5]">
+      <div className="hidden md:flex relative w-full aspect-video max-h-[90vh] flex-col items-center justify-center overflow-hidden z-10 select-none bg-black">
         {/* Full-screen clear background video or key visual */}
         <div className="absolute inset-0 z-0 bg-black">
           {product.video ? (
@@ -425,7 +425,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               loop
               muted
               playsInline
-              className="w-full h-full object-cover object-bottom opacity-100 transition-opacity duration-700 border-0 outline-none scale-[1.025]"
+              className="w-full h-full object-cover opacity-100 transition-opacity duration-700 border-0 outline-none scale-[1.025]"
               style={{ border: 'none', outline: 'none', boxShadow: 'none' }}
             />
           ) : (
@@ -639,7 +639,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                 <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
                   Technical Details
                 </h3>
-                <ul className="space-y-2.5 font-sans text-[16px] text-neutral-650 font-normal leading-[1.6]">
+                <ul className="space-y-2.5 font-sans text-[16px] text-neutral-700 font-light leading-[1.8]">
                   <li className="flex items-center gap-3">
                     <span className="text-xl flex-shrink-0">🏷️</span>
                     <span>

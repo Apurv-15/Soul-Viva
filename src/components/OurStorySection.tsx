@@ -20,7 +20,7 @@ export default function OurStorySection() {
         {/* Header Block */}
         <div className="text-center md:text-left space-y-4">
 
-          <h2 className="font-serif text-2xl md:text-[32px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+          <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
             WHY US — THE SOUL VIVA DIFFERENCE
           </h2>
           <p className="font-sans text-[14.5px] text-neutral-700 font-bold max-w-xl leading-relaxed">
@@ -29,7 +29,7 @@ export default function OurStorySection() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch md:auto-rows-fr">
           
           {/* Card 1: 100% Natural Extracts (Col Span 7) */}
           <div 
@@ -51,7 +51,7 @@ export default function OurStorySection() {
             </div>
             <div className="w-full md:w-[45%] rounded-2xl overflow-hidden relative shadow-sm flex items-center justify-center min-h-[220px] aspect-[4/3] md:aspect-auto flex-shrink-0">
               <img 
-                src="/About_Us/Natural Extracts.png" 
+                src="/About_Us/Extracts - Diff.png" 
                 alt="100% Natural Extracts" 
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
@@ -72,7 +72,7 @@ export default function OurStorySection() {
             </div>
             <div className="w-full rounded-2xl overflow-hidden relative shadow-sm aspect-[16/10]">
               <img 
-                src="/About_Us/Fragrance.png" 
+                src="/About_Us/Sensory Exp.jpeg" 
                 alt="Sensory-First Design" 
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
@@ -81,10 +81,10 @@ export default function OurStorySection() {
 
           {/* Card 3: Glycerin-Rich Gel Formula (Col Span 4) */}
           <div 
-            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-base md:text-xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Glycerin-Rich <span className="italic">Gel Formula</span>
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -102,10 +102,10 @@ export default function OurStorySection() {
 
           {/* Card 4: Premium Shelf Presence (Col Span 4) */}
           <div 
-            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-base md:text-xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Premium <span className="italic">Shelf Presence</span>
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -114,7 +114,7 @@ export default function OurStorySection() {
             </div>
             <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden relative shadow-sm">
               <img 
-                src="/About_Us/Extracts - Diff.png" 
+                src="/About_Us/Natural Extracts.png" 
                 alt="Premium Shelf Presence" 
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
@@ -123,10 +123,10 @@ export default function OurStorySection() {
 
           {/* Card 5: Export-Ready from Day One (Col Span 4) */}
           <div 
-            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-base md:text-xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Export-Ready <span className="italic">from Day One</span>
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -135,7 +135,7 @@ export default function OurStorySection() {
             </div>
             <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden relative shadow-sm">
               <img 
-                src="/About_Us/Sensory Exp.jpeg" 
+                src="/About_Us/Fragrance.png" 
                 alt="Export-Ready from Day One" 
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
@@ -147,7 +147,7 @@ export default function OurStorySection() {
         {/* EXPORT COMPLIANCE SPECIFICATIONS MODULE */}
         <div className="mt-8 space-y-8 pt-8 border-t border-stone-200/50">
           <div className="text-center md:text-left space-y-4">
-            <h2 className="font-serif text-2xl md:text-[32px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+            <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Export Compliance — Built for International Markets
             </h2>
             <p className="font-sans text-[15px] sm:text-[17px] md:text-[19px] text-neutral-700 font-light max-w-4xl leading-relaxed">
@@ -235,7 +235,7 @@ export default function OurStorySection() {
 
           {/* Section: Manufacturing Facilities Allocation Details */}
           <div className="text-center md:text-left space-y-4 mt-16">
-            <h2 className="font-serif text-2xl md:text-[32px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+            <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Production Facility — Crafted by Experts in Soap Making
             </h2>
             <div className="space-y-4 max-w-4xl font-sans text-[14.5px] text-neutral-700 font-light leading-relaxed">
@@ -295,6 +295,25 @@ export default function OurStorySection() {
                 </div>
 
               </div>
+
+              {/* Factory Images below the cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                <div className="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-sm border border-[#E5DEC1]/40 bg-[#F5F2EB]">
+                  <img 
+                    src="/Factory images/Factory Img1.jpg" 
+                    alt="Production Facility Process" 
+                    className="w-full h-full object-cover hover:scale-[1.015] transition-transform duration-500"
+                  />
+                </div>
+                <div className="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-sm border border-[#E5DEC1]/40 bg-[#F5F2EB]">
+                  <img 
+                    src="/Factory images/Factory Image 2.jpg" 
+                    alt="Production Facility Equipment" 
+                    className="w-full h-full object-cover hover:scale-[1.015] transition-transform duration-500"
+                  />
+                </div>
+              </div>
+
             </div>
           </div>
 
