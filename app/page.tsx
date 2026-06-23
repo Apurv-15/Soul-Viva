@@ -209,7 +209,7 @@ export default function App() {
         '/About_Us/Fragrance.png',
         '/About_Us/Glucerin.png',
         '/About_Us/Extracts - Diff.png',
-        '/About_Us/Sensory Exp.png',
+        '/About_Us/Sensory Exp.jpeg',
       ].forEach(cacheImage);
 
       // Product detail key visuals & bottom banners

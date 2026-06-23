@@ -59,17 +59,15 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
             className={`${hidePillars ? 'lg:col-span-12 max-w-4xl' : 'lg:col-span-6'} flex flex-col space-y-10 text-left`}
           >
             {/* Header Block */}
-            <div className="space-y-4">
+            <div className="space-y-2">
               <span className="font-sans text-xs md:text-sm tracking-[0.25em] uppercase font-bold text-neutral-500 block">
                 WHAT IS SOUL VIVA
               </span>
-              <div className="space-y-3">
-                <div className="py-2">
-                  <span className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-[0.18em] text-[#1c1b1b] uppercase font-normal select-none">
-                    SOUL VIVA
-                  </span>
-                </div>
-                <p className="font-serif text-[18px] sm:text-[20px] md:text-[22px] italic text-[#2D3A2F] font-normal leading-relaxed mt-1">
+              <div className="space-y-1">
+                <span className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-[0.18em] text-[#1c1b1b] uppercase font-normal select-none block">
+                  SOUL VIVA
+                </span>
+                <p className="font-serif text-[18px] sm:text-[20px] md:text-[22px] italic text-[#2D3A2F] font-normal leading-relaxed">
                   Where Skincare meets sensory indulgence.
                 </p>
               </div>

@@ -20,7 +20,7 @@ export default function OurStorySection() {
         {/* Header Block */}
         <div className="text-center md:text-left space-y-4">
 
-          <h2 className="font-serif text-[38px] sm:text-[48px] md:text-[56px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+          <h2 className="font-serif text-2xl md:text-[32px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
             WHY US — THE SOUL VIVA DIFFERENCE
           </h2>
           <p className="font-sans text-[14.5px] text-neutral-700 font-bold max-w-xl leading-relaxed">
@@ -37,7 +37,7 @@ export default function OurStorySection() {
           >
             <div className="flex-1 flex flex-col justify-between space-y-3">
               <div className="space-y-2">
-                <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+                <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
                   100% <span className="italic">Natural Extracts</span>
                 </h3>
                 <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -63,7 +63,7 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-5 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-2xl md:text-3xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Sensory-First <span className="italic">Design</span>
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -84,7 +84,7 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+              <h3 className="font-serif text-base md:text-xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Glycerin-Rich <span className="italic">Gel Formula</span>
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -105,7 +105,7 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+              <h3 className="font-serif text-base md:text-xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Premium <span className="italic">Shelf Presence</span>
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -126,7 +126,7 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-6 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-xl md:text-2xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
+              <h3 className="font-serif text-base md:text-xl font-normal text-[#2D3A2F] tracking-tight leading-tight">
                 Export-Ready <span className="italic">from Day One</span>
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -135,7 +135,7 @@ export default function OurStorySection() {
             </div>
             <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden relative shadow-sm">
               <img 
-                src="/About_Us/Sensory Exp.png" 
+                src="/About_Us/Sensory Exp.jpeg" 
                 alt="Export-Ready from Day One" 
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
@@ -147,7 +147,7 @@ export default function OurStorySection() {
         {/* EXPORT COMPLIANCE SPECIFICATIONS MODULE */}
         <div className="mt-8 space-y-8 pt-8 border-t border-stone-200/50">
           <div className="text-center md:text-left space-y-4">
-            <h2 className="font-serif text-[38px] sm:text-[48px] md:text-[56px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+            <h2 className="font-serif text-2xl md:text-[32px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Export Compliance — Built for International Markets
             </h2>
             <p className="font-sans text-[15px] sm:text-[17px] md:text-[19px] text-neutral-700 font-light max-w-4xl leading-relaxed">
@@ -235,7 +235,7 @@ export default function OurStorySection() {
 
           {/* Section: Manufacturing Facilities Allocation Details */}
           <div className="text-center md:text-left space-y-4 mt-16">
-            <h2 className="font-serif text-[38px] sm:text-[48px] md:text-[56px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+            <h2 className="font-serif text-2xl md:text-[32px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Production Facility — Crafted by Experts in Soap Making
             </h2>
             <div className="space-y-4 max-w-4xl font-sans text-[14.5px] text-neutral-700 font-light leading-relaxed">
