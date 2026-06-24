@@ -702,9 +702,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
 
             </div>
 
-            {/* Card Footer matching user mockup */}
-            <div className="flex justify-between items-center pt-4 border-t border-neutral-200/50 text-xs md:text-sm font-sans tracking-widest text-neutral-400 font-bold uppercase">
-              <span>Net weight: {product.weight}</span>
+            <div className="flex justify-end items-center pt-4 border-t border-neutral-200/50 text-xs md:text-sm font-sans tracking-widest text-neutral-400 font-bold uppercase">
               <span>EAN: {product.eanBarcode || theme.ean}</span>
             </div>
 
