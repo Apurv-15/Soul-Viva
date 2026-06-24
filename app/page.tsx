@@ -512,7 +512,7 @@ export default function App() {
 
                             {/* Header Title in large font */}
                             <div className="text-center w-full mb-16 md:mb-24">
-                              <h2 className="font-serif text-[42px] sm:text-[56px] md:text-[68px] lg:text-[76px] font-normal leading-tight text-[#2D3A2F] tracking-tight">
+                              <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-tight text-[#2D3A2F] tracking-tight">
                                 Our Collection
                               </h2>
                             </div>
@@ -541,7 +541,7 @@ export default function App() {
 
                           {/* Header Title in large font */}
                           <div className="text-center w-full mb-16 md:mb-24">
-                            <h2 className="font-serif text-[42px] sm:text-[56px] md:text-[68px] lg:text-[76px] font-normal leading-tight text-[#2D3A2F] tracking-tight">
+                            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-tight text-[#2D3A2F] tracking-tight">
                               Our Collection
                             </h2>
                           </div>

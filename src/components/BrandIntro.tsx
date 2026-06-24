@@ -64,7 +64,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                 WHAT IS SOUL VIVA
               </span>
               <div className="space-y-1">
-                <span className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-[0.18em] text-[#1c1b1b] uppercase font-normal select-none block">
+                <span className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] text-[#1c1b1b] uppercase font-normal select-none block">
                   SOUL VIVA
                 </span>
                 <p className="font-serif text-[18px] sm:text-[20px] md:text-[22px] italic text-[#2D3A2F] font-normal leading-relaxed">
@@ -92,49 +92,49 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
            {!hidePillars && (
              <motion.div 
                variants={itemVariants} 
-               className="lg:col-span-6 flex flex-col space-y-8 lg:ml-auto w-full self-center"
+               className="lg:col-span-6 flex flex-col space-y-4 lg:ml-auto w-full self-center"
              >
                {/* Pillar 1: Botanicals */}
-               <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-5 md:p-6 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2.5 text-left">
-                 <div className="flex items-center gap-4">
-                   <div className="p-2.5 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
-                     <Leaf className="w-6 h-6 md:w-7 md:h-7" />
+               <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[24px] p-4 md:p-5 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2 text-left">
+                 <div className="flex items-center gap-3">
+                   <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
+                     <Leaf className="w-5 h-5 md:w-6 md:h-6" />
                    </div>
-                   <h4 className="font-sans text-xl sm:text-2xl text-[#2D3A2F] font-bold tracking-tight">
+                   <h4 className="font-sans text-lg sm:text-xl text-[#2D3A2F] font-bold tracking-tight">
                      Skin-Loving Botanicals
                    </h4>
                  </div>
-                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
+                 <p className="font-sans text-[13.5px] text-neutral-650 leading-relaxed font-light">
                    Natural extracts of skin-loving botanicals for nourishment.
                  </p>
                </div>
    
                {/* Pillar 2: Fragrances */}
-               <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-5 md:p-6 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2.5 text-left">
-                 <div className="flex items-center gap-4">
-                   <div className="p-2.5 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
-                     <Sparkles className="w-6 h-6 md:w-7 md:h-7" />
+               <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[24px] p-4 md:p-5 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2 text-left">
+                 <div className="flex items-center gap-3">
+                   <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
+                     <Sparkles className="w-5 h-5 md:w-6 md:h-6" />
                    </div>
-                   <h4 className="font-sans text-xl sm:text-2xl text-[#2D3A2F] font-bold tracking-tight">
+                   <h4 className="font-sans text-lg sm:text-xl text-[#2D3A2F] font-bold tracking-tight">
                      Mood-Enlivening Fragrances
                    </h4>
                  </div>
-                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
+                 <p className="font-sans text-[13.5px] text-neutral-650 leading-relaxed font-light">
                    Delightful fresh fragrances to evoke freshness and enliven the mood.
                  </p>
                </div>
    
                {/* Pillar 3: Glycerin-Rich */}
-               <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-5 md:p-6 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2.5 text-left">
-                 <div className="flex items-center gap-4">
-                   <div className="p-2.5 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
-                     <Droplet className="w-6 h-6 md:w-7 md:h-7" />
+               <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[24px] p-4 md:p-5 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2 text-left">
+                 <div className="flex items-center gap-3">
+                   <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
+                     <Droplet className="w-5 h-5 md:w-6 md:h-6" />
                    </div>
-                   <h4 className="font-sans text-xl sm:text-2xl text-[#2D3A2F] font-bold tracking-tight">
+                   <h4 className="font-sans text-lg sm:text-xl text-[#2D3A2F] font-bold tracking-tight">
                      Glycerin-Rich Formula
                    </h4>
                  </div>
-                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
+                 <p className="font-sans text-[13.5px] text-neutral-650 leading-relaxed font-light">
                    Glycerin-Rich Formula for long-lasting skin moisturisation.
                  </p>
                </div>

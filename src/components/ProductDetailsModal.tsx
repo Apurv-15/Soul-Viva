@@ -415,7 +415,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
       />
 
       {/* Full-screen Hero Banner featuring the variant key visual background */}
-      <div className="hidden md:flex relative w-full aspect-video max-h-[90vh] flex-col items-center justify-center overflow-hidden z-10 select-none bg-black">
+      <div className="hidden md:flex relative w-full h-screen flex-col items-center justify-center overflow-hidden z-10 select-none bg-black">
         {/* Full-screen clear background video or key visual */}
         <div className="absolute inset-0 z-0 bg-black">
           {product.video ? (
