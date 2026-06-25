@@ -22,8 +22,7 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Manadrin.png',
       '/Mandarin/Soul Viva - Mandarin & Peach - Front 1.png',
-      '/Mandarin/Soul Viva - Mandarin & Peach - Left 1.png',
-      '/Mandarin/Soul Viva - Mandarin & Peach - Product 2.png'
+      '/Mandarin/Soul Viva - Mandarin & Peach - Left 1.png'
     ],
     scentNotes: {
       top: ['Sun-Kissed Mandarin', 'Sweet Satsuma'],
@@ -93,8 +92,7 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Waterlily_kv.jpeg',
       '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png',
-      '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Left 1.png',
-      '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Right 1.png'
+      '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Left 1.png'
     ],
     scentNotes: {
       top: ['Crisp Pear', 'Lush Greens'],
@@ -164,8 +162,7 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Black_current_kv.jpeg',
       '/Black Currant/Soul Viva - Black Currant & Lavender - Front 1.png',
-      '/Black Currant/Soul Viva - Black Currant & Lavender - Left 1.png',
-      '/Black Currant/Soul Viva - Black Currant & Lavender - Product 2.png'
+      '/Black Currant/Soul Viva - Black Currant & Lavender - Left 1.png'
     ],
     scentNotes: {
       top: ['Black Currant Buds', 'Deep Berries'],
@@ -235,8 +232,7 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Shea_butter.jpeg',
       '/Shea and butter/Soul Viva - Shea Butter & Honey - Front 1.png',
-      '/Shea and butter/Soul Viva - Shea Butter & Honey - Right 1.png',
-      '/Shea and butter/Soul Viva - Shea Butter & Honey - Product 2.png'
+      '/Shea and butter/Soul Viva - Shea Butter & Honey - Right 1.png'
     ],
     scentNotes: {
       top: ['Warm Honeycomb', 'Amaretto Blossom'],
@@ -286,6 +282,76 @@ export const PRODUCTS: Product[] = [
     ]
   },
   {
+    id: 'cherry-blossom-strawberry',
+    name: 'Soul Viva Cherry Blossom & Strawberry Moisturising Gel Bar',
+    tagline: 'A bathing experience that feels like standing beneath blooming cherry blossoms. Petals drifting in the air as a sweet, delicate fragrance surrounds you. Light, tender, and romantic. Soul Viva Cherry Blossom & Strawberry moisturizing gel bar brings that feeling to your shower, leaving your skin soft and glowing.',
+    subtitle: 'For Soft Glowing Skin',
+    description: 'A bathing experience that feels like standing beneath blooming cherry blossoms. Petals drifting in the air as a sweet, delicate fragrance surrounds you. Light, tender, and romantic. Soul Viva Cherry Blossom & Strawberry moisturizing gel bar brings that feeling to your shower, leaving your skin soft and glowing.',
+    longDescription: 'A bathing experience that feels like standing beneath blooming cherry blossoms. Petals drifting in the air as a sweet, delicate fragrance surrounds you. Light, tender, and romantic. Soul Viva Cherry Blossom & Strawberry moisturizing gel bar brings that feeling to your shower, leaving your skin soft and glowing.',
+    price: 35,
+    weight: '100g when packed',
+    pHLevel: '5.5 (Skin Optimal)',
+    skinType: 'All skin types',
+    accentClass: 'from-pink-100 to-rose-50',
+    bloomShadowClass: 'shadow-[0_0_60px_rgba(244,63,94,0.25)]',
+    themeColor: '#FFE4E6',
+    badge: 'Romantic Bloom',
+    image: '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
+    bgImage: '/Images/Cherry_blossom.jpeg',
+    video: '/Video/vi.mp4',
+    images: [
+      '/Images/Cherry_blossom.jpeg',
+      '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
+      '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Left 1.png'
+    ],
+    scentNotes: {
+      top: ['Wild Strawberry', 'Red Berries'],
+      heart: ['Cherry Blossom', 'Sakura Petals'],
+      base: ['Warm Vanilla', 'Sugared Amber']
+    },
+    keyIngredients: [
+      {
+        name: 'Cherry Blossom Extract',
+        role: 'Luminosity Perfector',
+        source: 'Sakura Petals',
+        description: 'Enhances skin\'s natural glow with natural extracts of brigntening cherry blossoms'
+      },
+      {
+        name: 'Strawberry Extract',
+        role: 'Radiance Booster',
+        source: 'Ripe Strawberries',
+        description: 'Leaves skin radiant with natural extract of juicy strawberries.'
+      },
+      {
+        name: 'Glycerin',
+        role: 'Elastic Cushioner',
+        source: 'Vegetable Source',
+        description: 'Draws in moisture, keeping skin soft and smooth all day long'
+      }
+    ],
+    sensoryProfile: {
+      hydration: 92,
+      purity: 90,
+      latherDensity: 88,
+      longevity: 82
+    },
+    productCategory: 'Glycerin Based transparent gel bathing bar',
+    caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
+    shelfLife: '24 months from date of manufacture',
+    countryOfOrigin: 'India',
+    eanBarcode: '8908030764034',
+    packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
+    inciIngredients: 'Sodium Laureth Sulfate, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Chloride, Parfum, Prunus Serrulata (Cherry Blossom) Flower Extract, Fragaria Vesca (Strawberry) Fruit Extract, Cocamide DEA, Citric Acid, Sodium Benzoate, Potassium Sorbate, CI 17200, CI 45410',
+    claims: [
+      '100% Natural Extracts',
+      'Dermatologically Tested',
+      'Cruelty Free',
+      'Paraben Free',
+      'Silicon Free',
+      'Suitable for All Skin Types'
+    ]
+  },
+  {
     id: 'sea-minerals-menthol',
     name: 'Soul Viva Sea Minerals & Menthol Moisturizing Gel Bar',
     tagline: 'A refreshing dip in the open sea. Waves wash over you as coolness awakens every sense. Deeply purifying and cooling.',
@@ -306,8 +372,7 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Sea_mineral_kv.jpeg',
       '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Front 1.png',
-      '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Left 1.png',
-      '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Product 2.png'
+      '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Left 1.png'
     ],
     scentNotes: {
       top: ['Crisp Menthol', 'Marine Mist'],
