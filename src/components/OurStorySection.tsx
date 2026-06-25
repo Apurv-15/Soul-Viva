@@ -18,12 +18,12 @@ export default function OurStorySection() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-20 relative z-10 space-y-8">
         
         {/* Header Block */}
-        <div className="text-center md:text-left space-y-4">
+        <div className="text-left space-y-4">
 
           <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
             WHY US — THE SOUL VIVA DIFFERENCE
           </h2>
-          <p className="font-sans text-[14.5px] text-neutral-700 font-bold max-w-xl leading-relaxed">
+          <p className="font-serif text-[18px] sm:text-[20px] md:text-[22px] italic text-[#2D3A2F] font-normal leading-relaxed">
             More than a soap. A feeling of freshness.
           </p>
         </div>
@@ -31,11 +31,11 @@ export default function OurStorySection() {
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch md:auto-rows-fr">
           
-          {/* Card 1: 100% Natural Extracts (Col Span 7) */}
+          {/* Card 1: 100% Natural Extracts (Col Span 6) */}
           <div 
-            className="col-span-1 md:col-span-7 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col md:flex-row gap-6 justify-between items-stretch overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
+            className="col-span-1 md:col-span-6 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
-            <div className="flex-1 flex flex-col justify-between space-y-3">
+            <div className="space-y-4">
               <div className="space-y-2">
                 <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
                   100% Natural Extracts
@@ -49,18 +49,18 @@ export default function OurStorySection() {
                 <span className="font-serif text-xs italic text-stone-700">"Real botanicals, real results."</span>
               </div>
             </div>
-            <div className="w-full md:w-[45%] rounded-2xl overflow-hidden relative shadow-sm flex items-center justify-center min-h-[220px] aspect-[4/3] md:aspect-auto flex-shrink-0">
+            <div className="w-full rounded-2xl overflow-hidden relative shadow-sm aspect-[16/10] bg-[#FAF8F5]/50 flex items-center justify-center">
               <img 
                 src="/About_Us/Extracts - Diff.png" 
                 alt="100% Natural Extracts" 
-                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                className="max-w-full max-h-full object-contain group-hover:scale-[1.02] transition-transform duration-700"
               />
             </div>
           </div>
 
-          {/* Card 2: Sensory-First Design (Col Span 5) */}
+          {/* Card 2: Sensory-First Design (Col Span 6) */}
           <div 
-            className="col-span-1 md:col-span-5 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
+            className="col-span-1 md:col-span-6 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
               <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
@@ -146,7 +146,7 @@ export default function OurStorySection() {
 
         {/* EXPORT COMPLIANCE SPECIFICATIONS MODULE */}
         <div className="mt-8 space-y-8 pt-8 border-t border-stone-200/50">
-          <div className="text-center md:text-left space-y-4">
+          <div className="text-left space-y-4">
             <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Export Compliance — Built for International Markets
             </h2>
@@ -234,7 +234,7 @@ export default function OurStorySection() {
           </div>
 
           {/* Section: Manufacturing Facilities Allocation Details */}
-          <div className="text-center md:text-left space-y-4 mt-16">
+          <div className="text-left space-y-4 mt-16">
             <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Production Facility — Crafted by Experts in Soap Making
             </h2>
@@ -249,8 +249,6 @@ export default function OurStorySection() {
           </div>
 
           <div className="bg-[#FAF8F5] border border-[#E5DEC1]/50 rounded-[32px] p-8 md:p-12 text-left space-y-8 mt-8">
-
-            <div className="w-full h-[1px] bg-[#E5DEC1]/50" />
 
             <div className="space-y-4">
               <h4 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800">

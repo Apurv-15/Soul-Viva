@@ -45,7 +45,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#E5DEC1]/10 rounded-full blur-3xl pointer-events-none animate-slow-pan" />
       <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#EAD9EC]/8 animate-float rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] w-full mx-auto pl-0 pr-6 md:pl-0 md:pr-20 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-20 relative z-10">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -97,11 +97,11 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                    <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
                      <Leaf className="w-5 h-5 md:w-6 md:h-6" />
                    </div>
-                   <h4 className="font-sans text-lg sm:text-xl text-[#2D3A2F] font-bold tracking-tight">
+                   <h4 className="font-serif text-[18px] md:text-[20px] italic text-[#2D3A2F] font-normal leading-tight">
                      Skin-Loving Botanicals
                    </h4>
                  </div>
-                 <p className="font-sans text-[13.5px] text-neutral-650 leading-relaxed font-light">
+                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
                    Natural extracts of skin-loving botanicals for nourishment.
                  </p>
                </div>
@@ -112,11 +112,11 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                    <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
                      <Sparkles className="w-5 h-5 md:w-6 md:h-6" />
                    </div>
-                   <h4 className="font-sans text-lg sm:text-xl text-[#2D3A2F] font-bold tracking-tight">
+                   <h4 className="font-serif text-[18px] md:text-[20px] italic text-[#2D3A2F] font-normal leading-tight">
                      Mood-Enlivening Fragrances
                    </h4>
                  </div>
-                 <p className="font-sans text-[13.5px] text-neutral-650 leading-relaxed font-light">
+                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
                    Delightful fresh fragrances to evoke freshness and enliven the mood.
                  </p>
                </div>
@@ -127,11 +127,11 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                    <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
                      <Droplet className="w-5 h-5 md:w-6 md:h-6" />
                    </div>
-                   <h4 className="font-sans text-lg sm:text-xl text-[#2D3A2F] font-bold tracking-tight">
+                   <h4 className="font-serif text-[18px] md:text-[20px] italic text-[#2D3A2F] font-normal leading-tight">
                      Glycerin-Rich Formula
                    </h4>
                  </div>
-                 <p className="font-sans text-[13.5px] text-neutral-650 leading-relaxed font-light">
+                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
                    Glycerin-Rich Formula for long-lasting skin moisturisation.
                  </p>
                </div>

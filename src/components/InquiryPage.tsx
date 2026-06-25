@@ -162,7 +162,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
           Get in Touch
         </span>
         <h1 className="font-serif text-[42px] sm:text-[54px] md:text-[62px] font-normal leading-tight text-neutral-900 tracking-tight">
-          Let's talk about <span className="italic font-serif text-[#2D3A2F]">Soul Viva</span>
+          Let's talk about <span className="font-serif tracking-[0.18em] text-[#1c1b1b] uppercase font-normal">SOUL VIVA</span>
         </h1>
         <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal select-text">
           Whether you're a distributor exploring new brands, a retailer building your personal care range, or a buyer looking for a premium Indian export partner — we'd love to hear from you. All enquiries are responded to within 1–2 business days (IST).
