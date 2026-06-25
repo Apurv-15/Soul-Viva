@@ -45,7 +45,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#E5DEC1]/10 rounded-full blur-3xl pointer-events-none animate-slow-pan" />
       <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#EAD9EC]/8 animate-float rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-20 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto pl-0 pr-6 md:pl-0 md:pr-20 relative z-10">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -56,13 +56,10 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
           {/* Left Column: Typographic Hook and Brand Philosophy Editorial */}
           <motion.div 
             variants={itemVariants} 
-            className={`${hidePillars ? 'lg:col-span-12 max-w-4xl' : 'lg:col-span-6'} flex flex-col space-y-5 text-left`}
+            className={`${hidePillars ? 'lg:col-span-12 w-full' : 'lg:col-span-6'} flex flex-col space-y-5 text-left`}
           >
             {/* Header Block */}
             <div className="space-y-2">
-              <span className="font-sans text-xs md:text-sm tracking-[0.25em] uppercase font-bold text-neutral-500 block">
-                WHAT IS SOUL VIVA
-              </span>
               <div className="space-y-1">
                 <span className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] text-[#1c1b1b] uppercase font-normal select-none block">
                   SOUL VIVA

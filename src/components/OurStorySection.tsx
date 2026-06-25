@@ -37,8 +37,8 @@ export default function OurStorySection() {
           >
             <div className="flex-1 flex flex-col justify-between space-y-3">
               <div className="space-y-2">
-                <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
-                  100% <span className="italic">Natural Extracts</span>
+                <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+                  100% Natural Extracts
                 </h3>
                 <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                   Every variant contains real botanical extracts — not artificial fragrance alone. Shea butter, cherry blossom, waterlily, sea minerals, black currant, mandarin — each ingredient selected not just for its name, but for its active skin-care benefit. Real botanicals, real results.
@@ -63,8 +63,8 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-5 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
-                Sensory-First <span className="italic">Design</span>
+              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+                Sensory-First Design
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Each variant is built around an emotional story — a feeling, a scene, an escape. The fragrance, the colour, the name, and the key visual all work together to create an experience that goes far beyond the functional. Soul Viva doesn't just clean skin. It transports the person using it.
@@ -84,8 +84,8 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
-                Glycerin-Rich <span className="italic">Gel Formula</span>
+              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+                Glycerin-Rich Gel Formula
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Unlike conventional soaps that strip the skin, Soul Viva's transparent glycerin base acts as a humectant — drawing moisture into the skin with every wash. The result is skin that feels soft and hydrated, not dry and tight. This is the fundamental difference between a bathing bar that merely cleans and one that actively cares.
@@ -105,8 +105,8 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
-                Premium <span className="italic">Shelf Presence</span>
+              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+                Premium Shelf Presence
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Each bar is individually flow-wrapped and presented in a full-colour printed monocarton with matte lamination and Spot UV finishing. The packaging is designed to command attention on shelf — with bold colour, considered design, and a visual identity that stands far apart from commodity soap.
@@ -114,7 +114,7 @@ export default function OurStorySection() {
             </div>
             <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden relative shadow-sm">
               <img 
-                src="/About_Us/Natural Extracts.png" 
+                src="/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png" 
                 alt="Premium Shelf Presence" 
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
@@ -126,8 +126,8 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight">
-                Export-Ready <span className="italic">from Day One</span>
+              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+                Export-Ready from Day One
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
                 Manufactured by a certified contract partner with international export capability. GS1 barcodes registered via GS1 India DataKart. Compliant labelling for international markets. Soul Viva is built to be a global brand.
