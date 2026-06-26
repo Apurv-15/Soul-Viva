@@ -76,8 +76,8 @@ export default function OurStorySection() {
           </div>
 
           {/* Card 3: Glycerin-Rich Gel Formula (Col Span 4) */}
-          <div 
-            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
+          <div
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-start gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
               <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
@@ -97,8 +97,8 @@ export default function OurStorySection() {
           </div>
 
           {/* Card 4: Premium Shelf Presence (Col Span 4) */}
-          <div 
-            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
+          <div
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-start gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
               <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
@@ -118,8 +118,8 @@ export default function OurStorySection() {
           </div>
 
           {/* Card 5: Export-Ready from Day One (Col Span 4) */}
-          <div 
-            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
+          <div
+            className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-start gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
               <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
