@@ -230,27 +230,37 @@ export default function App() {
       });
     }, 600);
 
-    // Videos are lowest priority — fetch metadata first so the player can
-    // show a poster frame instantly, then let the browser cache the full
-    // stream in the background.
-    const videoTimer = setTimeout(() => {
-      PRODUCTS.forEach((p) => {
-        if (!p.video) return;
-        const video = document.createElement('video');
-        video.preload = 'metadata'; // grab duration + first frame only
-        video.src = p.video;
+    // Videos — staggered preload using hidden <video preload="auto"> elements.
+    // The browser's media cache is shared with real <video> tags, so by the time
+    // the user opens a product modal the video is already buffered.
+    // fetch() was used before but targets the HTTP cache which <video> doesn't read.
+    const videoTimers: ReturnType<typeof setTimeout>[] = [];
+    const preloadEls: HTMLVideoElement[] = [];
 
-        // After metadata is ready, fetch the full file into the HTTP cache
-        video.addEventListener('loadedmetadata', () => {
-          fetch(p.video!, { priority: 'low' } as RequestInit)
-            .catch(() => {/* silently ignore — cache miss is fine */ });
-        }, { once: true });
-      });
-    }, 2000);
+    // Sort smallest-first so the quickest wins arrive early (rough approximation
+    // by URL alphabetical order — replace with explicit sizes if needed).
+    const videoUrls = PRODUCTS
+      .map(p => p.video)
+      .filter((v): v is string => Boolean(v));
+
+    videoUrls.forEach((url, i) => {
+      const t = setTimeout(() => {
+        const el = document.createElement('video');
+        el.preload = 'auto';
+        el.muted = true;
+        el.playsInline = true;
+        el.src = url;
+        el.load();
+        preloadEls.push(el);
+      }, 2500 + i * 3500); // 2.5 s head-start, then one video every 3.5 s
+      videoTimers.push(t);
+    });
 
     return () => {
       clearTimeout(imageTimer);
-      clearTimeout(videoTimer);
+      videoTimers.forEach(clearTimeout);
+      // Release any in-progress downloads immediately
+      preloadEls.forEach(el => { el.src = ''; el.load(); });
     };
   }, [loading]);
 
