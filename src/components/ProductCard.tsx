@@ -68,14 +68,14 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
       </div>
 
       {/* Details Row Underneath Card */}
-      <div className="flex flex-col items-center text-center w-full px-2 py-1 mt-1 space-y-0.5">
+      <div className="flex flex-col items-center text-center w-full px-2 py-1 mt-1 space-y-1">
         <h3 className="font-sans text-[15px] sm:text-[16px] font-semibold text-neutral-900 tracking-tight leading-tight group-hover:text-black">
           {product.name.replace(/\s+(Moisturizing|Moisturising)\s+Gel\s+Bar$/i, '')}
         </h3>
-        <span className="font-sans text-xs text-neutral-500 block leading-tight">
-          Moisturising Gel Bar
+        <span className="font-sans text-[13px] text-neutral-500 block font-light leading-tight italic">
+          {product.subtitle}
         </span>
-        <span className="font-sans text-xs text-neutral-700 font-medium block leading-tight">
+        <span className="font-sans text-xs text-neutral-700 font-medium block leading-tight mt-0.5">
           100g
         </span>
       </div>

@@ -4,10 +4,10 @@ export const PRODUCTS: Product[] = [
   {
     id: 'mandarin-peach',
     name: 'Soul Viva Mandarin & Peach Moisturizing Gel Bar',
-    tagline: 'A burst of citrus energy. Bright, juicy notes awaken your senses, filling the shower with vibrant freshness. Lively, uplifting, and radiant.',
+    tagline: 'A bathing experience that feels like a burst of citrus energy. Bright, juicy notes awaken your senses, filling the air with vibrant freshness. Lively, uplifting, and radiant. Soul Viva Mandarin & Peach moisturizing gel bar brings that feeling to your shower, leaving your skin energised and fresh.',
     subtitle: 'For Energised Fresh Skin',
-    description: 'A burst of citrus energy. Bright, juicy notes awaken your senses, filling the shower with vibrant freshness. Lively, uplifting, and radiant.',
-    longDescription: 'A burst of citrus energy. Bright, juicy notes awaken your senses, filling the shower with vibrant freshness. Lively, uplifting, and radiant.',
+    description: 'A bathing experience that feels like a burst of citrus energy. Bright, juicy notes awaken your senses, filling the air with vibrant freshness. Lively, uplifting, and radiant. Soul Viva Mandarin & Peach moisturizing gel bar brings that feeling to your shower, leaving your skin energised and fresh.',
+    longDescription: 'A bathing experience that feels like a burst of citrus energy. Bright, juicy notes awaken your senses, filling the air with vibrant freshness. Lively, uplifting, and radiant. Soul Viva Mandarin & Peach moisturizing gel bar brings that feeling to your shower, leaving your skin energised and fresh.',
     price: 35,
     weight: '100g when packed',
     pHLevel: '5.5 (Acid Balanced)',
@@ -22,7 +22,9 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Manadrin.png',
       '/Mandarin/Soul Viva - Mandarin & Peach - Front 1.png',
-      '/Mandarin/Soul Viva - Mandarin & Peach - Left 1.png'
+      '/Mandarin/Soul Viva - Mandarin & Peach - Left 1.png',
+      '/Ingredient Story/Ingredient Story - Orange - 1.png',
+      '/Ingredient Story/Ingredient Story - Orange - 2.png'
     ],
     scentNotes: {
       top: ['Sun-Kissed Mandarin', 'Sweet Satsuma'],
@@ -34,13 +36,15 @@ export const PRODUCTS: Product[] = [
         name: 'Mandarin Extract',
         role: 'Vibrancy Stimulator',
         source: 'Calabrian Groves',
-        description: 'Refreshes and energises skin with bright citrus actives and natural Vitamin C'
+        description: 'Refreshes and energises skin with natural extract of refreshing mandarin.',
+        image: '/Ingredient Story/Ingredient Story - Orange - 1.png'
       },
       {
         name: 'Peach Extract',
         role: 'Texture Velvetizer',
         source: 'Organic Orchards',
-        description: 'Softens and smoothens skin with natural peach fruit acids and humectants'
+        description: 'Softens and smoothens skin with natural extract of juicy peaches.',
+        image: '/Ingredient Story/Ingredient Story - Orange - 2.png'
       },
       {
         name: 'Glycerin',
@@ -57,7 +61,7 @@ export const PRODUCTS: Product[] = [
     },
     productCategory: 'Glycerin Based transparent gel bathing bar',
     caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
-    shelfLife: '24 months',
+    shelfLife: '24 months from date of manufacture',
     countryOfOrigin: 'India',
     eanBarcode: '8908030764027',
     packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
@@ -74,10 +78,10 @@ export const PRODUCTS: Product[] = [
   {
     id: 'waterlily-pear',
     name: 'Soul Viva Waterlily & Pear Moisturizing Gel Bar',
-    tagline: 'Standing under the fresh water of a tropical waterfall, surrounded by lush greens and soft blooms. Pure, vibrant, and alive.',
+    tagline: 'A bathing experience that feels like standing under the fresh water of a tropical waterfall, surrounded by lush greens and soft blooms. Pure, vibrant, and alive. Soul Viva Waterlily & Pear moisturizing gel bar brings that feeling to your shower, leaving your skin dewy and fresh.',
     subtitle: 'For Dewy Fresh Skin',
-    description: 'Standing under the fresh water of a tropical waterfall, surrounded by lush greens and soft blooms. Pure, vibrant, and alive.',
-    longDescription: 'Standing under the fresh water of a tropical waterfall, surrounded by lush greens and soft blooms. Pure, vibrant, and alive.',
+    description: 'A bathing experience that feels like standing under the fresh water of a tropical waterfall, surrounded by lush greens and soft blooms. Pure, vibrant, and alive. Soul Viva Waterlily & Pear moisturizing gel bar brings that feeling to your shower, leaving your skin dewy and fresh.',
+    longDescription: 'A bathing experience that feels like standing under the fresh water of a tropical waterfall, surrounded by lush greens and soft blooms. Pure, vibrant, and alive. Soul Viva Waterlily & Pear moisturizing gel bar brings that feeling to your shower, leaving your skin dewy and fresh.',
     price: 35,
     weight: '100g when packed',
     pHLevel: '5.5 (Acid Balanced)',
@@ -92,7 +96,9 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Waterlily_kv.jpeg',
       '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png',
-      '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Left 1.png'
+      '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Left 1.png',
+      '/Ingredient Story/Ingredient Story - Green - 1.png',
+      '/Ingredient Story/Ingredient Story - Green - 2.png'
     ],
     scentNotes: {
       top: ['Crisp Pear', 'Lush Greens'],
@@ -104,13 +110,15 @@ export const PRODUCTS: Product[] = [
         name: 'Waterlily Extract',
         role: 'Flora Rejuvenator',
         source: 'Aquatic Flowers',
-        description: 'Hydrates and refreshes skin with aquatic botanical actives from Nymphaea Alba'
+        description: 'Hydrates and refreshes skin with natural extracts of waterily.',
+        image: '/Ingredient Story/Ingredient Story - Green - 1.png'
       },
       {
         name: 'Pear Extract',
         role: 'Aromatic Softener',
         source: 'Pressed Pears',
-        description: 'Leaves skin soft and supple with gentle fruit enzymes from Pyrus Communis'
+        description: 'Leaves skin soft and supple with natural extract of gentle and juicy pear.',
+        image: '/Ingredient Story/Ingredient Story - Green - 2.png'
       },
       {
         name: 'Glycerin',
@@ -127,7 +135,7 @@ export const PRODUCTS: Product[] = [
     },
     productCategory: 'Glycerin Based transparent gel bathing bar',
     caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
-    shelfLife: '24 months',
+    shelfLife: '24 months from date of manufacture',
     countryOfOrigin: 'India',
     eanBarcode: '8908030764003',
     packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
@@ -143,11 +151,11 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'lavender-currant',
-    name: 'Soul Viva Black Currant & Lavender Moisturizing Gel Bar',
-    tagline: 'Sinking into a calming lavender bath. Soft aromas ease the mind. Deeply soothing and serene — your daily moment of calm.',
+    name: 'Soul Viva Black Currant & Lavender Moisturising Gel Bar',
+    tagline: 'A bathing experience that feels like sinking into a calming lavender bath. Soft aromas ease the mind while gentle warmth relaxes the body. Deeply soothing and serene. Soul Viva Black Currant & Lavender moisturizing gel bar brings that feeling to your shower, leaving you calm and comforted.',
     subtitle: 'For Smooth & Happy Skin',
-    description: 'Sinking into a calming lavender bath. Soft aromas ease the mind. Deeply soothing and serene — your daily moment of calm.',
-    longDescription: 'Sinking into a calming lavender bath. Soft aromas ease the mind. Deeply soothing and serene — your daily moment of calm.',
+    description: 'A bathing experience that feels like sinking into a calming lavender bath. Soft aromas ease the mind while gentle warmth relaxes the body. Deeply soothing and serene. Soul Viva Black Currant & Lavender moisturizing gel bar brings that feeling to your shower, leaving you calm and comforted.',
+    longDescription: 'A bathing experience that feels like sinking into a calming lavender bath. Soft aromas ease the mind while gentle warmth relaxes the body. Deeply soothing and serene. Soul Viva Black Currant & Lavender moisturizing gel bar brings that feeling to your shower, leaving you calm and comforted.',
     price: 35,
     weight: '100g when packed',
     pHLevel: '5.5 (Skin Balanced)',
@@ -162,7 +170,9 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Black_current_kv.jpeg',
       '/Black Currant/Soul Viva - Black Currant & Lavender - Front 1.png',
-      '/Black Currant/Soul Viva - Black Currant & Lavender - Left 1.png'
+      '/Black Currant/Soul Viva - Black Currant & Lavender - Left 1.png',
+      '/Ingredient Story/Ingredient Story - Purple - 1.png',
+      '/Ingredient Story/Ingredient Story - Purple - 2.png'
     ],
     scentNotes: {
       top: ['Black Currant Buds', 'Deep Berries'],
@@ -174,13 +184,15 @@ export const PRODUCTS: Product[] = [
         name: 'Black Currant Essence',
         role: 'Lipid Nourisher',
         source: 'Forest Currants',
-        description: 'Nourishes for smoother skin with antioxidant-rich Ribes Nigrum berry extract'
+        description: 'Nourishes for smoother skin with natural extracts of antioxidant-rich black currant',
+        image: '/Ingredient Story/Ingredient Story - Purple - 1.png'
       },
       {
         name: 'Lavender Extract',
         role: 'Epidermal Calmer',
         source: 'Provence Lavender',
-        description: 'Calms and soothes skin with Lavandula Angustifolia flower actives'
+        description: 'Calms and soothes skin with natural extracts of lavender blooms.',
+        image: '/Ingredient Story/Ingredient Story - Purple - 2.png'
       },
       {
         name: 'Glycerin',
@@ -197,7 +209,7 @@ export const PRODUCTS: Product[] = [
     },
     productCategory: 'Glycerin Based transparent gel bathing bar',
     caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
-    shelfLife: '24 months',
+    shelfLife: '24 months from date of manufacture',
     countryOfOrigin: 'India',
     eanBarcode: '8908030764041',
     packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
@@ -213,11 +225,11 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'shea-honey',
-    name: 'Soul Viva Shea Butter & Honey Moisturizing Gel Bar',
-    tagline: 'A warm, comforting embrace. Rich, creamy softness that leaves skin feeling nourished and comforted — like a hug for your skin.',
+    name: 'Soul Viva Shea Butter & Honey Moisturising Gel Bar',
+    tagline: 'A bathing experience that feels like a warm cozy hug. Rich, creamy softness that leaves your skin feeling nourished and comforted. Soul Viva Shea Butter & Honey moisturizing gel bar brings that feeling to your shower, leaving your skin deeply nourished and soft.',
     subtitle: 'For Deeply Nourished Skin',
-    description: 'A warm, comforting embrace. Rich, creamy softness that leaves skin feeling nourished and comforted — like a hug for your skin.',
-    longDescription: 'A warm, comforting embrace. Rich, creamy softness that leaves skin feeling nourished and comforted — like a hug for your skin.',
+    description: 'A bathing experience that feels like a warm cozy hug. Rich, creamy softness that leaves your skin feeling nourished and comforted. Soul Viva Shea Butter & Honey moisturizing gel bar brings that feeling to your shower, leaving your skin deeply nourished and soft.',
+    longDescription: 'A bathing experience that feels like a warm cozy hug. Rich, creamy softness that leaves your skin feeling nourished and comforted. Soul Viva Shea Butter & Honey moisturizing gel bar brings that feeling to your shower, leaving your skin deeply nourished and soft.',
     price: 35,
     weight: '100g when packed',
     pHLevel: '5.6 (lipid-rich)',
@@ -232,7 +244,9 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Shea_butter.jpeg',
       '/Shea and butter/Soul Viva - Shea Butter & Honey - Front 1.png',
-      '/Shea and butter/Soul Viva - Shea Butter & Honey - Right 1.png'
+      '/Shea and butter/Soul Viva - Shea Butter & Honey - Right 1.png',
+      '/Ingredient Story/Ingredient Story - Yellow - 1.png',
+      '/Ingredient Story/Ingredient Story - Yellow - 2.png'
     ],
     scentNotes: {
       top: ['Warm Honeycomb', 'Amaretto Blossom'],
@@ -244,13 +258,15 @@ export const PRODUCTS: Product[] = [
         name: 'Shea Butter',
         role: 'Deep Nourisher',
         source: 'Cold-Pressed Nut Oil',
-        description: 'Deeply nourishes dry skin with Butyrospermum Parkii fatty acids and Vitamins A, E, F'
+        description: 'Deeply nourishes dry skin with the goodness of nourishing  shea butter.',
+        image: '/Ingredient Story/Ingredient Story - Yellow - 1.png'
       },
       {
         name: 'Honey Extract',
         role: 'Conditioner',
         source: 'Forest Beehive Extract',
-        description: 'Leaves skin soft and smooth with natural Mel humectant properties'
+        description: 'Leaves skin soft and smooth with natural honey with its humectant properties',
+        image: '/Ingredient Story/Ingredient Story - Yellow - 2.png'
       },
       {
         name: 'Glycerin',
@@ -267,7 +283,7 @@ export const PRODUCTS: Product[] = [
     },
     productCategory: 'Glycerin Based transparent gel bathing bar',
     caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
-    shelfLife: '24 months',
+    shelfLife: '24 months from date of manufacture',
     countryOfOrigin: 'India',
     eanBarcode: '8908030764010',
     packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',
@@ -302,7 +318,9 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Cherry_blossom.jpeg',
       '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
-      '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Left 1.png'
+      '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Left 1.png',
+      '/Ingredient Story/Ingredient Story - Pink - 1.png',
+      '/Ingredient Story/Ingredient Story - Pink - 2.png'
     ],
     scentNotes: {
       top: ['Wild Strawberry', 'Red Berries'],
@@ -314,13 +332,15 @@ export const PRODUCTS: Product[] = [
         name: 'Cherry Blossom Extract',
         role: 'Luminosity Perfector',
         source: 'Sakura Petals',
-        description: 'Enhances skin\'s natural glow with natural extracts of brigntening cherry blossoms'
+        description: "Enhances skin's natural glow with natural extracts of brigntening cherry blossoms",
+        image: '/Ingredient Story/Ingredient Story - Pink - 1.png'
       },
       {
         name: 'Strawberry Extract',
         role: 'Radiance Booster',
         source: 'Ripe Strawberries',
-        description: 'Leaves skin radiant with natural extract of juicy strawberries.'
+        description: 'Leaves skin radiant with natural extract of juicy strawberries.',
+        image: '/Ingredient Story/Ingredient Story - Pink - 2.png'
       },
       {
         name: 'Glycerin',
@@ -353,11 +373,11 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'sea-minerals-menthol',
-    name: 'Soul Viva Sea Minerals & Menthol Moisturizing Gel Bar',
-    tagline: 'A refreshing dip in the open sea. Waves wash over you as coolness awakens every sense. Deeply purifying and cooling.',
+    name: 'Soul Viva Sea Minerals & Menthol Moisturising Gel Bar',
+    tagline: 'A bathing experience that feels like a dip in the ocean — cool, crisp, and alive. Waves wash over you as freshness awakens every sense. Beneath it all, a quiet calm. Soul Viva Sea Minerals & Menthol moisturizing gel bar brings that feeling to your shower, leaving you cool and refreshed.',
     subtitle: 'For Cool, Refreshed & Purified Skin',
-    description: 'A refreshing dip in the open sea. Waves wash over you as coolness awakens every sense. Deeply purifying and cooling.',
-    longDescription: 'A refreshing dip in the open sea. Waves wash over you as coolness awakens every sense. Deeply purifying and cooling.',
+    description: 'A bathing experience that feels like a dip in the ocean — cool, crisp, and alive. Waves wash over you as freshness awakens every sense. Beneath it all, a quiet calm. Soul Viva Sea Minerals & Menthol moisturizing gel bar brings that feeling to your shower, leaving you cool and refreshed.',
+    longDescription: 'A bathing experience that feels like a dip in the ocean — cool, crisp, and alive. Waves wash over you as freshness awakens every sense. Beneath it all, a quiet calm. Soul Viva Sea Minerals & Menthol moisturizing gel bar brings that feeling to your shower, leaving you cool and refreshed.',
     price: 35,
     weight: '100g when packed',
     pHLevel: '5.5 (Skin-Identical)',
@@ -372,7 +392,9 @@ export const PRODUCTS: Product[] = [
     images: [
       '/Images/Sea_mineral_kv.jpeg',
       '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Front 1.png',
-      '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Left 1.png'
+      '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Left 1.png',
+      '/Ingredient Story/Ingredient Story - Blue - 1.png',
+      '/Ingredient Story/Ingredient Story - Blue - 2.png'
     ],
     scentNotes: {
       top: ['Crisp Menthol', 'Marine Mist'],
@@ -384,13 +406,15 @@ export const PRODUCTS: Product[] = [
         name: 'Sea Minerals',
         role: 'Purifying Cleanser',
         source: 'Ocean Purity',
-        description: 'Cleanse and refresh with ocean-derived Aqua Marina minerals and trace elements'
+        description: 'Cleanse and refresh with ocean-derived minerals',
+        image: '/Ingredient Story/Ingredient Story - Blue - 1.png'
       },
       {
         name: 'Menthol',
         role: 'Instant Refresher',
         source: 'Peppermint Distillate',
-        description: 'Delivers an instant cooling rush and invigorating refreshing sensation'
+        description: 'Delivers an instant cooling rush and invigorating refreshing sensation of menthol',
+        image: '/Ingredient Story/Ingredient Story - Blue - 2.png'
       },
       {
         name: 'Glycerin',
@@ -407,7 +431,7 @@ export const PRODUCTS: Product[] = [
     },
     productCategory: 'Glycerin Based transparent gel bathing bar',
     caseConfiguration: '8 shrinkpacks of 6 units = 48 units per master carton',
-    shelfLife: '24 months',
+    shelfLife: '24 months from date of manufacture',
     countryOfOrigin: 'India',
     eanBarcode: '8908030764058',
     packaging: 'Individually flow-wrapped bar, presented in full-colour printed monocarton with matte lamination and Spot UV',

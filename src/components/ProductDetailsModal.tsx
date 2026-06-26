@@ -74,9 +74,10 @@ interface IngredientCard3DProps {
   name: string;
   description: string;
   source: string;
+  image?: string;
 }
 
-function IngredientCard3D({ name, description, source }: IngredientCard3DProps) {
+function IngredientCard3D({ name, description, source, image }: IngredientCard3DProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -106,7 +107,7 @@ function IngredientCard3D({ name, description, source }: IngredientCard3DProps) 
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className="relative p-6 rounded-2xl transition-all duration-300 ease-out cursor-pointer h-full bg-white/70 backdrop-blur-md border border-neutral-200/60 shadow-sm hover:shadow-xl hover:border-neutral-400/30"
+      className="relative p-6 rounded-2xl transition-all duration-300 ease-out cursor-pointer h-full bg-white/70 backdrop-blur-md border border-neutral-200/60 shadow-sm hover:shadow-xl hover:border-neutral-400/30 overflow-hidden flex flex-col justify-between"
       style={{
         perspective: 1000,
         transformStyle: 'preserve-3d',
@@ -121,8 +122,17 @@ function IngredientCard3D({ name, description, source }: IngredientCard3DProps) 
         style={{ transform: 'translateZ(10px)' }}
       />
       
-      <div className="relative z-10 flex flex-col justify-between h-full" style={{ transform: 'translateZ(30px)' }}>
-        <div className="space-y-2">
+      <div className="relative z-10 flex flex-col justify-between h-full w-full" style={{ transform: 'translateZ(30px)' }}>
+        <div className="space-y-3 w-full">
+          {image && (
+            <div className="w-full aspect-[16/10] rounded-xl overflow-hidden relative mb-3 bg-neutral-100 shadow-inner">
+              <img 
+                src={image} 
+                alt={name} 
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          )}
           <div className="flex justify-between items-baseline gap-2">
             <h4 className="font-sans text-base md:text-lg font-bold text-neutral-800 tracking-tight leading-tight">
               {name}
@@ -425,7 +435,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               loop
               muted
               playsInline
-              className="w-full h-full object-cover opacity-100 transition-opacity duration-700 border-0 outline-none scale-[1.025]"
+              className="w-full h-full object-cover object-bottom opacity-100 transition-opacity duration-700 border-0 outline-none scale-[1.025]"
               style={{ border: 'none', outline: 'none', boxShadow: 'none' }}
             />
           ) : (
@@ -601,11 +611,6 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                   return m ? <>{m[1]}<br />{m[2]}</> : product.name;
                 })()}
               </h1>
-              <div className="flex items-center gap-3 pt-1">
-                <span className="font-sans text-xs text-neutral-500 font-medium bg-neutral-100/80 px-3 py-1.5 rounded border border-neutral-200/50 uppercase tracking-widest font-semibold">
-                  Standard weight: {product.weight}
-                </span>
-              </div>
             </div>
 
             <div className="w-full h-[1px] bg-neutral-200/60" />
@@ -650,6 +655,12 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                     </span>
                   </li>
                   <li className="flex items-center gap-3">
+                    <span className="text-xl flex-shrink-0">⚖️</span>
+                    <span>
+                      <strong className="font-semibold text-neutral-800">Net Weight:</strong> {product.weight}
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-3">
                     <span className="text-xl flex-shrink-0">🌿</span>
                     <span>
                       <strong className="font-semibold text-neutral-800">Skin Type:</strong> {product.skinType}
@@ -684,10 +695,36 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               </div>
 
               {/* Section 2: Ingredients */}
-              <div className="border-b border-neutral-200/50 pb-4">
+              <div className="border-b border-neutral-200/50 pb-4 space-y-6">
                 <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
                   Ingredients
                 </h3>
+
+                {/* Key Ingredients List */}
+                {product.keyIngredients && product.keyIngredients.length > 0 && (
+                  <div className="space-y-3">
+                    <span className="font-sans text-[13px] tracking-wider text-neutral-450 font-bold uppercase block">Active Botanicals</span>
+                    <div className="divide-y divide-neutral-100">
+                      {product.keyIngredients.map((ing, idx) => (
+                        <div key={idx} className="py-4 first:pt-0 last:pb-0 flex flex-col md:flex-row md:items-start md:justify-between gap-2">
+                          <div className="max-w-2xl">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h4 className="font-sans text-base font-bold text-neutral-800 tracking-tight">
+                                {ing.name}
+                              </h4>
+                              <span className="font-sans text-[9px] text-neutral-400 uppercase tracking-widest font-semibold px-2 py-0.5 bg-neutral-100 rounded border border-neutral-200/30">
+                                {ing.source || 'Bio-compound'}
+                              </span>
+                            </div>
+                            <p className="font-sans text-sm text-neutral-600 font-light leading-relaxed">
+                              {ing.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* INCI Ingredients List */}
                 {product.inciIngredients && (
