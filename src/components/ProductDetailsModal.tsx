@@ -185,7 +185,6 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
   // Auto scroll row states
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const autoScrollHasRunRef = useRef<boolean>(false);
 
   // Scroll to top and reset states when product changes
   useEffect(() => {
@@ -194,31 +193,17 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
     // Reset autoScrollHasRunRef so auto-scroll works for new product
     autoScrollHasRunRef.current = false;
 
-    const resetScroll = () => {
-      const smoother = ScrollSmoother.get();
-      if (smoother) {
-        smoother.scrollTo(0, false);
-        try {
-          smoother.scrollTop(0);
-        } catch (e) {}
-      }
+    // Scroll window/smoother to top
+    const smoother = ScrollSmoother.get();
+    if (smoother) {
+      smoother.scrollTo(0, false);
+    } else {
       window.scrollTo(0, 0);
-      try {
-        ScrollTrigger.refresh();
-      } catch (e) {}
-    };
-
-    resetScroll();
-    // Run after React state changes and DOM updates have settled
-    const t1 = setTimeout(resetScroll, 25);
-    const t2 = setTimeout(resetScroll, 120);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
+    }
   }, [product]);
 
   // Auto-scroll to details grid after 3.5 seconds, but cancel if user scrolls manually first
+  const autoScrollHasRunRef = useRef<boolean>(false);
 
   useEffect(() => {
     // Disable auto-scroll on mobile

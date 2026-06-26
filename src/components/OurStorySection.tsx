@@ -45,7 +45,7 @@ export default function OurStorySection() {
                 </p>
               </div>
             </div>
-<div className="w-full rounded-2xl overflow-hidden relative shadow-sm aspect-[16/10] bg-[#FAF8F5]/50 flex items-center justify-center">
+            <div className="w-full rounded-2xl overflow-hidden relative shadow-sm aspect-[16/10]">
               <img 
                 src="/About_Us/Extracts - Diff.png" 
                 alt="100% Natural Extracts" 

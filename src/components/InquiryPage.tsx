@@ -159,7 +159,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
       {/* Intro Header */}
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
         <h1 className="font-serif text-[42px] sm:text-[54px] md:text-[62px] font-normal leading-tight text-neutral-900 tracking-tight">
-          Let's talk about <span className="font-serif tracking-[0.18em] text-[#1c1b1b] uppercase font-normal">SOUL VIVA</span>
+          Get in Touch
         </h1>
         <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal select-text">
           Whether you're a distributor exploring new brands, a retailer building your personal care range, or a buyer looking for a premium Indian export partner — we'd love to hear from you. All enquiries are responded to within 1–2 business days (IST).
@@ -212,7 +212,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
                     <form onSubmit={handleTradeSubmit} className="space-y-4 text-left">
                       <div className="mb-2">
                         <h3 className="font-serif text-lg font-normal text-neutral-800">General Trade Contact</h3>
-                        <p className="font-sans text-sm text-neutral-500 font-normal mt-1">
+                        <p className="font-sans text-xs text-neutral-400 font-light mt-1">
                           For distributors, retailers, importers and wholesalers who wish to contact us about Soul Viva for stocking.
                         </p>
                       </div>
@@ -393,7 +393,7 @@ export default function InquiryPage({ onBackToHome }: InquiryPageProps) {
                     <form onSubmit={handleSampleSubmit} className="space-y-4 text-left">
                       <div className="mb-2">
                         <h3 className="font-serif text-lg font-normal text-neutral-800">Request Product Samples</h3>
-                        <p className="font-sans text-sm text-neutral-500 font-normal mt-1">
+                        <p className="font-sans text-xs text-neutral-400 font-light mt-1">
                           We're happy to send samples to qualified trade buyers. Please complete the form below and we'll dispatch your sample pack within 5–7 business days. Shipping charges may apply for international orders.
                         </p>
                       </div>
