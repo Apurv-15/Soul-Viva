@@ -23,7 +23,8 @@ export const PRODUCTS: Product[] = [
       '/Images/Manadrin.png',
       '/Mandarin/Soul Viva - Mandarin & Peach - Front 1.png',
       '/Mandarin/Soul Viva - Mandarin & Peach - Left 1.png',
-      '/Mandarin/Soul Viva - Mandarin & Peach - Product 2.png'
+      '/Ingredient Story/Ingredient Story - Orange - 1.png',
+      '/Ingredient Story/Ingredient Story - Orange - 2.png'
     ],
     scentNotes: {
       top: ['Sun-Kissed Mandarin', 'Sweet Satsuma'],
@@ -35,13 +36,15 @@ export const PRODUCTS: Product[] = [
         name: 'Mandarin Extract',
         role: 'Vibrancy Stimulator',
         source: 'Calabrian Groves',
-        description: 'Refreshes and energises skin with natural extract of refreshing mandarin.'
+        description: 'Refreshes and energises skin with natural extract of refreshing mandarin.',
+        image: '/Ingredient Story/Ingredient Story - Orange - 1.png'
       },
       {
         name: 'Peach Extract',
         role: 'Texture Velvetizer',
         source: 'Organic Orchards',
-        description: 'Softens and smoothens skin with natural extract of juicy peaches.'
+        description: 'Softens and smoothens skin with natural extract of juicy peaches.',
+        image: '/Ingredient Story/Ingredient Story - Orange - 2.png'
       },
       {
         name: 'Glycerin',
@@ -94,7 +97,8 @@ export const PRODUCTS: Product[] = [
       '/Images/Waterlily_kv.jpeg',
       '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png',
       '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Left 1.png',
-      '/Waterlily and Pear/Soul Viva - Waterlily & Pear - Right 1.png'
+      '/Ingredient Story/Ingredient Story - Green - 1.png',
+      '/Ingredient Story/Ingredient Story - Green - 2.png'
     ],
     scentNotes: {
       top: ['Crisp Pear', 'Lush Greens'],
@@ -106,13 +110,15 @@ export const PRODUCTS: Product[] = [
         name: 'Waterlily Extract',
         role: 'Flora Rejuvenator',
         source: 'Aquatic Flowers',
-        description: 'Hydrates and refreshes skin with natural extracts of waterily.'
+        description: 'Hydrates and refreshes skin with natural extracts of waterily.',
+        image: '/Ingredient Story/Ingredient Story - Green - 1.png'
       },
       {
         name: 'Pear Extract',
         role: 'Aromatic Softener',
         source: 'Pressed Pears',
-        description: 'Leaves skin soft and supple with natural extract of gentle and juicy pear.'
+        description: 'Leaves skin soft and supple with natural extract of gentle and juicy pear.',
+        image: '/Ingredient Story/Ingredient Story - Green - 2.png'
       },
       {
         name: 'Glycerin',
@@ -165,7 +171,8 @@ export const PRODUCTS: Product[] = [
       '/Images/Black_current_kv.jpeg',
       '/Black Currant/Soul Viva - Black Currant & Lavender - Front 1.png',
       '/Black Currant/Soul Viva - Black Currant & Lavender - Left 1.png',
-      '/Black Currant/Soul Viva - Black Currant & Lavender - Product 2.png'
+      '/Ingredient Story/Ingredient Story - Purple - 1.png',
+      '/Ingredient Story/Ingredient Story - Purple - 2.png'
     ],
     scentNotes: {
       top: ['Black Currant Buds', 'Deep Berries'],
@@ -177,13 +184,15 @@ export const PRODUCTS: Product[] = [
         name: 'Black Currant Essence',
         role: 'Lipid Nourisher',
         source: 'Forest Currants',
-        description: 'Nourishes for smoother skin with natural extracts of antioxidant-rich black currant'
+        description: 'Nourishes for smoother skin with natural extracts of antioxidant-rich black currant',
+        image: '/Ingredient Story/Ingredient Story - Purple - 1.png'
       },
       {
         name: 'Lavender Extract',
         role: 'Epidermal Calmer',
         source: 'Provence Lavender',
-        description: 'Calms and soothes skin with natural extracts of lavender blooms.'
+        description: 'Calms and soothes skin with natural extracts of lavender blooms.',
+        image: '/Ingredient Story/Ingredient Story - Purple - 2.png'
       },
       {
         name: 'Glycerin',
@@ -236,7 +245,8 @@ export const PRODUCTS: Product[] = [
       '/Images/Shea_butter.jpeg',
       '/Shea and butter/Soul Viva - Shea Butter & Honey - Front 1.png',
       '/Shea and butter/Soul Viva - Shea Butter & Honey - Right 1.png',
-      '/Shea and butter/Soul Viva - Shea Butter & Honey - Product 2.png'
+      '/Ingredient Story/Ingredient Story - Yellow - 1.png',
+      '/Ingredient Story/Ingredient Story - Yellow - 2.png'
     ],
     scentNotes: {
       top: ['Warm Honeycomb', 'Amaretto Blossom'],
@@ -248,13 +258,15 @@ export const PRODUCTS: Product[] = [
         name: 'Shea Butter',
         role: 'Deep Nourisher',
         source: 'Cold-Pressed Nut Oil',
-        description: 'Deeply nourishes dry skin with the goodness of nourishing  shea butter.'
+        description: 'Deeply nourishes dry skin with the goodness of nourishing  shea butter.',
+        image: '/Ingredient Story/Ingredient Story - Yellow - 1.png'
       },
       {
         name: 'Honey Extract',
         role: 'Conditioner',
         source: 'Forest Beehive Extract',
-        description: 'Leaves skin soft and smooth with natural honey with its humectant properties'
+        description: 'Leaves skin soft and smooth with natural honey with its humectant properties',
+        image: '/Ingredient Story/Ingredient Story - Yellow - 2.png'
       },
       {
         name: 'Glycerin',
@@ -307,7 +319,8 @@ export const PRODUCTS: Product[] = [
       '/Images/Cherry_blossom.jpeg',
       '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Front 1.png',
       '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Left 1.png',
-      '/Strawberry/Soul Viva - Cherry Blossom & Strawberry - Right 1.png'
+      '/Ingredient Story/Ingredient Story - Pink - 1.png',
+      '/Ingredient Story/Ingredient Story - Pink - 2.png'
     ],
     scentNotes: {
       top: ['Wild Strawberry', 'Red Berries'],
@@ -319,13 +332,15 @@ export const PRODUCTS: Product[] = [
         name: 'Cherry Blossom Extract',
         role: 'Luminosity Perfector',
         source: 'Sakura Petals',
-        description: 'Enhances skin\'s natural glow with natural extracts of brigntening cherry blossoms'
+        description: "Enhances skin's natural glow with natural extracts of brigntening cherry blossoms",
+        image: '/Ingredient Story/Ingredient Story - Pink - 1.png'
       },
       {
         name: 'Strawberry Extract',
         role: 'Radiance Booster',
         source: 'Ripe Strawberries',
-        description: 'Leaves skin radiant with natural extract of juicy strawberries.'
+        description: 'Leaves skin radiant with natural extract of juicy strawberries.',
+        image: '/Ingredient Story/Ingredient Story - Pink - 2.png'
       },
       {
         name: 'Glycerin',
@@ -378,7 +393,8 @@ export const PRODUCTS: Product[] = [
       '/Images/Sea_mineral_kv.jpeg',
       '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Front 1.png',
       '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Left 1.png',
-      '/Sea Minerals/Soul Viva - Sea Minerals & Menthol - Product 2.png'
+      '/Ingredient Story/Ingredient Story - Blue - 1.png',
+      '/Ingredient Story/Ingredient Story - Blue - 2.png'
     ],
     scentNotes: {
       top: ['Crisp Menthol', 'Marine Mist'],
@@ -390,13 +406,15 @@ export const PRODUCTS: Product[] = [
         name: 'Sea Minerals',
         role: 'Purifying Cleanser',
         source: 'Ocean Purity',
-        description: 'Cleanse and refresh with ocean-derived minerals'
+        description: 'Cleanse and refresh with ocean-derived minerals',
+        image: '/Ingredient Story/Ingredient Story - Blue - 1.png'
       },
       {
         name: 'Menthol',
         role: 'Instant Refresher',
         source: 'Peppermint Distillate',
-        description: 'Delivers an instant cooling rush and invigorating refreshing sensation of menthol'
+        description: 'Delivers an instant cooling rush and invigorating refreshing sensation of menthol',
+        image: '/Ingredient Story/Ingredient Story - Blue - 2.png'
       },
       {
         name: 'Glycerin',

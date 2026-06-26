@@ -44,12 +44,8 @@ export default function OurStorySection() {
                   Every variant contains real botanical extracts — not artificial fragrance alone. Shea butter, cherry blossom, waterlily, sea minerals, black currant, mandarin — each ingredient selected not just for its name, but for its active skin-care benefit. Real botanicals, real results.
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-[#2D3A2F]">
-                <Sparkles className="w-4 h-4" />
-                <span className="font-serif text-xs italic text-stone-700">"Real botanicals, real results."</span>
-              </div>
             </div>
-            <div className="w-full rounded-2xl overflow-hidden relative shadow-sm aspect-[16/10] bg-[#FAF8F5]/50 flex items-center justify-center">
+<div className="w-full rounded-2xl overflow-hidden relative shadow-sm aspect-[16/10] bg-[#FAF8F5]/50 flex items-center justify-center">
               <img 
                 src="/About_Us/Extracts - Diff.png" 
                 alt="100% Natural Extracts" 
@@ -114,7 +110,7 @@ export default function OurStorySection() {
             </div>
             <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden relative shadow-sm">
               <img 
-                src="/Waterlily and Pear/Soul Viva - Waterlily & Pear - Front 1.png" 
+                src="/Images/Waterlily_kv.jpeg" 
                 alt="Premium Shelf Presence" 
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
@@ -135,7 +131,7 @@ export default function OurStorySection() {
             </div>
             <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden relative shadow-sm">
               <img 
-                src="/About_Us/Fragrance.png" 
+                src="/Images/Image - Export Ready.png" 
                 alt="Export-Ready from Day One" 
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
@@ -150,7 +146,7 @@ export default function OurStorySection() {
             <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Export Compliance — Built for International Markets
             </h2>
-            <p className="font-sans text-[15px] sm:text-[17px] md:text-[19px] text-neutral-700 font-light max-w-4xl leading-relaxed">
+            <p className="font-sans text-[14.5px] text-neutral-700 font-light max-w-4xl leading-relaxed">
               Soul Viva is designed and documented for export from India. Every element — from labelling to barcoding to ingredient declarations — is built to meet the requirements of international trade partners and regulatory authorities.
             </p>
           </div>

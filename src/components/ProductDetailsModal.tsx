@@ -74,9 +74,10 @@ interface IngredientCard3DProps {
   name: string;
   description: string;
   source: string;
+  image?: string;
 }
 
-function IngredientCard3D({ name, description, source }: IngredientCard3DProps) {
+function IngredientCard3D({ name, description, source, image }: IngredientCard3DProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -106,7 +107,7 @@ function IngredientCard3D({ name, description, source }: IngredientCard3DProps) 
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className="relative p-6 rounded-2xl transition-all duration-300 ease-out cursor-pointer h-full bg-white/70 backdrop-blur-md border border-neutral-200/60 shadow-sm hover:shadow-xl hover:border-neutral-400/30"
+      className="relative p-6 rounded-2xl transition-all duration-300 ease-out cursor-pointer h-full bg-white/70 backdrop-blur-md border border-neutral-200/60 shadow-sm hover:shadow-xl hover:border-neutral-400/30 overflow-hidden flex flex-col justify-between"
       style={{
         perspective: 1000,
         transformStyle: 'preserve-3d',
@@ -121,8 +122,17 @@ function IngredientCard3D({ name, description, source }: IngredientCard3DProps) 
         style={{ transform: 'translateZ(10px)' }}
       />
       
-      <div className="relative z-10 flex flex-col justify-between h-full" style={{ transform: 'translateZ(30px)' }}>
-        <div className="space-y-2">
+      <div className="relative z-10 flex flex-col justify-between h-full w-full" style={{ transform: 'translateZ(30px)' }}>
+        <div className="space-y-3 w-full">
+          {image && (
+            <div className="w-full aspect-[16/10] rounded-xl overflow-hidden relative mb-3 bg-neutral-100 shadow-inner">
+              <img 
+                src={image} 
+                alt={name} 
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          )}
           <div className="flex justify-between items-baseline gap-2">
             <h4 className="font-sans text-base md:text-lg font-bold text-neutral-800 tracking-tight leading-tight">
               {name}
@@ -440,7 +450,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
               loop
               muted
               playsInline
-              className="w-full h-full object-cover opacity-100 transition-opacity duration-700 border-0 outline-none scale-[1.025]"
+              className="w-full h-full object-cover object-bottom opacity-100 transition-opacity duration-700 border-0 outline-none scale-[1.025]"
               style={{ border: 'none', outline: 'none', boxShadow: 'none' }}
             />
           ) : (
@@ -496,7 +506,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
           
           {/* Left Column Wrapper: Groups thumbnails and main image into a sticky element on desktop */}
           <div id="left-sticky-wrapper" className="lg:col-span-7 order-1 lg:order-1 w-full self-stretch">
-            <div id="left-sticky-column" className="flex flex-col gap-5 w-full lg:h-[calc(100vh-120px)] lg:justify-center relative">
+            <div id="left-sticky-column" className="flex flex-col gap-5 w-full lg:h-auto relative">
               
               <div className="w-full">
                 <div data-lag="0.5" className="relative w-full overflow-hidden transition-all duration-300 aspect-[4/3] md:aspect-[16/10]">
@@ -611,13 +621,14 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
             {/* Category / Subtitle */}
             <div className="space-y-2">
               <h1 className="font-sans text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 leading-tight">
-                {product.name}
+                {(() => {
+                  const m = product.name.match(/^(.*?)\s+(Moisturi[sz]ing Gel Bar)$/);
+                  return m ? <>{m[1]}<br />{m[2]}</> : product.name;
+                })()}
               </h1>
-              <div className="flex items-center gap-3 pt-1">
-                <span className="font-sans text-xs text-neutral-500 font-medium bg-neutral-100/80 px-3 py-1.5 rounded border border-neutral-200/50 uppercase tracking-widest font-semibold">
-                  Standard weight: {product.weight}
-                </span>
-              </div>
+              <p className="font-sans text-[18px] md:text-[20px] text-neutral-500 font-light italic mt-2">
+                {product.subtitle}
+              </p>
             </div>
 
             <div className="w-full h-[1px] bg-neutral-200/60" />
@@ -632,13 +643,95 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
 
             {/* 3. Information & Ingredients Sections */}
             <div className="space-y-5">
-              
-              {/* Section: Claims Badges */}
+
+              {/* KEY INGREDIENTS */}
+              {product.keyIngredients && product.keyIngredients.length > 0 && (
+                <div className="border-b border-neutral-200/50 pb-4">
+                  <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
+                    Key Ingredients
+                  </h3>
+                  <ul className="space-y-2 font-sans text-[15px] text-neutral-700 font-light leading-relaxed">
+                    {product.keyIngredients.map((ing, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0" />
+                        <span><strong className="font-semibold text-neutral-900">{ing.name} —</strong> {ing.description}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* PRODUCT INFORMATION (QUICK REFERENCE) */}
+              <div className="border-b border-neutral-200/50 pb-4">
+                <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
+                  Product Information (Quick Reference)
+                </h3>
+                <ul className="space-y-2 font-sans text-[15px] text-neutral-700 font-light leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0" />
+                    <span><strong className="font-semibold text-neutral-900">Net Weight:</strong> {product.weight}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0" />
+                    <span><strong className="font-semibold text-neutral-900">EAN Barcode:</strong> {product.eanBarcode} (GS1 India Registered)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0" />
+                    <span><strong className="font-semibold text-neutral-900">Shelf Life:</strong> {product.shelfLife}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0" />
+                    <span><strong className="font-semibold text-neutral-900">Country of Origin:</strong> {product.countryOfOrigin}</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* TECHNICAL DETAILS */}
+              <div className="border-b border-neutral-200/50 pb-4">
+                <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
+                  Technical Details
+                </h3>
+                <ul className="space-y-2 font-sans text-[15px] text-neutral-700 font-light leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0" />
+                    <span><strong className="font-semibold text-neutral-900">Product Category:</strong> {product.productCategory || 'Glycerin Based transparent gel bathing bar'}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0" />
+                    <span><strong className="font-semibold text-neutral-900">For Skin Type:</strong> {product.skinType}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0" />
+                    <span><strong className="font-semibold text-neutral-900">Case Configuration:</strong> {product.caseConfiguration}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0" />
+                    <span><strong className="font-semibold text-neutral-900">Packaging:</strong> {product.packaging}</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* INGREDIENT INFORMATION — FULL INCI LISTING */}
+              {product.inciIngredients && (
+                <div className="border-b border-neutral-200/50 pb-4">
+                  <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
+                    Ingredient Information — Full INCI Listing
+                  </h3>
+                  <p className="font-sans text-[15px] text-neutral-700 font-light leading-[1.6] bg-[#FAF9F5] border border-neutral-200 rounded-xl p-5">
+                    {product.inciIngredients}
+                    <span className="block mt-3 text-xs text-neutral-450 italic leading-relaxed">
+                      Ingredients listed in descending order of concentration per INCI convention. Full safety data sheet and certificate of analysis available to qualified trade buyers on request.
+                    </span>
+                  </p>
+                </div>
+              )}
+
+              {/* CLAIMS */}
               {product.claims && product.claims.length > 0 && (
                 <div className="border-b border-neutral-200/50 pb-4">
-                  <span className="font-sans text-xs tracking-widest text-neutral-400 font-bold uppercase block mb-3">
-                    Product Claims
-                  </span>
+                  <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
+                    Claims
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {product.claims.map((claim, idx) => (
                       <span key={idx} className="bg-emerald-50 text-emerald-800 border border-emerald-150/40 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide">
@@ -649,77 +742,9 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                 </div>
               )}
 
-              {/* Section 1: Information */}
-              <div className="border-b border-neutral-200/50 pb-4">
-                <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
-                  Technical Details
-                </h3>
-                <ul className="space-y-2.5 font-sans text-[16px] text-neutral-700 font-light leading-[1.8]">
-                  <li className="flex items-center gap-3">
-                    <span className="text-xl flex-shrink-0">🏷️</span>
-                    <span>
-                      <strong className="font-semibold text-neutral-800">Category:</strong> {product.productCategory || 'Glycerin Based transparent gel bathing bar'}
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-xl flex-shrink-0">🌿</span>
-                    <span>
-                      <strong className="font-semibold text-neutral-800">Skin Type:</strong> {product.skinType}
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-xl flex-shrink-0">📦</span>
-                    <span>
-                      <strong className="font-semibold text-neutral-800">Case Configuration:</strong> {product.caseConfiguration}
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-xl flex-shrink-0">⏳</span>
-                    <span>
-                      <strong className="font-semibold text-neutral-800">Shelf Life:</strong> {product.shelfLife}
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-xl flex-shrink-0">🌍</span>
-                    <span>
-                      <strong className="font-semibold text-neutral-800">Country of Origin:</strong> {product.countryOfOrigin} — Manufactured in Maharashtra
-                    </span>
-                  </li>
-
-                  <li className="flex items-center gap-3">
-                    <span className="text-xl flex-shrink-0">🎁</span>
-                    <span>
-                      <strong className="font-semibold text-neutral-800">Packaging:</strong> {product.packaging}
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Section 2: Ingredients */}
-              <div className="border-b border-neutral-200/50 pb-4">
-                <h3 className="font-sans text-sm tracking-wider font-semibold uppercase text-neutral-800 mb-3">
-                  Ingredients
-                </h3>
-
-                {/* INCI Ingredients List */}
-                {product.inciIngredients && (
-                  <div className="space-y-2 pt-2">
-                    <span className="font-sans text-[13px] tracking-wider text-neutral-450 font-bold uppercase block">Full INCI Listing</span>
-                    <p className="font-sans text-[16px] text-neutral-700 font-light leading-[1.6] bg-[#FAF9F5] border border-neutral-200 rounded-xl p-5">
-                      {product.inciIngredients}
-                      <span className="block mt-3 text-xs text-neutral-450 italic leading-relaxed">
-                        Ingredients listed in descending order of concentration per INCI convention. Full safety data sheet and certificate of analysis available to qualified trade buyers on request.
-                      </span>
-                    </p>
-                  </div>
-                )}
-              </div>
-
             </div>
 
-            <div className="flex justify-end items-center pt-4 border-t border-neutral-200/50 text-xs md:text-sm font-sans tracking-widest text-neutral-400 font-bold uppercase">
-              <span>EAN: {product.eanBarcode || theme.ean}</span>
-            </div>
+
 
           </div>
         </div>

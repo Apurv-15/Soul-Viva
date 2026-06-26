@@ -14,6 +14,7 @@ export interface KeyIngredient {
   role: string;
   source: string;
   description: string;
+  image?: string;
 }
 
 export interface SensoryProfile {
