@@ -20,7 +20,7 @@ export default function OurStorySection() {
         {/* Header Block */}
         <div className="text-left space-y-4">
 
-          <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+          <h2 className="font-sans text-3xl md:text-[40px] font-semibold leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
             WHY US — THE SOUL VIVA DIFFERENCE
           </h2>
           <p className="font-serif text-[18px] sm:text-[20px] md:text-[22px] italic text-[#2D3A2F] font-normal leading-relaxed">
@@ -37,7 +37,7 @@ export default function OurStorySection() {
           >
             <div className="space-y-4">
               <div className="space-y-2">
-                <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+                <h3 className="font-sans text-[20px] md:text-[26px] font-semibold text-[#2D3A2F] tracking-tight leading-tight">
                   100% Natural Extracts
                 </h3>
                 <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -59,7 +59,7 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-6 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+              <h3 className="font-sans text-[20px] md:text-[26px] font-semibold text-[#2D3A2F] tracking-tight leading-tight">
                 Sensory-First Design
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -80,7 +80,7 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 pb-0 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+              <h3 className="font-sans text-[20px] md:text-[26px] font-semibold text-[#2D3A2F] tracking-tight leading-tight">
                 Glycerin-Rich Gel Formula
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -101,7 +101,7 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 pb-0 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+              <h3 className="font-sans text-[20px] md:text-[26px] font-semibold text-[#2D3A2F] tracking-tight leading-tight">
                 Premium Shelf Presence
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -122,7 +122,7 @@ export default function OurStorySection() {
             className="col-span-1 md:col-span-4 bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[32px] p-8 pb-0 flex flex-col justify-between gap-6 overflow-hidden relative shadow-xs hover:shadow-lg hover:border-[#2D3A2F]/30 transition-all duration-500 group text-left"
           >
             <div className="space-y-2">
-              <h3 className="font-serif text-[20px] md:text-[26px] font-normal text-[#2D3A2F] tracking-tight leading-tight italic">
+              <h3 className="font-sans text-[20px] md:text-[26px] font-semibold text-[#2D3A2F] tracking-tight leading-tight">
                 Export-Ready from Day One
               </h3>
               <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-normal">
@@ -143,7 +143,7 @@ export default function OurStorySection() {
         {/* EXPORT COMPLIANCE SPECIFICATIONS MODULE */}
         <div className="mt-8 space-y-8 pt-8 border-t border-stone-200/50">
           <div className="text-left space-y-4">
-            <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+            <h2 className="font-sans text-3xl md:text-[40px] font-semibold leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Export Compliance — Built for International Markets
             </h2>
             <p className="font-sans text-[14.5px] text-neutral-700 font-light max-w-4xl leading-relaxed">
@@ -162,8 +162,8 @@ export default function OurStorySection() {
                 {/* Compliance Item 1 */}
                 <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                   <div>
-                    <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
+                    <h4 className="font-bold text-neutral-900 text-lg md:text-[20px] flex items-center gap-2 mb-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#2D3A2F] flex-shrink-0" />
                       GS1 Barcodes
                     </h4>
                     <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-relaxed">
@@ -175,8 +175,8 @@ export default function OurStorySection() {
                 {/* Compliance Item 2 */}
                 <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                   <div>
-                    <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
+                    <h4 className="font-bold text-neutral-900 text-lg md:text-[20px] flex items-center gap-2 mb-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#2D3A2F] flex-shrink-0" />
                       INCI Declarations
                     </h4>
                     <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-relaxed">
@@ -188,8 +188,8 @@ export default function OurStorySection() {
                 {/* Compliance Item 3 */}
                 <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                   <div>
-                    <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
+                    <h4 className="font-bold text-neutral-900 text-lg md:text-[20px] flex items-center gap-2 mb-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#2D3A2F] flex-shrink-0" />
                       Export Documentation
                     </h4>
                     <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-relaxed">
@@ -201,8 +201,8 @@ export default function OurStorySection() {
                 {/* Compliance Item 4 */}
                 <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs space-y-3.5 text-left flex flex-col justify-between">
                   <div>
-                    <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
+                    <h4 className="font-bold text-neutral-900 text-lg md:text-[20px] flex items-center gap-2 mb-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#2D3A2F] flex-shrink-0" />
                       Claims Substantiation
                     </h4>
                     <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-relaxed">
@@ -214,8 +214,8 @@ export default function OurStorySection() {
                 {/* Compliance Item 5 */}
                 <div className="w-full md:w-[calc(50%-12px)] xl:w-[calc(33.333%-16px)] bg-[#F5F2EB] rounded-2xl p-6 border border-[#E5DEC1]/60 shadow-xs text-left space-y-3.5 flex flex-col justify-between">
                   <div>
-                    <h4 className="font-bold text-neutral-900 text-base flex items-center gap-2 mb-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#2D3A2F]" />
+                    <h4 className="font-bold text-neutral-900 text-lg md:text-[20px] flex items-center gap-2 mb-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#2D3A2F] flex-shrink-0" />
                       Mandatory Labeling
                     </h4>
                     <p className="font-sans text-[14.5px] text-neutral-700 font-light leading-relaxed">
@@ -231,7 +231,7 @@ export default function OurStorySection() {
 
           {/* Section: Manufacturing Facilities Allocation Details */}
           <div className="text-left space-y-4 mt-16">
-            <h2 className="font-serif text-3xl md:text-[40px] font-normal leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
+            <h2 className="font-sans text-3xl md:text-[40px] font-semibold leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
               Production Facility — Crafted by Experts in Soap Making
             </h2>
             <div className="space-y-4 max-w-4xl font-sans text-[14.5px] text-neutral-700 font-light leading-relaxed">
