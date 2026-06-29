@@ -522,7 +522,7 @@ export default function App() {
 
                             {/* Header Title in large font */}
                             <div className="text-center w-full mb-16 md:mb-24">
-                              <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-tight text-[#2D3A2F] tracking-tight">
+                              <h2 className="font-display font-normal text-4xl md:text-6xl text-[#1A1A1A] text-center tracking-tight">
                                 Our Collection
                               </h2>
                             </div>
@@ -551,7 +551,7 @@ export default function App() {
 
                           {/* Header Title in large font */}
                           <div className="text-center w-full mb-16 md:mb-24">
-                            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-tight text-[#2D3A2F] tracking-tight">
+                            <h2 className="font-display font-normal text-4xl md:text-6xl text-[#1A1A1A] text-center tracking-tight">
                               Our Collection
                             </h2>
                           </div>
@@ -612,9 +612,11 @@ export default function App() {
 
                   {/* Giant Brand Logo Text */}
                   <div className="w-full text-center py-6 flex justify-center">
-                    <span className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-[0.2em] text-[#1c1b1b] uppercase font-normal select-none">
-                      SOUL VIVA
-                    </span>
+                    <img 
+                      src="/Logo Name- Soul Viva Final - Large Caps (1).png" 
+                      alt="Soul Viva" 
+                      className="h-10 sm:h-12 md:h-16 object-contain select-none" 
+                    />
                   </div>
 
                   {/* Mandatory Footer Information Grid */}

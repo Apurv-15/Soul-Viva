@@ -123,7 +123,7 @@ export default function SearchModal({ onClose, onSelectProduct }: SearchModalPro
                     )}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="font-sans text-[10px] tracking-wider uppercase text-neutral-400 font-medium block">
+                    <span className="font-sans text-[10px] tracking-wider uppercase text-neutral-400 font-semibold block">
                       {p.subtitle}
                     </span>
                     <span className="font-sans text-xs font-semibold text-neutral-800 block group-hover:text-brand-dark">

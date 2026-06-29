@@ -23,7 +23,7 @@ export default function OurStorySection() {
           <h2 className="font-sans text-3xl md:text-[40px] font-semibold leading-[1.1] text-[#2D3A2F] tracking-tight uppercase">
             WHY US — THE SOUL VIVA DIFFERENCE
           </h2>
-          <p className="font-serif text-[18px] sm:text-[20px] md:text-[22px] italic text-[#2D3A2F] font-normal leading-relaxed">
+          <p className="font-sans font-semibold text-xl md:text-2xl tracking-tight text-[#1a1a1a]/80 mt-3">
             More than a soap. A feeling of freshness.
           </p>
         </div>

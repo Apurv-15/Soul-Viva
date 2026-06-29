@@ -611,7 +611,7 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
                   return m ? <>{m[1]}<br />{m[2]}</> : product.name;
                 })()}
               </h1>
-              <p className="font-sans text-[18px] md:text-[20px] text-neutral-500 font-light italic mt-2">
+              <p className="font-sans text-[18px] md:text-[20px] text-neutral-500 font-semibold italic mt-2">
                 {product.subtitle}
               </p>
             </div>
@@ -798,9 +798,11 @@ export default function ProductDetailsModal({ product, onClose, onProductSelect,
 
           {/* Giant Brand Logo Text */}
           <div className="w-full text-center py-6 flex justify-center">
-            <span className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-[0.2em] text-[#1c1b1b] uppercase font-normal select-none">
-              SOUL VIVA
-            </span>
+            <img 
+              src="/Logo Name- Soul Viva Final - Large Caps (1).png" 
+              alt="Soul Viva" 
+              className="h-10 sm:h-12 md:h-16 object-contain select-none" 
+            />
           </div>
 
           {/* Mandatory Footer Information Grid */}

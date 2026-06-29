@@ -61,10 +61,12 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
             {/* Header Block */}
             <div className="space-y-2">
               <div className="space-y-1">
-                <span className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] text-[#1c1b1b] uppercase font-normal select-none block">
-                  SOUL VIVA
-                </span>
-                <p className="font-serif text-[18px] sm:text-[20px] md:text-[22px] italic text-[#2D3A2F] font-normal leading-relaxed">
+                <img 
+                  src="/Logo Name- Soul Viva Final - Large Caps (1).png" 
+                  alt="Soul Viva" 
+                  className="h-10 sm:h-12 md:h-16 lg:h-20 object-contain select-none block" 
+                />
+                <p className="font-sans font-semibold text-xl md:text-2xl tracking-tight text-[#1a1a1a]/80 mt-3">
                   Where Skincare meets sensory indulgence.
                 </p>
               </div>
