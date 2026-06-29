@@ -64,7 +64,7 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                 <img 
                   src="/Logo Name- Soul Viva Final - Large Caps (1).png" 
                   alt="Soul Viva" 
-                  className="h-10 sm:h-12 md:h-16 lg:h-20 object-contain select-none block" 
+                  className="h-6 sm:h-8 md:h-10 lg:h-12 object-contain select-none block" 
                 />
                 <p className="font-sans font-semibold text-xl md:text-2xl tracking-tight text-[#1a1a1a]/80 mt-3">
                   Where Skincare meets sensory indulgence.
