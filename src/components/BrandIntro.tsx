@@ -93,50 +93,50 @@ export default function BrandIntro({ hidePillars = false }: BrandIntroProps) {
                variants={itemVariants} 
                className="lg:col-span-6 flex flex-col space-y-4 lg:ml-auto w-full self-center"
              >
-               {/* Pillar 1: Botanicals */}
-               <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[24px] p-4 md:p-5 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2 text-left">
-                 <div className="flex items-center gap-3">
-                   <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
-                     <Leaf className="w-5 h-5 md:w-6 md:h-6" />
-                   </div>
-                   <h4 className="font-serif text-[18px] md:text-[20px] italic text-[#2D3A2F] font-normal leading-tight">
-                     Skin-Loving Botanicals
-                   </h4>
-                 </div>
-                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
-                   Natural extracts of skin-loving botanicals for nourishment.
-                 </p>
-               </div>
-   
-               {/* Pillar 2: Fragrances */}
-               <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[24px] p-4 md:p-5 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2 text-left">
-                 <div className="flex items-center gap-3">
-                   <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
-                     <Sparkles className="w-5 h-5 md:w-6 md:h-6" />
-                   </div>
-                   <h4 className="font-serif text-[18px] md:text-[20px] italic text-[#2D3A2F] font-normal leading-tight">
-                     Mood-Enlivening Fragrances
-                   </h4>
-                 </div>
-                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
-                   Delightful fresh fragrances to evoke freshness and enliven the mood.
-                 </p>
-               </div>
-   
-               {/* Pillar 3: Glycerin-Rich */}
-               <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[24px] p-4 md:p-5 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2 text-left">
-                 <div className="flex items-center gap-3">
-                   <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60">
-                     <Droplet className="w-5 h-5 md:w-6 md:h-6" />
-                   </div>
-                   <h4 className="font-serif text-[18px] md:text-[20px] italic text-[#2D3A2F] font-normal leading-tight">
-                     Glycerin-Rich Formula
-                   </h4>
-                 </div>
-                 <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
-                   Glycerin-Rich Formula for long-lasting skin moisturisation.
-                 </p>
-               </div>
+                {/* Pillar 1: Botanicals */}
+                <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[24px] p-4 md:p-5 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2 text-left">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60 flex items-center justify-center">
+                      <Leaf className="w-5 h-5 md:w-6 md:h-6" />
+                    </div>
+                    <h4 className="font-sans text-[18px] font-semibold text-[#2D3A2F] tracking-tight leading-tight">
+                      Skin-Loving Botanicals
+                    </h4>
+                  </div>
+                  <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
+                    Natural extracts of skin-loving botanicals for nourishment.
+                  </p>
+                </div>
+    
+                {/* Pillar 2: Fragrances */}
+                <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[24px] p-4 md:p-5 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2 text-left">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60 flex items-center justify-center">
+                      <Sparkles className="w-5 h-5 md:w-6 md:h-6" />
+                    </div>
+                    <h4 className="font-sans text-[18px] font-semibold text-[#2D3A2F] tracking-tight leading-tight">
+                      Mood-Enlivening Fragrances
+                    </h4>
+                  </div>
+                  <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
+                    Delightful fresh fragrances to evoke freshness and enliven the mood.
+                  </p>
+                </div>
+    
+                {/* Pillar 3: Glycerin-Rich */}
+                <div className="bg-[#F5F2EB] border border-[#E5DEC1]/60 rounded-[24px] p-4 md:p-5 shadow-xs hover:shadow-md hover:border-[#2D3A2F]/30 transition-all duration-300 flex flex-col space-y-2 text-left">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-white text-[#2D3A2F] border border-[#E5DEC1]/60 flex items-center justify-center">
+                      <Droplet className="w-5 h-5 md:w-6 md:h-6" />
+                    </div>
+                    <h4 className="font-sans text-[18px] font-semibold text-[#2D3A2F] tracking-tight leading-tight">
+                      Glycerin-Rich Formula
+                    </h4>
+                  </div>
+                  <p className="font-sans text-[14.5px] text-neutral-650 leading-relaxed font-light">
+                    Glycerin-Rich Formula for long-lasting skin moisturisation.
+                  </p>
+                </div>
              </motion.div>
            )}
         </motion.div>
