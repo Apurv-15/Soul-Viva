@@ -2,13 +2,12 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDsTL8gf_6x-9PZZGxtw1j_28YXMszsS-g",
-  authDomain: "soulviva.firebaseapp.com",
-  projectId: "soulviva",
-  storageBucket: "soulviva.firebasestorage.app",
-  messagingSenderId: "625690532447",
-  appId: "1:625690532447:web:76c2148689621463e759ea",
-  measurementId: "G-7XD2CBW92J"
+  apiKey: "AIzaSyDpEem7uPglcAxouQBUiziUTdVMW8TiEis",
+  authDomain: "soul-viva.firebaseapp.com",
+  projectId: "soul-viva",
+  storageBucket: "soul-viva.firebasestorage.app",
+  messagingSenderId: "58498008879",
+  appId: "1:58498008879:web:7acdc22a1956232d4c03da"
 };
 
 // Initialize Firebase (SSR-safe)
